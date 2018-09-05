@@ -11,6 +11,7 @@
         <module>javase</module>
         <module>utils</module>
         <module>blockchain</module>
+        <module>upup</module>
     </modules>
     <packaging>pom</packaging>
 
