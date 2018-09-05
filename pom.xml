@@ -45,6 +45,18 @@
         <bcprov-jdk15on.version>1.59</bcprov-jdk15on.version>
 
 
+        <!--upup 模块依赖,没有写的则已存在springboot的起步依赖中-->
+        <junit.version>4.2</junit.version>
+        <netty-all.version>5.0.0.Alpha1</netty-all.version>
+        <netty-example.version>5.0.0.Alpha1</netty-example.version>
+        <protobuf-java.version>2.5.0</protobuf-java.version>
+        <jboss-marshalling.version>1.4.10.Final</jboss-marshalling.version>
+        <jboss-marshalling-serial.version>1.4.10.Final</jboss-marshalling-serial.version>
+        <bcel.version>5.2</bcel.version>
+        <stax-api.version>1.0.1</stax-api.version>
+        <wstx-asl.version>3.2.9</wstx-asl.version>
+        <jibx-bind.version>1.2.5</jibx-bind.version>
+
         <!--   <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
            <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
            <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
