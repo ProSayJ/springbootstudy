@@ -9,6 +9,8 @@
     <modules>
         <module>main</module>
         <module>javase</module>
+        <module>utils</module>
+        <module>blockchain</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -38,8 +40,8 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-dbutils.version>1.6</commons-dbutils.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
-
-
+        <gson.version>1.4</gson.version>
+        <bcprov-jdk15on.version>1.59</bcprov-jdk15on.version>
 
 
         <!--   <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
@@ -53,7 +55,6 @@
            <spring-context-version>4.3.14.RELEASE</spring-context-version>
            <spring-test-version>4.3.14.RELEASE</spring-test-version>-->
     </properties>
-
 
 
     <dependencies>
