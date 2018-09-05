@@ -12,6 +12,7 @@
         <module>utils</module>
         <module>blockchain</module>
         <module>upup</module>
+        <module>spring4</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -57,16 +58,22 @@
         <wstx-asl.version>3.2.9</wstx-asl.version>
         <jibx-bind.version>1.2.5</jibx-bind.version>
 
-        <!--   <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
-           <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
-           <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
-           <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
-           <springfox-bean-validators.version>2.7.0</springfox-bean-validators.version>
-           <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-           <junit-version>4.12</junit-version>
-           <mockito-version>1.10.19</mockito-version>
-           <spring-context-version>4.3.14.RELEASE</spring-context-version>
-           <spring-test-version>4.3.14.RELEASE</spring-test-version>-->
+        <!-- spring4 模块依赖-->
+        <junit-version>4.12</junit-version>
+        <mockito-version>1.10.19</mockito-version>
+        <spring-context-version>4.3.14.RELEASE</spring-context-version>
+        <spring-test-version>4.3.14.RELEASE</spring-test-version>
+
+
+        <!--
+                <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
+                <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+                <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+                <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
+                <springfox-bean-validators.version>2.7.0</springfox-bean-validators.version>
+                <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>-->
+
+
     </properties>
 
 
