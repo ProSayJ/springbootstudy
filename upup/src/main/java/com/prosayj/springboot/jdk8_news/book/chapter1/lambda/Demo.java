@@ -1,6 +1,7 @@
 package com.prosayj.springboot.jdk8_news.book.chapter1.lambda;
 
-import jdk8_news.book.chapter1.domain.Button;
+
+import com.prosayj.springboot.jdk8_news.book.chapter1.domain.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;

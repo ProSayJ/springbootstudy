@@ -1,19 +1,5 @@
 package com.prosayj.springboot.jdk8_news.book.chapter2;
 
-import java.util.function.Supplier;
-import java.util.function.Consumer;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
-import java.util.function.ToDoubleFunction;
-import java.util.function.IntFunction;
-import java.util.function.LongFunction;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
-import java.util.function.BinaryOperator;
 
 public class FI {
 	//函数式接口：接口可以有默认方法，哪怕接口有很多默认方法，只要接口只定义了一个抽象方法，它就仍然是一个函数式接口

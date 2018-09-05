@@ -13,7 +13,6 @@ import java.net.Socket;
  * @since 1.0.0
  */
 public class TimeClient {
-
     /**
      * @param args
      */

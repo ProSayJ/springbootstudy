@@ -1,6 +1,7 @@
 package com.prosayj.springboot.jdk8_news.book.service;
 
-import jdk8_news.book.domain.Person;
+
+import com.prosayj.springboot.jdk8_news.book.domain.Person;
 
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;

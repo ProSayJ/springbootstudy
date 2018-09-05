@@ -1,15 +1,10 @@
 package com.prosayj.springboot.jdk8_news.book.chapter2;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.DoubleSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.prosayj.springboot.jdk8_news.book.domain.Person;
+
+import java.util.*;
 import java.util.function.BinaryOperator;
 
-import jdk8_news.book.domain.Person;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toSet;

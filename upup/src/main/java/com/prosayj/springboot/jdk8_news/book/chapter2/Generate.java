@@ -1,10 +1,7 @@
 package com.prosayj.springboot.jdk8_news.book.chapter2;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
-import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 public class Generate {
 

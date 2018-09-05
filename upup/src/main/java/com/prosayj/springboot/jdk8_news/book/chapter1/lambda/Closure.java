@@ -1,8 +1,5 @@
 package com.prosayj.springboot.jdk8_news.book.chapter1.lambda;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 //lambda表达式包括：一段代码、参数、自由变量

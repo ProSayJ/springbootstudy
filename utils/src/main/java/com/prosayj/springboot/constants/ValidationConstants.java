@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-package com.prosayj.springboot.spring4.constants;
+package com.prosayj.springboot.constants;
 
 /**
  * @description
