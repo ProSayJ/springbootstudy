@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.concurrent.atomic</OriginalElement>
+  <nodes>
+    <node x="20.0" y="533.0">java.util.concurrent.atomic.AtomicStampedReference</node>
+    <node x="20.0" y="126.0">java.util.concurrent.atomic.LongAdder</node>
+    <node x="20.0" y="426.0">java.util.concurrent.atomic.AtomicIntegerFieldUpdater</node>
+    <node x="300.0" y="233.0">java.util.concurrent.atomic.AtomicReferenceFieldUpdater</node>
+    <node x="486.0" y="640.0">java.util.concurrent.atomic.AtomicBoolean</node>
+    <node x="623.0" y="126.0">java.util.concurrent.atomic.DoubleAdder</node>
+    <node x="20.0" y="319.0">java.util.concurrent.atomic.AtomicLongFieldUpdater</node>
+    <node x="324.5833333333333" y="0.0">java.util.concurrent.atomic.Striped64</node>
+    <node x="315.0" y="426.0">java.util.concurrent.atomic.AtomicMarkableReference</node>
+    <node x="254.0" y="640.0">java.util.concurrent.atomic.AtomicReference</node>
+    <node x="308.0" y="533.0">java.util.concurrent.atomic.AtomicReferenceArray</node>
+    <node x="26.25" y="233.0">java.util.concurrent.atomic.AtomicLong</node>
+    <node x="413.0" y="126.0">java.util.concurrent.atomic.LongAccumulator</node>
+    <node x="20.0" y="747.0">java.util.concurrent.atomic.AtomicInteger</node>
+    <node x="189.0" y="126.0">java.util.concurrent.atomic.DoubleAccumulator</node>
+    <node x="574.0" y="533.0">java.util.concurrent.atomic.AtomicIntegerArray</node>
+    <node x="20.0" y="640.0">java.util.concurrent.atomic.AtomicLongArray</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.atomic.AtomicReferenceFieldUpdater" target="java.util.concurrent.atomic.AtomicReferenceFieldUpdater">
+      <point x="0.0" y="18.0" />
+      <point x="424.0" y="289.0" />
+      <point x="280.0" y="289.0" />
+      <point x="280.0" y="251.0" />
+      <point x="-124.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.LongAccumulator" target="java.util.concurrent.atomic.LongAccumulator">
+      <point x="0.0" y="18.0" />
+      <point x="498.0" y="182.0" />
+      <point x="393.0" y="182.0" />
+      <point x="393.0" y="144.0" />
+      <point x="-85.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.DoubleAdder" target="java.util.concurrent.atomic.Striped64">
+      <point x="35.75" y="-18.0" />
+      <point x="730.25" y="76.0" />
+      <point x="437.91666666666663" y="76.0" />
+      <point x="53.333333333333314" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.LongAdder" target="java.util.concurrent.atomic.Striped64">
+      <point x="-32.25" y="-18.0" />
+      <point x="52.25" y="76.0" />
+      <point x="344.5833333333333" y="76.0" />
+      <point x="-40.0" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicLongFieldUpdater" target="java.util.concurrent.atomic.AtomicLong">
+      <point x="0.0" y="-18.0" />
+      <point x="33.75" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicReference" target="java.util.concurrent.atomic.AtomicReference">
+      <point x="0.0" y="18.0" />
+      <point x="337.5" y="696.0" />
+      <point x="234.0" y="696.0" />
+      <point x="234.0" y="658.0" />
+      <point x="-83.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.LongAccumulator" target="java.util.concurrent.atomic.Striped64">
+      <point x="-42.5" y="-18.0" />
+      <point x="455.5" y="106.0" />
+      <point x="397.9166666666667" y="106.0" />
+      <point x="13.333333333333371" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicIntegerArray" target="java.util.concurrent.atomic.AtomicIntegerArray">
+      <point x="0.0" y="18.0" />
+      <point x="665.5" y="589.0" />
+      <point x="554.0" y="589.0" />
+      <point x="554.0" y="551.0" />
+      <point x="-91.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.LongAdder" target="java.util.concurrent.atomic.LongAdder">
+      <point x="0.0" y="18.0" />
+      <point x="84.5" y="182.0" />
+      <point x="0.0" y="182.0" />
+      <point x="0.0" y="144.0" />
+      <point x="-64.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.DoubleAccumulator" target="java.util.concurrent.atomic.Striped64">
+      <point x="46.0" y="-18.0" />
+      <point x="327.0" y="106.0" />
+      <point x="384.5833333333333" y="106.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicStampedReference" target="java.util.concurrent.atomic.AtomicStampedReference">
+      <point x="0.0" y="18.0" />
+      <point x="131.5" y="589.0" />
+      <point x="0.0" y="589.0" />
+      <point x="0.0" y="551.0" />
+      <point x="-111.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicLongArray" target="java.util.concurrent.atomic.AtomicLongArray">
+      <point x="0.0" y="18.0" />
+      <point x="104.5" y="696.0" />
+      <point x="0.0" y="696.0" />
+      <point x="0.0" y="658.0" />
+      <point x="-84.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicReferenceArray" target="java.util.concurrent.atomic.AtomicReferenceArray">
+      <point x="0.0" y="18.0" />
+      <point x="408.5" y="589.0" />
+      <point x="288.0" y="589.0" />
+      <point x="288.0" y="551.0" />
+      <point x="-100.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicBoolean" target="java.util.concurrent.atomic.AtomicBoolean">
+      <point x="0.0" y="18.0" />
+      <point x="563.5" y="696.0" />
+      <point x="466.0" y="696.0" />
+      <point x="466.0" y="658.0" />
+      <point x="-77.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.DoubleAdder" target="java.util.concurrent.atomic.DoubleAdder">
+      <point x="0.0" y="18.0" />
+      <point x="694.5" y="182.0" />
+      <point x="603.0" y="182.0" />
+      <point x="603.0" y="144.0" />
+      <point x="-71.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicIntegerFieldUpdater" target="java.util.concurrent.atomic.AtomicIntegerFieldUpdater">
+      <point x="0.0" y="18.0" />
+      <point x="135.0" y="482.0" />
+      <point x="0.0" y="482.0" />
+      <point x="0.0" y="444.0" />
+      <point x="-115.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicLong" target="java.util.concurrent.atomic.AtomicLong">
+      <point x="-33.75" y="18.0" />
+      <point x="60.0" y="289.0" />
+      <point x="6.25" y="289.0" />
+      <point x="6.25" y="251.0" />
+      <point x="-67.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicInteger" target="java.util.concurrent.atomic.AtomicInteger">
+      <point x="0.0" y="18.0" />
+      <point x="94.5" y="803.0" />
+      <point x="0.0" y="803.0" />
+      <point x="0.0" y="765.0" />
+      <point x="-74.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.Striped64" target="java.util.concurrent.atomic.Striped64">
+      <point x="-53.333333333333336" y="18.0" />
+      <point x="331.25" y="56.0" />
+      <point x="304.5833333333333" y="56.0" />
+      <point x="304.5833333333333" y="18.0" />
+      <point x="-60.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicMarkableReference" target="java.util.concurrent.atomic.AtomicMarkableReference">
+      <point x="0.0" y="18.0" />
+      <point x="428.0" y="482.0" />
+      <point x="295.0" y="482.0" />
+      <point x="295.0" y="444.0" />
+      <point x="-113.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.DoubleAccumulator" target="java.util.concurrent.atomic.DoubleAccumulator">
+      <point x="0.0" y="18.0" />
+      <point x="281.0" y="182.0" />
+      <point x="169.0" y="182.0" />
+      <point x="169.0" y="144.0" />
+      <point x="-92.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.atomic.AtomicLongFieldUpdater" target="java.util.concurrent.atomic.AtomicLongFieldUpdater">
+      <point x="0.0" y="18.0" />
+      <point x="127.5" y="375.0" />
+      <point x="0.0" y="375.0" />
+      <point x="0.0" y="337.0" />
+      <point x="-107.5" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="762.0634920634922" y="176.92063492063494" />
+  <SelectedNodes>
+    <node>java.util.concurrent.atomic.AtomicInteger</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

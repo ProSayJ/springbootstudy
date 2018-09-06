@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.concurrent.locks</OriginalElement>
+  <nodes>
+    <node x="190.0" y="334.0">java.util.concurrent.locks.LockSupport</node>
+    <node x="293.0" y="86.0">java.util.concurrent.locks.AbstractQueuedSynchronizer</node>
+    <node x="374.0" y="334.0">java.util.concurrent.locks.Condition</node>
+    <node x="292.0" y="167.0">java.util.concurrent.locks.Lock</node>
+    <node x="261.0" y="253.0">java.util.concurrent.locks.ReentrantLock</node>
+    <node x="0.0" y="253.0">java.util.concurrent.locks.ReentrantReadWriteLock</node>
+    <node x="151.0" y="0.0">java.util.concurrent.locks.AbstractOwnableSynchronizer</node>
+    <node x="0.0" y="334.0">java.util.concurrent.locks.StampedLock</node>
+    <node x="31.0" y="167.0">java.util.concurrent.locks.ReadWriteLock</node>
+    <node x="0.0" y="86.0">java.util.concurrent.locks.AbstractQueuedLongSynchronizer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.locks.AbstractQueuedLongSynchronizer" target="java.util.concurrent.locks.AbstractOwnableSynchronizer">
+      <point x="0.0" y="-18.0" />
+      <point x="136.5" y="61.0" />
+      <point x="213.25" y="61.0" />
+      <point x="-62.25" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantReadWriteLock" target="java.util.concurrent.locks.ReadWriteLock">
+      <point x="0.0" y="-18.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedSynchronizer" target="java.util.concurrent.locks.AbstractOwnableSynchronizer">
+      <point x="0.0" y="-18.0" />
+      <point x="414.5" y="61.0" />
+      <point x="337.75" y="61.0" />
+      <point x="62.25" y="18.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantLock" target="java.util.concurrent.locks.Lock">
+      <point x="0.0" y="-18.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="268.0" y="185.0" />
+  <SelectedNodes>
+    <node>java.util.concurrent.locks.LockSupport</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

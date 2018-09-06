@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class DeployUtils {
     /**
      * mvn -s F:\.m2\settings.xml
-     * org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file
+     * org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file_00
      * -Durl=http://IP:PORT/nexus/content/repositories/thirdpart
      * -DrepositoryId=thirdpart
      * -Dfile=antlr-2.7.2.jar
@@ -27,7 +27,7 @@ public class DeployUtils {
      */
     public static final String BASE_CMD = "cmd /c mvn " +
             "-s F:\\.m2\\settings.xml " +
-            "deploy:deploy-file " +
+            "deploy:deploy-file_00 " +
             "-Durl=http://IP:PORT/nexus/content/repositories/thirdpart " +
             "-DrepositoryId=thirdpart " +
             "-DgeneratePom=false";
@@ -54,8 +54,8 @@ public class DeployUtils {
     public static void main(String[] args) {
         deploy(new File("F:\\.m2\\repository").listFiles());
 //        if(checkArgs(args)){
-//            File file = new File(args[0]);
-//            deploy(file.listFiles());
+//            File file_00 = new File(args[0]);
+//            deploy(file_00.listFiles());
 //        }
         EXECUTOR_SERVICE.shutdown();
         try {
