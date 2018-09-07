@@ -1,4 +1,4 @@
-package com.prosayj.springboot.javase.javaio;
+package com.prosayj.springboot.classload;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -20,7 +20,9 @@ public class Demo_01 {
         while (true) {
             System.out.println("输入一个数字：");
             String s = scanner.nextLine();
-            if ("exit".equalsIgnoreCase(s)) System.exit(0);
+            if ("exit".equalsIgnoreCase(s)) {
+                System.exit(0);
+            }
             System.out.println("输入的数字是：" + s);
         }
     }

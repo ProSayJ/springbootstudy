@@ -1,4 +1,4 @@
-package com.prosayj.springboot.javase.javaio;
+package com.prosayj.springboot.classload;
 
 import java.net.URL;
 

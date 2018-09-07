@@ -1,12 +1,10 @@
-package com.prosayj.springboot.baseutils;
+package com.prosayj.springboot.utils;
 
 
 import com.google.gson.GsonBuilder;
 
 import java.security.*;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 /**
  * @author yangjian

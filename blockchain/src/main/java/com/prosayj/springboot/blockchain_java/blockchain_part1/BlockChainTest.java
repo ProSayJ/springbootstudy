@@ -1,6 +1,7 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
-import com.prosayj.springboot.baseutils.JsonUtil;
+
+import com.prosayj.springboot.utils.BeanUtils;
 
 /**
  * @author yangjian
@@ -16,7 +17,7 @@ public class BlockChainTest {
         //first，第一个区块又称为创世区块
         Block firstBlock = new Block("first", "0");
         System.out.println("Hash for block 1: " + firstBlock.hash);
-        System.out.println(JsonUtil.toJson(firstBlock));
+        System.out.println(BeanUtils.toJson(firstBlock));
 
         //second
         Block secondBlock = new Block("second", firstBlock.hash);

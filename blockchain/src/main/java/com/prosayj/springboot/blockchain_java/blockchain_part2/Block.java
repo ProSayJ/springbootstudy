@@ -1,7 +1,7 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part2;
 
 
-import com.prosayj.springboot.baseutils.StringUtil;
+import com.prosayj.springboot.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;

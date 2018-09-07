@@ -1,4 +1,4 @@
-package com.prosayj.springboot.baseutils;
+package com.prosayj.springboot.utils;
 
 import java.io.*;
 import java.util.concurrent.ExecutorService;

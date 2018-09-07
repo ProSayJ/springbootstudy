@@ -1,16 +1,16 @@
-package com.prosayj.springboot.baseutils;
+package com.prosayj.springboot.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
  * @author yangjian
- * @description 工具类
+ * @description
  * @email ProSayj@gmail.com
- * @creatTime 2018/7/28 22:23
+ * @creatTime 2018/9/7 10:16
  * @since 1.0.0
  */
-public class JsonUtil {
+public class BeanUtils {
     public static String toJson(Object object) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setPrettyPrinting();

@@ -727,8 +727,10 @@
       <point x="38.25" y="18.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.8551428571428572" x="1314.172307791586" y="784.3297291925204" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.7553459119496855" x="1721.6086576189427" y="657.4822669135256" />
+  <SelectedNodes>
+    <node>java.util.Arrays</node>
+  </SelectedNodes>
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

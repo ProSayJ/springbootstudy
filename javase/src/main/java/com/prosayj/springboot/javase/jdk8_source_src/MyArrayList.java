@@ -15,7 +15,8 @@ import java.util.ListIterator;
 public class MyArrayList {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i <= 9000000; i++) {
+        for (int i = 0; i <= 9999999; i++) {
+            System.out.println(i);
             list.add(i);
         }
         Thread th1 = new Thread(new Runnable() {

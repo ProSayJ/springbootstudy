@@ -1,4 +1,4 @@
-package com.prosayj.springboot.javase.javaio;
+package com.prosayj.springboot.classload;
 
 import java.io.*;
 
@@ -12,7 +12,9 @@ import java.io.*;
 public class Demo_02 {
     public static void main(String[] args) throws IOException {
         String path = Demo_02.class.getResource("/").getPath();
-        String pathname = path+ "application.properties";
+        String pathname = path + "application-dev.properties";
+        System.out.println(pathname);
+        pathname = pathname.substring(1);
         System.out.println(pathname);
         File file = new File(pathname);
         InputStream inputStream = new FileInputStream(file);

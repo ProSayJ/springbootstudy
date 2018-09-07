@@ -98,6 +98,15 @@ public enum OrgTypeEnum {
         return null;
     }
 
+    public static OrgTypeEnum findByName(String name) {
+        for (OrgTypeEnum orgTypeEnum : values()) {
+            if (orgTypeEnum.toString().equals(name)) {
+                return orgTypeEnum;
+            }
+        }
+        return null;
+    }
+
     public static OrgTypeEnum paseStr(String str) {
         OrgTypeEnum orgTypeEnum = null;
         for (Integer key : maps.keySet()) {
@@ -111,6 +120,7 @@ public enum OrgTypeEnum {
     }
 
     public static void main(String[] args) {
-        System.out.println(paseStr("FINANCE"));
+        System.out.println(findByName("FINANCE1"));
+        System.out.println(paseStr("FINANCE1"));
     }
 }

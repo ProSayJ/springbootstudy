@@ -1,4 +1,4 @@
-package com.prosayj.springboot.baseutils;
+package com.prosayj.springboot.utils;
 
 import com.prosayj.springboot.constants.DatePattern;
 

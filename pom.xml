@@ -12,7 +12,7 @@
         <module>utils</module>
         <module>blockchain</module>
         <module>upup</module>
-        <module>spring4</module>
+        <module>spring5</module>
     </modules>
     <packaging>pom</packaging>
 

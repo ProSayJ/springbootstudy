@@ -1,6 +1,6 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
-import com.prosayj.springboot.baseutils.StringUtil;
+import com.prosayj.springboot.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
