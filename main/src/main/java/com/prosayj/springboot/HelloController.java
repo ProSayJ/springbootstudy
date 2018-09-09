@@ -1,8 +1,10 @@
 package com.prosayj.springboot;
 
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author yangjian
@@ -11,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @creatTime 2018/9/5 16:20
  * @since 1.0.0
  */
-@RestController
+@Controller
 public class HelloController {
-    @RequestMapping("/hello")
-    public String hello() {
-        return "hello,this is a springboot demo";
+    @RequestMapping(value = "/list")
+    public @ResponseBody
+    String list(Model model) {
+        return "hello spring boot~";
+
     }
+
 }

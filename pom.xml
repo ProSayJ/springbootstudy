@@ -13,6 +13,7 @@
         <module>blockchain</module>
         <module>upup</module>
         <module>spring5</module>
+        <module>web</module>
     </modules>
     <packaging>pom</packaging>
 
