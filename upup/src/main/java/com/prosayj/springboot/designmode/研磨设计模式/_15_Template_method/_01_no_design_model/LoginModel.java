@@ -1,4 +1,4 @@
-package com.prosayj.springboot.designmode.研磨设计模式._15_Template_method.example1;
+package com.prosayj.springboot.designmode.研磨设计模式._15_Template_method._01_no_design_model;
 
 /**
  * 描述登录人员登录时填写的信息的数据模型
