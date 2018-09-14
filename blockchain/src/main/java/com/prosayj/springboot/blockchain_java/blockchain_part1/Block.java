@@ -1,5 +1,6 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
+import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * @since 1.0.0
  */
 public class Block {
-    public static final Logger loger = LoggerFactory.getLogger(Block.class);
+    public static final Logger loger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_BLOCKCHAIN.getModuleNickName());
     /**
      * 当前区块的hash
      */
@@ -85,7 +86,7 @@ public class Block {
             hash = calculateHash();
 
         }
-        loger.info("Block Mined!!! : " + hash);
+        loger.info("Block Mined!!! : {}" + hash);
     }
 
     @Override

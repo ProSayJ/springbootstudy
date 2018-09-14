@@ -1,6 +1,7 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
 
+import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.utils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @since 1.0.0
  */
 public class BlockChainListTest {
-    public static final Logger loger = LoggerFactory.getLogger(BlockChainListTest.class);
+    public static final Logger loger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_BLOCKCHAIN.getModuleNickName());
     //创建区块链
     public static ArrayList<Block> blockChain = new ArrayList();
     //工作量证明常数
@@ -66,7 +67,7 @@ public class BlockChainListTest {
             }
             //比较当前的前一个hash与注册的前一个hash
             if (!previousBlock.hash.equals(currentBlock.previousHash)) {
-                loger.error("前一个hash不相等");
+                loger.error("前一个hash不相等:previousBlock:{},currentBlock:{}", previousBlock.hash, currentBlock, previousBlock);
                 flag = false;
             }
 

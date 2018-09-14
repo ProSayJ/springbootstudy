@@ -65,6 +65,11 @@
         <spring-context-version>4.3.14.RELEASE</spring-context-version>
         <spring-test-version>4.3.14.RELEASE</spring-test-version>
 
+        <!--utils 模块依赖 -->
+        <rocketmq.version>4.2.0</rocketmq.version>
+
+        <!-- 多模块依赖 -->
+
 
         <!--
                 <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
@@ -93,10 +98,10 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!-- <plugin>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-maven-plugin</artifactId>
+             </plugin>-->
         </plugins>
     </build>
 
