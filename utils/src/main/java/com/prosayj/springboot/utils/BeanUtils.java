@@ -103,12 +103,12 @@ public class BeanUtils {
         */
     }
 
-    public static <S, T> List<T> toBeanList(List<S> sourecList, Class<T> targetList) {
+    public static <S, T> List<T> toBeanList(List<S> sourecList, Class<T> targeClass) {
         List<T> result = new ArrayList<>();
         sourecList.forEach(source -> {
             String sourceStr = objectConvertToString(source);
             //Class<S> sourceClass = (Class<S>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-            result.add(toBean(sourceStr, targetList));
+            result.add(toBean(sourceStr, targeClass));
             return;
 
         });

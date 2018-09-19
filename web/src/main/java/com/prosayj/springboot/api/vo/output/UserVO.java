@@ -1,6 +1,5 @@
 package com.prosayj.springboot.api.vo.output;
 
-import java.io.Serializable;
 import java.util.Date;
 
 public class UserVO {
