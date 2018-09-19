@@ -10,8 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -34,5 +37,14 @@ public class HelloController {
     List<UserVO> getAllUserList() {
         return BeanUtils.toBeanList(userService.queryAllUser(), UserVO.class);
     }
+
+    @RequestMapping("/hello")
+    public ModelAndView hello() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("name","张三");
+        modelAndView.setViewName("hello");
+        return modelAndView;
+    }
+
 
 }
