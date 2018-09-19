@@ -12,12 +12,24 @@
     <artifactId>web</artifactId>
 
     <dependencies>
+        <!--内部依赖-->
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>business</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
         <!-- spring boot web支持：mvc,aop... -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
 
         <!--引入thymeleaf-->
         <dependency>
@@ -29,7 +41,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
         <!--解除HTML严格语法-->
         <dependency>

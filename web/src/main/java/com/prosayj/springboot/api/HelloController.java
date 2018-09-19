@@ -1,15 +1,17 @@
 package com.prosayj.springboot.api;
 
 
-import com.prosayj.springboot.api.vo.output.Article;
+import com.prosayj.models.user.service.UserService;
+import com.prosayj.springboot.api.vo.output.UserVO;
 import com.prosayj.springboot.constants.LoggerModelEnum;
+import com.prosayj.springboot.utils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,20 +26,13 @@ import java.util.List;
 public class HelloController {
     private static final Logger logger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_WEB.getModuleNickName());
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/list")
     public @ResponseBody
-    List<Article> list() {
-        List<Article> articles = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Article article = new Article("图片" + i, "图片内容" + i, "http://www.baidu.com/pic/001.png" + i);
-            articles.add(article);
-        }
-        return articles;
-    }
-
-    @RequestMapping("/hello")
-    public String index() {
-        return "backindex.html";
+    List<UserVO> getAllUserList() {
+        return BeanUtils.toBeanList(userService.queryAllUser(), UserVO.class);
     }
 
 }

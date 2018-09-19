@@ -16,6 +16,31 @@
         <!--项目内部依赖-->
         <dependency>
             <groupId>com.prosayj.springboot</groupId>
+            <artifactId>blockchain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>business</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>javase</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>spring5</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+       <!-- <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>upup</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
             <artifactId>utils</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -25,6 +50,18 @@
             <version>${project.version}</version>
         </dependency>
 
+
+
+
+
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${spring.boot.mybatis.version}</version>
+        </dependency>
+
     </dependencies>
+
 
 </project>

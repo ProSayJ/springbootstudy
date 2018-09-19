@@ -2,6 +2,8 @@ package com.prosayj.models.user.mapper;
 
 import com.prosayj.models.user.domain.UserDomain;
 
+import java.util.List;
+
 public interface UserDomainMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface UserDomainMapper {
     int updateByPrimaryKeySelective(UserDomain record);
 
     int updateByPrimaryKey(UserDomain record);
+
+    List<UserDomain> queryByCondition(UserDomain userDomain);
 }
