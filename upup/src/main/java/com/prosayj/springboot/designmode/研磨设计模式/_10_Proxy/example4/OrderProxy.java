@@ -16,7 +16,8 @@ public class OrderProxy implements OrderApi{
 	public OrderProxy(Order realSubject){
 		this.order = realSubject;
 	}
-	public void setProductName(String productName,String user) {
+	@Override
+	public void setProductName(String productName, String user) {
 		//控制访问权限，只有创建订单的人员才能够修改
 		if(user!=null && user.equals(this.getOrderUser())){
 			order.setProductName(productName, user);
@@ -50,7 +51,6 @@ public class OrderProxy implements OrderApi{
 	public String getOrderUser() {
 		return this.order.getOrderUser();
 	}
-	@Override
 	public String getProductName() {
 		return this.order.getProductName();
 	}

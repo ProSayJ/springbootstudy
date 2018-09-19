@@ -30,7 +30,6 @@ public class Order implements OrderApi {
         this.orderUser = orderUser;
     }
 
-    @Override
     public String getProductName() {
         return productName;
     }

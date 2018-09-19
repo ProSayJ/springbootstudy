@@ -13,12 +13,18 @@
 
     <dependencies>
 
+        <!--项目内部依赖-->
         <dependency>
             <groupId>com.prosayj.springboot</groupId>
             <artifactId>utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

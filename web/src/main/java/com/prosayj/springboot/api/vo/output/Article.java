@@ -1,4 +1,4 @@
-package com.prosayj.springboot;
+package com.prosayj.springboot.api.vo.output;
 
 /**
  * @author yangjian

@@ -9,11 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description:企业类型枚举
- * @author: kevinks.cao@gmail.com
- * @email: caowukui@bubi.cn
- * @createTime: 2018/3/7 14:48
- * @since: 1.0.0
+ * @author yangjian
+ * @description 企业类型枚举
+ * @Date 10:42 2018/9/19
+ * @since 1.0.0
  */
 public enum OrgTypeEnum {
 
