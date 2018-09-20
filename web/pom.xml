@@ -25,12 +25,6 @@
         </dependency>
 
 
-        <!-- spring boot web支持：mvc,aop... -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <!--引入thymeleaf-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

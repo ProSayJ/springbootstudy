@@ -39,11 +39,11 @@
             <artifactId>spring5</artifactId>
             <version>${project.version}</version>
         </dependency>
-       <!-- <dependency>
+        <dependency>
             <groupId>com.prosayj.springboot</groupId>
             <artifactId>upup</artifactId>
             <version>${project.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.prosayj.springboot</groupId>
             <artifactId>utils</artifactId>

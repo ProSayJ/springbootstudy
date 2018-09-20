@@ -23,11 +23,11 @@
             <artifactId>netty-all</artifactId>
             <version>${netty-all.version}</version>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-example</artifactId>
             <version>${netty-example.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -123,8 +123,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-            <scope>compile</scope>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
     </dependencies>

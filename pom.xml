@@ -46,7 +46,7 @@
         <!--upup 模块依赖,没有写的则已存在springboot的起步依赖中-->
         <junit.version>4.2</junit.version>
         <netty-all.version>5.0.0.Alpha1</netty-all.version>
-        <netty-example.version>5.0.0.Alpha1</netty-example.version>
+        <netty-example.version>4.1.29.Final</netty-example.version>
         <protobuf-java.version>2.5.0</protobuf-java.version>
         <jboss-marshalling.version>1.4.10.Final</jboss-marshalling.version>
         <jboss-marshalling-serial.version>1.4.10.Final</jboss-marshalling-serial.version>
@@ -89,16 +89,22 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
 
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.9</version>
+        </dependency>
+
+        <!-- spring boot web支持：mvc,aop... -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
