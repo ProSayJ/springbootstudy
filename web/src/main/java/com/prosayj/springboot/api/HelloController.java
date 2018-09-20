@@ -5,13 +5,14 @@ import com.prosayj.models.user.service.UserService;
 import com.prosayj.springboot.api.vo.output.UserVO;
 import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.utils.BeanUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import java.util.List;
  * @creatTime 2018/9/5 16:20
  * @since 1.0.0
  */
+@Api(value = "hello-controller", tags = "hello-controller", description = "测试类")
 @Controller
 @RequestMapping("/user")
 public class HelloController {
@@ -32,16 +34,24 @@ public class HelloController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/list")
+    @ApiOperation(value = "用户列表全量查询", nickname = "user-list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody
     List<UserVO> getAllUserList() {
         return BeanUtils.toBeanList(userService.queryAllUser(), UserVO.class);
     }
 
+    @PostMapping(value = "/query")
+    public @ResponseBody
+    List<UserVO> queryList() {
+        return BeanUtils.toBeanList(userService.queryAllUser(), UserVO.class);
+    }
+
+
     @RequestMapping("/hello")
     public ModelAndView hello() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("name","张三");
+        modelAndView.addObject("name", "张三");
         modelAndView.setViewName("hello");
         return modelAndView;
     }

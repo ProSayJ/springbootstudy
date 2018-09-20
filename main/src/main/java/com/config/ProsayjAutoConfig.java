@@ -11,10 +11,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @creatTime 2018/9/10 19:41
  * @since 1.0.0
  */
-@Configuration
+/*@Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {
         "com.prosayj.springboot",
-})
+})*/
 public class ProsayjAutoConfig {
 }
