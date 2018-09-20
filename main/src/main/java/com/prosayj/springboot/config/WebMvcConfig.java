@@ -1,9 +1,8 @@
-package com.config;
+package com.prosayj.springboot.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author yangjian

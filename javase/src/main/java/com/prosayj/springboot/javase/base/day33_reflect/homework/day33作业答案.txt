@@ -304,10 +304,10 @@
 	public class Test07 {
 		public static void main(String[] args) throws Exception {
 			/*Properties props = new Properties();
-			props.load(new FileInputStream("src/com.config.properties"));
+			props.load(new FileInputStream("src/com.prosayj.springboot.config.properties"));
 			String className = (String) props.get("className");*/
 			//定义字符缓冲输入流
-			BufferedReader br = new BufferedReader(new FileReader("src/com.config.properties"));
+			BufferedReader br = new BufferedReader(new FileReader("src/com.prosayj.springboot.config.properties"));
 			String line = br.readLine();
 			String className = line.split("=")[1];
 	//		System.out.println(className);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>springboot-thymeleaf demo</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>编号</th>
+        <th>登陆名</th>
+        <th>姓名</th>
+        <th>手机号</th>
+        <th>创建时间</th>
+        <th>是否禁用</th>
+    </tr>
+
+    <tr th:each="UserDTO : ${list}">
+        <td th:text="${UserDTOStat.index}">index</td>
+        <td th:text="${UserDTO.name}"> name</td>
+        <td th:text="${UserDTO.trueName}"> name</td>
+        <td th:text="${UserDTO.phone}"> phone</td>
+        <td th:text="${UserDTO.createTime}"> phone</td>
+        <td th:text="${UserDTO.isDeleted}"> phone</td>
+    </tr>
+</table>
+
+</body>
+</html>
+

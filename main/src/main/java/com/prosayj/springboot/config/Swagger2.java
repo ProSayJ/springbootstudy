@@ -1,4 +1,4 @@
-package com.config;
+package com.prosayj.springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +36,7 @@ public class Swagger2 {
                 //页面标题
                 .title("Spring Boot2.0使用 Swagger2 构建RestFul API")
                 //创建人
-                .contact(new Contact("ProSayJ", "http://localhost/swagger-ui.html", "1598078574@qq.com"))
+                .contact(new Contact("ProSayJ", "http://localhost/swagger-ui.html", "ProSayJ@gmail.com"))
                 //版本号
                 .version("1.0")
                 //描述

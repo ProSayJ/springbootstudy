@@ -9,13 +9,13 @@ package com.prosayj.springboot.constants;
  */
 public enum LoggerModelEnum {
     PROSAYJ_BLOCKCHAIN(0, "blockchain模块日志", "prosayj.blockchain"),
-    PROSAYJ_JAVASE(1, "java模块日志", "prosayj.javase"),
-    PROSAYJ_MAIN(2, "main模块日志", "prosayj.main"),
-    PROSAYJ_SPRING5(3, "main模块日志", "prosayj.spring5"),
-    PROSAYJ_UPUP(4, "upup模块日志", "prosayj.upup"),
-    PROSAYJ_WEB(5, "web模块日志", "prosayj.web"),
-    PROSAYJ_UTILS(5, "utils模块日志", "prosayj.utlis"),
-
+    PROSAYJ_BUSINESS(1, "business模块日志", "prosayj.business"),
+    PROSAYJ_EVENT(2, "event模块日志", "prosayj.event"),
+    PROSAYJ_JAVASE(3, "javase模块日志", "prosayj.javase"),
+    PROSAYJ_MAIN(4, "main模块日志", "prosayj.main"),
+    PROSAYJ_SPRING5(5, "spring5模块日志", "prosayj.spring5"),
+    PROSAYJ_UPUP(6, "upup模块日志", "prosayj.upup"),
+    PROSAYJ_UTILS(6, "utils模块日志", "prosayj.utlis"),
 
 
     ;
@@ -63,3 +63,4 @@ public enum LoggerModelEnum {
         this.moduleNickName = moduleNickName;
     }
 }
+

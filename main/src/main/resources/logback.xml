@@ -26,23 +26,6 @@
     </root>
 
 
-    <!--main模块日志-->
-    <appender name="PROSAYJ_MAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_DIR}/prosayj-main.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/prosayj-main.%d{yyyyMMdd}.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
-    <logger name="prosayj.main" level="INFO" additivity="true">
-        <appender-ref ref="PROSAYJ_MAIN"/>
-    </logger>
-
-
     <!--blockchain模块日志-->
     <appender name="PROSAYJ_BLOCKCHAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/prosayj-blockchain.log</file>
@@ -59,6 +42,107 @@
         <appender-ref ref="PROSAYJ_BLOCKCHAIN"/>
     </logger>
 
+    <!--business模块日志-->
+    <appender name="PROSAYJ_BUSINESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-business.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-business.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.business" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_BUSINESS"/>
+    </logger>
+
+
+    <!--event模块日志-->
+    <appender name="PROSAYJ_EVENT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-event.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-event.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.event" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_EVENT"/>
+    </logger>
+
+    <!--javase模块日志-->
+    <appender name="PROSAYJ_JAVASE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-javase.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-javase.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.javase" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_JAVASE"/>
+    </logger>
+
+
+    <!--main模块日志-->
+    <appender name="PROSAYJ_MAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-main.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-main.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.main" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_MAIN"/>
+    </logger>
+
+    <!--spring5模块日志-->
+    <appender name="PROSAYJ_SPRING5" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-spring5.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-spring5.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.spring5" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_SPRING5"/>
+    </logger>
+
+    <!--upup模块日志-->
+    <appender name="PROSAYJ_UPUP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-upup.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-upup.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.upup" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_UPUP"/>
+    </logger>
+
+
+
+
     <!--utils模块日志-->
     <appender name="PROSAYJ_UTILS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/prosayj-utils.log</file>
@@ -72,7 +156,7 @@
     </appender>
     <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
     <logger name="prosayj.utlis" level="INFO" additivity="true">
-        <appender-ref ref="PROSAYJ_BLOCKCHAIN"/>
+        <appender-ref ref="PROSAYJ_UTILS"/>
     </logger>
 
 

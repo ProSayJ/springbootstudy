@@ -15,6 +15,7 @@
         <module>spring5</module>
         <module>web</module>
         <module>business</module>
+        <module>event</module>
     </modules>
     <packaging>pom</packaging>
 

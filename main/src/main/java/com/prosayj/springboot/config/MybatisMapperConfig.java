@@ -1,4 +1,4 @@
-package com.config;
+package com.prosayj.springboot.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

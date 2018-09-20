@@ -1,7 +1,10 @@
 package com.prosayj.springboot.blockchain_java.blockchain_part2;
 
 
+import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.utils.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,8 @@ import java.util.List;
  * @since 1.0.0
  */
 public class Block {
+    public static final Logger loger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_BLOCKCHAIN.getModuleNickName());
+
     public String hash;
     public String previousHash;
     public String merkleRoot;
@@ -52,7 +57,7 @@ public class Block {
             nonce++;
             hash = calculateHash();
         }
-        System.out.println("Block Mined!!! : " + hash);
+        loger.info("Block Mined!!! : {}" + hash);
     }
 
     //Add transactions to this block
@@ -63,13 +68,13 @@ public class Block {
         }
         if ((previousHash != "0")) {
             if ((transaction.processTransaction() != true)) {
-                System.out.println("Transaction failed to process. Discarded.");
+                loger.info("Transaction failed to process. Discarded.");
                 return false;
             }
         }
 
         transactions.add(transaction);
-        System.out.println("Transaction Successfully added to Block");
+        loger.info("Transaction Successfully added to Block");
         return true;
     }
 

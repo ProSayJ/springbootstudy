@@ -22,7 +22,7 @@ import java.util.Properties;
 public class Test {
 	public static void main(String[] args) throws Exception{
 		//IO流读取配置文件
-		FileReader r = new FileReader("com.config.properties");
+		FileReader r = new FileReader("com.prosayj.springboot.config.properties");
 		//创建集合对象
 		Properties pro = new Properties();
 		//调用集合方法load,传递流对象
