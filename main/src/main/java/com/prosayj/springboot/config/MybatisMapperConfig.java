@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author yangjian
- * @description TODO
+ * @description mybatis接口扫描
  * @email ProSayj@gmail.com
  * @creatTime 2018/9/19 15:02
  * @since 1.0.0

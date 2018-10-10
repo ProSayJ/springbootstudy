@@ -5,8 +5,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
+ * @description 资源拦截配置
  * @author yangjian
- * @description TODO
  * @email ProSayj@gmail.com
  * @creatTime 2018/9/20 11:36
  * @since 1.0.0

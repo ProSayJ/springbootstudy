@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import com.prosayj.springboot.moduleinit.*;
 
 /**
- * @author yangjian
  * @description
+ * @author yangjian
  * @email ProSayj@gmail.com
  * @creatTime 2018/9/10 19:41
  * @since 1.0.0

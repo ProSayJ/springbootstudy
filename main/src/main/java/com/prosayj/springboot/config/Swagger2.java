@@ -11,8 +11,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
+ * @description swagger配置
  * @author yangjian
- * @description TODO
  * @email ProSayj@gmail.com
  * @creatTime 2018/9/20 12:46
  * @since 1.0.0
