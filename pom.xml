@@ -16,8 +16,10 @@
         <module>web</module>
         <module>business</module>
         <module>event</module>
+        <module>nodejs</module>
     </modules>
     <packaging>pom</packaging>
+    <!--<packaging>war</packaging>-->
 
     <name>prosayj</name>
     <description>project for Spring Boot</description>

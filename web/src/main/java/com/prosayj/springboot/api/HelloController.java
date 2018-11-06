@@ -1,24 +1,19 @@
 package com.prosayj.springboot.api;
 
 
-import com.prosayj.models.user.dto.UserDTO;
-import com.prosayj.models.user.service.UserService;
+import com.prosayj.springboot.models.user.dto.UserDTO;
+import com.prosayj.springboot.models.user.service.UserService;
 import com.prosayj.springboot.api.vo.input.UserQuery;
 import com.prosayj.springboot.api.vo.output.UserVO;
-import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.utils.BeanUtils;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 

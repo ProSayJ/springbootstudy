@@ -1,8 +1,6 @@
 package com.prosayj.springboot.api;
 
-import com.prosayj.eventsubscription.service.MessageService;
 import com.prosayj.springboot.event.eventcore.event.IEventService;
-import com.prosayj.springboot.event.eventcore.event.data.messageevent.MessageEvent;
 import com.prosayj.springboot.event.eventcore.event.data.messageevent.SimpleMsgEvent;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

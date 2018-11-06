@@ -17,28 +17,43 @@ import java.util.List;
  */
 public class Transaction {
 
-    //Contains a hash of transaction*
+    /**
+     * 交易序列号：Contains a hash of transaction
+     */
     public String transactionId;
 
-    //Senders address/public key.
+    /**
+     * 交易发起人：Senders address/public key.
+     */
     public PublicKey sender;
 
-    //Recipients address/public key.
+    /**
+     * 交易接收人公钥：Recipients address/public key.
+     */
     public PublicKey reciepient;
 
-    //Contains the amount we wish to send to the recipient.
+    /**
+     * 交易金额：Contains the amount we wish to send to the recipient.
+     */
     public float value;
 
-    //This is to prevent anybody else from spending funds in our wallet.
+    /**
+     * 签名列表：This is to prevent anybody else from spending funds in our wallet.
+     */
     public byte[] signature;
+
 
     public List<TransactionInput> inputs = new ArrayList<>();
     public List<TransactionOutput> outputs = new ArrayList<>();
 
-    //A rough count of how many transactions have been generated
+    /**
+     * 交易序号：随机数序列： A rough count of how many transactions have been generated
+     */
     private static int sequence = 0;
 
-    // Constructor:
+    private Transaction() {
+    }
+
     public Transaction(PublicKey from, PublicKey to, float value, ArrayList<TransactionInput> inputs) {
         this.sender = from;
         this.reciepient = to;
@@ -54,11 +69,11 @@ public class Transaction {
 
         //Gathers transaction inputs (Making sure they are unspent):
         for (TransactionInput i : inputs) {
-            i.UTXO = NoobChain.UTXOs.get(i.transactionOutputId);
+            i.UTXO = NoobChainStart.UTXOs.get(i.transactionOutputId);
         }
 
         //Checks if transaction is valid:
-        if (getInputsValue() < NoobChain.minimumTransaction) {
+        if (getInputsValue() < NoobChainStart.minimumTransaction) {
             System.out.println("Transaction Inputs to small: " + getInputsValue());
             return false;
         }
@@ -74,7 +89,7 @@ public class Transaction {
 
         //Add outputs to Unspent list
         for (TransactionOutput o : outputs) {
-            NoobChain.UTXOs.put(o.id, o);
+            NoobChainStart.UTXOs.put(o.id, o);
         }
 
         //Remove transaction inputs from UTXO lists as spent:
@@ -83,7 +98,7 @@ public class Transaction {
             if (i.UTXO == null) {
                 continue;
             }
-            NoobChain.UTXOs.remove(i.UTXO.id);
+            NoobChainStart.UTXOs.remove(i.UTXO.id);
         }
         return true;
     }

@@ -4,6 +4,8 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
@@ -16,7 +18,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration(exclude = {
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 })
-public class StartApplication {
+//继承的目的是为了部署到外部tomcat中
+public class StartApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(StartApplication.class);
+    }
 
     public static void main(String[] args) {
         //原启动方式
@@ -31,4 +39,5 @@ public class StartApplication {
 
 
     }
+
 }

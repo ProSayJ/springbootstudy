@@ -23,12 +23,19 @@ public class Block {
     public String hash;
     public String previousHash;
     public String merkleRoot;
-    //our data will be a simple message.
-    public ArrayList<Transaction> transactions = new ArrayList<>();
-    public long timeStamp; //as number of milliseconds since 1/1/1970.
+
+    /**
+     * our data will be a simple message.
+     */
+    public List<Transaction> transactions = new ArrayList<>();
+
+    /**
+     * as number of milliseconds since 1/1/1970.
+     */
+    public long timeStamp;
     public int nonce;
 
-    //Block Constructor.
+
     public Block(String previousHash) {
         this.previousHash = previousHash;
         this.timeStamp = System.currentTimeMillis();
@@ -37,7 +44,11 @@ public class Block {
         this.hash = calculateHash();
     }
 
-    //Calculate new hash based on blocks contents
+    /**
+     * Calculate new hash based on blocks contents
+     *
+     * @return
+     */
     public String calculateHash() {
         String calculatedhash = StringUtil.applySha256(
                 previousHash +
@@ -48,7 +59,11 @@ public class Block {
         return calculatedhash;
     }
 
-    //Increases nonce value until hash target is reached.
+    /**
+     * Increases nonce value until hash target is reached.
+     *
+     * @param difficulty
+     */
     public void mineBlock(int difficulty) {
         merkleRoot = getMerkleRoot(transactions);
         //Create a string with difficulty * "0"
@@ -60,7 +75,12 @@ public class Block {
         loger.info("Block Mined!!! : {}" + hash);
     }
 
-    //Add transactions to this block
+    /**
+     * Add transactions to this block
+     *
+     * @param transaction
+     * @return
+     */
     public boolean addTransaction(Transaction transaction) {
         //process transaction and check if valid, unless block is genesis block then ignore.
         if (transaction == null) {
@@ -78,7 +98,7 @@ public class Block {
         return true;
     }
 
-    private static String getMerkleRoot(ArrayList<Transaction> transactions) {
+    private static String getMerkleRoot(List<Transaction> transactions) {
         int count = transactions.size();
 
         List<String> previousTreeLayer = new ArrayList<>();
@@ -88,7 +108,7 @@ public class Block {
         List<String> treeLayer = previousTreeLayer;
 
         while (count > 1) {
-            treeLayer = new ArrayList<String>();
+            treeLayer = new ArrayList<>();
             for (int i = 1; i < previousTreeLayer.size(); i += 2) {
                 treeLayer.add(StringUtil.applySha256(previousTreeLayer.get(i - 1) + previousTreeLayer.get(i)));
             }

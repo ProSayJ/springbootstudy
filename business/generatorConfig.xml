@@ -4,7 +4,9 @@
 <generatorConfiguration>
     <classPathEntry location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-5.1.37.jar"/>
 
-    <context id="user" defaultModelType="flat" targetRuntime="MyBatis3">
+
+
+    <context id="seckill" defaultModelType="flat" targetRuntime="MyBatis3">
         <!--不需要注释-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -12,20 +14,49 @@
         </commentGenerator>
 
         <jdbcConnection
-                connectionURL="jdbc:mysql://127.0.0.1:3306/yinuojr_user?useUnicode=true&amp;characterEncoding=UTF-8"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&amp;characterEncoding=UTF-8"
                 driverClass="com.mysql.jdbc.Driver" userId="root" password="root"/>
 
-        <javaModelGenerator targetPackage="com.prosayj.models.user.domain"
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.seckill.domain"
                             targetProject="src/main/java"/>
 
-        <sqlMapGenerator targetPackage="com.prosayj.models.user.mapper"
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.seckill.mapper"
                          targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.prosayj.models.user.mapper"
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.seckill.mapper"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="general" tableName="user" domainObjectName="UserDomain"
+        <table schema="general" tableName="seckill" domainObjectName="SeckillDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+    </context>
+
+    <context id="successkilled" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&amp;characterEncoding=UTF-8"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root"/>
+
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.successkilled.domain"
+                            targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.successkilled.mapper"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.successkilled.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table schema="general" tableName="success_killed" domainObjectName="SuccessKilledDomain"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>

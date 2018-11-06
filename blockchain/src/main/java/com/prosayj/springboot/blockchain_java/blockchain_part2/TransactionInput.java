@@ -8,9 +8,14 @@ package com.prosayj.springboot.blockchain_java.blockchain_part2;
  * @since 1.0.0
  */
 public class TransactionInput {
-    //Reference to TransactionOutputs -> transactionId
+    /**
+     * Reference to TransactionOutputs -> transactionId
+     */
     public String transactionOutputId;
-    //Contains the Unspent transaction output
+
+    /**
+     * Contains the Unspent transaction output
+     */
     public TransactionOutput UTXO;
 
     public TransactionInput(String transactionOutputId) {

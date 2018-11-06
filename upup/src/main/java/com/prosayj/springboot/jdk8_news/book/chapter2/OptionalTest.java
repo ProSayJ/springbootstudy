@@ -13,7 +13,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void ofTest() {
 		Optional<String> optional = Optional.of("123");
 		System.out.println(optional.get());
@@ -35,7 +35,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void ofNullableTest() {
 		Optional<String> optional = Optional.ofNullable("123");
 		System.out.println(optional.get());
@@ -56,7 +56,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void isPresentTest() {
 		Optional<String> optional = Optional.ofNullable(null);
 		if (optional.isPresent()) {
@@ -75,7 +75,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void ifPresentTest() {
 		Optional<String> optional = Optional.ofNullable("123");
 		optional.ifPresent(var -> {
@@ -92,7 +92,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void orElseTest() {
 		Optional<String> optional = Optional.ofNullable("123");
 		System.out.println(optional.orElse("有没有"));
@@ -109,7 +109,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void orElseGetTest() {
 		Optional<String> optional = Optional.ofNullable("123");
 		System.out.println(optional.orElseGet(() -> "123456"));
@@ -126,7 +126,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void mapTest() {
 		Optional<String> optional = Optional.ofNullable("abc");
 		System.out.println(optional.map(var -> var.toUpperCase()).get());
@@ -141,7 +141,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void flatMapTest() {
 		Optional<String> optional = Optional.ofNullable("abc");
 		System.out.println(optional.flatMap(
@@ -157,7 +157,7 @@ public class OptionalTest {
 	 * @return: void
 	 * @throws
 	 */
-	// @Test
+	// @_20_Test
 	public void filterTest() {
 		try {
 			Optional<String> optional = Optional.ofNullable("一二三四五六七八");
