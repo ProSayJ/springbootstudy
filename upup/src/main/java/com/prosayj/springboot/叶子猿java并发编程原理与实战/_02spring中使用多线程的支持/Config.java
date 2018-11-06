@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @since 1.0.0
  */
 @Configuration
-@ComponentScan("叶子猿java并发编程原理与实战._02spring中使用多线程的支持")
+@ComponentScan("com.prosayj.springboot.叶子猿java并发编程原理与实战._02spring中使用多线程的支持")
 //启动异步
 @EnableAsync
 public class Config {
