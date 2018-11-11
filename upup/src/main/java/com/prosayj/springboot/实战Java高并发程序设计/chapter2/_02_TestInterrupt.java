@@ -24,7 +24,7 @@ public class _02_TestInterrupt {
 
         t1.start();
         Thread.sleep(2000L);
-        System.out.println(t1.getName() + "是否被中断了呢？_01===>" + t1.isInterrupted());
+        System.out.println(t1.getName() + "是否被中断了呢？_00===>" + t1.isInterrupted());
 
         //它通知当前线程中断，也就是设置中断标志位。中断标志位表示当前线程己经被中断了。jvm会在安全的时候停止线程。
         t1.interrupt();
