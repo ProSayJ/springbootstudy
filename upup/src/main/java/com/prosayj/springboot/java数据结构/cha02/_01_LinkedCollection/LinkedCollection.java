@@ -1,5 +1,6 @@
 package com.prosayj.springboot.java数据结构.cha02._01_LinkedCollection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -42,6 +43,8 @@ public class LinkedCollection<T> {
      * 添加元素
      */
     public boolean add(T o) {
+        ArrayList<Object> objects = new ArrayList<>();
+
         if (container[0] == null) {
             Entry<T> entry = new Entry<>();
             entry.setHead(null);

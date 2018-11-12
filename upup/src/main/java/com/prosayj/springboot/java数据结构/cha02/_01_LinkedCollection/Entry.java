@@ -42,12 +42,4 @@ public class Entry<T> {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "Entry{" +
-                "head=" + head +
-                ", element=" + element +
-                ", next=" + next +
-                '}';
-    }
 }
