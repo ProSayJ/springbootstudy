@@ -7,7 +7,7 @@ package com.prosayj.springboot.study._00_07.Multi_001.sync002;
  * <p>
  * 在静态方法上加synchronized关键字，表示锁定.class类，类一级别的锁（独占.class类）。
  * @email ProSayj@gmail.com
- * @creatTime 2018/4/30 3:01
+ * @creatTime 2018/4/30 3:_01_SingleThreadedExecution
  * @since 1.0.0
  */
 public class MultiThread {

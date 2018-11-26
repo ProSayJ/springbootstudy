@@ -29,5 +29,12 @@ public class Demo06 {
         }
 
         threadPool.shutdown();
-    }
+
+
+        Executors.defaultThreadFactory().newThread(()->{
+            for (int i = 0; i < 10; i++) {
+                System.out.println(Thread.currentThread().getName());
+                System.out.println(i);
+            }
+        }).start();   }
 }

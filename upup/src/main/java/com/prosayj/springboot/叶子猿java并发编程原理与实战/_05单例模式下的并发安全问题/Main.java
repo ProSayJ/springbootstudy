@@ -2,7 +2,7 @@ package com.prosayj.springboot.叶子猿java并发编程原理与实战._05单�
 /**
  * @description 单线程下单例线程的安全
  * @author yangjian
- * @Date 18:01 2018/7/28
+ * @Date 18:_01_SingleThreadedExecution 2018/7/28
  * @since 1.0.0
  */
 

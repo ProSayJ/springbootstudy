@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author yangjian
  * @description 定义操作日志的应用接口，为了示例的简单，只是简单的定义了增删改查的方法
- * @Date 18:01 2018/8/5
+ * @Date 18:_01_SingleThreadedExecution 2018/8/5
  * @since 1.0.0
  */
 public interface LogDbOperateApi {

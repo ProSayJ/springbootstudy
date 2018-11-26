@@ -1,6 +1,6 @@
 package com.prosayj.springboot.nio.netty权威指南.ch02.timerserver.poolio_02;
 
-import com.prosayj.springboot.nio.netty权威指南.ch02.timerserver.blockio_01.TimeServerHandler;
+import com.prosayj.springboot.nio.netty权威指南.ch02.timerserver._01_blockio.TimeServerHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

@@ -30,7 +30,7 @@ public class BigDecimalDemo {
 	 */
 	public static void function(){
 		BigDecimal b1 =  new BigDecimal("0.09");
-		BigDecimal b2 =  new BigDecimal("0.01");
+		BigDecimal b2 =  new BigDecimal("0._01_SingleThreadedExecution");
 		//计算b1+b2的和,调用方法add
 		BigDecimal bigAdd = b1.add(b2);
 		System.out.println(bigAdd);
@@ -54,7 +54,7 @@ public class BigDecimalDemo {
  * 计算结果,未知
  * 原因: 计算机二进制中,表示浮点数不精确造成
  * 超级大型的浮点数据,提供高精度的浮点运算, BigDecimal
-System.out.println(0.09 + 0.01);//0.09999999999999999
+System.out.println(0.09 + 0._01_SingleThreadedExecution);//0.09999999999999999
 System.out.println(1.0 - 0.32);//0.6799999999999999
 System.out.println(1.015 * 100);//101.49999999999999
 System.out.println(1.301 / 100);//0.013009999999999999

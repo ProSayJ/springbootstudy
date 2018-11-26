@@ -4,7 +4,7 @@ package com.prosayj.springboot.javase.base.day17_integer.code;
  * @author yangjian
  * @description TODO
  * @email ProSayj@gmail.com
- * @creatTime 2018/8/5 22:01
+ * @creatTime 2018/8/5 22:_01_SingleThreadedExecution
  * @since 1.0.0
  */
 public class _Test02 {

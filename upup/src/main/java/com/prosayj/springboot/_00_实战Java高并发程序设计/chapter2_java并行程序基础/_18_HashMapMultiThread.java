@@ -1,0 +1,51 @@
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author yangjian
+ * @description TODO
+ * @email ProSayj@gmail.com
+ * @creatTime 2018/7/8 14:49
+ * @since 1.0.0
+ */
+public class _18_HashMapMultiThread {
+
+    static Map<String, String> map = new HashMap<String, String>();
+
+    public static class AddThread implements Runnable {
+
+
+        int start = 0;
+
+        public AddThread(int start) {
+            this.start = start;
+        }
+
+        @Override
+        public void run() {
+            for (int i = start; i < 100000; i += 2) {
+                map.put(Integer.toString(i), Integer.toBinaryString(i));
+            }
+        }
+    }
+
+    /**
+     * HashMap是一个线程不安全的容器,多线程操作时会出现冲突
+     * <p>
+     * jdk7下谨慎运行此方法,可能会导致电脑死机,jdk8中问题已修复
+     *
+     * @param args
+     * @throws InterruptedException
+     */
+    public static void main(String args[]) throws InterruptedException {
+        Thread thread1 = new Thread(new AddThread(0));
+        Thread thread2 = new Thread(new AddThread(1));
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        System.out.println(map.size());
+    }
+}

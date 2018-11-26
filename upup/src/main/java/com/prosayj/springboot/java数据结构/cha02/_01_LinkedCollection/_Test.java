@@ -4,7 +4,7 @@ package com.prosayj.springboot.java数据结构.cha02._01_LinkedCollection;
  * @author yangjian
  * @description TODO
  * @email ProSayj@gmail.com
- * @creatTime 2018/8/19 12:01
+ * @creatTime 2018/8/19 12:_01_SingleThreadedExecution
  * @since 1.0.0
  */
 public class _Test {
