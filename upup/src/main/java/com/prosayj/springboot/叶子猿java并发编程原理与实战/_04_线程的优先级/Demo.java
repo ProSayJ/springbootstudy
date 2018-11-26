@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._04线程的优先级;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._04_线程的优先级;
 /**
  * @description 线程的优先级
  * @author yangjian

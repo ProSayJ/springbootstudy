@@ -31,13 +31,13 @@ public class ChangeLock {
             public void run() {
                 changeLock.method();
             }
-        }, "_00quitstart");
+        }, "_00_quitstart");
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 changeLock.method();
             }
-        }, "_01创建线程的几种方式");
+        }, "_01_创建线程的几种方式");
         t1.start();
         try {
             Thread.sleep(100);

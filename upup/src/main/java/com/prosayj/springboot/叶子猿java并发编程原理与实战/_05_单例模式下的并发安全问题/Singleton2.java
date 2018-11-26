@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._05单例模式下的并发安全问题;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._05_单例模式下的并发安全问题;
 
 /**
  * @author yangjian

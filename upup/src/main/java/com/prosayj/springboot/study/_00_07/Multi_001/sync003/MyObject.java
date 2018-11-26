@@ -36,14 +36,14 @@ public class MyObject {
             public void run() {
                 mo.method1();
             }
-        }, "_00quitstart");
+        }, "_00_quitstart");
 
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 mo.method2();
             }
-        }, "_01创建线程的几种方式");
+        }, "_01_创建线程的几种方式");
 
         t1.start();
         t2.start();

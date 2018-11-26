@@ -26,11 +26,11 @@ public class MyThread extends Thread {
          * 		   而且是多个线程同时去竞争这把锁。（也就是会有锁竞争的问题）
          */
         MyThread myThread = new MyThread();
-        Thread t1 = new Thread(myThread, "_00quitstart");
-        Thread t2 = new Thread(myThread, "_01创建线程的几种方式");
-        Thread t3 = new Thread(myThread, "_03字节码的角度看待线程安全");
-        Thread t4 = new Thread(myThread, "_04线程的优先级");
-        Thread t5 = new Thread(myThread, "_05单例模式下的并发安全问题");
+        Thread t1 = new Thread(myThread, "_00_quitstart");
+        Thread t2 = new Thread(myThread, "_01_创建线程的几种方式");
+        Thread t3 = new Thread(myThread, "_03_字节码的角度看待线程安全");
+        Thread t4 = new Thread(myThread, "_04_线程的优先级");
+        Thread t5 = new Thread(myThread, "_05_单例模式下的并发安全问题");
         t1.start();
         t2.start();
         t3.start();

@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._02spring中使用多线程的支持;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._02_spring中使用多线程的支持;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @since 1.0.0
  */
 @Configuration
-@ComponentScan("com.prosayj.springboot.叶子猿java并发编程原理与实战._02spring中使用多线程的支持")
+@ComponentScan("com.prosayj.springboot.叶子猿java并发编程原理与实战._02_spring中使用多线程的支持")
 //启动异步
 @EnableAsync
 public class Config {

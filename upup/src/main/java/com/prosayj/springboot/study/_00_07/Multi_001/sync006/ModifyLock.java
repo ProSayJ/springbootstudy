@@ -50,13 +50,13 @@ public class ModifyLock {
             public void run() {
                 modifyLock.changeAttributte("张三", 20);
             }
-        }, "_00quitstart");
+        }, "_00_quitstart");
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 modifyLock.changeAttributte("李四", 21);
             }
-        }, "_01创建线程的几种方式");
+        }, "_01_创建线程的几种方式");
 
         t1.start();
         try {

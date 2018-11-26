@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创建线程的几种方式;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._01_创建线程的几种方式;
 
 /**
  * @author yangjian
@@ -7,9 +7,9 @@ package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创�
  * @creatTime 2018/7/23 0:05
  * @since 1.0.0
  */
-public class Demo01 extends Thread {
+public class _01_extend_thread_class extends Thread {
 
-    public Demo01(String name) {
+    public _01_extend_thread_class(String name) {
         super(name);
     }
 
@@ -27,8 +27,8 @@ public class Demo01 extends Thread {
 
     public static void main(String[] args) {
 
-        Demo01 d1 = new Demo01("first-thread");
-        Demo01 d2 = new Demo01("second-thread");
+        _01_extend_thread_class d1 = new _01_extend_thread_class("first-thread");
+        _01_extend_thread_class d2 = new _01_extend_thread_class("second-thread");
 
 
         d1.start();

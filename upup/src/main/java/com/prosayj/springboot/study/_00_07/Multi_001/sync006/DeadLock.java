@@ -53,8 +53,8 @@ public class DeadLock implements Runnable {
         DeadLock d2 = new DeadLock();
         d2.setTag("b");
 
-        Thread t1 = new Thread(d1, "_00quitstart");
-        Thread t2 = new Thread(d2, "_01创建线程的几种方式");
+        Thread t1 = new Thread(d1, "_00_quitstart");
+        Thread t2 = new Thread(d2, "_01_创建线程的几种方式");
 
         t1.start();
         try {

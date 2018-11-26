@@ -64,9 +64,9 @@ public class _07_BadSuspend {
         t2.start();
         Thread.sleep(1000);
         t1.supendMe();
-        System.out.println("supend _00quitstart 2 sec");
+        System.out.println("supend _00_quitstart 2 sec");
         Thread.sleep(2000);
-        System.out.println("resum _00quitstart");
+        System.out.println("resum _00_quitstart");
         t1.resumeMe();
     }
 }

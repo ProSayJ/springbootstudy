@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._02spring中使用多线程的支持;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._02_spring中使用多线程的支持;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

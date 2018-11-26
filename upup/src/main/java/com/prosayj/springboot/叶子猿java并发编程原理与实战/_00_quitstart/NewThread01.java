@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._00quitstart;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._00_quitstart;
 
 /**
  * @author yangjian

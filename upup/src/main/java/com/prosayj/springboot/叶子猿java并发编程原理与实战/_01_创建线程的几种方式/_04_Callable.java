@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创建线程的几种方式;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._01_创建线程的几种方式;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -10,7 +10,7 @@ import java.util.concurrent.FutureTask;
  * @creatTime 2018/7/23 0:09
  * @since 1.0.0
  */
-public class Demo04 implements Callable<Integer> {
+public class _04_Callable implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println(Thread.currentThread().getName() + ":正在进行紧张的计算....");
@@ -19,7 +19,7 @@ public class Demo04 implements Callable<Integer> {
     }
 
     public static void main(String[] args) throws Exception {
-        Demo04 d = new Demo04();
+        _04_Callable d = new _04_Callable();
 
         FutureTask<Integer> task = new FutureTask<>(d);
 

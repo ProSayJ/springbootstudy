@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创建线程的几种方式;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._01_创建线程的几种方式;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,7 +10,7 @@ import java.util.TimerTask;
  * @creatTime 2018/7/23 0:10
  * @since 1.0.0
  */
-public class Demo05 {
+public class _05_Timer {
     public static void main(String[] args) {
 
         Timer timer = new Timer();
@@ -22,7 +22,7 @@ public class Demo05 {
                 // 实现定时任务
                 System.out.println("timertask is run");
             }
-        }, 0, 100000/**每隔几秒执行一次*/);
+        }, 0, 1000/**每隔几秒执行一次*/);
 
     }
 }

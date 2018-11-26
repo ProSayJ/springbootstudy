@@ -35,13 +35,13 @@ public class Optimize {
             public void run() {
                 otz.doLongTimeTask();
             }
-        }, "_00quitstart");
+        }, "_00_quitstart");
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 otz.doLongTimeTask();
             }
-        }, "_01创建线程的几种方式");
+        }, "_01_创建线程的几种方式");
         t1.start();
         t2.start();
 

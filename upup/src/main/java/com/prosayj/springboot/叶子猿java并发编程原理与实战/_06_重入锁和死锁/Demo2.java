@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._06重入锁和死锁;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._06_重入锁和死锁;
 
 import java.util.Random;
 

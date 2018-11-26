@@ -36,7 +36,7 @@ public class SyncException {
             public void run() {
                 se.operation();
             }
-        }, "_00quitstart");
+        }, "_00_quitstart");
         t1.start();
     }
 

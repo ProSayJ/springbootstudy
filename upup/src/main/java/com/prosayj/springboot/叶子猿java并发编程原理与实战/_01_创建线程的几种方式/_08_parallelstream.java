@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创建线程的几种方式;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._01_创建线程的几种方式;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.List;
  * @creatTime 2018/7/23 0:11
  * @since 1.0.0
  */
-public class Demo07 {
+public class _08_parallelstream {
     public static void main(String[] args) {
 
         List<Integer> values = Arrays.asList(10, 20, 30, 40);
-        int res = new Demo07().add(values);
+        int res = new _08_parallelstream().add(values);
         System.out.println("计算的结果为：" + res);
 
 

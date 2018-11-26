@@ -1,4 +1,4 @@
-package com.prosayj.springboot.叶子猿java并发编程原理与实战._01创建线程的几种方式;
+package com.prosayj.springboot.叶子猿java并发编程原理与实战._01_创建线程的几种方式;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
  * @creatTime 2018/7/23 0:11
  * @since 1.0.0
  */
-public class Demo06 {
+public class _06_thread_executors {
     public static void main(String[] args) {
 
         ExecutorService threadPool = Executors.newCachedThreadPool();
@@ -31,10 +31,11 @@ public class Demo06 {
         threadPool.shutdown();
 
 
-        Executors.defaultThreadFactory().newThread(()->{
+        Executors.defaultThreadFactory().newThread(() -> {
             for (int i = 0; i < 10; i++) {
                 System.out.println(Thread.currentThread().getName());
                 System.out.println(i);
             }
-        }).start();   }
+        }).start();
+    }
 }
