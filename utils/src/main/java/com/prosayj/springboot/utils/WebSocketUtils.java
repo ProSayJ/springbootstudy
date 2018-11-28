@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @creatTime 2018/1/24 15:39
  * @since 1.0.0
  */
-@ServerEndpoint(value = "/websocket")
+@ServerEndpoint(value = "/websocket111")
 @Component
 public class WebSocketUtils {
     public static final Logger log = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_UTILS.getModuleNickName());
@@ -29,7 +29,7 @@ public class WebSocketUtils {
     /**
      * 存放每个客户端对应的MyWebSocket对象
      */
-    private static CopyOnWriteArraySet<WebSocketUtils> webSocketSet = new CopyOnWriteArraySet<WebSocketUtils>();
+    private static CopyOnWriteArraySet<WebSocketUtils> webSocketSet = new CopyOnWriteArraySet<>();
     /**
      * 与某个客户端的连接会话，需要通过它来给客户端发送数据
      */

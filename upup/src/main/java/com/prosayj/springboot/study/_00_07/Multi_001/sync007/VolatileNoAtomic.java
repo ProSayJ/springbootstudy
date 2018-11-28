@@ -20,6 +20,7 @@ public class VolatileNoAtomic extends Thread {
         System.out.println(count);
     }
 
+    @Override
     public void run() {
         addCount();
     }

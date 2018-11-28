@@ -1,7 +1,7 @@
 package com.prosayj.springboot.并发编程的艺术.chapter03;
 
 class VolatileExample {
-    int              a    = 0;
+    int a = 0;
     volatile boolean flag = false;
 
     public void writer() {
