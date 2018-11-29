@@ -1,18 +1,28 @@
 package com.prosayj.springboot.spring_annotation;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import com.prosayj.springboot.spring_annotation.bean.Blue;
 import com.prosayj.springboot.spring_annotation.bean.Person;
 import com.prosayj.springboot.spring_annotation.config.MainConfig;
 import com.prosayj.springboot.spring_annotation.config.MainConfig2;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.PropertySource;
 
 
 public class IOCTest {
-    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
+    AnnotationConfigApplicationContext applicationContext = null;
+
+    @Before
+    public void init() {
+        applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
+    }
+
+//    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
 
 
     @Test
@@ -42,9 +52,15 @@ public class IOCTest {
     public void test03() {
         String[] namesForType = applicationContext.getBeanNamesForType(Person.class);
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
-        //动态获取环境变量的值；Windows 10
-        String property = environment.getProperty("os.name");
-        System.out.println(property);
+        //动态获取环境变量的值
+        Iterator<PropertySource<?>> iterator = environment.getPropertySources().iterator();
+        iterator.forEachRemaining(data->{
+            System.out.println(data.getName());
+            Map<String, String> source = (Map<String, String>) data.getSource();
+            source.entrySet().forEach(data2->{
+                System.out.println(data2.getKey() + "<===>" + data2.getValue());
+            });
+        });
         for (String name : namesForType) {
             System.out.println(name);
         }
