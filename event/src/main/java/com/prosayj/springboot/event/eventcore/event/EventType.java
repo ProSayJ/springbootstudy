@@ -7,25 +7,10 @@ package com.prosayj.springboot.event.eventcore.event;
  * @since 1.0.0
  */
 public enum EventType {
-
-    /**
-     * 凭证融资申请
-     */
-    VOUCHER_FINANCING_APPLY,
     /**
      * 消息通知
      */
     MESSAGE_NOTICE,
-
-    /**
-     * 凭证兑付
-     */
-    VOUCHER_PAY,
-
-    /**
-     * 埋点
-     */
-    EVENT_TRACKING,
 
     ;
 }

@@ -1,4 +1,4 @@
-package com.prosayj.springboot.webSocketUtils;
+package com.prosayj.springboot.websocketutils;
 
 import com.prosayj.springboot.constants.LoggerModelEnum;
 import org.slf4j.Logger;
