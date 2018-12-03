@@ -1,4 +1,4 @@
-package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3;
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3._00_ReenterLock;
 
 import java.util.concurrent.locks.ReentrantLock;
 

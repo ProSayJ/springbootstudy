@@ -83,8 +83,6 @@
         <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
 
         <!-- 多模块依赖 -->
-
-
         <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
         <springfox-bean-validators.version>2.7.0</springfox-bean-validators.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
@@ -102,10 +100,6 @@
         </dependency>
 
         <!-- spring boot web支持：mvc,aop... -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -12,7 +12,7 @@ public class _00_YieldThread {
     volatile static int j = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 =  new Thread(()->{
+        Thread t1 = new Thread(() -> {
             while (true) {
                 i++;
                 Thread.yield();

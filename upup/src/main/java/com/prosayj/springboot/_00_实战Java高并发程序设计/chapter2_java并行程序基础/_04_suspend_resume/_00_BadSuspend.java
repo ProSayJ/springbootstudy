@@ -1,4 +1,4 @@
-package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础;
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础._04_suspend_resume;
 
 /**
  * @author yangjian
@@ -7,7 +7,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
  * @creatTime 2018/7/1 17:55
  * @since 1.0.0
  */
-public class _06_BadSuspend {
+public class _00_BadSuspend {
     final static Object u = new Object();
     static ChangeObjectThread t1 = new ChangeObjectThread("00000");
     static ChangeObjectThread t2 = new ChangeObjectThread("111111");
