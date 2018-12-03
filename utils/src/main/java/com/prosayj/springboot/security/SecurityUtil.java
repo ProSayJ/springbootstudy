@@ -1,4 +1,4 @@
-package com.prosayj.springboot.utils;
+package com.prosayj.springboot.security;
 
 import com.prosayj.springboot.constants.Constants;
 
