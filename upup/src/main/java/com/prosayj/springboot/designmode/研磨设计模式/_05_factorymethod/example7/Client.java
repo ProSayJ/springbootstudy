@@ -5,7 +5,7 @@ public class Client {
 //		//创建需要使用的Creator对象
 //		ExportOperate operate = new ExportOperate();
 //		//调用输出数据的功能方法，传入选择到处类型的参数
-//		operate.export(1,"测试数据");
+//		operate.exportexcle(1,"测试数据");
 
         //创建需要使用的Creator对象
         ExportOperate operate = new ExportOperate2();

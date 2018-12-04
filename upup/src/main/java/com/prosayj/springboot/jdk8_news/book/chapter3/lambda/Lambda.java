@@ -50,7 +50,7 @@ public class Lambda {
 
     public static void main(String[] args) {
         Lambda l = new Lambda();
-        Logger logger = Logger.getLogger("com.chapter3.lambda.Lambda");
+        Logger logger = Logger.getLogger("com.chapter3_JDK并发包.lambda.Lambda");
         String x = "abc";
         l.info(logger, () -> "x: " + x);
 
