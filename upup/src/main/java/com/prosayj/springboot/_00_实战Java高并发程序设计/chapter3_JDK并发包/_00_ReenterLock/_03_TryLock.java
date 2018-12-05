@@ -1,4 +1,4 @@
-package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包;
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._00_ReenterLock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -9,13 +9,13 @@ import java.util.concurrent.locks.ReentrantLock;
  * @creatTime 2018/7/8 19:51
  * @since 1.0.0
  */
-public class TryLock04 implements Runnable {
+public class _03_TryLock implements Runnable {
 
     public static ReentrantLock lock1 = new ReentrantLock();
     public static ReentrantLock lock2 = new ReentrantLock();
     int lock;
 
-    public TryLock04(int lock) {
+    public _03_TryLock(int lock) {
         this.lock = lock;
     }
 
@@ -23,6 +23,9 @@ public class TryLock04 implements Runnable {
     public void run() {
         if (lock == 1) {
             while (true) {
+                /**
+                 *尝试获得锁，获得不到立马返回false，并不会等待
+                 */
                 if (lock1.tryLock()) {
                     try {
                         try {
@@ -53,14 +56,12 @@ public class TryLock04 implements Runnable {
                             e.printStackTrace();
                         }
                         if (lock1.tryLock()) {
-                            try {
-                                System.out.println(Thread.currentThread().getId() + "===>My Job done;");
-                                return;
-                            } finally {
-                                lock1.unlock();
-                            }
+                            System.out.println(Thread.currentThread().getId() + "===>My Job done;");
+                            return;
+
                         }
                     } finally {
+                        lock1.unlock();
                         lock2.unlock();
                     }
                 }
@@ -77,8 +78,8 @@ public class TryLock04 implements Runnable {
      * @param args
      */
     public static void main(String args[]) {
-        TryLock04 r1 = new TryLock04(1);
-        TryLock04 r2 = new TryLock04(2);
+        _03_TryLock r1 = new _03_TryLock(1);
+        _03_TryLock r2 = new _03_TryLock(2);
         Thread thread1 = new Thread(r1);
         Thread thread2 = new Thread(r2);
 
