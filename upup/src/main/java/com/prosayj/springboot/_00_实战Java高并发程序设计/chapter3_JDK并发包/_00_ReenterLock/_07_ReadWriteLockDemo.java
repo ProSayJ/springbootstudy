@@ -12,9 +12,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 优点：
  * 有效减少锁竞争：
  * <p>
- * 读<--->读不互斥：读读之间不阻塞
- * 读<--->写阻塞：读阻塞写，写也会阻塞读
- * 写<--->写阻塞：写写阻塞
+ * 读<--->读：不互斥：读读之间不阻塞
+ * 读<--->写：阻塞：读阻塞写，写也会阻塞读
+ * 写<--->写：阻塞：写写阻塞
  * @email yangjian@bubi.cn
  * @creatTime 2018/12/5 18:54
  * @since 1.0.0
@@ -57,8 +57,8 @@ public class _07_ReadWriteLockDemo {
             public void run() {
                 //分别使用两种锁来运行,性能差别很直观的就体现出来,使用读写锁后读操作可以并行,节省了大量时间
                 try {
-                    demo.handleRead(readLock);
-                    //demo.handleRead(lock);
+//                    demo.handleRead(readLock);
+                    demo.handleRead(lock);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -71,8 +71,8 @@ public class _07_ReadWriteLockDemo {
             public void run() {
                 //分别使用两种锁来运行,性能差别很直观的就体现出来
                 try {
-                    demo.handleWrite(writeLock, new Random().nextInt(100));
-                    //demo.handleWrite(lock, new Random().nextInt(100));
+//                    demo.handleWrite(writeLock, new Random().nextInt(100));
+                    demo.handleWrite(lock, new Random().nextInt(100));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

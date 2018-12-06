@@ -21,6 +21,7 @@ public class _00_BadSuspend {
         public void run() {
             synchronized (u) {//12
                 System.out.println("in==>" + getName());
+                //线程挂起
                 Thread.currentThread().suspend();
             }
         }
@@ -30,6 +31,7 @@ public class _00_BadSuspend {
         t1.start();
         Thread.sleep(100);
         t2.start();
+        //线程继续执行
         t1.resume();//23
         t2.resume();//24
         t1.join();
