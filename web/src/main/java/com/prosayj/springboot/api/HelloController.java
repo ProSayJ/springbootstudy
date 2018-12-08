@@ -42,6 +42,11 @@ public class HelloController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ApiOperation(value = "用户列表全量查询", nickname = "user")
     public ModelAndView getAll() {
+        try {
+            Thread.sleep(5000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ModelAndView modelAndView = new ModelAndView();
         List<UserDTO> list = userService.queryAllUser();
         modelAndView.addObject("list", list);
