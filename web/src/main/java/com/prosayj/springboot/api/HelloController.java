@@ -63,4 +63,9 @@ public class HelloController {
         return BeanUtils.toBeanList(userService.queryAllUser(), UserVO.class);
     }
 
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
 }
