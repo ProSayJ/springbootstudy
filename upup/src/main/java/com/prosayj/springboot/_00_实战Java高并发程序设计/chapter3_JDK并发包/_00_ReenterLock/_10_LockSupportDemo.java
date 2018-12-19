@@ -31,6 +31,7 @@ public class _10_LockSupportDemo {
     }
 
     public static void main(String args[]) throws InterruptedException {
+        Thread.sleep(122);
         t1.start();
         Thread.sleep(100);
         t2.start();
