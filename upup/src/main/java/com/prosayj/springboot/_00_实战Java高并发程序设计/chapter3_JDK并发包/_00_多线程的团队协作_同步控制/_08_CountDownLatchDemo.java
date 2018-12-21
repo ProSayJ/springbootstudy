@@ -1,4 +1,4 @@
-package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._00_ReenterLock;
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._00_多线程的团队协作_同步控制;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +13,10 @@ import java.util.concurrent.Executors;
  * @since 1.0.0
  */
 public class _08_CountDownLatchDemo {
-    //表示需要有10个线程完成了任务，主线程才能继续执行。
+    /**
+     *
+     * 表示需要有10个线程完成了任务，主线程才能继续执行。
+     */
     static final CountDownLatch end = new CountDownLatch(10);
     static final _08_CountDownLatchDemo demo = new _08_CountDownLatchDemo();
 
