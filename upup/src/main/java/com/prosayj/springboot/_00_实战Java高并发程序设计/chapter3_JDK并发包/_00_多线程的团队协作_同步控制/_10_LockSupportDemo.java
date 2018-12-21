@@ -1,4 +1,4 @@
-package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._00_多线程的团队协作_同步控制;
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._00_ReenterLock;
 
 import java.util.concurrent.locks.LockSupport;
 
@@ -15,17 +15,6 @@ public class _10_LockSupportDemo {
     static ChangeObjectThread t1 = new ChangeObjectThread("t1");
     static ChangeObjectThread t2 = new ChangeObjectThread("t2");
 
-    public static void main(String args[]) throws InterruptedException {
-        t1.start();
-        Thread.sleep(100);
-        t2.start();
-
-       /* LockSupport.unpark(t1);
-        LockSupport.unpark(t2);
-        t1.join();
-        t2.join();*/
-    }
-
     public static class ChangeObjectThread extends Thread {
         public ChangeObjectThread(String name) {
             super.setName(name);
@@ -39,6 +28,17 @@ public class _10_LockSupportDemo {
                 LockSupport.park();
             }
         }
+    }
+
+    public static void main(String args[]) throws InterruptedException {
+        Thread.sleep(122);
+        t1.start();
+        Thread.sleep(100);
+        t2.start();
+       /* LockSupport.unpark(t1);
+        LockSupport.unpark(t2);
+        t1.join();
+        t2.join();*/
     }
 
 }
