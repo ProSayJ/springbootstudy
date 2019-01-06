@@ -62,7 +62,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 如果正常，利用事务管理器，提交事务
  */
 @EnableTransactionManagement
-@ComponentScan("com.prosayj.springboot.spring_annotation.tx")
+//@ComponentScan("com.prosayj.springboot.spring_annotation.tx")
 @Configuration
 public class TxConfig {
 
@@ -71,9 +71,9 @@ public class TxConfig {
     public DataSource dataSource() throws Exception {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser("root");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("root");
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test");
+        dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/test");
         return dataSource;
     }
 

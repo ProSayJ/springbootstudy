@@ -25,7 +25,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 3）、没有标注环境标识的bean在，任何环境下都是加载的；
  */
 
-@PropertySource("classpath:/dbconfig.properties")
+@PropertySource("classpath:/com/prosayj/springboot/spring_annotation/dbconfig.properties")
 @Configuration
 public class MainConfigOfProfile implements EmbeddedValueResolverAware {
 

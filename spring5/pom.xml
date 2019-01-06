@@ -7,9 +7,9 @@
         <groupId>com.prosayj.springboot</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>5.0.0</modelVersion>
 
-    <artifactId>spring4</artifactId>
+    <artifactId>spring5</artifactId>
 
     <dependencies>
 
@@ -24,7 +24,8 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-context-version}</version>
+            <!--<version>${spring4-context-version}</version>-->
+            <version>${spring5-context-version}</version>
         </dependency>
 
         <dependency>

@@ -1,11 +1,13 @@
 package com.prosayj.springboot.spring_annotation.tx;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@Service
+//@Service
+@Component(value = "userService2")
 public class UserService {
 
     @Autowired

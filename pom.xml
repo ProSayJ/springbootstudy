@@ -10,7 +10,7 @@
         <module>main</module>
         <module>javase</module>
         <module>utils</module>
-        <module>spring4</module>
+        <module>spring5</module>
         <module>blockchain</module>
         <module>upup</module>
         <module>web</module>
@@ -63,9 +63,13 @@
         <!-- spring4 模块依赖-->
         <junit-version>4.12</junit-version>
         <mockito-version>1.10.19</mockito-version>
-        <spring-context-version>4.3.14.RELEASE</spring-context-version>
+        <spring4-context-version>4.3.14.RELEASE</spring4-context-version>
         <spring-test-version>4.3.14.RELEASE</spring-test-version>
         <spring-aspects-version>4.3.13.RELEASE</spring-aspects-version>
+
+        <!-- spring5 模块依赖-->
+        <spring5-context-version>5.0.3.RELEASE</spring5-context-version>
+
 
         <!--utils 模块依赖 -->
         <rocketmq.version>4.2.0</rocketmq.version>
