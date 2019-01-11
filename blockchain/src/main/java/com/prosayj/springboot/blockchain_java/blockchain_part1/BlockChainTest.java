@@ -2,7 +2,7 @@ package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
 
 import com.prosayj.springboot.constants.LoggerModelEnum;
-import com.prosayj.springboot.utils.BeanUtils;
+import com.prosayj.springboot.utils.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class BlockChainTest {
         //first，第一个区块又称为创世区块
         Block firstBlock = new Block("first", "0");
         loger.info("Hash for block 1: {}" + firstBlock.hash);
-        loger.info(BeanUtils.objectConvertToString(firstBlock));
+        loger.info(BeanUtil.objectConvertToString(firstBlock));
 
         //second
         Block secondBlock = new Block("second", firstBlock.hash);

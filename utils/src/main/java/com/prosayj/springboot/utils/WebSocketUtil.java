@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @ServerEndpoint(value = "/websocket111")
 @Component
-public class WebSocketUtils {
+public class WebSocketUtil {
     public static final Logger log = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_UTILS.getModuleNickName());
     /**
      * 记录当前在线连接数
@@ -29,7 +29,7 @@ public class WebSocketUtils {
     /**
      * 存放每个客户端对应的MyWebSocket对象
      */
-    private static CopyOnWriteArraySet<WebSocketUtils> webSocketSet = new CopyOnWriteArraySet<>();
+    private static CopyOnWriteArraySet<WebSocketUtil> webSocketSet = new CopyOnWriteArraySet<>();
     /**
      * 与某个客户端的连接会话，需要通过它来给客户端发送数据
      */
@@ -74,7 +74,7 @@ public class WebSocketUtils {
     public static void onMessage(String message, Session session) {
         log.info("来自客户端的消息:{}", message);
         //群发消息
-        for (WebSocketUtils item : webSocketSet) {
+        for (WebSocketUtil item : webSocketSet) {
             try {
                 item.sendMessage(message, session);
             } catch (IOException e) {
@@ -114,7 +114,7 @@ public class WebSocketUtils {
      * 群发自定义消息
      */
     public static void sendInfo(String message, Session session) throws IOException {
-        for (WebSocketUtils item : webSocketSet) {
+        for (WebSocketUtil item : webSocketSet) {
             try {
                 item.sendMessage(message, session);
             } catch (IOException e) {

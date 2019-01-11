@@ -21,7 +21,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Component
-public class BeanUtils {
+public class BeanUtil {
     //public static ObjectMapper objectMapper = new ObjectMapper();
 
     /**

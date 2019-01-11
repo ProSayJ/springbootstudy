@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  * @Date 10:35 2018/9/19
  * @since 1.0.0
  */
-public class TransformMoneyUtils {
+public class TransformMoneyUtil {
 
     /*
      * 以下摘自百度百科：http://baike.baidu.com/view/359995.htm 大写数字规则

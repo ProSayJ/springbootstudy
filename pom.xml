@@ -17,6 +17,7 @@
         <module>business</module>
         <module>event</module>
         <module>nodejs</module>
+        <module>gui</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

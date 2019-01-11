@@ -2,7 +2,7 @@ package com.prosayj.springboot.blockchain_java.blockchain_part1;
 
 
 import com.prosayj.springboot.constants.LoggerModelEnum;
-import com.prosayj.springboot.utils.BeanUtils;
+import com.prosayj.springboot.utils.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +40,7 @@ public class BlockChainListTest {
         loger.info("Blockchain is Valid: " + isChainValid());
 //        String json = new GsonBuilder().setPrettyPrinting().create().toJson(blockChain);
 
-        loger.info(BeanUtils.objectConvertToString(blockChain));
+        loger.info(BeanUtil.objectConvertToString(blockChain));
     }
 
     /**

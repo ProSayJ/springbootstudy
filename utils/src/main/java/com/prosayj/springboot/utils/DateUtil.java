@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
  * @creatTime 2018/7/30 16:20
  * @since 1.0.0
  */
-public class DateUtils {
+public class DateUtil {
 
     public static final Calendar calendar = new GregorianCalendar();
 
@@ -263,7 +263,7 @@ public class DateUtils {
     public static void main(String[] args) throws ParseException {
         Date date = new Date();
 
-        System.out.println(DateUtils.getAddDate(DateUtils.getLastSecond(new Date()), 1));
+        System.out.println(DateUtil.getAddDate(DateUtil.getLastSecond(new Date()), 1));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat sdfm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -273,20 +273,20 @@ public class DateUtils {
 
 
         Calendar end = Calendar.getInstance();
-        Date formatStringToDate = DateUtils.formatStringToDate("2017-07-05 10:52:07", DatePattern.Y_M_D_H_M_S);
-        System.out.println("===" + DateUtils.formatDateToString(formatStringToDate, DatePattern.Y_M_D_H_M_S));
+        Date formatStringToDate = DateUtil.formatStringToDate("2017-07-05 10:52:07", DatePattern.Y_M_D_H_M_S);
+        System.out.println("===" + DateUtil.formatDateToString(formatStringToDate, DatePattern.Y_M_D_H_M_S));
         end.setTime(formatStringToDate);
 
-        System.out.println("===between==" + DateUtils.daysBetween(new Date(), formatStringToDate));
+        System.out.println("===between==" + DateUtil.daysBetween(new Date(), formatStringToDate));
 
-        System.out.println("yyyy-MM-dd HH:mm:ss==" + DateUtils.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
-        System.out.println("YYYYMMDDHHmmss==" + DateUtils.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
+        System.out.println("yyyy-MM-dd HH:mm:ss==" + DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
+        System.out.println("YYYYMMDDHHmmss==" + DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
 
-        System.out.println(DateUtils.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
+        System.out.println(DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
 
         String time = "20170720121211";
-        Date formatStringToDate2 = DateUtils.formatStringToDate(time, DatePattern.Y_M_D_H_M_S);
-        String formatDateToString = DateUtils.formatDateToString(formatStringToDate2, DatePattern.Y_M_D_H_M_S);
+        Date formatStringToDate2 = DateUtil.formatStringToDate(time, DatePattern.Y_M_D_H_M_S);
+        String formatDateToString = DateUtil.formatDateToString(formatStringToDate2, DatePattern.Y_M_D_H_M_S);
         System.out.println("formatStringToDate2==" + formatStringToDate2);
         System.out.println("formatDateToString==" + formatDateToString);
 

@@ -4,7 +4,7 @@ import com.prosayj.springboot.models.user.domain.UserDomain;
 import com.prosayj.springboot.models.user.dto.UserDTO;
 import com.prosayj.springboot.models.user.mapper.UserDomainMapper;
 import com.prosayj.springboot.models.user.service.UserService;
-import com.prosayj.springboot.utils.BeanUtils;
+import com.prosayj.springboot.utils.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> queryAllUser() {
         UserDomain userDomain = new UserDomain();
         List<UserDomain> userDomains = userDomainMapper.queryByCondition(userDomain);
-        return BeanUtils.toBeanList(userDomains, UserDTO.class);
+        return BeanUtil.toBeanList(userDomains, UserDTO.class);
     }
 
     @Override

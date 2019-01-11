@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @creatTime 2018/9/4 16:48
  * @since 1.0.0
  */
-public class DeployUtils {
+public class DeployUtil {
     /**
      * mvn -s F:\.m2\settings.xml
      * org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file_00
@@ -77,7 +77,7 @@ public class DeployUtils {
 
     public static boolean checkArgs(String[] args) {
         if (args.length != 1) {
-            System.out.println("用法如： java -jar DeployUtils D:\\some\\path\\");
+            System.out.println("用法如： java -jar DeployUtil D:\\some\\path\\");
             return false;
         }
         File file = new File(args[0]);

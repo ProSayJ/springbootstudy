@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * @creatTime 2018/11/15 9:59
  * @since 1.0.0
  */
-public class CustomerRegExpUtils {
+public class CustomerRegExpUtil {
     /**
      * 正则表达式：全文匹配数字
      */
