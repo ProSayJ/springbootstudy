@@ -1,10 +1,7 @@
 package com.prosayj.springboot.utils.easycaptchautil;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * @author yangjian
@@ -14,11 +11,11 @@ import java.io.OutputStream;
  * @since 1.0.0
  */
 public class Test {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         getGif();
-        getPng();
+        /*getPng();
         getChineseGif();
-        getChinesPng();
+        getChinesPng();*/
 
 
     }
@@ -61,8 +58,17 @@ public class Test {
         specCaptcha.out(outputStream);
     }
 
-    private static void getGif() throws FileNotFoundException {
-        OutputStream outputStream = new FileOutputStream(new File("D:/a/1.gif"));
+    private static void getGif() throws IOException {
+
+        File file = new File("D:" + "/a/1.gif");
+        if (!file.exists()) {
+            file.mkdirs();
+            boolean newFile = file.createNewFile();
+
+        }
+
+
+        OutputStream outputStream = new FileOutputStream(file);
         // 三个参数分别为宽、高、位数
         GifCaptcha gifCaptcha = new GifCaptcha(130, 48, 5);
         // 设置字体

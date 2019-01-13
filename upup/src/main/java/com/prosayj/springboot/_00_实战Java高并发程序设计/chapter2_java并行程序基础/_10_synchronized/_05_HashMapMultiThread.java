@@ -1,6 +1,5 @@
 package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础._10_synchronized;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

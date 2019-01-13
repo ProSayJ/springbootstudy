@@ -90,7 +90,7 @@ public class HelloController {
     }
 
 
-    @RequestMapping("/images/captcha1")
+    @GetMapping("/images/captcha1")
     public void captcha1(HttpServletRequest request, HttpServletResponse response) throws Exception {
         CaptchaUtil.out(request, response);
     }
@@ -105,7 +105,7 @@ public class HelloController {
     }
 
 
-    @RequestMapping("/images/captcha3")
+    @GetMapping("/images/captcha3")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 设置请求头为输出图片类型
         CaptchaUtil.setHeader(response);
@@ -126,7 +126,7 @@ public class HelloController {
         gifCaptcha.out(response.getOutputStream());
     }
 
-    @PostMapping("/login2")
+    @GetMapping("/login2")
     public void login2(String username, String password, String code) {
         HttpServletRequest request = null;
         // 获取session中的验证码

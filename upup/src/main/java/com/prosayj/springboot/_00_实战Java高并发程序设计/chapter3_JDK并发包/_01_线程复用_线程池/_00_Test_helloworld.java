@@ -2,12 +2,12 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK�
 
 /**
  * @author yangjian
- * @description TODO
+ * @description 最简单的创建线程和回收方法
  * @email ProSayJ@gmail.com
  * @creatTime 2018/12/20 22:25
  * @since 1.0.0
  */
-public class _Test {
+public class _00_Test_helloworld {
     public static void main(String[] args) {
         new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + "开始~~~");
