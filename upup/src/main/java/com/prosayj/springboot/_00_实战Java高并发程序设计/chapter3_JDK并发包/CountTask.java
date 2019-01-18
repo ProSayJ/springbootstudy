@@ -37,7 +37,7 @@ public class CountTask extends RecursiveTask {
         } else {
             long step = (start + end) / 100;
 
-            ArrayList<CountTask> subTasks = new ArrayList<CountTask>();
+            ArrayList<CountTask> subTasks = new ArrayList<>();
             long pos = start;
 
             for (int i = 0; i < 100; i++) {

@@ -9,10 +9,12 @@ import java.util.concurrent.TimeUnit;
  */
 public class TraceThreadPoolExecutor extends ThreadPoolExecutor {
     
-    public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+    public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize,
+                                   long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     }
 
+    @Override
     public void execute(Runnable task) {
         super.execute(wrap(task, clientTrace(), Thread.currentThread().getName()));
     }
