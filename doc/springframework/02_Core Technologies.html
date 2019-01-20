@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Asciidoctor 1.5.5">
-    <title>Core Technologies</title>
+    <title>Core Technologies(核心技术)</title>
     <link rel="stylesheet" href="./02_Core Technologies_files/css">
     <style>article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
         display: block
@@ -5131,8 +5131,9 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
             <div class="sect2">
                 <h3 id="beans-introduction"><a class="anchor"
                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-introduction"></a>1.1.
-                    Introduction to the Spring IoC Container and Beans(Spring IoC容器和Bean简介)</h3>
+                                               Spring IoC容器和Bean简介</h3>
                 <div class="paragraph">
+                    <p>1.1: Introduction to the Spring IoC Container and Beans</p>
                     <p>This chapter covers the Spring Framework implementation of the Inversion of Control
                         (IoC) principle. (See <a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/overview.html#background-ioc">Inversion
@@ -5218,9 +5219,9 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
             </div>
             <div class="sect2">
                 <h3 id="beans-basics"><a class="anchor"
-                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-basics"></a>1.2.
-                    Container Overview(Spring容器概述)</h3>
+                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-basics"></a>1.2. Spring容器概述</h3>
                 <div class="paragraph">
+                    <p>1.2. Container Overview</p>
                     <p>The <code>org.springframework.context.ApplicationContext</code> interface represents the Spring
                         IoC
                         container and is responsible for instantiating, configuring, and assembling the
@@ -5284,9 +5285,9 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-metadata"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-metadata"></a>1.2.1.
-                        Configuration Metadata</h4>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-metadata"></a>1.2.1. 配置元数据</h4>
                     <div class="paragraph">
+                        <p>1.2.1. Configuration Metadata</p>
                         <p>As the preceding diagram shows, the Spring IoC container consumes a form of
                             configuration metadata. This configuration metadata represents how you, as an
                             application developer, tell the Spring container to instantiate, configure, and assemble
@@ -5458,9 +5459,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-instantiation"><a class="anchor"
-                                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-instantiation"></a>1.2.2.
-                        Instantiating a Container</h4>
+                                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-instantiation"></a>
+                                                            1.2.2. 实例化容器</h4>
                     <div class="paragraph">
+                        <p>1.2.2. Instantiating a Container</p>
                         <p>The location path or paths
                             supplied to an <code>ApplicationContext</code> constructor are resource strings that let
                             the container load configuration metadata from a variety of external resources, such
@@ -5589,9 +5591,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-xml-import"><a class="anchor"
-                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-xml-import"></a>Composing
-                            XML-based Configuration Metadata (译：编写基于XML的配置元数据)</h5>
+                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-xml-import"></a>
+                                                             基于XML编写的配置元数据</h5>
                         <div class="paragraph">
+                            <p>Composing XML-based Configuration Metadata</p>
                             <p>It can be useful to have bean definitions span multiple XML files. Often, each individual
                                 XML configuration file represents a logical layer or module in your architecture.</p>
                                 <p class="translate">译：让bean定义跨越多个XML文件会很有用。通常，每个单独的XML配置文件都代表架构中的逻辑层或模块。</p>
@@ -5643,7 +5646,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                 contents of the files being imported, including the top level
                                 <code>&lt;beans/&gt;</code> element, must
                                 be valid XML bean definitions, according to the Spring Schema.</p>
-                                <p class="translate">译：在前面的例子中，外部豆定义是从三个文件加载： services.xml，messageSource.xml，和themeSource.xml。所有位置路径都与执行导入的定义文件相关，
+                                <p class="translate">译：在前面的例子中，外部bean定义是从三个文件加载： services.xml，messageSource.xml，和themeSource.xml。所有位置路径都与执行导入的定义文件相关，
                                     因此services.xml必须与执行导入的文件位于相同的目录或类路径位置， messageSource.xml而且themeSource.xml必须位于resources导入文件位置下方的位置。
                                     如您所见，忽略前导斜杠。但是，鉴于这些路径是相对的，最好不要使用斜杠。<beans/>根据Spring Schema，正在导入的文件的内容（包括顶级元素）必须是有效的XML bean定义。</p>
                         </div>
@@ -5708,9 +5711,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     </div>
                     <div class="sect4">
                         <h5 id="groovy-bean-definition-dsl"><a class="anchor"
-                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#groovy-bean-definition-dsl"></a>The
-                            Groovy Bean Definition DSL</h5>
+                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#groovy-bean-definition-dsl"></a>
+                                                               Groovy Bean定义DSL</h5>
                         <div class="paragraph">
+                            <p>The Groovy Bean Definition DSL</p>
                             <p>As a further example for externalized configuration metadata, bean definitions can also
                                 be expressed in Spring’s Groovy Bean Definition DSL, as known from the Grails framework.
                                 Typically, such configuration live in a ".groovy" file with the structure shown in the
@@ -5748,9 +5752,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-client"><a class="anchor"
-                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-client"></a>1.2.3.
-                        Using the Container</h4>
+                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-client"></a>
+                                                     1.2.3. 使用容器</h4>
                     <div class="paragraph">
+                        <p>1.2.3. Using the Container</p>
                         <p>The <code>ApplicationContext</code> is the interface for an advanced factory capable of
                             maintaining
                             a registry of different beans and their dependencies. By using the method <code>T
@@ -5844,9 +5849,10 @@ context.refresh();</code></pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-definition"><a class="anchor"
-                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-definition"></a>1.3.
-                    Bean Overview</h3>
+                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-definition"></a>
+                                             1.3. Bean 概述</h3>
                 <div class="paragraph">
+                    <p>1.3. Bean Overview</p>
                     <p>A Spring IoC container manages one or more beans. These beans are created with the
                         configuration metadata that you supply to the container (for example, in the form of XML
                         <code>&lt;bean/&gt;</code> definitions).</p>
@@ -6009,9 +6015,10 @@ context.refresh();</code></pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-beanname"><a class="anchor"
-                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname"></a>1.3.1.
-                        Naming Beans</h4>
+                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname"></a>
+                                               1.3.1.  Beans 的命名</h4>
                     <div class="paragraph">
+                        <p>1.3.1. Naming Beans</p>
                         <p>Every bean has one or more identifiers. These identifiers must be unique within the
                             container that hosts the bean. A bean usually has only one identifier. However, if it
                             requires more than one, the extra ones can be considered aliases.</p>
@@ -6101,9 +6108,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-beanname-alias"><a class="anchor"
-                                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname-alias"></a>Aliasing
-                            a Bean outside the Bean Definition(在Bean定义之外别名Bean)</h5>
+                                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname-alias"></a>
+                                                         在Bean定义之外别名Bean</h5>
                         <div class="paragraph">
+                            <p>Aliasing a Bean outside the Bean Definition</p>
                             <p>In a bean definition itself, you can supply more than one name for the bean, by using a
                                 combination of up to one name specified by the <code>id</code> attribute and any number
                                 of other
@@ -6139,6 +6147,7 @@ context.refresh();</code></pre>
                         <div class="paragraph">
                             <p>In this case, a bean (in the same container) named <code>fromName</code> may also,
                                 after the use of this alias definition, be referred to as <code>toName</code>.</p>
+                                <p>在这种情况下，fromName在使用此别名定义之后，命名的bean（在同一容器中）也可以称为toName。</p>
                         </div>
                         <div class="paragraph">
                             <p>For example, the configuration metadata for subsystem A may refer to a DataSource by the
@@ -6150,6 +6159,10 @@ context.refresh();</code></pre>
                                 name of <code>myApp-dataSource</code>. To have all three names refer to the same object,
                                 you can
                                 add the following alias definitions to the configuration metadata:</p>
+                                <p例如，子系统A的配置元数据可以通过名称引用DataSource subsystemA-dataSource。
+                                子系统B的配置元数据可以通过名称引用DataSource subsystemB-dataSource。
+                                在编写同时使用这两个子系统的主应用程序时，主应用程序通过名称引用DataSource myApp-dataSource。
+                                要使所有三个名称引用同一对象，可以将以下别名定义添加到配置元数据中：></p>
                         </div>
                         <div class="listingblock">
                             <div class="content">
@@ -6164,16 +6177,18 @@ context.refresh();</code></pre>
                             <p>Now each component and the main application can refer to the dataSource through a name
                                 that is unique and guaranteed not to clash with any other definition (effectively
                                 creating a namespace), yet they refer to the same bean.</p>
+                                <p>现在，每个组件和主应用程序都可以通过一个唯一的名称引用dataSource，并保证不与任何其他定义冲突（有效地创建命名空间），但它们引用相同的bean。</p>
                         </div>
                         <div class="sidebarblock">
                             <div class="content">
-                                <div class="title">Java-configuration</div>
+                                <div class="title">Java-configuration(Java的配置)</div>
                                 <div class="paragraph">
                                     <p>If you use Javaconfiguration, the <code>@Bean</code> annotation can be used to
                                         provide aliases.
                                         See
                                         <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-bean-annotation">Using
                                             the <code>@Bean</code> Annotation</a> for details.</p>
+                                            <p>如果使用Javaconfiguration，则@Bean可以使用注释来提供别名。有关详细信息，请参阅使用@Bean注释。</p>
                                 </div>
                             </div>
                         </div>
@@ -6181,12 +6196,14 @@ context.refresh();</code></pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-class"><a class="anchor"
-                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class"></a>1.3.2.
-                        Instantiating Beans</h4>
+                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class"></a>
+                                                    1.3.2.Bean的实例化</h4>
                     <div class="paragraph">
+                        <p>1.3.2.Instantiating Beans</p>
                         <p>A bean definition is essentially a recipe for creating one or more objects. The
                             container looks at the recipe for a named bean when asked and uses the configuration
                             metadata encapsulated by that bean definition to create (or acquire) an actual object.</p>
+                            <p>如果使用Javaconfiguration，则@Bean可以使用注释来提供别名。有关详细信息，请参阅使用@Bean注释。</p>
                     </div>
                     <div class="paragraph">
                         <p>If you use XML-based configuration metadata, you specify the type (or class) of object
@@ -6200,6 +6217,9 @@ context.refresh();</code></pre>
                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-child-bean-definitions">Bean
                                 Definition Inheritance</a>.)
                             You can use the <code>Class</code> property in one of two ways:</p>
+                            <p>如果使用基于XML的配置元数据，则指定要在元素的class属性中实例化的对象的类型（或类）<bean/>。
+                                此 class属性（在内部，是 实例Class上的属性BeanDefinition）通常是必需的。
+                                （有关例外，请参阅 使用实例工厂方法和Bean定义继承进行实例化。）您可以通过以下Class两种方式之一使用该属性：</p>
                     </div>
                     <div class="ulist">
                         <ul>
@@ -6208,6 +6228,7 @@ context.refresh();</code></pre>
                                     container
                                     itself directly creates the bean by calling its constructor reflectively, somewhat
                                     equivalent to Java code with the <code>new</code> operator.</p>
+                                    <p>通常，在容器本身通过反向调用其构造函数直接创建bean的情况下指定要构造的bean类，稍微等同于使用new运算符的Java代码。</p>
                             </li>
                             <li>
                                 <p>To specify the actual class containing the <code>static</code> factory method that is
@@ -6217,16 +6238,19 @@ context.refresh();</code></pre>
                                     from the invocation of the <code>static</code> factory method may be the same class
                                     or another
                                     class entirely.</p>
+                                    <p>要指定包含static为创建对象而调用的工厂方法的实际类，在不太常见的情况下，容器static在类上调用 工厂方法来创建bean。
+                                        从调用static工厂方法返回的对象类型可以完全是同一个类或另一个类。</p>
                             </li>
                         </ul>
                     </div>
                     <div class="sidebarblock">
                         <div class="content">
                             <div class="paragraph">
-                                <div class="title">Inner class names</div>
+                                <div class="title">Inner class names(内部类)</div>
                                 <p>If you want to configure a bean definition for a <code>static</code> nested class,
                                     you have to use
                                     the binary name of the nested class.</p>
+                                    <p>如果要为static嵌套类配置bean定义，则必须使用嵌套类的二进制名称。</p>
                             </div>
                             <div class="paragraph">
                                 <p>For example, if you have a class called <code>SomeThing</code> in the <code>com.example</code>
@@ -6245,9 +6269,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-class-ctor"><a class="anchor"
-                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-ctor"></a>Instantiation
-                            with a Constructor</h5>
+                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-ctor"></a>
+                                                             使用构造函数实例化</h5>
                         <div class="paragraph">
+                            <p>Instantiation with a Constructor</p>
                             <p>When you create a bean by the constructor approach, all normal classes are usable by and
                                 compatible with Spring. That is, the class being developed does not need to implement
                                 any specific interfaces or to be coded in a specific fashion. Simply specifying the bean
@@ -6285,9 +6310,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-class-static-factory-method"><a class="anchor"
-                                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-static-factory-method"></a>Instantiation
-                            with a Static Factory Method</h5>
+                                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-static-factory-method"></a>
+                                                                              使用静态工厂方法实例化</h5>
                         <div class="paragraph">
+                            <p>Instantiation with a Static Factory Method</p>
                             <p>When defining a bean that you create with a static factory method, use the
                                 <code>class</code>
                                 attribute to specify the class that contains the <code>static</code> factory method and
@@ -6346,9 +6372,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-class-instance-factory-method"><a class="anchor"
-                                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-instance-factory-method"></a>Instantiation
-                            by Using an Instance Factory Method</h5>
+                                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-instance-factory-method"></a>
+                                                                                使用实例工厂方法实例化</h5>
                         <div class="paragraph">
+                            <p>Instantiation by Using an Instance Factory Method</p>
                             <p>Similar to instantiation through a <a
                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-static-factory-method">static
                                 factory method</a>, instantiation with an instance factory method invokes a non-static
@@ -6483,9 +6510,10 @@ context.refresh();</code></pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-dependencies"><a class="anchor"
-                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-dependencies"></a>1.4.
-                    Dependencies</h3>
+                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-dependencies"></a>
+                                               1.4. 依赖</h3>
                 <div class="paragraph">
+                    <p>1.4. Dependencies</p>
                     <p>A typical enterprise application does not consist of a single object (or bean in the
                         Spring parlance). Even the simplest application has a few objects that work together to
                         present what the end-user sees as a coherent application. This next section explains how
@@ -6494,9 +6522,10 @@ context.refresh();</code></pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-collaborators"><a class="anchor"
-                                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-collaborators"></a>1.4.1.
-                        Dependency Injection</h4>
+                                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-collaborators"></a>
+                                                            1.4.1. 依赖注入</h4>
                     <div class="paragraph">
+                        <p>1.4.1. Dependency Injection</p>
                         <p>Dependency injection (DI) is a process whereby objects define their dependencies
                             (that is, the other objects with which they work) only through constructor arguments,
                             arguments
@@ -6516,16 +6545,17 @@ context.refresh();</code></pre>
                     </div>
                     <div class="paragraph">
                         <p>DI exists in two major variants: <a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-constructor-injection">Constructor-based
-                            dependency injection</a> and <a
+                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-constructor-injection">
+                                Constructor-based dependency injection</a> and <a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-setter-injection">Setter-based
                             dependency injection</a>.</p>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-constructor-injection"><a class="anchor"
-                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-constructor-injection"></a>Constructor-based
-                            Dependency Injection</h5>
+                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-constructor-injection"></a>
+                                                                基于构造函数的依赖注入</h5>
                         <div class="paragraph">
+                            <p>Constructor-based Dependency Injection</p>
                             <p>Constructor-based DI is accomplished by the container invoking a constructor with a
                                 number of arguments, each representing a dependency. Calling a <code>static</code>
                                 factory method
@@ -6779,9 +6809,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-setter-injection"><a class="anchor"
-                                                           href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-setter-injection"></a>Setter-based
-                            Dependency Injection</h5>
+                                                           href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-setter-injection"></a>
+                                                           基于Setter的依赖注入</h5>
                         <div class="paragraph">
+                            <p>Setter-based Dependency Injection</p>
                             <p>Setter-based DI is accomplished by the container calling setter methods on your
                                 beans after invoking a no-argument constructor or a no-argument <code>static</code>
                                 factory method to
@@ -6883,9 +6914,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-dependency-resolution"><a class="anchor"
-                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-dependency-resolution"></a>Dependency
-                            Resolution Process</h5>
+                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-dependency-resolution"></a>
+                                                                依赖性解决过程</h5>
                         <div class="paragraph">
+                            <p>Dependency Resolution Process</p>
                             <p>The container performs bean dependency resolution as follows:</p>
                         </div>
                         <div class="ulist">
@@ -7007,9 +7039,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-some-examples"><a class="anchor"
-                                                        href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-some-examples"></a>Examples
-                            of Dependency Injection</h5>
+                                                        href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-some-examples"></a>
+                                                        依赖注入的示例</h5>
                         <div class="paragraph">
+                            <p>Examples of Dependency Injection</p>
                             <p>The following example uses XML-based configuration metadata for setter-based DI. A small
                                 part of a Spring XML configuration file specifies some bean definitions as follows:</p>
                         </div>
@@ -7198,9 +7231,10 @@ context.refresh();</code></pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-properties-detailed"><a class="anchor"
-                                                                  href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-properties-detailed"></a>1.4.2.
-                        Dependencies and Configuration in Detail</h4>
+                                                                  href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-properties-detailed"></a>
+                                                                  1.4.2. 详细信息的依赖关系和配置</h4>
                     <div class="paragraph">
+                        <p>1.4.2. Dependencies and Configuration in Detail</p>
                         <p>As mentioned in the <a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-collaborators">previous
                             section</a>, you can define bean
@@ -7212,9 +7246,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-value-element"><a class="anchor"
-                                                        href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-value-element"></a>Straight
-                            Values (Primitives, Strings, and so on)</h5>
+                                                        href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-value-element"></a>
+                                                        直值（基元，字符串等）</h5>
                         <div class="paragraph">
+                            <p>Straight Values (Primitives, Strings, and so on)</p>
                             <p>The <code>value</code> attribute of the <code>&lt;property/&gt;</code> element specifies
                                 a property or constructor
                                 argument as a human-readable string representation. Spring’s
@@ -7398,9 +7433,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-ref-element"><a class="anchor"
-                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-ref-element"></a>References
-                            to Other Beans (Collaborators)</h5>
+                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-ref-element"></a>
+                                                      引用到其他的Beans（合作者）</h5>
                         <div class="paragraph">
+                            <p>References to Other Beans (Collaborators)</p>
                             <p>The <code>ref</code> element is the final element inside a
                                 <code>&lt;constructor-arg/&gt;</code> or <code>&lt;property/&gt;</code>
                                 definition element. Here, you set the value of the specified property of a bean to be a
@@ -7496,9 +7532,10 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-inner-beans"><a class="anchor"
-                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-inner-beans"></a>Inner
-                            Beans</h5>
+                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-inner-beans"></a>
+                                                      内部Beans</h5>
                         <div class="paragraph">
+                            <p>Inner Beans</p>
                             <p>A <code>&lt;bean/&gt;</code> element inside the <code>&lt;property/&gt;</code> or <code>&lt;constructor-arg/&gt;</code>
                                 elements defines an
                                 inner bean, as the following example shows:</p>
@@ -7544,9 +7581,11 @@ context.refresh();</code></pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-collection-elements"><a class="anchor"
-                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-collection-elements"></a>Collections
+                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-collection-elements"></a>
+                                                              集合
                         </h5>
                         <div class="paragraph">
+                            <p>Collections</p>
                             <p>The <code>&lt;list/&gt;</code>, <code>&lt;set/&gt;</code>, <code>&lt;map/&gt;</code>, and
                                 <code>&lt;props/&gt;</code> elements set the properties
                                 and arguments of the Java <code>Collection</code> types <code>List</code>,
@@ -7808,9 +7847,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-null-element"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-null-element"></a>Null
-                            and Empty String Values</h5>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-null-element"></a>
+                                                       null和空字符串值</h5>
                         <div class="paragraph">
+                            <p>Null and Empty String Values</p>
                             <p>Spring treats empty arguments for properties and the like as empty <code>Strings</code>.
                                 The
                                 following XML-based configuration metadata snippet sets the <code>email</code> property
@@ -7864,9 +7904,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-p-namespace"><a class="anchor"
-                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-p-namespace"></a>XML
-                            Shortcut with the p-namespace</h5>
+                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-p-namespace"></a>
+                                                      带有p命名空间的XML快捷方式</h5>
                         <div class="paragraph">
+                            <p>XML Shortcut with the p-namespace</p>
                             <p>The p-namespace lets you use the <code>bean</code> element’s attributes (instead of
                                 nested
                                 <code>&lt;property/&gt;</code> elements) to describe your property values collaborating
