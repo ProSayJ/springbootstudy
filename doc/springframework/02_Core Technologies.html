@@ -8032,9 +8032,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-c-namespace"><a class="anchor"
-                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-c-namespace"></a>XML
-                            Shortcut with the c-namespace</h5>
+                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-c-namespace"></a>
+                                                      带有c命名空间的XML快捷方式</h5>
                         <div class="paragraph">
+                        	<p>XML Shortcut with the c-namespace</p>
                             <p>Similar to the <a
                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-p-namespace">XML
                                 Shortcut with the p-namespace</a>, the c-namespace, introduced in Spring
@@ -8139,9 +8140,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-compound-property-names"><a class="anchor"
-                                                                  href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-compound-property-names"></a>Compound
-                            Property Names</h5>
+                                                                  href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-compound-property-names"></a>
+                                                              复合属性名称</h5>
                         <div class="paragraph">
+                        	<p>Compound Property Names</p>
                             <p>You can use compound or nested property names when you set bean properties, as long as
                                 all components of the path except the final property name are not <code>null</code>.
                                 Consider the
@@ -8172,8 +8174,9 @@ support=support@example.co.uk</pre>
                 <div class="sect3">
                     <h4 id="beans-factory-dependson"><a class="anchor"
                                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-dependson"></a>1.4.3.
-                        Using <code>depends-on</code></h4>
+                        使用 <code>depends-on</code></h4>
                     <div class="paragraph">
+                    	<p>Using <code>depends-on</code></p>
                         <p>If a bean is a dependency of another bean, that usually means that one bean is set as a
                             property of another. Typically you accomplish this with the <a
                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-ref-element"><code>&lt;ref/&gt;</code>
@@ -8245,8 +8248,9 @@ support=support@example.co.uk</pre>
                 <div class="sect3">
                     <h4 id="beans-factory-lazy-init"><a class="anchor"
                                                         href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lazy-init"></a>1.4.4.
-                        Lazy-initialized Beans</h4>
+                        懒加载 Beans</h4>
                     <div class="paragraph">
+                    	<p>Lazy-initialized Beans</p>
                         <p>By default, <code>ApplicationContext</code> implementations eagerly create and configure all
                             <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-singleton">singleton</a>
                             beans as part of the initialization
@@ -8301,9 +8305,10 @@ support=support@example.co.uk</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-autowire"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-autowire"></a>1.4.5.
-                        Autowiring Collaborators</h4>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-autowire"></a>
+                                                       1.4.5. 自动化协作者</h4>
                     <div class="paragraph">
+                    	<p>1.4.5. Autowiring Collaborators</p>
                         <p>The Spring container can autowire relationships between collaborating beans. You can
                             let Spring resolve collaborators (other beans) automatically for your bean by
                             inspecting the contents of the <code>ApplicationContext</code>. Autowiring has the following
@@ -8403,9 +8408,9 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-autowired-exceptions"><a class="anchor"
-                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-exceptions"></a>Limitations
-                            and Disadvantages of Autowiring</h5>
+                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-exceptions"></a>自动装配的局限和缺点</h5>
                         <div class="paragraph">
+                        	<p>Limitations and Disadvantages of Autowiring</p>
                             <p>Autowiring works best when it is used consistently across a project. If autowiring is
                                 not used in general, it might be confusing to developers to use it to wire only one or
                                 two bean definitions.</p>
@@ -8480,9 +8485,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-autowire-candidate"><a class="anchor"
-                                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-autowire-candidate"></a>Excluding
-                            a Bean from Autowiring</h5>
+                                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-autowire-candidate"></a>
+                                                                     从自动装配中排除Bean</h5>
                         <div class="paragraph">
+                        	<P>Excluding a Bean from Autowiring</p>
                             <p>On a per-bean basis, you can exclude a bean from autowiring. In Spring’s XML format, set
                                 the <code>autowire-candidate</code> attribute of the <code>&lt;bean/&gt;</code> element
                                 to <code>false</code>. The container
@@ -8533,9 +8539,10 @@ support=support@example.co.uk</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factory-method-injection"><a class="anchor"
-                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-method-injection"></a>1.4.6.
-                        Method Injection</h4>
+                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-method-injection"></a>
+                                                               1.4.6. 方法注入</h4>
                     <div class="paragraph">
+                    	<p>1.4.6. Method Injection</p>
                         <p>In most application scenarios, most beans in the container are
                             <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-singleton">singletons</a>.
                             When a singleton bean needs to
@@ -8615,9 +8622,9 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-lookup-method-injection"><a class="anchor"
-                                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lookup-method-injection"></a>Lookup
-                            Method Injection</h5>
+                                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lookup-method-injection"></a>查找方法注入</h5>
                         <div class="paragraph">
+                        	<p>Lookup Method Injection</p>
                             <p>Lookup method injection is the ability of the container to override methods on
                                 container-managed beans and return the lookup result for another named bean in the
                                 container. The lookup typically involves a prototype bean, as in the scenario described
@@ -8828,9 +8835,10 @@ support=support@example.co.uk</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-factory-arbitrary-method-replacement"><a class="anchor"
-                                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-arbitrary-method-replacement"></a>Arbitrary
-                            Method Replacement</h5>
+                                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-arbitrary-method-replacement"></a>
+                                                                               任意方法替换</h5>
                         <div class="paragraph">
+                        	<p>Arbitrary Method Replacement</p>
                             <p>A less useful form of method injection than lookup method injection is the ability to
                                 replace arbitrary methods in a managed bean with another method implementation. You
                                 can safely skip the rest of this section until you actually need this functionality.</p>
@@ -8929,13 +8937,16 @@ Str</code></pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-factory-scopes"><a class="anchor"
-                                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes"></a>1.5.
-                    Bean Scopes</h3>
+                                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes"></a>
+                                                 1.5. Bean 作用域</h3>
                 <div class="paragraph">
+                	<P>1.5. Bean Scopes</P>
                     <p>When you create a bean definition, you create a recipe for creating actual instances
                         of the class defined by that bean definition. The idea that a bean definition is a
                         recipe is important, because it means that, as with a class, you can create many object
                         instances from a single recipe.</p>
+                        <p class="translate">创建bean定义时，可以创建用于创建由该bean定义定义的类的实际实例的配方。
+                        bean定义是一个配方的想法很重要，因为它意味着，与一个类一样，您可以从一个配方创建许多对象实例。</p>
                 </div>
                 <div class="paragraph">
                     <p>You can control not only the various dependencies and configuration values that are to
@@ -8948,9 +8959,13 @@ Str</code></pre>
                         you use a web-aware <code>ApplicationContext</code>. You can also create
                         <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-custom">a
                             custom scope.</a></p>
+                            <p class="translate">您不仅可以控制要插入到从特定bean定义创建的对象中的各种依赖项和配置值，还可以控制从特定bean定义创建的对象的范围。
+                            这种方法功能强大且灵活，因为您可以选择通过配置创建的对象的范围，而不必在Java类级别烘焙对象的范围。可以将Bean定义为部署在多个范围之一中。
+                        Spring Framework支持六个范围，其中四个范围仅在您使用Web感知时才可用ApplicationContext。您还可以创建 自定义范围</p>
                 </div>
                 <div class="paragraph">
                     <p>The following table describes the supported scopes:</p>
+                    <p class="translate">下表描述了支持的范围：</p>
                 </div>
                 <table id="beans-factory-scopes-tbl" class="tableblock frame-all grid-all spread">
                     <caption class="title">Table 3. Bean scopes</caption>
@@ -8971,48 +8986,71 @@ Str</code></pre>
                         </p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">(Default) Scopes a single
                             bean definition to a single object instance for each Spring IoC
-                            container.</p></td>
+                            container.</p>
+                            <p class="translate">译：（默认）将单个bean定义范围限定为每个Spring IoC容器的单个对象实例。</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-prototype">prototype</a>
                         </p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">Scopes a single bean
-                            definition to any number of object instances.</p></td>
+                        <td class="tableblock halign-left valign-top">
+                        	<p class="tableblock"> Scopes a single bean definition to any number of object instances.</p>
+							<p class="translate">译：将单个bean定义范围限定为任意数量的对象实例。</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-request">request</a>
                         </p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">Scopes a single bean
+                        <td class="tableblock halign-left valign-top">
+                        	<p class="tableblock">Scopes a single bean
                             definition to the lifecycle of a single HTTP request. That is,
                             each HTTP request has its own instance of a bean created off the back of a single bean
                             definition. Only valid in the context of a web-aware Spring <code>ApplicationContext</code>.
-                        </p></td>
+                        	</p>
+                        	<P class="translate">译：将单个bean定义范围限定为单个HTTP请求的生命周期。
+                        	也就是说，每个HTTP请求都有自己的bean实例，它是在单个bean定义的后面创建的。
+                        仅在具有Web感知功能的Spring环境中有效ApplicationContext。</P>
+                    	</td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-session">session</a>
                         </p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">Scopes a single bean
+                        <td class="tableblock halign-left valign-top">
+                        	<p class="tableblock">Scopes a single bean
                             definition to the lifecycle of an HTTP <code>Session</code>. Only valid in
-                            the context of a web-aware Spring <code>ApplicationContext</code>.</p></td>
+                            the context of a web-aware Spring <code>ApplicationContext</code>.
+                        </p>
+                        <P class="translate">译：将单个bean定义范围限定为HTTP的生命周期Session。仅在具有Web感知功能的Spring环境中有效ApplicationContext。</P>
+                    </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes-application">application</a>
                         </p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">Scopes a single bean
+                        <td class="tableblock halign-left valign-top">
+                        	<p class="tableblock">Scopes a single bean
                             definition to the lifecycle of a <code>ServletContext</code>. Only valid in
-                            the context of a web-aware Spring <code>ApplicationContext</code>.</p></td>
+                            the context of a web-aware Spring <code>ApplicationContext</code>.
+                        </p>
+                        <p class="translate">译：将单个bean定义范围限定为a的生命周期ServletContext。
+                        	仅在具有Web感知功能的Spring环境中有效ApplicationContext。
+                        </p>
+                    </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/web.html#websocket-stomp-websocket-scope">websocket</a>
                         </p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">Scopes a single bean
+                        <td class="tableblock halign-left valign-top">
+                        	<p class="tableblock">Scopes a single bean
                             definition to the lifecycle of a <code>WebSocket</code>. Only valid in
-                            the context of a web-aware Spring <code>ApplicationContext</code>.</p></td>
+                            the context of a web-aware Spring <code>ApplicationContext</code>.
+                        </p>
+                        <p class="translate">译：将单个bean定义范围限定为a的生命周期WebSocket。仅在具有Web感知功能的Spring环境中有效ApplicationContext。</p>
+                    </td>
                     </tr>
                     </tbody>
                 </table>
