@@ -12119,8 +12119,8 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-autowired-annotation"><a class="anchor"
-                                                           href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation"></a>1.9.2.
-                        Using <code>@Autowired</code></h4>
+                                                           href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation"></a>
+                                                           1.9.2. Using(使用) <code>@Autowired</code></h4>
                     <div class="admonitionblock note">
                         <table>
                             <tbody>
@@ -12550,9 +12550,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-autowired-annotation-primary"><a class="anchor"
-                                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation-primary"></a>1.9.3.
-                        Fine-tuning Annotation-based Autowiring with <code>@Primary</code></h4>
+                                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation-primary"></a>
+                                                                   1.9.3. 微调基于注释的自动装配<code>@Primary</code></h4>
                     <div class="paragraph">
+                        <p>1.9.3. Fine-tuning Annotation-based Autowiring with <code>@Primary</code></p>
                         <p>Because autowiring by type may lead to multiple candidates, it is often necessary to have
                             more control over the selection process. One way to accomplish this is with Spring’s
                             <code>@Primary</code> annotation. <code>@Primary</code> indicates that a particular bean
@@ -12642,9 +12643,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-autowired-annotation-qualifiers"><a class="anchor"
-                                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation-qualifiers"></a>1.9.4.
-                        Fine-tuning Annotation-based Autowiring with Qualifiers</h4>
+                                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation-qualifiers"></a>
+                                                                      1.9.4. 使用限定符微调基于注释的自动装配</h4>
                     <div class="paragraph">
+                        <p>1.9.4. Fine-tuning Annotation-based Autowiring with Qualifiers</p>
                         <p><code>@Primary</code> is an effective way to use autowiring by type with several instances
                             when one
                             primary candidate can be determined. When you need more control over the selection process,
@@ -13161,9 +13163,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-generics-as-qualifiers"><a class="anchor"
-                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-generics-as-qualifiers"></a>1.9.5.
-                        Using Generics as Autowiring Qualifiers</h4>
+                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-generics-as-qualifiers"></a>
+                                                             1.9.5.使用泛型作为自动装配限定符 </h4>
                     <div class="paragraph">
+                        <p>1.9.5 Using Generics as Autowiring Qualifiers</p>
                         <p>In addition to the <code>@Qualifier</code> annotation, you can use Java generic types
                             as an implicit form of qualification. For example, suppose you have the following
                             configuration:</p>
@@ -13221,8 +13224,8 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-custom-autowire-configurer"><a class="anchor"
-                                                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-custom-autowire-configurer"></a>1.9.6.
-                        Using <code>CustomAutowireConfigurer</code></h4>
+                                                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-custom-autowire-configurer"></a>
+                                                                 1.9.6. Using(使用) <code>CustomAutowireConfigurer</code></h4>
                     <div class="paragraph">
                         <p>
                             <a href="https://docs.spring.io/spring-framework/docs/5.2.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/beans/factory/annotation/CustomAutowireConfigurer.html"><code>CustomAutowireConfigurer</code></a>
@@ -13273,9 +13276,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-resource-annotation"><a class="anchor"
-                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-resource-annotation"></a>1.9.7.
-                        Injection with <code>@Resource</code></h4>
+                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-resource-annotation"></a>
+                                                          1.9.7.使用<code>@Resource</code注入></h4>
                     <div class="paragraph">
+                        <p>1.9.7.Injection with <code>@Resource</code></p>
                         <p>Spring also supports injection by using the JSR-250 <code>@Resource</code> annotation on
                             fields or
                             bean property setter methods. This is a common pattern in Java EE 5 and 6 (for example,
@@ -13411,8 +13415,8 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-postconstruct-and-predestroy-annotations"><a class="anchor"
-                                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-postconstruct-and-predestroy-annotations"></a>1.9.8.
-                        Using <code>@PostConstruct</code> and <code>@PreDestroy</code></h4>
+                                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-postconstruct-and-predestroy-annotations"></a>
+                                                                               1.9.8.Using (使用)<code>@PostConstruct</code> and(和) <code>@PreDestroy</code></h4>
                     <div class="paragraph">
                         <p>The <code>CommonAnnotationBeanPostProcessor</code> not only recognizes the
                             <code>@Resource</code> annotation
@@ -13469,9 +13473,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-classpath-scanning"><a class="anchor"
-                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-classpath-scanning"></a>1.10.
-                    Classpath Scanning and Managed Components</h3>
+                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-classpath-scanning"></a>
+                                                     1.10. 类路径扫描和托管组件</h3>
                 <div class="paragraph">
+                    <p>1.10. Classpath Scanning and Managed Components</p>
                     <p>Most examples in this chapter use XML to specify the configuration metadata that produces
                         each <code>BeanDefinition</code> within the Spring container. The previous section
                         (<a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-annotation-config">Annotation-based
@@ -13512,9 +13517,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-stereotype-annotations"><a class="anchor"
-                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-stereotype-annotations"></a>1.10.1.
-                        <code>@Component</code> and Further Stereotype Annotations</h4>
+                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-stereotype-annotations"></a>
+                                                             1.10.1. <code>@Component</code> 和进一步的刻板印象注释</h4>
                     <div class="paragraph">
+                        <p>1.10.1. <code>@Component</code> and Further Stereotype Annotations</p>
                         <p>The <code>@Repository</code> annotation is a marker for any class that fulfills the role or
                             stereotype of a repository (also known as Data Access Object or DAO). Among the uses
                             of this marker is the automatic translation of exceptions, as described in
@@ -13545,9 +13551,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-meta-annotations"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-meta-annotations"></a>1.10.2.
-                        Using Meta-annotations and Composed Annotations</h4>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-meta-annotations"></a>
+                                                       1.10.2. 使用元注释和组合注释</h4>
                     <div class="paragraph">
+                        <p>1.10.2. Using Meta-annotations and Composed Annotations</p>
                         <p>Many of the annotations provided by Spring can be used as meta-annotations in your
                             own code. A meta-annotation is an annotation that can be applied to another
                             annotation. For example, the <code>@Service</code> annotation mentioned <a
@@ -13657,9 +13664,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-autodetection"><a class="anchor"
-                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-autodetection"></a>1.10.3.
-                        Automatically Detecting Classes and Registering Bean Definitions</h4>
+                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-autodetection"></a>
+                                                             1.10.3. 自动检测类和注册Bean定义</h4>
                     <div class="paragraph">
+                        <p> 1.10.3. Automatically Detecting Classes and Registering Bean Definitions</p>
                         <p>Spring can automatically detect stereotyped classes and register corresponding
                             <code>BeanDefinition</code> instances with the <code>ApplicationContext</code>. For example,
                             the following two classes
@@ -13833,9 +13841,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-filters"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-filters"></a>1.10.4.
-                        Using Filters to Customize Scanning</h4>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-filters"></a>
+                                                       1.10.4. 使用过滤器自定义扫描</h4>
                     <div class="paragraph">
+                        <p>1.10.4. Using Filters to Customize Scanning</p>
                         <p>By default, classes annotated with <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>,
                             <code>@Controller</code>, or a custom annotation that itself is annotated with <code>@Component</code>
                             are the
@@ -13963,12 +13972,18 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-factorybeans-annotations"><a class="anchor"
-                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factorybeans-annotations"></a>1.10.5.
-                        Defining Bean Metadata within Components</h4>
+                                                               href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factorybeans-annotations"></a>
+                                                               1.10.5. 在组件中定义Bean元数据</h4>
                     <div class="paragraph">
+                        <p>1.10.5. Defining Bean Metadata within Components</p>
                         <p>Spring components can also contribute bean definition metadata to the container. You can do
                             this with the same <code>@Bean</code> annotation used to define bean metadata within <code>@Configuration</code>
                             annotated classes. The following example shows how to do so:</p>
+                            <p class="translate">
+                                    Spring组件还可以向容器提供bean定义元数据。
+                                    您可以@Bean使用用于在带@Configuration 注释的类中定义bean元数据的相同注释来执行此操作。
+                                    以下示例显示了如何执行此操作：
+                            </p>
                     </div>
                     <div class="listingblock">
                         <div class="content">
@@ -14210,9 +14225,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-name-generator"><a class="anchor"
-                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-name-generator"></a>1.10.6.
-                        Naming Autodetected Components</h4>
+                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-name-generator"></a>
+                                                              1.10.6. 命名自动检测的组件</h4>
                     <div class="paragraph">
+                        <p>1.10.6. Naming Autodetected Components</p>
                         <p>When a component is autodetected as part of the scanning process, its bean name is
                             generated by the <code>BeanNameGenerator</code> strategy known to that scanner. By default,
                             any
@@ -14299,9 +14315,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-scope-resolver"><a class="anchor"
-                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-scope-resolver"></a>1.10.7.
-                        Providing a Scope for Autodetected Components</h4>
+                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-scope-resolver"></a>
+                                                              1.10.7.为自动检测组件提供范围</h4>
                     <div class="paragraph">
+                        <p>1.10.7.Providing a Scope for Autodetected Components</p>
                         <p>As with Spring-managed components in general, the default and most common scope for
                             autodetected components is <code>singleton</code>. However, sometimes you need a different
                             scope
@@ -14423,9 +14440,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-qualifiers"><a class="anchor"
-                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-qualifiers"></a>1.10.8.
-                        Providing Qualifier Metadata with Annotations</h4>
+                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-qualifiers"></a>
+                                                          1.10.8.使用注释提供限定符元数据</h4>
                     <div class="paragraph">
+                        <p>1.10.8.Providing Qualifier Metadata with Annotations</p>
                         <p>The <code>@Qualifier</code> annotation is discussed in <a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-autowired-annotation-qualifiers">Fine-tuning
                             Annotation-based Autowiring with Qualifiers</a>.
@@ -14498,9 +14516,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-scanning-index"><a class="anchor"
-                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-index"></a>1.10.9.
-                        Generating an Index of Candidate Components</h4>
+                                                     href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-scanning-index"></a>
+                                                     1.10.9.生成候选组件索引</h4>
                     <div class="paragraph">
+                        <p> 1.10.9.Generating an Index of Candidate Components</p>
                         <p>While classpath scanning is very fast, it is possible to improve the startup performance
                             of large applications by creating a static list of candidates at compilation time. In this
                             mode, all modules that are target of component scan must use this mechanism.</p>
@@ -14605,9 +14624,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-standard-annotations"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-standard-annotations"></a>1.11.
-                    Using JSR 330 Standard Annotations</h3>
+                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-standard-annotations"></a>
+                                                       1.11. 使用JSR 330标准注释</h3>
                 <div class="paragraph">
+                    <p>1.11. Using JSR 330 Standard Annotations</p>
                     <p>Starting with Spring 3.0, Spring offers support for JSR-330 standard annotations
                         (Dependency Injection). Those annotations are scanned in the same way as the Spring
                         annotations. To use them, you need to have the relevant jars in your classpath.</p>
@@ -14647,9 +14667,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-inject-named"><a class="anchor"
-                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-inject-named"></a>1.11.1.
-                        Dependency Injection with <code>@Inject</code> and <code>@Named</code></h4>
+                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-inject-named"></a>
+                                                   1.11.1. 使用<code>@Inject</code> 和 <code>@Named</code></h4>
                     <div class="paragraph">
+                        <p> 1.11.1. Dependency Injection with <code>@Inject</code> and <code>@Named</code></p>
                         <p>Instead of <code>@Autowired</code>, you can use <code>@javax.inject.Inject</code> as follows:
                         </p>
                     </div>
@@ -14780,10 +14801,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-named"><a class="anchor"
-                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-named"></a>1.11.2.
-                        <code>@Named</code> and <code>@ManagedBean</code>: Standard Equivalents to the
-                        <code>@Component</code> Annotation</h4>
+                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-named"></a>
+                                            1.11.2. <code>@Named</code> 和 <code>@ManagedBean</code>: 是  <code>@Component</code> 的标准等价注解</h4>
                     <div class="paragraph">
+                        <p> 1.11.2. <code>@Named</code> and <code>@ManagedBean</code>: Standard Equivalents to the  <code>@Component</code> Annotation</p>
                         <p>Instead of <code>@Component</code>, you can use <code>@javax.inject.Named</code> or <code>javax.annotation.ManagedBean</code>,
                             as the following example shows:</p>
                     </div>
@@ -14871,9 +14892,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-standard-annotations-limitations"><a class="anchor"
-                                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-standard-annotations-limitations"></a>1.11.3.
-                        Limitations of JSR-330 Standard Annotations</h4>
+                                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-standard-annotations-limitations"></a>
+                                                                       1.11.3. JSR-330标准注释的局限性</h4>
                     <div class="paragraph">
+                        <p>1.11.3. Limitations of JSR-330 Standard Annotations</p>
                         <p>When you work with standard annotations, you should know that some significant
                             features are not available, as the following table shows:</p>
                     </div>
@@ -14964,9 +14986,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
             </div>
             <div class="sect2">
                 <h3 id="beans-java"><a class="anchor"
-                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java"></a>1.12.
-                    Java-based Container Configuration</h3>
+                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java"></a>
+                                       1.12. 基于Java的容器配置</h3>
                 <div class="paragraph">
+                    <p> 1.12. Java-based Container Configuration</p>
                     <p>This section covers how to use annotations in your Java code to configure the Spring
                         container. It includes the following topics:</p>
                 </div>
@@ -15022,9 +15045,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-java-basic-concepts"><a class="anchor"
-                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-basic-concepts"></a>1.12.1.
-                        Basic Concepts: <code>@Bean</code> and <code>@Configuration</code></h4>
+                                                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-basic-concepts"></a>
+                                                          1.12.1. 基本概念: <code>@Bean</code> 和 <code>@Configuration</code></h4>
                     <div class="paragraph">
+                        <p>1.12.1. Basic Concepts: <code>@Bean</code> and <code>@Configuration</code></p>
                         <p>The central artifacts in Spring’s new Java-configuration support are
                             <code>@Configuration</code>-annotated classes and <code>@Bean</code>-annotated methods.</p>
                     </div>
@@ -15129,9 +15153,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                 </div>
                 <div class="sect3">
                     <h4 id="beans-java-instantiating-container"><a class="anchor"
-                                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container"></a>1.12.2.
-                        Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></h4>
+                                                                   href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container"></a>
+                                                                   1.12.2. 使用<code>AnnotationConfigApplicationContext</code>来初始实例化spring容器</h4>
                     <div class="paragraph">
+                        <p>1.12.2.Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></p>
                         <p>The following sections document Spring’s <code>AnnotationConfigApplicationContext</code>,
                             introduced in Spring
                             3.0. This versatile <code>ApplicationContext</code> implementation is capable of accepting
@@ -15155,9 +15180,10 @@ dataSource.url=jdbc:mysql:mydb</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-java-instantiating-container-contstructor"><a class="anchor"
-                                                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container-contstructor"></a>Simple
-                            Construction</h5>
+                                                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container-contstructor"></a> 
+                                                                                   简单构造</h5>
                         <div class="paragraph">
+                            <p>Simple Construction</p>
                             <p>In much the same way that Spring XML files are used as input when instantiating a
                                 <code>ClassPathXmlApplicationContext</code>, you can use <code>@Configuration</code>
                                 classes as input when
@@ -15204,8 +15230,8 @@ dataSource.url=jdbc:mysql:mydb</pre>
                     </div>
                     <div class="sect4">
                         <h5 id="beans-java-instantiating-container-register"><a class="anchor"
-                                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container-register"></a>Building
-                            the Container Programmatically by Using <code>register(Class&lt;?&gt;…​)</code></h5>
+                                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java-instantiating-container-register"></a>
+                                                                                Building the Container Programmatically by Using <code>register(Class&lt;?&gt;…​)</code></h5>
                         <div class="paragraph">
                             <p>You can instantiate an <code>AnnotationConfigApplicationContext</code> by using a no-arg
                                 constructor
