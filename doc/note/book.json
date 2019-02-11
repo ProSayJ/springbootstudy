@@ -1,0 +1,82 @@
+{
+    "title": "文档标题",
+    "author": "ProSayJ",
+    "description": "文档描述",
+    "language": "en",
+    "links":{
+        "sidebar" : {
+            "Home" : "http://www.baidu.com"
+        }
+    },
+    "pdf": {
+        "pageNumbers": true,
+        "footerTemplate": true,
+        "headerTemplate": true,
+        "fontSize": 24,
+        "paperSize": "a4",
+        "margin": {
+            "right": 1,
+            "left": 1,
+            "top": 1,
+            "bottom": 1
+        }
+    },
+    "plugins":[
+        "-highlight",
+        "prism@^2.1.0",
+        "-search",
+        "search-plus@^0.0.11",
+        "-lunr",
+        "-livereload",
+        "prism-themes@^0.0.2",
+        "expandable-chapters",
+        "splitter",
+        "terminal",
+        "alerts",
+        "anchor-navigation-ex@0.1.8",
+        "copy-code-button",
+        "tbfed-pagefooter"
+    ],
+
+    "pluginsConfig": {
+        "fontSettings": {
+            "theme": "white",
+            "family": "sans",
+            "size": 4
+          },
+        "theme-default": {
+            "showLevel": true
+        },
+        "prism": {
+            "css": [
+              "prismjs/themes/prism-tomorrow.css"
+            ]
+          },
+    	 "jsfiddle":{
+            "type":"script",
+            "tabs":["result","js","css", "html"],
+            "height": "500",
+            "width": "500",
+            "fontColor": "00FF00"
+          },
+          "terminal":{
+              "copyButtons":true,
+              "fade":false,
+              "style":"flat"
+          },
+          "anchor-navigation-ex":{
+            "isRewritePageTitle": false,
+            "tocLevel1Icon": "fa fa-hand-o-right",
+            "tocLevel2Icon": "fa fa-hand-o-right",
+            "tocLevel3Icon": "fa fa-hand-o-right"   
+          },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright © ProSayJ 2019",
+            "modify_label": "文档修改时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        }
+       }
+
+       
+      
+}
