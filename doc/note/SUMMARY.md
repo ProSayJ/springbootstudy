@@ -68,6 +68,19 @@
     * [第六章 Java8与并发](src/读书笔记/实战Java高并发程序设计/第六章 Java8与并发.md)
     * [第七章 使用Akka构建高并发程序](src/读书笔记/实战Java高并发程序设计/第七章 使用Akka构建高并发程序.md)
     * [第八章 并行程序调试](src/读书笔记/实战Java高并发程序设计/第八章 并行程序调试.md)
+  
+  * [写给大忙人看的JavaSE8](README.md)
+    * [第1章 lambda表达式](src/读书笔记/写给大忙人看的JavaSE8/第1章 lambda表达式.md)
+    * [第2章 StreamAPI](src/读书笔记/写给大忙人看的JavaSE8/第2章 StreamAPI.md)
+    * [第3章 使用lambda编程](src/读书笔记/写给大忙人看的JavaSE8/第3章 使用lambda编程.md)
+    * [第4章 JavaFX](src/读书笔记/写给大忙人看的JavaSE8/第4章 JavaFX.md)
+    * [第5章 新的日期和时间API](src/读书笔记/写给大忙人看的JavaSE8/第5章 新的日期和时间API.md)
+    * [第6章 并发增强](src/读书笔记/写给大忙人看的JavaSE8/第6章 并发增强.md)
+    * [第7章 JavaScript引擎-Nashorn](src/读书笔记/写给大忙人看的JavaSE8/第7章 JavaScript引擎-Nashorn.md)
+    * [第8章 杂项改进](src/读书笔记/写给大忙人看的JavaSE8/第8章 杂项改进.md)
+   * [第9掌 你可能错过的Java7特性](src/读书笔记/写给大忙人看的JavaSE8/第9掌 你可能错过的Java7特性.md)
+   * [test](src/读书笔记/写给大忙人看的JavaSE8/00.md)
+
 
 
 

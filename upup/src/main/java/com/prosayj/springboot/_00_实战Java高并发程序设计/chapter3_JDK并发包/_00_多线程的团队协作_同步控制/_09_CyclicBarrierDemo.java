@@ -54,9 +54,9 @@ class BarrierRun implements Runnable {
     @Override
     public void run() {
         if (flag) {
-            System.out.println("司令:[士兵" + N + "个,任务完成!");
+            System.out.println("司令:[士兵" + N + "个,任务完成!]");
         } else {
-            System.out.println("司令:[士兵" + N + "个,集合完毕!");
+            System.out.println("司令:[士兵" + N + "个,集合完毕!]");
             flag = true;
         }
     }

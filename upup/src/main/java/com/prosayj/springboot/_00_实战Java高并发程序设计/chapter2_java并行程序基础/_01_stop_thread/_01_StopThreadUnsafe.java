@@ -9,17 +9,31 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
  * @since 1.0.0
  */
 public class _01_StopThreadUnsafe {
-
-
     public static User user = new User();
+
 
     public static void main(String args[]) throws InterruptedException {
         new ReadObjectThread().start();
+
         while (true) {
             Thread thread = new ChangeObjectThread();
             thread.start();
             Thread.sleep(150);
             thread.stop();
+        }
+    }
+
+    public static class ReadObjectThread extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (user) {
+                    if (user.getId() != Integer.parseInt(user.getName())) {
+                        System.out.println(user.toString());
+                    }
+                }
+                Thread.yield();
+            }
         }
     }
 
@@ -70,21 +84,6 @@ public class _01_StopThreadUnsafe {
             }
         }
     }
-
-    public static class ReadObjectThread extends Thread {
-        @Override
-        public void run() {
-            while (true) {
-                synchronized (user) {
-                    if (user.getId() != Integer.parseInt(user.getName())) {
-                        System.out.println(user.toString());
-                    }
-                }
-                Thread.yield();
-            }
-        }
-    }
-
 }
 
 class User {

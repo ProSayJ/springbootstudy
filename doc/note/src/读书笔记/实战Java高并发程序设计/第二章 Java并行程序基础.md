@@ -34,6 +34,11 @@ TERMINATED
 > **[info] 继承Thread类、实现Runnable接口:**
 - Thread类和Runnable类，Thread中的构造方法`public Thread(Runnable target)`，其中run函数如下：
 
+
+[_00_create_thread](https://github.com/ProSayJ/springbootstudy/blob/master/upup/src/main/java/com/prosayj/springboot/_00_实战Java高并发程序设计/chapter2_java并行程序基础/_00_create_thread/_00_NewThread.java)
+
+
+
 ```java
 public void run(){
     if(target != null){
@@ -46,7 +51,10 @@ public void run(){
 
 ### 2.2.2　终止线程	34
 
-- 终止线程的stop方法不建议使用，可能会导致数据不一致，可以使用内部设置函数来解决问题
+> **[warning] 禁止使用stop()方法来停止正在运行中的线程**
+- 终止线程的stop方法不建议使用，可能会导致数据不一致，可以使用内部设置函数来解决问题。
+
+[_01_StopThreadUnsafe](https://github.com/ProSayJ/springbootstudy/blob/master/upup/src/main/java/com/prosayj/springboot/_00_实战Java高并发程序设计/chapter2_java并行程序基础/_01_stop_thread/_01_StopThreadUnsafe.java)
 
 ### 2.2.3　线程中断	38
 
