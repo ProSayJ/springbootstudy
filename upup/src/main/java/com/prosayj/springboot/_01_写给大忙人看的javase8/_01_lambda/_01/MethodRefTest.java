@@ -1,4 +1,4 @@
-package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00;
+package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._01;
 
 import com.prosayj.springboot._01_写给大忙人看的javase8.testdata.Employee;
 import org.junit.Test;

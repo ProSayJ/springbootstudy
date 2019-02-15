@@ -1,8 +1,8 @@
-package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00;
+package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00_函数式编程基础;
 
 import java.util.function.Consumer;
 
-public class _07_ConsumerTest {
+public class _04_ConsumerTest {
     public static void main(String[] args) {
         String[] array = {"迪丽热巴,女", "古力娜扎,女", "马尔扎哈,男"};
 

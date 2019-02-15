@@ -1,8 +1,8 @@
-package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00;
+package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00_函数式编程基础;
 
 import java.util.function.Supplier;
 
-public class _04_Supplier {
+public class _01_Supplier {
     public static void main(String[] args) {
         int[] arr = new int[]{3, 4, 5, 2, 1, 10};
         getMax(() -> {

@@ -1,10 +1,4 @@
 # 第1章 lambda表达式 
-
-
-当大伙儿都认为并行必然会成为未来的大趋势的时候，2014年底，Avoiding ping pong 论坛上，伟大的Linus Torvalds 提出了一个截然不同的观点：**  "忘掉那该死的并行吧！" **
-> Give it up. The whole "parallel computing is the future" is a bunch of crock.
-
-
 ## 1.1 为什么要使用lambda表达式
 
 > **[info] lambda概述：**
@@ -18,181 +12,84 @@
 
 ## 1.2 lambda表达式的语法
 
-> **[info] lambda特性：**
-- Java中lambda表达式的格式：**<font color="red"> 参数</font> **、**<font color="red">箭头 -></font> **，以及**<font color="red">一个表达式</font>**。
-- 如果负责计算的代码无法用一个表达式表示，那么可以用编写方法的方式来编写：即用｛｝包裹代码并明确使用return语句。
-  
----
-### 语法格式一：无参，无返回值：
+> **[info] lambda语法：**
+- 包含三部分：
+- 1、一个括号内用逗号分隔的形式参数，参数是函数式接口里面方法的参数
+- 2、一个箭头符号：**<font color="red">  -> </font> **
+- 3、方法体，可以是表达式和代码块。
 
 ``` java
-   public void test1() {
-        Runnable run1 = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("马上就双11光棍节了...");
-                System.out.println("马上就双11光棍节了...");
-            }
-
-        };
-        run1.run();
-
-        System.out.println("*******************");
-        //使用Lambda表达式来充当此对象：run2,适用场景：接口中只有一个抽象方法的时候
-        Runnable run2 = () -> {
-            System.out.println("你们有没有因为爱情而鼓掌呢？");
-            System.out.println("你们有没有因为爱情而鼓掌呢？");
-            System.out.println("你们有没有因为爱情而鼓掌呢？");
-        };
-        run2.run();
-    }
+(parameters) -> expression 或者 (parameters) -> { statements; }
 ```
 
 ---
-### 语法格式二：Lambda 需要一个参数，但是没有返回值：
-
 ``` java
-public void test2() {
-        Consumer<String> com1 = new Consumer<String>() {
-            @Override
-            public void accept(String t) {
-                System.out.println(t);
-            }
+public class Demo1 {
+	public static void main(String[] args) {
+		runThreadByLambda();
+		runThreadByInnerClass();
+	}
 
-        };
-        com1.accept("我爱你，中国");
-        System.out.println("*******************");
+	public static void runThreadByLambda() {
+		/*
+		 Runnable就是一个函数式接口：他只有一个方法run()方法。
+		 1、因为run()方法没有参数，所以   ->前面的()中不需要声明形参
+		 2、run返回的是void，所以不需要return。
+		 3、->后面写的代码其实就是定义在run方法内的代码。因为此处代码只有一行，所以{}也可以省略。如果此处多与一行，则无法省略。
+		 */
+		Runnable runnable = () -> System.out.println("这个是用拉姆达实现的线程");
+		new Thread(runnable).start();
+	}
 
-        Consumer<String> com2 = (String t) -> {
-            System.out.println(t);
-        };
-        com2.accept("我爱北京天安门");
+	public static void runThreadByInnerClass() {
+		Runnable runnable = new Runnable() {
 
+			@Override
+			public void run() {
+				System.out.println("这个是用内部类实现的线程");
+
+			}
+		};
+		new Thread(runnable).start();
+	}
 }
 ```
-
----
-### 语法格式三：数据类型可以省略，因为可由编译器推断得出，称为“类型推断”：
-
-``` java
-public void test3() {
-        Consumer<String> com2 = (String t) -> {
-            System.out.println(t);
-        };
-        com2.accept("我爱北京天安门");
-
-        System.out.println("*******************");
-
-        Consumer<String> com3 = (t) -> {
-            System.out.println(t);
-        };
-        com3.accept("我爱北京故宫");
-}
-```
-
----
-### 语法格式四：Lambda 若只需要一个参数时，参数的小括号可以省略。
-
-``` java
-public void test5() {
-
-    Consumer<String> com3 = (t) -> {
-        System.out.println(t);
-    };
-    com3.accept("我爱北京故宫");
-
-    System.out.println("*******************");
-
-    Consumer<String> com4 = t -> {
-        System.out.println(t);
-    };
-    com4.accept("我爱北京故宫");
-}
-```
-
----
-### 语法格式五：Lambda 需要两个或以上的参数，多条执行语句，并且可以有返回值。
-
-``` java
-    public void test6() {
-        Comparator<Integer> com1 = new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                System.out.println(o1);
-                System.out.println(o2);
-                return Integer.compare(o1, o2);
-            }
-        };
-
-        int value = com1.compare(12, 21);
-        System.out.println(value);
-
-        System.out.println("*******************");
-
-        Comparator<Integer> com2 = (o1, o2) -> {
-            System.out.println(o1);
-            System.out.println(o2);
-            return Integer.compare(o1, o2);
-        };
-        int value1 = com1.compare(12, 21);
-        System.out.println(value1);
-    }
-```
-
----
-### 语法格式六：当 Lambda 体只有一条语句时，return 与大括号若有，都可以省略。
-
-``` java
-public void test7() {
-        Comparator<Integer> com1 = new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return Integer.compare(o1, o2);
-            }
-        };
-
-        int value = com1.compare(12, 21);
-        System.out.println(value);
-
-        System.out.println("*******************");
-
-
-        Comparator<Integer> com2 = (o1, o2) -> Integer.compare(o1, o2);
-        int value1 = com2.compare(12, 21);
-        System.out.println(value1);
-
-        System.out.println("*******************");
-        //方法引用
-        Comparator<Integer> com3 = Integer::compare;
-        value = com3.compare(12, 21);
-        System.out.println(value);
-}
-```
-
 
 ## 1.3 函数式接口
 
-
+---
+> **[info] 函数式接口概述：**
+- 函数式接口 (functional interface 也叫功能性接口，其实是同一个东西)。
+- 简单来说，函数式接口是 ** <font color="red">只包含一个方法的接口</font>**。
+- 比如Java标准库中的 ** <font color="red">java.lang.Runnable</font> ** 和 **<font color="red">java.util.Comparator</font>** 都是典型的函数式接口。
+- java 8提供 @FunctionalInterface作为注解,这个注解是非必须的，只要接口符合函数式接口的标准(即只包含一个方法的接口),虚拟机会自动判断，但最好在接口上使用注解@FunctionalInterface进行声明，以免团队的其他人员错误地往接口中添加新的方法。
+- Java中的lambda无法单独出现，它需要一个函数式接口来盛放，lambda表达式方法体其实就是函数接口的实现。 
 
 ---
-> **[info] 你可以在任意函数式接口上标注＠Functionalinterface注解，这样做有两个好处：**
+> **[info] ＠Functionalinterface**
+- 你可以在任意函数式接口上标注＠Functionalinterface注解，这样做有两个好处:
 - 首先，编译器会检查标注该注解的实体，检查它是否是只包含一个抽象方法的接口。
 - 另外，在javadoc页面也会包含一条声明，说明这个接口是一个函数式接口。
 - ** <font color="red">注意： </font>** 该注解并不要求强制使用。从概念上来讲，所有只含有一个抽象方法的接口都是函数式接口，但是使用＠FunctionalInterface注解会让你的代码看上去更清楚。
 
+``` java
+@FunctionalInterface //添加此注解后，接口中只能有一个抽象方法。
+public interface A {
+	void call();
+}
+```
 
 
 ---
+###  java.util.function包概述：
 > **[info] java.util.function包概述：** 
 - 在jdk8之后，多了java.util.function。JavaAPI在java.util.function包中定义了许多非常通用的函数式接口。
-- 其中有一个接口叫做** <font color="blue">Supplier<T>（生产者）</font>**， 里面有一个方法，可以获取一个对象。
+- 其中有一个接口叫做** <font color="blue">Supplier<T></font>**，这个接口表示生产者，里面有一个方法，可以获取一个对象。
 - 其中还有一个函数式接口叫做** <font color="blue">Consumer</font>**，这个接口表示消费者，可以消费一个数据(使用这个数据去干一些事情)
 
 
 ``` java
-package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00;
+package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00_函数式编程基础;
 import java.util.function.Supplier;
 public class _03_Supplier {
     public static void main(String[] args) {
@@ -231,6 +128,16 @@ public class _04_Supplier {
 ```
 
 ## 1.4 方法引用
+
+** 其实是lambda表达式的一种简化写法。所引用的方法其实是lambda表达式的方法体实现，语法也很简单，左边是容器（可以是类名，实例名），中间是"::"，右边是相应的方法名。比如：<font color="green">ObjectReference::methodName </font>**
+
+
+> **[info] 一般方法的引用格式：**
+- 如果是静态方法，则是ClassName::methodName。如 Object ::equals;
+- 如果是实例方法，则是Instance::methodName。如Object obj=new Object();obj::equals;
+- 构造函数.则是ClassName::new
+
+
 ## 1.5 构造器引用
 ## 1.6 变量作用域
 ## 1.7 默认方法
@@ -247,6 +154,7 @@ public class _04_Supplier {
 
 
 ### 1.1.1　忘掉那该死的并行	2
+
 
 > **[info] Linus Torvalds 是个传奇的人物：**
 - 他给出了linux的原型,1991年网络上发布Linux源码。

@@ -1,11 +1,13 @@
-package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00;
+package com.prosayj.springboot._01_写给大忙人看的javase8._01_lambda._00_函数式编程基础;
 
 import java.util.function.Consumer;
 
-public class _06_Consumer {
+public class _03_Consumer {
     public static void main(String[] args) {
-        method(s -> System.out.println(s.toUpperCase()),
-                s -> System.out.println(s.toLowerCase()));
+        method(
+                s -> System.out.println(s.toUpperCase()),
+                s -> System.out.println(s.toLowerCase())
+        );
     }
 
     public static void method(Consumer<String> one, Consumer<String> two) {

@@ -5097,6 +5097,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     译：这部分参考文档涵盖了Spring Framework绝对不可或缺的所有技术。
                 </p>
             </div>
+            <hr>
             <div class="paragraph">
                 <p>Foremost amongst these is the Spring Framework’s Inversion of Control (IoC) container. A
                     thorough treatment of the Spring Framework’s IoC container is closely followed by
@@ -5110,6 +5111,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     Spring Framework有自己的AOP框架，它在概念上易于理解，并且成功地解决了Java企业编程中AOP要求的80％最佳点。
                 </p>
             </div>
+            <hr>
             <div class="paragraph">
                 <p>Coverage of Spring’s integration with AspectJ (currently the richest — in terms of
                     features — and certainly most mature AOP implementation in the Java enterprise space) is
@@ -5138,19 +5140,23 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     <p>This chapter covers the Spring Framework implementation of the Inversion of Control
                         (IoC) principle. (See <a
                                 href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/overview.html#background-ioc">Inversion
-                            of Control</a>.) IoC
-                        is also known as dependency injection (DI). It is a process whereby objects define
+                            of Control</a>.) IoC is also known as dependency injection (DI). 
+
+                        It is a process whereby objects define
                         their dependencies (that is, the other objects they work with) only through constructor
                         arguments, arguments to a factory method, or properties that are set on the object
-                        instance after it is constructed or returned from a factory method. The container then
-                        injects those dependencies when it creates the bean. This process is fundamentally
+                        instance after it is constructed or returned from a factory method. 
+                        
+                        The container then injects those dependencies when it creates the bean. This process is fundamentally
                         the inverse (hence the name, Inversion of Control) of the bean itself
                         controlling the instantiation or location of its dependencies by using direct
                         construction of classes or a mechanism such as the Service Locator pattern.</p>
                     <p class="translate">
-                        译：本章介绍了控制反转（IoC）原理的Spring Framework实现。（参见控制反转。）IoC也称为依赖注入（DI）。
-                        这是一个过程，通过这个过程，对象只能通过构造函数参数，工厂方法的参数或在构造或从工厂方法返回后在对象实例上设置的属性来定义它们的依赖关系（即，它们使用的其他对象）。 。
-                        然后容器在创建bean时注入这些依赖项。这个过程基本上是bean本身通过使用类的直接构造或诸如服务定位器模式之类的机制来控制其依赖关系的实例化或位置的逆（因此名称，控制反转）。
+                        译：本章介绍了控制反转（IoC）原理的Spring Framework实现。（参见控制反转。） IoC也称为依赖注入(DI)。
+                        在这个过程中，对象仅通过构造方法参数、工厂方法的参数或者对象实例在构造实例化以后或通过工厂方法返回后设置的属性来定义它们的依赖项(即它们使用的其他对象)。
+                        然后容器在创建bean时注入这些依赖项。
+                        这个过程基本上是bean本身的逆过程(因此得名“控制反转”)，通过使用类的直接构造或服务定位器模式等机制来控制依赖关系的实例化或位置。
+                        
                     </p>
                 </div>
                 <div class="paragraph">
@@ -5163,8 +5169,8 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         <a href="https://docs.spring.io/spring-framework/docs/5.2.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/context/ApplicationContext.html"><code>ApplicationContext</code></a>
                         is a sub-interface of <code>BeanFactory</code>. It adds:</p>
                     <p class="translate">
-                        译：在org.springframework.beans和org.springframework.context包是Spring框架的IoC容器的基础。
-                        该 BeanFactory 接口提供了一种能够管理任何类型对象的高级配置机制。 ApplicationContext 是一个子界面BeanFactory。它补充说：
+                        译：org.springframework.beans和org.springframework.context包是Spring框架的IoC容器的基础包。
+                        BeanFactory 接口提供了一种能够管理任何类型对象的高级配置机制。 ApplicationContext 是BeanFactory的子接口。它补充说：
                     </p>
                 </div>
                 <div class="ulist">
@@ -5179,12 +5185,12 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         </li>
                         <li>
                             <p>Event publication</p>
-                            <P class="translate">译：活动出版</P>
+                            <P class="translate">译：事件发布</P>
                         </li>
                         <li>
                             <p>Application-layer specific contexts such as the <code>WebApplicationContext</code>
                                 for use in web applications.</p>
-                            <p class="translate">译：特定WebApplicationContext 于应用程序层的上下文，例如在Web应用程序中使用的上下文。</p>
+                            <p class="translate">译：应用程序层特定的上下文，如web应用程序中使用的WebApplicationContext。</p>
                         </li>
                     </ul>
                 </div>
@@ -5200,9 +5206,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanfactory">The
                             <code>BeanFactory</code></a>.</p>
                     <p class="translate">
-                        译：简而言之，它BeanFactory提供了配置框架和基本功能，并ApplicationContext添加了更多特定于企业的功能。
-                        它ApplicationContext是完整的超集，BeanFactory在本章中仅用于Spring的IoC容器的描述。
-                        有关使用BeanFactory而不是ApplicationContext,看到 的BeanFactory更多信息。
+                        译：
+                        简而言之，BeanFactory提供配置框架和基本功能，ApplicationContext添加更多特定用于企业的功能。
+                        ApplicationContext是BeanFactory的一个完整超集，在本章中只用于描述Spring s IoC容器。
+                        有关使用BeanFactory而不是ApplicationContext的更多信息，请参见BeanFactory。
                     </p>
                 </div>
                 <div class="paragraph">
@@ -5233,7 +5240,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         you express the objects that compose your application and the rich interdependencies
                         between those objects.</p>
                     <p class="translate">
-                        译：该org.springframework.context.ApplicationContext接口代表Spring IoC容器，负责实例化，配置和组装bean。
+                        译：org.springframework.context.ApplicationContext接口代表Spring IoC容器，负责实例化，配置和组装bean。
                         容器通过读取配置元数据获取有关要实例化，配置和组装的对象的指令。
                         配置元数据以XML，Java注释或Java代码表示。它允许您表达组成应用程序的对象以及这些对象之间丰富的相互依赖性。
                     </p>
