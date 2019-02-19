@@ -18,6 +18,7 @@
         <module>event</module>
         <module>nodejs</module>
         <module>gui</module>
+        <module>javafx</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

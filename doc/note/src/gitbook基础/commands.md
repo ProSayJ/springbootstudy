@@ -24,6 +24,21 @@ Success styling
 
 # 命令
 
+** 安装gitbook：**
+
+先行安装Node.js、GitBook、GitBook Editor、Git版本控制器
+
+node -v //显示v4.5.0 验证是否安装成功；
+
+npm install gitbook -g 命令行安装gitbook；
+
+npm install -g gitbook-cli 安装gitbook的命令行工具；
+
+gitbook -V //显示0.4.2 检测是否成功；
+
+卸载用npm uninstall -g gitbook
+
+
 这里主要介绍一下 GitBook 的命令行工具 `gitbook-cli` 的一些命令, 首先说明两点:
 * `gitbook-cli` 和 `gitbook` 是两个软件
 * `gitbook-cli` 会将下载的 gitbook 的不同版本放到 `~/.gitbook`中, 可以通过设置`GITBOOK_DIR`环境变量来指定另外的文件夹
