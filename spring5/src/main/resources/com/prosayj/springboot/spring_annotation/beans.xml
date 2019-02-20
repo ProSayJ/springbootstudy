@@ -13,13 +13,12 @@
     <!-- 包扫描、只要标注了@Controller、@Service、@Repository，@Component -->
     <!-- <context:component-scan base-package="com.atguigu" use-default-filters="false"></context:component-scan> -->
     <bean id="person" class="com.prosayj.springboot.spring_annotation.bean.Person" scope="prototype">
-        <property name="age" value="${}"></property>
+        <!--<property name="age" value="${}"></property>-->
         <property name="name" value="zhangsan"></property>
     </bean>
 
     <!-- 开启基于注解版的切面功能 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-
     <!-- <tx:annotation-driven/> -->
 
 </beans>
