@@ -68,7 +68,7 @@ public class ColorfulCircles extends Application {
                             new KeyValue(circle.translateXProperty(), random() * 800),
                             new KeyValue(circle.translateYProperty(), random() * 600)));
         }
-        // play 40s of animation
+        // play 40s of _02_动画基础_animation
         timeline.play();
 
         primaryStage.show();

@@ -18,6 +18,8 @@
   * [区块链学习]()
   * [常用的地址]()
   * [我的测试账号](src/常用的地址/我的测试账号.md) 
+  * [PKI系统介绍](src/实名相关/PKI系统介绍.md) 
+
 
 * [JDK8-Source-Analysis](README.md)
   * [AsynchronousFileChannel](src/JDK8-Source-Analysis/note/AsynchronousFileChannel/asynchronousfilechannel.md)
@@ -147,5 +149,4 @@
     * [内存模型](README.md)
   
 * [JavaFX教程](README.md)
-   * [JavaFX概述和简介](src/JavaFX教程/JavaFX概述和简介.md)
-   * [JavaFX开发环境安装配置](src/JavaFX教程/JavaFX开发环境安装配置.md)
+   * [JavaFX概述和简介](src/JavaFX教程/第一篇 开始学习JavaFX.md)
