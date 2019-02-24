@@ -86,9 +86,14 @@
     * [第6章 并发增强](src/读书笔记/写给大忙人看的JavaSE8/第6章 并发增强.md)
     * [第7章 JavaScript引擎-Nashorn](src/读书笔记/写给大忙人看的JavaSE8/第7章 JavaScript引擎-Nashorn.md)
     * [第8章 杂项改进](src/读书笔记/写给大忙人看的JavaSE8/第8章 杂项改进.md)
-   * [第9掌 你可能错过的Java7特性](src/读书笔记/写给大忙人看的JavaSE8/第9掌 你可能错过的Java7特性.md)
-   * [test](src/读书笔记/写给大忙人看的JavaSE8/00.md)
+    * [第9掌 你可能错过的Java7特性](src/读书笔记/写给大忙人看的JavaSE8/第9掌 你可能错过的Java7特性.md)
+    * [test](src/读书笔记/写给大忙人看的JavaSE8/00.md)
 
+  * [图解密码技术-第3版](src/读书笔记/图解密码学/README.md)
+    * [第1章 环游密码世界](src/读书笔记/图解密码学/第1章 环游密码世界.md) 
+
+
+  * [算法 第4版](src/读书笔记/算法/README.md)
 
 
 
