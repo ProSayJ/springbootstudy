@@ -152,7 +152,7 @@ public class MySataicArray<E> {
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
-        result.append(String.format("Array:size = %d, capacity = %d ==>", size, data.length));
+        result.append(String.format("MyArray:size = %d, capacity = %d ==>", size, data.length));
         result.append("[ ");
         for (int i = 0; i < size; i++) {
             result.append(data[i]);

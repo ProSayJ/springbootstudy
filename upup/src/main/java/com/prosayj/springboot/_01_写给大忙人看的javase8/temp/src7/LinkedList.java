@@ -1082,7 +1082,7 @@ package com.prosayj.springboot._01_写给大忙人看的javase8.temp.src7;///*
 //    @SuppressWarnings("unchecked")
 //    public <T> T[] toArray(T[] a) {
 //        if (a.length < size)
-//            a = (T[])java.lang.reflect.Array.newInstance(
+//            a = (T[])java.lang.reflect.MyArray.newInstance(
 //                                a.getClass().getComponentType(), size);
 //        int i = 0;
 //        Object[] result = a;

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {padding: 0; margin: 0; list-style: none; font: inherit; color: inherit; box-sizing: border-box;}
+    html, body {height: 100%;}
+
+    #app {width: 100%; height: 100%; position: fixed; left: 0; top: 0; text-align: center;}
+    #app canvas {background: wheat;}
+  </style>
+</head>
+<body>
+  
+<div id="app">
+  <canvas id="c"></canvas>
+</div>
+
+<script>
+function rand(m, n) {
+  return Math.floor(Math.random() * (n - m + 1) + m)
+}
+
+class Node {
+  constructor(e) {
+    this.e = e
+    this.level = 0
+    this.x = 0
+    this.y = 0
+  }
+}
+
+class BST {
+  constructor(arr = []) {
+    this.root = null
+    this.space = 40
+    this.levelHeight = this.space * 1.2
+    this.iLeft = 0
+
+    for (let i = 0; i < arr.length; i++) {
+      let node = this.add(arr[i])
+      node.x = i * this.space + this.space / 2
+      node.y = this.levelHeight
+      arr[i] = node
+    }
+
+    this.setPos()
+  }
+  add(e) {
+    let newNode = null
+
+    function add(node, e) {
+      if (!node) {
+        newNode = new Node(e)
+        return newNode
+      }
+
+      if (e < node.e) {
+        node.l = add(node.l, e)
+        node.l.parent = node
+      } else if (e > node.e) {
+        node.r = add(node.r, e)
+        node.r.parent = node
+      } else {
+        newNode = node
+      }
+
+      return node
+    }
+
+    this.root = add(this.root, e)
+    return newNode
+  }
+  setPos(type) {
+    const me = this
+    let level = 0
+
+    me.iLeft = 0
+    me.width = 0
+    me.height = 0
+
+    function setPos(node) {
+      if (!node) {
+        return
+      }
+
+      level++
+      node.level = level
+      node.y = parseInt(level * me.levelHeight)
+      setPos(node.l)
+      me.iLeft += me.space / 2
+      node.x = me.iLeft + me.space / 2
+      setPos(node.r)
+
+      if (node.l && node.r) {
+        node.x = (node.l.x + node.r.x) / 2
+      }
+
+      level--
+    }
+
+    setPos(this.root)
+  }
+  getChildren(node) {
+    let arr = []
+    function getChildren(node) {
+      if (!node) {
+        return
+      }
+
+      arr.push(node.e)
+
+      getChildren(node.l)
+      getChildren(node.r)
+    }
+
+    getChildren(node)
+    return arr
+  }
+  isBST() {
+    let nodePrev
+    let ret = true
+
+    function isBST(node) {
+      if (!node || !ret) {
+        return
+      }
+
+      isBST(node.l)
+      if (nodePrev !== undefined && node.e < nodePrev.e) {
+        ret = false
+        return
+      }
+      nodePrev = node
+      isBST(node.r)
+    }
+
+    isBST(this.root)
+
+    return ret
+  }
+  render(e) {
+    const me = this
+
+    gd.clearRect(0, 0, dw, dh)
+
+    function drawLine(node) {
+      if (!node) {
+        return
+      }
+
+      drawLine(node.l)
+      drawLine(node.r)
+
+      gd.beginPath()
+      node.l && gd.lineTo(node.l.x, node.l.y)
+      gd.lineTo(node.x, node.y)
+      node.r && gd.lineTo(node.r.x, node.r.y)
+      gd.strokeStyle = '#a00'
+      gd.stroke()
+    }
+
+    function drawCircle(node) {
+      if (!node) {
+        return
+      }
+
+      drawCircle(node.l)
+      drawCircle(node.r)
+
+      gd.beginPath()
+      gd.arc(node.x, node.y, 20, 0, 2 * Math.PI)
+      gd.fillStyle = 'rgba(255,0,0,.5)'
+      gd.fill()
+
+      if (e && gd.isPointInPath(e.offsetX, e.offsetY)) {
+        let arr = me.getChildren(node)
+        console.log(JSON.stringify(arr))
+      }
+
+      gd.fillStyle = '#fff'
+      gd.textAlign = 'center'
+      gd.textBaseline = 'middle'
+      gd.font = '12px Arial'
+      gd.fillText(node.e, node.x, node.y)
+    }
+
+    drawLine(this.root)
+    drawCircle(this.root)
+  }
+}
+
+const c = document.getElementById('c')
+const gd = c.getContext('2d')
+
+let dw = 0
+let dh = 0
+
+let arr
+let len = 50
+arr = new Array(len).fill().map(() => {
+  return rand(0, len * 10) * 10
+})
+// arr = [650, 1010, 1490, 900, 1080, 890, 600, 210, 160, 1420, 190, 1020, 530, 340, 810, 80, 880, 1240, 1120, 510]
+const bst = new BST(arr)
+
+window.onresize = () => {
+  dw = window.innerWidth
+  dh = window.innerHeight
+
+  c.width = dw
+  c.height = dh
+
+  bst.render()
+}
+
+c.onclick = (e) => {
+  bst.render(e)
+}
+
+window.onresize()
+
+</script>
+
+</body>
+</html>

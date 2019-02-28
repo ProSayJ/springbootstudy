@@ -18,7 +18,7 @@ public class SyncDubbo2 {
         public synchronized void operationSup() {
             try {
                 i--;
-                System.out.println("Main print i = " + i);
+                System.out.println("Test print i = " + i);
                 Thread.sleep(SLEEP_TIME_100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

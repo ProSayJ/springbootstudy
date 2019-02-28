@@ -19,6 +19,7 @@
         <module>nodejs</module>
         <module>gui</module>
         <module>javafx</module>
+        <module>apollo</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->
