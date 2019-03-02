@@ -102,15 +102,17 @@ public class MyArray {
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
+        result.append(String.format("MyArray Capacity-is 【%d】,size-is【%d】：[", data.length, size));
         for (int i = 0; i < size; i++) {
             if (i == 0) {
-                result.append(String.format("MyArray Capacity-is 【%d】,size-is【%d】：[", data.length, size)).append(data[i]).append(",");
+                result.append(data[i]).append(",");
             } else if (i == size - 1) {
-                result.append(data[i]).append("]");
+                result.append(data[i]);
             } else {
                 result.append(data[i]).append(",");
             }
         }
+        result.append("]");
         return result.toString();
     }
 }

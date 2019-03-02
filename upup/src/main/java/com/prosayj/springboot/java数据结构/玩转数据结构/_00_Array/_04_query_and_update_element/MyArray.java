@@ -72,10 +72,13 @@ public class MyArray {
      * @param e
      */
     public void add(int index, int e) {
+        if (index > size) {
+
+        }
         if (size == data.length) {
             throw new IllegalArgumentException("Add failed. MyArray is full.");
         }
-        if (index < 0 || index > data.length) {
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
         }
 
@@ -113,21 +116,26 @@ public class MyArray {
      * @param e
      */
     public void set(int index, int e) {
-
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed. Index is illegal.");
+        }
+        data[index] = e;
     }
 
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
+        result.append(String.format("MyArray Capacity-is 【%d】,size-is【%d】：[", data.length, size));
         for (int i = 0; i < size; i++) {
             if (i == 0) {
-                result.append("MyArray Capacity-is 【" + data.length + "】,size-is【" + size + "】:[").append(data[i]).append(",");
+                result.append(data[i]).append(",");
             } else if (i == size - 1) {
-                result.append(data[i]).append("]");
+                result.append(data[i]);
             } else {
                 result.append(data[i]).append(",");
             }
         }
+        result.append("]");
         return result.toString();
     }
 }

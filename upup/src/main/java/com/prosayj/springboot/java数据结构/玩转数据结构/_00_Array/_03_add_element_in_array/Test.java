@@ -9,7 +9,8 @@ package com.prosayj.springboot.java数据结构.玩转数据结构._00_Array._03
  */
 public class Test {
     public static void main(String[] args) {
-        MyArray myArray = new MyArray(5);
+        MyArray myArray = new MyArray();
+        System.out.println(myArray);
         myArray.addFirst(9);
         myArray.addList(3);
         System.out.println(myArray);
