@@ -1,5 +1,7 @@
 # Summary
 
+* [hexo+next配置](src/hexo+next配置.md)
+
 * [gitbook基础](README.md)
   * [个性化配置](README.md)
     * [book.json](src/gitbook基础/bookjson.md) 

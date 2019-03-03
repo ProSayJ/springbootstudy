@@ -108,7 +108,7 @@ public class MyArray<E> {
     /**
      * 向所有元素后添加一个新元素
      */
-    public void addList(E e) {
+    public void addLast(E e) {
         add(size, e);
     }
 
@@ -214,7 +214,7 @@ public class MyArray<E> {
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
-        result.append(String.format("MyArray Capacity-is 【%d】,size-is【%d】：[", data.length, size));
+        result.append(String.format("MyArray Capacity-is 【%d】,size-is【%d】===>[", data.length, size));
         for (int i = 0; i < size; i++) {
             if (i == 0) {
                 result.append(data[i]).append(",");
