@@ -16,6 +16,9 @@ date: 2019-03-03 22:51:00
 
 [hexo高级配置](https://www.jianshu.com/p/efbeddc5eb19)
 
+[超完整的配置](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html)
+
+
 # 安装配置Hexo
 
 ## 安装好node.js和git后，可以通过npm来安装Hexo。
@@ -179,13 +182,7 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
     ## theme: landscape
     theme: next
 
-
-## 配置主题
-所有内容都在themes/next文件夹下的config.yml文件里修改。
-
-官方文档里写的是有些配置需要将一部分代码添加到配置文件中，但其实不用，我们逐行看配置文件就会发现，有很多功能都已经放在配置文件里了，只是注释掉了，我们只需要取消注释，把需要的相关信息补全即可使用。
-
-### 菜单栏 menu
+## 菜单栏 menu
 原生菜单栏有主页、关于、分类、标签等数个选项，但是在配置文件中是注释掉的状态，这里我们自行修改注释就行。
 
     menu:
@@ -205,37 +202,42 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 - ||后面是fontAwesome里的文件对应的名称。
 - menu_icons 记得选enable: true（默认应该是true）
 
+## 配置主题
+所有内容都在themes/next文件夹下的config.yml文件里修改。
+
+官方文档里写的是有些配置需要将一部分代码添加到配置文件中，但其实不用，我们逐行看配置文件就会发现，有很多功能都已经放在配置文件里了，只是注释掉了，我们只需要取消注释，把需要的相关信息补全即可使用。
+
 
 ### 侧栏设置
 **侧栏设置包括：侧栏位置、侧栏显示与否、文章间距、返回顶部按钮等等**
 
 打开**主题配置文件**找到**sidebar**字段。
 
+``` 
+sidebar:
+  # Sidebar Position, available value: left | right (only for Pisces | Gemini).
+  #position: left
+  position: right
 
-    sidebar:
-      # Sidebar Position, available value: left | right (only for Pisces | Gemini).
-      #position: left
-      position: right
+  # Sidebar Display, available value (only for Muse | Mist):
+  #  - post    expand on posts automatically. Default. 默认行为，在文章页面（拥有目录列表）时显示
+  #  - always  expand for all pages automatically.在所有页面中都显示
+  #  - hide    expand only when click on the sidebar toggle icon.在所有页面中都隐藏（可以手动展开）
+  #  - remove  Totally remove sidebar including sidebar toggle.完全移除
+  #display: post
+  display: always
+  #display: hide
+  #display: remove
 
-      # Sidebar Display, available value (only for Muse | Mist):
-      #  - post    expand on posts automatically. Default. 默认行为，在文章页面（拥有目录列表）时显示
-      #  - always  expand for all pages automatically.在所有页面中都显示
-      #  - hide    expand only when click on the sidebar toggle icon.在所有页面中都隐藏（可以手动展开）
-      #  - remove  Totally remove sidebar including sidebar toggle.完全移除
-      #display: post
-      display: always
-      #display: hide
-      #display: remove
+  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).文章间距（只对Pisces | Gemini两种风格有效）
+  offset: 12
 
-      # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).文章间距（只对Pisces | Gemini两种风格有效）
-      offset: 12
+  # Back to top in sidebar (only for Pisces | Gemini). 返回顶部按钮（只对Pisces | Gemini两种风格有效）
+  b2t: false
 
-      # Back to top in sidebar (only for Pisces | Gemini). 返回顶部按钮（只对Pisces | Gemini两种风格有效）
-      b2t: false
-
-      # Scroll percent label in b2t button.返回顶部按钮的百分比
-      scrollpercent: true
-
+  # Scroll percent label in b2t button.返回顶部按钮的百分比
+  scrollpercent: true
+```
 
 ### 主题风格 schemes
 
@@ -277,6 +279,11 @@ next有四种主题风格：我们把想要选择的取消注释，其他三个�
     # canvas_sphere
     canvas_sphere: false
 
+canvas_nest: true是一个不错的动态图配置：如果想要更改颜色和数量？修改文件：
+```
+blog/themes/next/source/lib/canvas-nest/canvas-nest.min.js
+```
+具体修改参见：[README](https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md)
 
 
 ### 统计文章字数和阅读时间
@@ -313,29 +320,49 @@ next有四种主题风格：我们把想要选择的取消注释，其他三个�
       background: $blue; //修改为自己喜欢的颜色
     }
     
-### 修改内容区域的宽度
-我们用Next主题是发现在电脑上阅读文章时内容两边留的空白较多，这样在浏览代码块时经常要滚动滚动条才能阅读完整，体验不是很好，下面提供修改内容区域的宽度的方法。
-NexT 对于内容的宽度的设定如下：
-- 700px，当屏幕宽度 < 1600px
-- 900px，当屏幕宽度 >= 1600px
-- 移动设备下，宽度自适应
-
-如果你需要修改内容的宽度，同样需要编辑样式文件。
-在Mist和Muse风格可以用下面的方法：
-
-编辑主题的 source/css/_variables/custom.styl 文件，新增变量：
-
-    // 修改成你期望的宽度
-    $content-desktop = 700px
-
-    // 当视窗超过 1600px 后的宽度
-    $content-desktop-large = 900px
     
-当你使用Pisces风格时可以用下面的方法：
+### 内容板块宽度设置
+**默认的宽度觉得有点窄，想改宽一点：**
 
-    header{ width: 90%; }
-    .container .main-inner { width: 90%; }
-    .content-wrap { width: calc(100% - 260px); }
+在source/css/_schemes/Picses/_layout.styl文件末尾添加如下代码：
+
+``` 
+// 以下为新增代码:新增内容板块宽度
+header{ width: 90% !important; }
+header.post-header {
+  width: auto !important;
+}
+.container .main-inner { width: 90%; }
+.content-wrap { width: calc(100% - 260px); }
+
+.header {
+  +tablet() {
+    width: auto !important;
+  }
+  +mobile() {
+    width: auto !important;
+  }
+}
+
+.container .main-inner {
+  +tablet() {
+    width: auto !important;
+  }
+  +mobile() {
+    width: auto !important;
+  }
+}
+
+.content-wrap {
+  +tablet() {
+    width: 100% !important;
+  }
+  +mobile() {
+    width: 100% !important;
+  }
+}
+```
+
     
 ### 添加背景图
 在 themes/next/source/css/_custom/custom.styl 中添加如下代码：
@@ -354,6 +381,7 @@ NexT 对于内容的宽度的设定如下：
 博客根目录 themes\next\source\css\_schemes\Pisces\_layout.styl 文件 .content-wrap 标签下 background: white修改为：
 
 		background: rgba(255,255,255,0.7); //0.7是透明度
+   
         
 #### 菜单栏背景
 博客根目录 themes\next\source\css\_schemes\Pisces\_layout.styl 文件 .header-inner 标签下 background: white修改为：
@@ -372,7 +400,23 @@ NexT 对于内容的宽度的设定如下：
 ####  按钮背景
 博客根目录 themes\next\source\css\_common\components\post\post-button.styl 同上修改对应位置为 background: transparent;
 
+### read more
+进入主题的_config.yml文件，修改配置为true即可：
 
+        # Automatically Excerpt. Not recommend.
+        # Please use <!-- more --> in the post to control excerpt accurately.
+        auto_excerpt:
+          enable: true
+          length: 150
+          
+### Hexo中添加本地图片
+把主页配置文件_config.yml 里的post_asset_folder:这个选项设置为true。
+
+```
+npm install hexo-asset-image --save
+```
+
+以后新建md文件的时候也
 
 ## 第三方插件
 
