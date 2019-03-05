@@ -1,4 +1,4 @@
-package com.prosayj.springboot.api.vo.input;
+package com.prosayj.springboot.portal.api.vo.input;
 
 import io.swagger.annotations.ApiModelProperty;
 

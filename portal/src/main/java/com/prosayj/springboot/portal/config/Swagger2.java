@@ -1,4 +1,4 @@
-package com.prosayj.springboot.config;
+package com.prosayj.springboot.portal.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
                 //为controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.prosayj.springboot.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.prosayj.springboot.portal.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

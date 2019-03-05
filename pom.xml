@@ -20,6 +20,7 @@
         <module>gui</module>
         <module>javafx</module>
         <module>apollo</module>
+        <module>portal</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

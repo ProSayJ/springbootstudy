@@ -1,10 +1,10 @@
-package com.prosayj.springboot.api;
+package com.prosayj.springboot.portal.api;
 
 
 import com.prosayj.springboot.models.user.dto.UserDTO;
 import com.prosayj.springboot.models.user.service.UserService;
-import com.prosayj.springboot.api.vo.input.UserQuery;
-import com.prosayj.springboot.api.vo.output.UserVO;
+import com.prosayj.springboot.portal.api.vo.input.UserQuery;
+import com.prosayj.springboot.portal.api.vo.output.UserVO;
 import com.prosayj.springboot.utils.BeanUtil;
 import com.prosayj.springboot.utils.easycaptchautil.Captcha;
 import com.prosayj.springboot.utils.easycaptchautil.GifCaptcha;
@@ -34,6 +34,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class HelloController {
+/*
 
     @Autowired
     private UserService userService;
@@ -68,6 +69,7 @@ public class HelloController {
             @Valid @RequestBody UserQuery userQuery) {
         return BeanUtil.toBeanList(userService.queryAllUser(), UserVO.class);
     }
+*/
 
     @GetMapping("/index")
     public String index() {
