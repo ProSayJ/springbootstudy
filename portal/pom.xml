@@ -37,6 +37,43 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- jsp标签库 -->
+       <!-- <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
+
+
+        <!--解除HTML严格语法-->
+        <!-- <dependency>
+             <groupId>net.sourceforge.nekohtml</groupId>
+             <artifactId>nekohtml</artifactId>
+         </dependency>-->
+
+        <!--bootstrap-->
+        <!-- <dependency>
+             <groupId>org.webjars</groupId>
+             <artifactId>bootstrap</artifactId>
+             <version>3.3.5</version>
+         </dependency>
+         <dependency>
+             <groupId>org.webjars</groupId>
+             <artifactId>jquery</artifactId>
+             <version>3.1.1</version>
+         </dependency>-->
+
+
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-freemarker</artifactId>
+         </dependency>-->
+
         <!--swagger2-->
         <dependency>
             <groupId>io.springfox</groupId>

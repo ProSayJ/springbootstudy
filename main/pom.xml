@@ -49,11 +49,7 @@
             <artifactId>utils</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.prosayj.springboot</groupId>
-            <artifactId>web</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
 
         <!--外部依赖-->
 
