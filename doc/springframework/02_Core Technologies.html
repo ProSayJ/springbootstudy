@@ -5159,6 +5159,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>The <code>org.springframework.beans</code> and <code>org.springframework.context</code> packages
                         are the basis
@@ -5194,6 +5195,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         </li>
                     </ul>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>In short, the <code>BeanFactory</code> provides the configuration framework and basic
                         functionality, and the <code>ApplicationContext</code> adds more enterprise-specific
@@ -5212,6 +5214,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         有关使用BeanFactory而不是ApplicationContext的更多信息，请参见BeanFactory。
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>In Spring, the objects that form the backbone of your application and that are managed
                         by the Spring IoC container are called beans. A bean is an object that is
@@ -5220,10 +5223,11 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         among them, are reflected in the configuration metadata used by a container.</p>
                     <p class="translate">
                         译：在Spring中，构成应用程序主干并由Spring IoC容器管理的对象称为bean。
-                        bean是一个由Spring IoC容器实例化，组装和管理的对象。
-                        否则，bean只是应用程序中众多对象之一。Bean及其之间的依赖关系反映在容器使用的配置元数据中。
+                        bean是由Spring IoC容器实例化、组装和以其他方式管理的对象。
+                        否则，bean只是应用程序中的许多对象之一。bean及其之间的依赖关系反映在容器使用的配置元数据中。
                     </p>
                 </div>
+                <hr>
             </div>
             <div class="sect2">
                 <h3 id="beans-basics"><a class="anchor"
@@ -5240,11 +5244,12 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         you express the objects that compose your application and the rich interdependencies
                         between those objects.</p>
                     <p class="translate">
-                        译：org.springframework.context.ApplicationContext接口代表Spring IoC容器，负责实例化，配置和组装bean。
-                        容器通过读取配置元数据获取有关要实例化，配置和组装的对象的指令。
-                        配置元数据以XML，Java注释或Java代码表示。它允许您表达组成应用程序的对象以及这些对象之间丰富的相互依赖性。
+                        译：org.springframework.context.ApplicationContext接口表示Spring IoC容器，并负责实例化、配置和组装bean。
+                        容器通过读取配置元数据,以此来获取关于实例化、配置和组装哪些对象的说明。
+                        配置元数据用XML、Java注释或Java代码表示。它允许您表达组成应用程序的对象以及这些对象之间丰富的相互依赖关系。
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>Several implementations of the <code>ApplicationContext</code> interface are supplied
                         with Spring. In stand-alone applications, it is common to create an
@@ -5259,9 +5264,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     <p class="translate">
                         译：ApplicationContextSpring提供了几种接口实现。在独立应用程序中，通常会创建一个ClassPathXmlApplicationContext 或的实例
                         FileSystemXmlApplicationContext。
-                        虽然XML是定义配置元数据的传统格式，但您可以通过提供少量XML配置来声明容器使用Java注释或代码作为元数据格式，以声明方式启用对这些其他元数据格式的支持。
+                        虽然XML是定义配置元数据的传统格式，但您可以通过提供少量XML配置来声明容器，使用Java注释或代码作为元数据格式，以声明方式启用对这些其他元数据格式的支持。
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>In most application scenarios, explicit user code is not required to instantiate one or
                         more instances of a Spring IoC container. For example, in a web application scenario, a
@@ -5273,11 +5279,12 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         environment), you can easily create this boilerplate configuration with a few mouse clicks or
                         keystrokes.</p>
                     <p class="translate">
-                        译：在大多数应用程序方案中，不需要显式用户代码来实例化Spring IoC容器的一个或多个实例。
-                        例如，在Web应用程序场景中，应用程序文件中的简单八行（左右）样板Web描述符XML web.xml通常就足够了（请参阅Web应用程序的便捷ApplicationContext实例）。
-                        如果您使用 Spring Tool Suite（基于Eclipse的开发环境），只需点击几下鼠标或按键即可轻松创建此样板配置。
+                        译：在大多数应用程序场景中，不需要显式的用户代码来实例化Spring IoC容器的一个或多个实例。
+                        例如，在web应用程序场景中，通常只需在应用程序的web.XML文件中使用8行(或更多)简单web模板描述符XML就足够了(参见web应用程序的便利ApplicationContext实例化)。
+                        如果使用Spring工具套件(一个eclipse支持的开发环境)，只需单击鼠标或击键，就可以轻松创建这个样板配置。
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>The following diagram shows a high-level view of how Spring works. Your application classes
                         are combined with configuration metadata so that, after the <code>ApplicationContext</code> is
@@ -5293,9 +5300,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                     </div>
                     <div class="title">Figure 1. The Spring IoC container</div>
                 </div>
+                <hr>
                 <div class="sect3">
                     <h4 id="beans-factory-metadata"><a class="anchor"
-                                                       href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-metadata"></a>1.2.1.
+                                                       href="./02_Core Technologies.html#beans-factory-metadata"></a>1.2.1.
                         配置元数据</h4>
                     <div class="paragraph">
                         <p>1.2.1. Configuration Metadata</p>
@@ -5304,9 +5312,10 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             application developer, tell the Spring container to instantiate, configure, and assemble
                             the objects in your application.</p>
                         <p class="translate">
-                            译：如上图所示，Spring IoC容器使用一种配置元数据。此配置元数据表示您作为应用程序开发人员如何告诉Spring容器在应用程序中实例化，配置和组装对象。
+                            译：如上图所示，Spring IoC容器使用一种配置元数据。此配置元数据表示您作为应用程序开发人员如何告诉Spring容器在应用程序中实例化，配置和组装应用程序中的对象。
                         </p>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>Configuration metadata is traditionally supplied in a simple and intuitive XML format,
                             which is what most of this chapter uses to convey key concepts and features of the
@@ -5315,6 +5324,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             译：传统上，配置元数据以简单直观的XML格式提供，本章大部分内容用于传达Spring IoC容器的关键概念和功能。
                         </p>
                     </div>
+                    <hr>
                     <div class="admonitionblock note">
                         <table>
                             <tbody>
@@ -5326,37 +5336,40 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                     XML-based metadata is not the only allowed form of configuration metadata.
                                     The Spring IoC container itself is totally decoupled from the format in which this
                                     configuration metadata is actually written. These days, many developers choose
-                                    <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java">Java-based
+                                    <a href="./02_Core Technologies.html#beans-java">Java-based
                                         configuration</a> for their Spring applications.
                                     <p class="translate">
-                                        译：基于XML的元数据不是唯一允许的配置元数据形式。Spring
-                                        IoC容器本身完全与实际编写此配置元数据的格式分离。目前，许多开发人员为其Spring应用程序选择 基于Java的配置。
+                                        译：基于xml的元数据不是唯一允许的配置元数据形式。Spring IoC容器本身与实际编写配置元数据的格式完全解耦。
+                                        现在，许多开发人员为他们的Spring应用程序选择基于java的配置。
                                     </p>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>For information about using other forms of metadata with the Spring container, see:</p>
                         <p class="translate">
                             译：有关在Spring容器中使用其他形式的元数据的信息，请参阅：
                         </p>
                     </div>
+                    <hr>
                     <div class="ulist">
                         <ul>
                             <li>
                                 <p>
-                                    <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-annotation-config">Annotation-based
+                                    <a href="./02_Core Technologies.html#beans-annotation-config">Annotation-based
                                         configuration</a>: Spring 2.5 introduced
                                     support for annotation-based configuration metadata.</p>
                                 <p class="translate">
                                     译：基于注释的配置：Spring 2.5引入了对基于注释的配置元数据的支持。
                                 </p>
                             </li>
+                            <hr>
                             <li>
                                 <p>
-                                    <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-java">Java-based
+                                    <a href="./02_Core Technologies.html#beans-java">Java-based
                                         configuration</a>: Starting with Spring 3.0, many features
                                     provided by the Spring JavaConfig project became part of the core Spring Framework.
                                     Thus, you can define beans external to your application classes by using Java rather
@@ -5368,11 +5381,12 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                         href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/DependsOn.html"><code>@DependsOn</code></a>
                                     annotations.</p>
                                 <p class="translate">
-                                    译：基于Java的配置：从Spring 3.0开始，Spring JavaConfig项目提供的许多功能成为核心Spring Framework的一部分。
-                                    因此，您可以使用Java而不是XML文件在应用程序类外部定义bean。
-                                    要使用这些新功能，请参阅 @Configuration， @Bean， @Import，和@DependsOn注释。
+                                    译：基于java的配置:从Spring 3.0开始，Spring JavaConfig项目提供的许多特性成为Spring核心框架的一部分。
+                                    因此，您可以使用Java而不是XML文件来定义应用程序类外部的bean。
+                                    要使用这些新特性，请参见@Configuration、@Bean、@Import和@DependsOn注释。
                                 </p>
                             </li>
+                            <hr>
                         </ul>
                     </div>
                     <div class="paragraph">
@@ -5383,14 +5397,11 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             configuration typically uses <code>@Bean</code>-annotated methods within a <code>@Configuration</code>
                             class.</p>
                         <p class="translate">
-                            译：Spring配置包含容器必须管理的至少一个且通常不止一个bean定义。
-                            基于XML的配置元数据将这些bean配置为
-                            <bean/>
-                            顶级元素内的
-                            <beans/>
-                            元素。Java配置通常@Bean在@Configuration类中使用注释方法。
+                            译：Spring配置由容器必须管理的至少一个bean定义组成，通常不止一个。基于xml的配置元数据将这些bean配置为顶级的元素中的元素。
+                            Java配置通常在@Configuration类中使用@ bean注释的方法。
                         </p>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>These bean definitions correspond to the actual objects that make up your application.
                             Typically, you define service layer objects, data access objects (DAOs), presentation
@@ -5407,11 +5418,12 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                 dependency-inject domain objects with Spring</a>.</p>
                         <p class="translate">
                             译：这些bean定义对应于构成应用程序的实际对象。
-                            通常，您定义服务层对象，数据访问对象（DAO），表示对象（如Struts Action实例），基础结构对象（如Hibernate SessionFactories，JMS
-                            Queues等）。通常，不会在容器中配置细粒度域对象，因为DAO和业务逻辑通常负责创建和加载域对象。
-                            但是，您可以使用Spring与AspectJ的集成来配置在IoC容器控制之外创建的对象。请参阅使用AspectJ使用Spring依赖注入域对象。
+                            通常，您定义服务层对象，数据访问对象（DAOs），表示对象（如Struts Action实例），基础结构对象（如Hibernate SessionFactories，JMS
+                            队列等）。通常，不需要在容器中配置细粒度的域对象，因为创建和加载域对象通常是dao和业务逻辑的责任。
+                            但是，您可以使用Spring与AspectJ的集成来配置在IoC容器控制之外创建的对象。参见使用AspectJ使用Spring依赖注入域对象。
                         </p>
                     </div>
+                    <hr>
                     <div>
                         <p>The following example shows the basic structure of XML-based configuration metadata:</p>
                         <p class="translate">译：以下示例显示了基于XML的配置元数据的基本结构：</p>
@@ -5474,6 +5486,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         </P>
                     </div>
                 </div>
+                <hr>
                 <div class="sect3">
                     <h4 id="beans-factory-instantiation"><a class="anchor"
                                                             href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-instantiation"></a>

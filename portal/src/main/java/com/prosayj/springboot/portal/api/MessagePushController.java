@@ -24,7 +24,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/msg")
 public class MessagePushController {
-    /*
+
     @Autowired
     private IEventService iEventService;
 
@@ -35,7 +35,6 @@ public class MessagePushController {
         iEventService.publish(new SimpleMsgEvent(message));
         return Boolean.TRUE;
     }
-*/
     @ApiOperation("长连接接收")
     @GetMapping("/get")
     public void sendMsg() {
