@@ -5521,13 +5521,13 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                         <p>After you learn about Spring’s IoC container, you may want to know more about
                                             Spring’s
                                             <code>Resource</code> abstraction (as described in <a
-                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#resources">Resources</a>),
+                                                    href="./02_Core Technologies.html#resources">Resources</a>),
                                             which provides a convenient
                                             mechanism for reading an InputStream from locations defined in a URI syntax.
                                             In particular,
                                             <code>Resource</code> paths are used to construct applications contexts, as
                                             described in <a
-                                                    href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#resources-app-ctx">Application
+                                                    href="./02_Core Technologies.html#resources-app-ctx">Application
                                                 Contexts and Resource Paths</a>.</p>
                                         <p class="translate">译：
                                             在了解了Spring的IoC容器之后，您可能想要了解有关Spring Resource抽象的更多信息 （如参考资料中所述），
@@ -5539,6 +5539,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             </tbody>
                         </table>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>The following example shows the service layer objects <code>(services.xml)</code>
                             configuration file:</p>
@@ -5570,6 +5571,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
 <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
                         </div>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>The following example shows the data access objects <code>daos.xml</code> file:</p>
                         <p class="translate">译：以下示例显示了数据访问对象daos.xml文件：</p>
@@ -5600,6 +5602,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
 <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
                         </div>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>In the preceding example, the service layer consists of the <code>PetStoreServiceImpl</code>
                             class
@@ -5612,7 +5615,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             definition. This linkage between <code>id</code> and <code>ref</code> elements expresses the
                             dependency between
                             collaborating objects. For details of configuring an object’s dependencies, see
-                            <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-dependencies">Dependencies</a>.
+                            <a href="./02_Core Technologies.html#beans-dependencies">Dependencies</a>.
                         </p>
                         <p class="translate">
                             译：在前面的示例中，服务层由的PetStoreServiceImpl类和类型的两个数据访问对象JpaAccountDao和JpaItemDao（基于JPA对象关系映射标准）。
@@ -5620,6 +5623,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             元素id和ref元素之间的这种联系表达了协作对象之间的依赖关系。有关配置对象的依赖关系的详细信息，请参阅 依赖关系。
                         </p>
                     </div>
+                    <hr>
                     <div class="sect4">
                         <h5 id="beans-factory-xml-import"><a class="anchor"
                                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-xml-import"></a>
@@ -5628,13 +5632,14 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                             <p>Composing XML-based Configuration Metadata</p>
                             <p>It can be useful to have bean definitions span multiple XML files. Often, each individual
                                 XML configuration file represents a logical layer or module in your architecture.</p>
-                            <p class="translate">译：让bean定义跨越多个XML文件会很有用。通常，每个单独的XML配置文件都代表架构中的逻辑层或模块。</p>
+                            <p class="translate">译：让bean定义跨越多个XML文件是很有用的。通常，每个XML配置文件代表体系结构中的一个逻辑层或模块。</p>
                         </div>
+                        <hr>
                         <div class="paragraph">
                             <p>You can use the application context constructor to load bean definitions from all these
                                 XML fragments. This constructor takes multiple <code>Resource</code> locations, as was
                                 shown in the
-                                <a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-instantiation">previous
+                                <a href="./02_Core Technologies.html#beans-factory-instantiation">previous
                                     section</a>. Alternatively, use one or more
                                 occurrences of the <code>&lt;import/&gt;</code> element to load bean definitions from
                                 another file or
@@ -5665,6 +5670,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
 <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
                             </div>
                         </div>
+                        <hr>
                         <div class="paragraph">
                             <p>In the preceding example, external bean definitions are loaded from three files:
                                 <code>services.xml</code>, <code>messageSource.xml</code>, and
@@ -5680,15 +5686,14 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                 contents of the files being imported, including the top level
                                 <code>&lt;beans/&gt;</code> element, must
                                 be valid XML bean definitions, according to the Spring Schema.</p>
-                            <p class="translate">译：在前面的例子中，外部bean定义是从三个文件加载：
-                                services.xml，messageSource.xml，和themeSource.xml。所有位置路径都与执行导入的定义文件相关，
-                                因此services.xml必须与执行导入的文件位于相同的目录或类路径位置，
+                            <p class="translate">译：在前面的例子中，外部bean定义是从三个文件加载： services.xml，messageSource.xml，和themeSource.xml。
+                                所有位置路径都与执行导入的定义文件相关，因此services.xml必须与执行导入的文件位于相同的目录或类路径位置，
                                 messageSource.xml而且themeSource.xml必须位于resources导入文件位置下方的位置。
-                                如您所见，忽略前导斜杠。但是，鉴于这些路径是相对的，最好不要使用斜杠。
-                                <beans/>
-                                根据Spring Schema，正在导入的文件的内容（包括顶级元素）必须是有效的XML bean定义。
+                                如您所见，前导斜杠将被忽略。然而，考虑到这些路径是相对的，最好不要使用斜杠。
+                                根据Spring模式，导入的文件的内容，包括顶级的元素，必须是有效的XML bean定义。
                             </p>
                         </div>
+                        <hr>
                         <div class="admonitionblock note">
                             <table>
                                 <tbody>
@@ -5712,10 +5717,11 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                                 directory.</p>
                                             <p class="translate">
                                                 译： 可以（但不建议）使用相对“../”路径引用父目录中的文件。这样做会对当前应用程序之外的文件创建依赖关系。
-                                                特别是，不建议对classpath:URL（例如，classpath:../services.xml）使用此引用，其中运行时解析过程选择“最近的”类路径根，
-                                                然后查看其父目录。类路径配置更改可能导致选择不同的，不正确的目录。
+                                                特别是，不建议对<code>classpath</code>:URL（例如，<code>classpath:../services.xml</code>）使用此引用。
+                                                因为运行时解析过程会选择“最近的”classpath根目录，然后查看它的父目录。类路径配置更改可能导致选择不同的、不正确的目录
                                             </p>
                                         </div>
+                                        <hr>
                                         <div class="paragraph">
                                             <p>You can always use fully qualified resource locations instead of relative
                                                 paths: for
@@ -5730,8 +5736,8 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                                 system properties at runtime.</p>
                                             <p class="translate">
                                                 译：您始终可以使用完全限定的资源位置而不是相对路径：
-                                                例如，file:C:/config/services.xml或classpath:/config/services.xml。但是，请注意您将应用程序的配置与特定的绝对位置耦合。
-                                                通常最好为这些绝对位置保持间接 - 例如，通过在运行时针对JVM系统属性解析的“$ {...}”占位符。
+                                                例如，<code>file:C:/config/services.xml</code>或<code>classpath:/config/services.xml</code>。但是，请注意,您正在将应用程序的配置与特定的绝对位置进行耦合。
+                                                对于这样的绝对位置，通常最好保持间接—例如，通过在运行时根据JVM系统属性解析的“${…}”占位符。
                                             </p>
                                         </div>
                                     </td>
@@ -5739,22 +5745,27 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                                 </tbody>
                             </table>
                         </div>
+                        <hr>
                         <div class="paragraph">
                             <p>The namespace itself provices the import directive feature. Further
                                 configuration features beyond plain bean definitions are available in a selection
                                 of XML namespaces provided by Spring — for example, the <code>context</code> and <code>util</code>
                                 namespaces.</p>
-                            <P class="translate">译：命名空间本身提供了import指令功能。Spring提供的一系列XML命名空间中提供了除普通bean定义之外的其他配置功能 -
-                                例如，context和util名称空间。
+                            <P class="translate">
+                                译：名称空间本身提供导入指令特性。
+                                除了普通bean定义之外，还可以在Spring提供的XML名称空间中选择其他配置特性——例如，上下文名称空间(<code>context</code>)和<code>util</code>名称空间。
                             </p>
                         </div>
                     </div>
+                    <hr>
                     <div class="sect4">
                         <h5 id="groovy-bean-definition-dsl"><a class="anchor"
                                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#groovy-bean-definition-dsl"></a>
                             Groovy Bean定义DSL</h5>
+                        
                         <div class="paragraph">
                             <p>The Groovy Bean Definition DSL</p>
+                            <hr>
                             <p>As a further example for externalized configuration metadata, bean definitions can also
                                 be expressed in Spring’s Groovy Bean Definition DSL, as known from the Grails framework.
                                 Typically, such configuration live in a ".groovy" file with the structure shown in the
@@ -5793,28 +5804,32 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="sect3">
                     <h4 id="beans-factory-client"><a class="anchor"
                                                      href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-client"></a>
                         1.2.3. 使用容器</h4>
                     <div class="paragraph">
                         <p>1.2.3. Using the Container</p>
+                        <hr>
                         <p>The <code>ApplicationContext</code> is the interface for an advanced factory capable of
                             maintaining
                             a registry of different beans and their dependencies. By using the method <code>T
                                 getBean(String
                                 name, Class&lt;T&gt; requiredType)</code>, you can retrieve instances of your beans.</p>
-                        <p class="translate">译：它ApplicationContext是高级工厂的接口，能够维护不同bean及其依赖项的注册表。通过使用该方法T getBean(String
-                            name, Class
-                            <T> requiredType)，您可以检索Bean的实例。
+                        <p class="translate">
+                            译：<code>ApplicationContext</code>是高级工厂的接口，该工厂能够维护不同bean及其依赖项的注册。
+                            通过使用方法<code>T getBean(String name, Class requiredType)</code>，您可以检索bean的实例。
                         </p>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>The <code>ApplicationContext</code> lets you read bean definitions and access them, as the
                             following
                             example shows:</p>
-                        <p class="translate">译：将ApplicationContext让你读bean定义和访问它们，如下例所示：</p>
+                        <p class="translate">译：<code>ApplicationContext</code>允许您读取bean定义并访问它们，如下面的示例所示：</p>
                     </div>
+                    <hr>
                     <div class="listingblock">
                         <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-comment">// create and configure beans</span>
@@ -5828,6 +5843,7 @@ PetStoreService service = context.getBean(<span class="hljs-string">"petStore"</
 List&lt;String&gt; userList = service.getUsernameList();</code></pre>
                         </div>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>With Groovy configuration, bootstrapping looks very similar. It has a different context
                             implementation class which is Groovy-aware (but also understands XML bean definitions).
@@ -5875,11 +5891,13 @@ context.refresh();</code></pre>
 context.refresh();</code></pre>
                         </div>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>You can mix and match such reader delegates on the same <code>ApplicationContext</code>,
                             reading bean definitions from diverse configuration sources.</p>
                         <p class="translate">译：您可以ApplicationContext在不同的配置源中读取和匹配此类读取器委托，读取bean定义。</p>
                     </div>
+                    <hr>
                     <div class="paragraph">
                         <p>You can then use <code>getBean</code> to retrieve instances of your beans. The <code>ApplicationContext</code>
                             interface has a few other methods for retrieving beans, but, ideally, your application
@@ -5889,32 +5907,36 @@ context.refresh();</code></pre>
                             Spring’s integration with web frameworks provides dependency injection for various web
                             framework components such as controllers and JSF-managed beans, letting you declare
                             a dependency on a specific bean through metadata (such as an autowiring annotation).</p>
-                        <p class="translate">译：然后，您可以使用它getBean来检索Bean的实例。该ApplicationContext 接口还有一些其他方法可以检索bean，但理想情况下，
+                        <p class="translate">
+                            译：然后，您可以使用它getBean来检索Bean的实例。该ApplicationContext 接口还有一些其他方法可以检索bean，但理想情况下，
                             您的应用程序代码绝不应该使用它们。实际上，您的应用程序代码根本不应该调用该 getBean()方法，因此根本不依赖于Spring API。
                             例如，Spring与Web框架的集成为各种Web框架组件（如控制器和JSF托管bean）提供依赖注入，允许您通过元数据（例如自动装配注释）声明对特定bean的依赖性。</p>
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="sect2">
                 <h3 id="beans-definition"><a class="anchor"
                                              href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-definition"></a>
                     1.3. Bean 概述</h3>
                 <div class="paragraph">
                     <p>1.3. Bean Overview</p>
+                    <hr>
                     <p>A Spring IoC container manages one or more beans. These beans are created with the
                         configuration metadata that you supply to the container (for example, in the form of XML
                         <code>&lt;bean/&gt;</code> definitions).</p>
-                    <p class="translate">译：Spring IoC容器管理一个或多个bean。这些bean是使用您提供给容器的配置元数据创建的（例如，以XML
-                        <bean/>
-                        定义的形式 ）。
+                    <p class="translate">译：Spring IoC容器管理一个或多个bean。这些bean是用您提供给容器的配置元数据创建的（例如，以XML
+                        定义<code>&lt;bean/&gt;</code>的形式 ）。
                     </p>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>Within the container itself, these bean definitions are represented as
                         <code>BeanDefinition</code>
                         objects, which contain (among other information) the following metadata:</p>
                     <p class="translate">译：在容器本身内，这些bean定义表示为BeanDefinition 对象，其中包含（以及其他信息）以下元数据：</p>
                 </div>
+                <hr>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -5922,16 +5944,19 @@ context.refresh();</code></pre>
                                 bean being defined.</p>
                             <p class="translate">译：包限定的类名：通常是正在定义的bean的实际实现类。</p>
                         </li>
+                        <hr>
                         <li>
                             <p>Bean behavioral configuration elements, which state how the bean should behave in the
                                 container (scope, lifecycle callbacks, and so forth).</p>
-                            <p class="translate">译：Bean行为配置元素，说明bean在容器中的行为方式（范围，生命周期回调等）。</p>
+                            <p class="translate">译：Bean行为配置元素，该元素声明bean在容器中的行为方式（范围、生命周期、回调等）。</p>
                         </li>
+                        <hr>
                         <li>
                             <p>References to other beans that are needed for the bean to do its work. These
                                 references are also called collaborators or dependencies.</p>
                             <p class="translate">译：引用bean执行其工作所需的其他bean。这些引用也称为协作者或依赖项。</p>
                         </li>
+                        <hr>
                         <li>
                             <p>Other configuration settings to set in the newly created object — for example, the size
                                 limit of the pool or the number of connections to use in a bean that manages a
@@ -5940,11 +5965,13 @@ context.refresh();</code></pre>
                         </li>
                     </ul>
                 </div>
+                <hr>
                 <div class="paragraph">
                     <p>This metadata translates to a set of properties that make up each bean definition.
                         The following table describes these properties:</p>
-                    <p class="translate"> 译：此元数据转换为构成每个bean定义的一组属性。下表描述了这些属性：</p>
+                    <p class="translate"> 译：元数据转换为构成每个bean定义的一组属性。下表描述了这些属性：</p>
                 </div>
+                <hr>
                 <table id="beans-factory-bean-definition-tbl" class="tableblock frame-all grid-all spread">
                     <caption class="title">Table 1. The bean definition</caption>
                     <colgroup>
@@ -5953,70 +5980,90 @@ context.refresh();</code></pre>
                     </colgroup>
                     <thead>
                     <tr>
-                        <th class="tableblock halign-left valign-top">Property</th>
-                        <th class="tableblock halign-left valign-top">Explained in…​</th>
+                        <th class="tableblock halign-left valign-top">Property(属性)</th>
+                        <th class="tableblock halign-left valign-top">Explained in…(解释...)​</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class">Instantiating
-                            Beans(实例化对象)</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-class">Instantiating Beans(实例化对象)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname">Naming
-                            Beans(对象的名称空间)</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-beanname">Naming Beans(对象的名称空间)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Scope</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-scopes">Bean
-                            Scopes(对象的作用域)</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-scopes">Bean Scopes(对象的作用域)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Constructor arguments</p>
                         </td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-collaborators">Dependency
-                            Injection(依赖注入)</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-collaborators">Dependency Injection(依赖注入)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Properties</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-collaborators">Dependency
-                            Injection</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-collaborators">Dependency Injection(依赖注入)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Autowiring mode</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-autowire">Autowiring
-                            Collaborators</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-autowire">Autowiring Collaborators(自动装配的协作者)</a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Lazy initialization mode</p>
                         </td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lazy-init">Lazy-initialized
-                            Beans</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-lazy-init">Lazy-initialized Beans(懒加载Beans)
+                                </a>
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Initialization method</p>
                         </td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lifecycle-initializingbean">Initialization
-                            Callbacks</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-lifecycle-initializingbean">Initialization Callbacks(初始化回调)</a>
+                        </p>
+                    </td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">Destruction method</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock"><a
-                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lifecycle-disposablebean">Destruction
-                            Callbacks</a></p></td>
+                        <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">
+                                <a href="./02_Core Technologies.html#beans-factory-lifecycle-disposablebean">Destruction Callbacks(销毁之前的回调)</a>
+                            </p>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
+                <hr>
                 <div class="paragraph">
                     <p>In addition to bean definitions that contain information on how to create a specific
                         bean, the <code>ApplicationContext</code> implementations also permit the registration of
@@ -6029,12 +6076,14 @@ context.refresh();</code></pre>
                         <code>registerBeanDefinition(..)</code> methods. However, typical applications work solely with
                         beans
                         defined through regular bean definition metadata.</p>
-                    <p class="translate">译：除了包含有关如何创建特定bean的信息的bean定义之外，这些ApplicationContext实现还允许注册在容器外部（由用户）创建的现有对象。
-                        这是通过方法访问ApplicationContext的BeanFactory来完成的getBeanFactory()，该方法返回BeanFactory
-                        DefaultListableBeanFactory实现。
-                        DefaultListableBeanFactory 通过registerSingleton(..)和 registerBeanDefinition(..)方法支持此注册。
-                        但是，典型的应用程序仅使用通过常规bean定义元数据定义的bean。</p>
+                    <p class="translate">
+                        译：除了包含有关如何创建特定bean的信息的bean定义之外，<code>ApplicationContext</code>实现还允许注册在容器外部（由用户）创建的现有对象。
+                        这是通过方法访问ApplicationContext的BeanFactory来完成的<code>getBeanFactory()</code>，该方法返回BeanFactory的DefaultListableBeanFactory实现。
+                        DefaultListableBeanFactory 通过<code>registerSingleton(..)</code>和 <code>registerBeanDefinition(..)</code>方法支持此注册。
+                        但是，典型的应用程序仅使用通过常规bean定义元数据定义的bean。
+                    </p>
                 </div>
+                <hr>
                 <div class="admonitionblock note">
                     <table>
                         <tbody>
@@ -6056,21 +6105,25 @@ context.refresh();</code></pre>
                                         lead to concurrent access exceptions, inconsistent state in the bean container,
                                         or both.</p>
 
-                                    <p class="translate">译：需要尽早注册Bean元数据和手动提供的单例实例，以便容器在自动装配和其他内省步骤期间正确推理它们。
-                                        虽然在某种程度上支持覆盖现有元数据和现有单例实例，但是在运行时注册新bean（与对工厂的实时访问同时）并未得到官方支持，
-                                        并且可能导致并发访问异常，bean容器中的状态不一致，或者都。</p>
+                                    <p class="translate">
+                                        译：Bean元数据单例和手动提供的单例实例需要尽早注册，以便容器在自动连接和其他自检步骤中正确地判断它们。
+                                        虽然在某种程度上支持重写现有元数据和现有单例实例，但是在运行时注册新bean（与对工厂的实时访问同时）并未得到官方支持，
+                                        并且可能导致并发访问异常、bean容器中的状态不一致、或者两者兼有。
+                                    </p>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
+                <hr>
                 <div class="sect3">
                     <h4 id="beans-beanname"><a class="anchor"
                                                href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-beanname"></a>
                         1.3.1. Beans 的命名</h4>
                     <div class="paragraph">
                         <p>1.3.1. Naming Beans</p>
+                        <hr>
                         <p>Every bean has one or more identifiers. These identifiers must be unique within the
                             container that hosts the bean. A bean usually has only one identifier. However, if it
                             requires more than one, the extra ones can be considered aliases.</p>
@@ -10274,7 +10327,7 @@ beanFactory.registerScope(<span class="hljs-string">"thread"</span>, threadScope
                     <div class="sect4">
                         <h5 id="beans-factory-lifecycle-disposablebean"><a class="anchor"
                                                                            href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-lifecycle-disposablebean"></a>
-                            摧毁之前的回调</h5>
+                            销毁之前的回调</h5>
                         <div class="paragraph">
                             <p>Destruction Callbacks</p>
                             <p>Implementing the <code>org.springframework.beans.factory.DisposableBean</code> interface
@@ -34721,6 +34774,7 @@ http\://www.foo.com/schema/jcache/jcache.xsd=com/foo/jcache.xsd</pre>
 <link rel="stylesheet" href="./02_Core Technologies_files/atom-one-dark-reasonable.min.css">
 <script src="./02_Core Technologies_files/highlight.min.js.下载"></script>
 <script>hljs.initHighlighting()</script>
+
 <!--
 <script>if (window.parent == window) {
     (function (i, s, o, g, r, a, m) {
