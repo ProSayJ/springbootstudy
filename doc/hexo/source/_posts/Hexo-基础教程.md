@@ -418,6 +418,137 @@ npm install hexo-asset-image --save
 
 以后新建md文件的时候也
 
+### 主题自带样式 FontAwesome
+
+- <i class="fa fa-pencil"></i> 支持 Markdown
+<i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i>
+
+-  <i class="fa fa-cloud-upload"></i> 一件部署
+<i>只需一条指令即可部署到 GitHub Pages，或其他网站。</i>
+
+- <i class="fa fa-cog"></i> 丰富的插件
+<i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade，CoffeeScript。</i>
+
+- <i class="fa fa-download"></i> 下载
+- <i class="fa fa-download fa-lg"></i> 下载变大 33%
+- <i class="fa fa-download fa-2x"></i> 下载两倍大
+- <i class="fa fa-photo"></i> 图片
+- <i class="fa fa-video-camera"></i> 摄像机
+- <i class="fa fa-hand-o-right fa-2x"></i> 右手
+- <i class="fa fa-hand-o-left fa-2x"></i> 左手
+- <i class="fa fa-hand-o-up fa-2x"></i> 上手
+- <i class="fa fa-hand-o-down fa-2x"></i> 图片
+
+
+``` javaScript
+- <i class="fa fa-pencil"></i> 支持 Markdown
+<i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i>
+
+-  <i class="fa fa-cloud-upload"></i> 一件部署
+<i>只需一条指令即可部署到 GitHub Pages，或其他网站。</i>
+
+- <i class="fa fa-cog"></i> 丰富的插件
+<i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade，CoffeeScript。</i>
+
+- <i class="fa fa-download"></i> 下载
+
+- <i class="fa fa-download fa-lg"></i> 下载变大 33%
+
+- <i class="fa fa-download fa-2x"></i> 下载两倍大
+
+- <i class="fa fa-photo"></i> 图片
+```
+
+### 主题自带样式 note 标签
+<div class="note default"><p>default</p></div>
+<div class="note primary"><p>primary</p></div>
+<div class="note success"><p>success</p></div>
+<div class="note info"><p>info</p></div>
+<div class="note warning"><p>warning</p></div>
+<div class="note danger"><p>danger</p></div>
+<div class="note danger no-icon"><p>danger no-icon</p></div>
+
+``` javaScript
+<div class="note default"><p>default</p></div>
+<div class="note primary"><p>primary</p></div>
+<div class="note success"><p>success</p></div>
+<div class="note info"><p>info</p></div>
+<div class="note warning"><p>warning</p></div>
+<div class="note danger"><p>danger</p></div>
+<div class="note danger no-icon"><p>danger no-icon</p></div>
+```
+
+### 主题自带样式 label 标签
+**首先可以在主题配置文件中有配置，需要配置下**
+~/blog/themes/next/_config.yml
+```
+# Label tag.
+label: true
+```
+
+{% label default@default %}
+{% label primary@primary %}
+{% label success@success %}
+{% label info@info %}
+{% label warning@warning %}
+{% label danger@danger %}
+
+``` javaScript
+{% label default@default %}
+{% label primary@primary %}
+{% label success@success %}
+{% label info@info %}
+{% label warning@warning %}
+{% label danger@danger %}
+```
+### 主题自带样式 tabs 标签
+
+**配置：**
+/blog/themes/next/_config.yml
+```
+# Tabs tag.
+tabs:
+  enable: true
+  transition:
+    tabs: true
+    labels: true
+  border_radius: 0
+```
+**然后上面源码中, 2表示一开始在第二个选项卡，非必须，若数值为-1则隐藏选项卡内容。**
+
+{% tabs 选项卡, 2 %}
+<!-- tab -->
+**这是选项卡 1** 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……
+<!-- endtab -->
+<!-- tab -->
+**这是选项卡 2**
+<!-- endtab -->
+<!-- tab -->
+**这是选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～
+<!-- endtab -->
+{% endtabs %}
+
+``` javaScript
+{% tabs 选项卡, 2 %}
+<!-- tab -->
+**这是选项卡 1** 呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈呵呵哈哈哈哈哈哈哈哈……
+<!-- endtab -->
+<!-- tab -->
+**这是选项卡 2**
+<!-- endtab -->
+<!-- tab -->
+**这是选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～
+<!-- endtab -->
+{% endtabs %}
+```
+
+### 主题自带样式 按钮
+{% btn https://www.baidu.com, 点击下载百度, download fa-lg fa-fw %}
+``` JavaScript
+{% btn https://www.baidu.com, 点击下载百度, download fa-lg fa-fw %}
+```
+
+
 ## 第三方插件
 
 ### Hexo-admin
