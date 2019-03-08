@@ -422,41 +422,178 @@ npm install hexo-asset-image --save
 
 - <i class="fa fa-pencil"></i> 支持 Markdown
 <i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i>
-
 -  <i class="fa fa-cloud-upload"></i> 一件部署
 <i>只需一条指令即可部署到 GitHub Pages，或其他网站。</i>
-
 - <i class="fa fa-cog"></i> 丰富的插件
 <i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade，CoffeeScript。</i>
-
 - <i class="fa fa-download"></i> 下载
 - <i class="fa fa-download fa-lg"></i> 下载变大 33%
 - <i class="fa fa-download fa-2x"></i> 下载两倍大
 - <i class="fa fa-photo"></i> 图片
 - <i class="fa fa-video-camera"></i> 摄像机
-- <i class="fa fa-hand-o-right fa-2x"></i> 右手
-- <i class="fa fa-hand-o-left fa-2x"></i> 左手
-- <i class="fa fa-hand-o-up fa-2x"></i> 上手
-- <i class="fa fa-hand-o-down fa-2x"></i> 图片
+- <i class="fa fa-hand-o-right "></i> 右手
+- <i class="fa fa-hand-o-left "></i> 左手
+- <i class="fa fa-hand-o-up"></i> 上手
+- <i class="fa fa-hand-o-down"></i> 下手
+- <i class="fa fa-glass"></i> 杯子
+- <i class="fa fa-music"></i> 音乐
+- <i class="fa fa-search"></i> 查找
+- <i class="fa fa-envelope-o"></i> 信封
+- <i class="fa fa-heart"></i> 心
+- <i class="fa fa-star"></i> 星
+- <i class="fa fa-star-o"></i> 心空
+- <i class="fa fa-user"></i> 人
+- <i class="fa fa-film"></i> 电影
+- <i class="fa fa-th-large"></i> 
+- <i class="fa fa-th"></i> 
+- <i class="fa fa-th-list"></i> 
+- <i class="fa fa-check"></i> 对号
+- <i class="fa fa-times"></i> false
+- <i class="fa fa-search-plus"></i> 查找大
+- <i class="fa fa-search-minus"></i> 查找小
+- <i class="fa fa-power-off"></i> 关机
+- <i class="fa fa-signal"></i> 信号
+- <i class="fa fa-gear:before"></i> 电影
+- <i class="fa fa-cog"></i> 
+- <i class="fa fa-trash-o"></i> 垃圾桶
+- <i class="fa fa-home"></i> 房子
+- <i class="fa fa-file-o"></i> 文件
+- <i class="fa fa-clock-o"></i> 时钟
+- <i class="fa fa-road"></i> 路
+- <i class="fa fa-download"></i> 下载
+- <i class="fa fa-arrow-circle-o-down"></i> 电影
+- <i class="fa fa-arrow-circle-o-up"></i> 星
+- <i class="fa fa-inbox"></i> 心空
+- <i class="fa fa-play-circle-o"></i> 
+- <i class="fa fa-rotate-right"></i> 播放
+- <i class="fa fa-repeat"></i> 重复
+- <i class="fa fa-refresh"></i> 刷新
+- <i class="fa fa-list-alt"></i> 列表
+- <i class="fa fa-lock"></i> 锁
+- <i class="fa fa-flag "></i> 标记
+- <i class="fa fa-headphones"></i> 耳机
+- <i class="fa fa-volume-off"></i> 声音关
+- <i class="fa fa-volume-down"></i> 声音下
+- <i class="fa fa-volume-up"></i> 声音大
+- <i class="fa fa-qrcode "></i> 二维码
+- <i class="fa fa-barcode "></i> 二维码
+- <i class="fa fa-tag "></i> tag
+- <i class="fa fa-tags "></i> tags
+- <i class="fa fa-book "></i> 书
+- <i class="fa fa-bookmark "></i> 书签
+- <i class="fa fa-print"></i> 11
+- <i class="fa fa-camera"></i> 
+- <i class="fa fa-font"></i> 
+- <i class="fa fa-bold"></i> 
+- <i class="fa fa-italic"></i> 
+- <i class="fa fa-text-height"></i> 
+- <i class="fa fa-text-width"></i> 
+- <i class="fa fa-align-left"></i> 
+- <i class="fa fa-align-center"></i> 
+- <i class="fa fa-align-right"></i> 
+- <i class="fa fa-align-justify"></i> 
+- <i class="fa fa-list"></i> 
+- <i class="fa fa-dedent"></i> 
+- <i class="fa fa-outdent"></i> 
+- <i class="fa fa-indent"></i> 
+- <i class="fa fa-video-camera"></i> 
+- <i class="fa fa-picture-o"></i> 
+- <i class="fa fa-pencil "></i> 
+- <i class="fa fa-map-marker"></i> 
+- <i class="fa fa-adjust"></i> 
+- <i class="fa fa-tint"></i> 
+- <i class="fa fa-edit"></i> 
+- <i class="fa fa-pencil-square-o"></i> 
+- <i class="fa fa-share-square-o"></i> 
+- <i class="fa fa-share"></i> 
+
+
 
 
 ``` javaScript
-- <i class="fa fa-pencil"></i> 支持 Markdown
-<i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i>
-
--  <i class="fa fa-cloud-upload"></i> 一件部署
-<i>只需一条指令即可部署到 GitHub Pages，或其他网站。</i>
-
-- <i class="fa fa-cog"></i> 丰富的插件
-<i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade，CoffeeScript。</i>
-
+- <i class="fa fa-pencil"></i>
+-  <i class="fa fa-cloud-upload"></i> 
+- <i class="fa fa-cog"></i> 
 - <i class="fa fa-download"></i> 下载
-
 - <i class="fa fa-download fa-lg"></i> 下载变大 33%
-
 - <i class="fa fa-download fa-2x"></i> 下载两倍大
-
 - <i class="fa fa-photo"></i> 图片
+- <i class="fa fa-video-camera"></i> 摄像机
+- <i class="fa fa-hand-o-right "></i> 右手
+- <i class="fa fa-hand-o-left "></i> 左手
+- <i class="fa fa-hand-o-up"></i> 上手
+- <i class="fa fa-hand-o-down"></i> 下手
+- <i class="fa fa-glass"></i> 杯子
+- <i class="fa fa-music"></i> 音乐
+- <i class="fa fa-search"></i> 查找
+- <i class="fa fa-envelope-o"></i> 信封
+- <i class="fa fa-heart"></i> 心
+- <i class="fa fa-star"></i> 星
+- <i class="fa fa-star-o"></i> 心空
+- <i class="fa fa-user"></i> 人
+- <i class="fa fa-film"></i> 电影
+- <i class="fa fa-th-large"></i> 
+- <i class="fa fa-th"></i> 
+- <i class="fa fa-th-list"></i> 
+- <i class="fa fa-check"></i> 对号
+- <i class="fa fa-times"></i> false
+- <i class="fa fa-search-plus"></i> 查找大
+- <i class="fa fa-search-minus"></i> 查找小
+- <i class="fa fa-power-off"></i> 关机
+- <i class="fa fa-signal"></i> 信号
+- <i class="fa fa-gear:before"></i> 电影
+- <i class="fa fa-cog"></i> 
+- <i class="fa fa-trash-o"></i> 垃圾桶
+- <i class="fa fa-home"></i> 房子
+- <i class="fa fa-file-o"></i> 文件
+- <i class="fa fa-clock-o"></i> 时钟
+- <i class="fa fa-road"></i> 路
+- <i class="fa fa-download"></i> 下载
+- <i class="fa fa-arrow-circle-o-down"></i> 电影
+- <i class="fa fa-arrow-circle-o-up"></i> 星
+- <i class="fa fa-inbox"></i> 心空
+- <i class="fa fa-play-circle-o"></i> 
+- <i class="fa fa-rotate-right"></i> 播放
+- <i class="fa fa-repeat"></i> 重复
+- <i class="fa fa-refresh"></i> 刷新
+- <i class="fa fa-list-alt"></i> 列表
+- <i class="fa fa-lock"></i> 锁
+- <i class="fa fa-flag "></i> 标记
+- <i class="fa fa-headphones"></i> 耳机
+- <i class="fa fa-volume-off"></i> 声音关
+- <i class="fa fa-volume-down"></i> 声音下
+- <i class="fa fa-volume-up"></i> 声音大
+- <i class="fa fa-qrcode "></i> 二维码
+- <i class="fa fa-barcode "></i> 二维码
+- <i class="fa fa-tag "></i> tag
+- <i class="fa fa-tags "></i> tags
+- <i class="fa fa-book "></i> 书
+- <i class="fa fa-bookmark "></i> 书签
+- <i class="fa fa-print"></i> 11
+- <i class="fa fa-camera"></i> 
+- <i class="fa fa-font"></i> 
+- <i class="fa fa-bold"></i> 
+- <i class="fa fa-italic"></i> 
+- <i class="fa fa-text-height"></i> 
+- <i class="fa fa-text-width"></i> 
+- <i class="fa fa-align-left"></i> 
+- <i class="fa fa-align-center"></i> 
+- <i class="fa fa-align-right"></i> 
+- <i class="fa fa-align-justify"></i> 
+- <i class="fa fa-list"></i> 
+- <i class="fa fa-dedent"></i> 
+- <i class="fa fa-outdent"></i> 
+- <i class="fa fa-indent"></i> 
+- <i class="fa fa-video-camera"></i> 
+- <i class="fa fa-picture-o"></i> 
+- <i class="fa fa-pencil "></i> 
+- <i class="fa fa-map-marker"></i> 
+- <i class="fa fa-adjust"></i> 
+- <i class="fa fa-tint"></i> 
+- <i class="fa fa-edit"></i> 
+- <i class="fa fa-pencil-square-o"></i> 
+- <i class="fa fa-share-square-o"></i> 
+- <i class="fa fa-share"></i> 
 ```
 
 ### 主题自带样式 note 标签
