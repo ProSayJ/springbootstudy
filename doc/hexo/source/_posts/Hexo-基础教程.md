@@ -506,9 +506,8 @@ npm install hexo-asset-image --save
 - <i class="fa fa-pencil-square-o"></i> 
 - <i class="fa fa-share-square-o"></i> 
 - <i class="fa fa-share"></i> 
-
-
-
+- <i class="fa fa-github"></i>
+- <i class="fa fa-github fa-lg"></i>
 
 ``` javaScript
 - <i class="fa fa-pencil"></i>

@@ -7,16 +7,16 @@ date: 2019-03-08 10:09:00
 ---
 # 先页面访问页面登陆接口,获取publickey 和nonce
 
-![登陆之前](postman如何登陆系统/登陆之前.png)
+![登陆之前](登陆之前.png)
 
 # 输入用户名和密码：
 ## 输入：
 
-![输入用户名和密码_输入](postman如何登陆系统/输入用户名和密码_输入.png)
+![输入用户名和密码_输入](输入用户名和密码_输入.png)
 
 ## 响应：
 
-![输入用户名和密码_响应](postman如何登陆系统/输入用户名和密码_响应.png)
+![输入用户名和密码_响应](输入用户名和密码_响应.png)
 
 ** 这里：前端先获取了login before接口获取了publickey，然后拿着publickey去对用户名和密码进行公钥加密 **
 
@@ -31,16 +31,16 @@ date: 2019-03-08 10:09:00
    
  ## Decoder_pwd:
    
-![Decoder_pwd](postman如何登陆系统/Decoder_pwd.png\)
+![Decoder_pwd](Decoder_pwd.png)
 
 
 ## Decoder_userInfoAndPublicKey:
-![Decoder_userInfoAndPublicKey](postman如何登陆系统/Decoder_userInfoAndPublicKey.png\)
+![Decoder_userInfoAndPublicKey](Decoder_userInfoAndPublicKey.png\)
 
 
 # postman使用decoder的用户信息和密码访问登陆接口
 
-![postman登陆接口](postman如何登陆系统/postman登陆接口.png\)
+![postman登陆接口](postman登陆接口.png)
 
 ``` json
 {
@@ -64,7 +64,7 @@ date: 2019-03-08 10:09:00
 **输入用户名和密码登陆成功以后，选择证书登陆系统**
 
 
-![证书登陆系统](postman如何登陆系统/证书登陆系统.png\)
+![证书登陆系统](证书登陆系统.png)
 
 ``` json
 {
@@ -81,10 +81,10 @@ date: 2019-03-08 10:09:00
 **如果上一步返回token过期则使用第三部返回的两个token替换即可**
 
 
-![token过期](postman如何登陆系统/token过期.png\)
+![token过期](token过期.png)
 
 
-![证书验证通过](postman如何登陆系统/证书验证通过.png\)
+![证书验证通过](证书验证通过.png)
 
 # 访问务接口
 
