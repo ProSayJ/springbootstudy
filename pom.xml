@@ -21,6 +21,7 @@
         <module>apollo</module>
         <module>portal</module>
         <module>myblog</module>
+        <module>blog</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

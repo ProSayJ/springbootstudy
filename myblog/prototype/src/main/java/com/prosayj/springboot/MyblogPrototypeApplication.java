@@ -13,10 +13,10 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
         HibernateJpaAutoConfiguration.class,
         DruidDataSourceAutoConfigure.class,
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
-public class MyblogApplication {
+public class MyblogPrototypeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MyblogApplication.class, args);
+        SpringApplication.run(MyblogPrototypeApplication.class, args);
     }
 
 }

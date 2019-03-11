@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<a href="https://v3.bootcss.com/css/#overview-container" target="_blank">全局 CSS 样式</a>
+
+<h1>布局容器:</h1>
+<!--.container 类用于固定宽度并支持响应式布局的容器。-->
+<div class="container" style="color: darkred;background: #00CC00">
+    container
+</div>
+<br>
+<div class="container-fluid" style="color: darkred;background: #00CC00">
+    container-fluid流式布局
+</div>
+<br><hr>
+
+
+
+<h1>栅格系统:</h1>
+
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-md-1" style="color: darkred;background: #00CC00" >.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-1" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-1" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-1" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-1" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-1" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-1" style="color: blue;background:darkgrey">.col-md-1</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-8" style="color: darkred;background: #00CC00">.col-md-1</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" style="color: blue;background:darkgrey">.col-md-1</div>
+        <div class="col-md-4" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-4" style="color: blue;background:darkgrey">.col-md-1</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" style="color: darkred;background: #00CC00">.col-md-1</div>
+        <div class="col-md-6" style="color: blue;background:darkgrey">.col-md-1</div>
+    </div>
+
+<br>
+    多余的列（column）将另起一行排列:
+<br>
+    <div class="row">
+        <div class="col-xs-9" style="color: darkred;background: beige" >.col-xs-9</div>
+        <div class="col-xs-4" style="color: darkred;background: #00CC00">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+        <div class="col-xs-6" style="color: darkred;background: #00CC00">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+
+<br>
+    在标题内还可以包含 <small></small> 标签或赋予 .small 类的元素，可以用来标记副标题。
+    <h1>h1. Bootstrap heading <small>Secondary text</small></h1>
+    <h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+    <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+    <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+    <h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+    <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+    <br>
+
+
+    对于被删除的文本使用 del 标签。
+    <br>
+    <del>This line of text is meant to be treated as deleted text.</del>
+    <hr>
+
+    <br>
+    对于没用的文本使用 s 标签。
+    <br>
+    <s>This line of text is meant to be treated as no longer accurate.</s>
+    <hr>
+
+    <br>
+    额外插入的文本使用 ins 标签。
+    <br>
+    <ins>This line of text is meant to be treated as an addition to the document.</ins>
+    <hr>
+
+    <br>
+    为文本添加下划线，使用 u 标签。
+    <br>
+    <u>This line of text will render as underlined</u>
+    <hr>
+
+
+    <br>
+    小号文本，使用 small 标签。
+    <br>
+    <small>This line of text is meant to be treated as fine print.</small>
+    <hr>
+
+
+    <br>
+    着重加粗文本，使用 strong 标签。
+    <br>
+    <strong>rendered as bold text</strong>
+    <hr>
+
+
+    <br>
+    用斜体强调一段文本，使用 em 标签。
+    <br>
+    <em>rendered as italicized text</em>
+    <hr>
+
+
+    <br>
+    h5标签 标签。
+    <br>
+    <b>rendered as italicized text</b>
+    <hr>
+    <i>rendered as italicized text</i>
+    <hr>
+
+
+    <br>
+    对齐：
+    <br>
+    <p class="text-left">Left aligned text.</p>
+    <p class="text-center">Center aligned text.</p>
+    <p class="text-right">Right aligned text.</p>
+    <p class="text-justify">Justified text.</p>
+    <p class="text-nowrap">No wrap text.</p>
+    <hr>
+
+
+
+    <br>
+    改变大小写。
+    <br>
+    <p class="text-lowercase">Lowercased text.</p>
+    <p class="text-uppercase">Uppercased text.</p>
+    <p class="text-capitalize">Capitalized text.</p>
+    <hr>
+
+    <br>
+    缩略语:
+    <br>
+    (1)基本缩略语：<abbr title="attribute">attr</abbr>
+    <br>
+    (2)基本缩略语:<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+    <hr>
+
+
+
+    <br>
+    地址:让联系信息以最接近日常使用的格式呈现。在每行结尾添加 br 可以保留需要的样式。
+    <br>
+    <address>
+        <strong>Twitter, Inc.</strong><br>
+        1355 Market Street, Suite 900<br>
+        San Francisco, CA 94103<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+    </address>
+
+    <address>
+        <strong>Full Name</strong><br>
+        <a href="mailto:#">first.last@example.com</a>
+    </address>
+    <hr>
+
+
+
+    <br>
+    引用:在你的文档中引用其他来源的内容。
+    <br>
+    (1)默认样式的引用：将任何 HTML 元素包裹在 blockquote 中即可表现为引用样式。对于直接引用，我们建议用 p 标签
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    </blockquote>
+    <br>
+    (2)多种引用样式:
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+    <br>
+    (3)另一种展示风格。通过赋予 .blockquote-reverse 类可以让引用呈现内容右对齐的效果。
+    <blockquote class="blockquote-reverse">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+    <hr>
+
+
+
+    <br>
+    列表:
+    <br>
+    (1)无序列表 排列顺序无关紧要的一列元素。
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <br>
+    (2)有序列表 顺序至关重要的一组元素。
+    <ol>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ol>
+    <br>
+    (3)无样式列表
+    <ul  class="list-unstyled">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <br>
+    (3)内联列表
+    <ul  class="list-inline">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <hr>
+
+
+    <br>
+    描述:
+    <br>
+    (1)带有描述的短语列表
+    <dl>
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod </dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+            Donec id elit non mi porta gravida at eget metus.</dd>
+    </dl>
+    <br>
+    (2)水平排列的描述
+    <dl class="dl-horizontal">
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod </dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+            Donec id elit non mi porta gravida at eget metus.</dd>
+    </dl>
+    <br>
+    <hr>
+
+
+
+</div>
+<br><hr>
+
+
+<span class="glyphicon glyphicon-search" aria-hidden="false"></span>
+
+<button type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+</button>
+
+<button type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
+
+
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    Enter a valid email address
+</div>
+
+
+<table class="table table-hover">
+    <tr>
+        <td>#</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Username</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>
