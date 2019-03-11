@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author <a href="https://waylau.com">Way Lau</a> 
  */
 @Controller
+//@RestController
 public class MainController {
 	
 	@GetMapping("/")
