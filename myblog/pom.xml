@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>prototype</module>
+        <module>demo</module>
     </modules>
     <!--
     <parent>
