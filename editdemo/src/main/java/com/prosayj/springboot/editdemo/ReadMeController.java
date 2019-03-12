@@ -15,7 +15,13 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Controller
-public class ArticleController {
+public class ReadMeController {
+    @GetMapping("/")
+    public String redirect() {
+        return "redirect:/index";
+    }
+
+
     @GetMapping("/index")
     public String login() {
         return "example/index";

@@ -3355,8 +3355,8 @@
 
     // Emoji graphics files url path
     editormd.emoji     = {
-        path  : "http://www11.emoji-cheat-sheet.com/graphics/emojis/",
-        // path  : "../static/editormd/images/emoji/githubemoji/",
+        // path  : "http://www11.emoji-cheat-sheet.com/graphics/emojis/",
+        path  : "/static/editormd/images/emoji/githubemoji/",
         ext   : ".png"
     };
 
