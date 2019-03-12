@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
     @GetMapping("/")
     public String root() {
-        return "redirect:/index";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
