@@ -7,7 +7,7 @@ public class ArticleDomain {
 
     private Long articleId;
 
-    private String author;
+    private Long authorId;
 
     private String originalAuthor;
 
@@ -55,12 +55,12 @@ public class ArticleDomain {
         this.articleId = articleId;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public String getOriginalAuthor() {

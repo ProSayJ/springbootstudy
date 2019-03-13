@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.prosayj.springboot.models.article.domain.ArticleDomain">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="article_id" jdbcType="BIGINT" property="articleId" />
-    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="author_id" jdbcType="BIGINT" property="authorId" />
     <result column="original_author" jdbcType="VARCHAR" property="originalAuthor" />
     <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
     <result column="article_tags" jdbcType="VARCHAR" property="articleTags" />
@@ -24,7 +24,7 @@
     <result column="article_md_content" jdbcType="LONGVARCHAR" property="articleMdContent" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, article_id, author, original_author, article_title, article_tags, article_type, 
+    id, article_id, author_id, original_author, article_title, article_tags, article_type, 
     article_categories, article_url, likes, last_article_id, next_article_id, publish_date, 
     update_date, is_delete
   </sql>
@@ -47,14 +47,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into article (article_id, author, original_author, 
+    insert into article (article_id, author_id, original_author, 
       article_title, article_tags, article_type, 
       article_categories, article_url, likes, 
       last_article_id, next_article_id, publish_date, 
       update_date, is_delete, article_summary, 
       article_html_content, article_md_content
       )
-    values (#{articleId,jdbcType=BIGINT}, #{author,jdbcType=VARCHAR}, #{originalAuthor,jdbcType=VARCHAR}, 
+    values (#{articleId,jdbcType=BIGINT}, #{authorId,jdbcType=BIGINT}, #{originalAuthor,jdbcType=VARCHAR}, 
       #{articleTitle,jdbcType=VARCHAR}, #{articleTags,jdbcType=VARCHAR}, #{articleType,jdbcType=TINYINT}, 
       #{articleCategories,jdbcType=VARCHAR}, #{articleUrl,jdbcType=VARCHAR}, #{likes,jdbcType=VARCHAR}, 
       #{lastArticleId,jdbcType=VARCHAR}, #{nextArticleId,jdbcType=INTEGER}, #{publishDate,jdbcType=DATE}, 
@@ -71,8 +71,8 @@
       <if test="articleId != null">
         article_id,
       </if>
-      <if test="author != null">
-        author,
+      <if test="authorId != null">
+        author_id,
       </if>
       <if test="originalAuthor != null">
         original_author,
@@ -124,8 +124,8 @@
       <if test="articleId != null">
         #{articleId,jdbcType=BIGINT},
       </if>
-      <if test="author != null">
-        #{author,jdbcType=VARCHAR},
+      <if test="authorId != null">
+        #{authorId,jdbcType=BIGINT},
       </if>
       <if test="originalAuthor != null">
         #{originalAuthor,jdbcType=VARCHAR},
@@ -180,8 +180,8 @@
       <if test="articleId != null">
         article_id = #{articleId,jdbcType=BIGINT},
       </if>
-      <if test="author != null">
-        author = #{author,jdbcType=VARCHAR},
+      <if test="authorId != null">
+        author_id = #{authorId,jdbcType=BIGINT},
       </if>
       <if test="originalAuthor != null">
         original_author = #{originalAuthor,jdbcType=VARCHAR},
@@ -234,7 +234,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
     update article
     set article_id = #{articleId,jdbcType=BIGINT},
-      author = #{author,jdbcType=VARCHAR},
+      author_id = #{authorId,jdbcType=BIGINT},
       original_author = #{originalAuthor,jdbcType=VARCHAR},
       article_title = #{articleTitle,jdbcType=VARCHAR},
       article_tags = #{articleTags,jdbcType=VARCHAR},
@@ -255,7 +255,7 @@
   <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
     update article
     set article_id = #{articleId,jdbcType=BIGINT},
-      author = #{author,jdbcType=VARCHAR},
+      author_id = #{authorId,jdbcType=BIGINT},
       original_author = #{originalAuthor,jdbcType=VARCHAR},
       article_title = #{articleTitle,jdbcType=VARCHAR},
       article_tags = #{articleTags,jdbcType=VARCHAR},
@@ -269,5 +269,248 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       is_delete = #{isDelete,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="articleId" jdbcType="BIGINT" property="articleid" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="originalAuthor" jdbcType="VARCHAR" property="originalauthor" />
+    <result column="articleTitle" jdbcType="VARCHAR" property="articletitle" />
+    <result column="articleTags" jdbcType="VARCHAR" property="articletags" />
+    <result column="articleType" jdbcType="VARCHAR" property="articletype" />
+    <result column="articleCategories" jdbcType="VARCHAR" property="articlecategories" />
+    <result column="publishDate" jdbcType="VARCHAR" property="publishdate" />
+    <result column="updateDate" jdbcType="VARCHAR" property="updatedate" />
+    <result column="articleUrl" jdbcType="VARCHAR" property="articleurl" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="lastArticleId" jdbcType="BIGINT" property="lastarticleid" />
+    <result column="nextArticleId" jdbcType="BIGINT" property="nextarticleid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    <result column="articleContent" jdbcType="LONGVARCHAR" property="articlecontent" />
+    <result column="articleTabloid" jdbcType="LONGVARCHAR" property="articletabloid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, articleId, author, originalAuthor, articleTitle, articleTags, articleType, articleCategories, 
+    publishDate, updateDate, articleUrl, likes, lastArticleId, nextArticleId
+  </sql>
+  <sql id="Blob_Column_List">
+    articleContent, articleTabloid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into article (articleId, author, originalAuthor, 
+      articleTitle, articleTags, articleType, 
+      articleCategories, publishDate, updateDate, 
+      articleUrl, likes, lastArticleId, 
+      nextArticleId, articleContent, articleTabloid
+      )
+    values (#{articleid,jdbcType=BIGINT}, #{author,jdbcType=VARCHAR}, #{originalauthor,jdbcType=VARCHAR}, 
+      #{articletitle,jdbcType=VARCHAR}, #{articletags,jdbcType=VARCHAR}, #{articletype,jdbcType=VARCHAR}, 
+      #{articlecategories,jdbcType=VARCHAR}, #{publishdate,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{articleurl,jdbcType=VARCHAR}, #{likes,jdbcType=INTEGER}, #{lastarticleid,jdbcType=BIGINT}, 
+      #{nextarticleid,jdbcType=BIGINT}, #{articlecontent,jdbcType=LONGVARCHAR}, #{articletabloid,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleid != null">
+        articleId,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="originalauthor != null">
+        originalAuthor,
+      </if>
+      <if test="articletitle != null">
+        articleTitle,
+      </if>
+      <if test="articletags != null">
+        articleTags,
+      </if>
+      <if test="articletype != null">
+        articleType,
+      </if>
+      <if test="articlecategories != null">
+        articleCategories,
+      </if>
+      <if test="publishdate != null">
+        publishDate,
+      </if>
+      <if test="updatedate != null">
+        updateDate,
+      </if>
+      <if test="articleurl != null">
+        articleUrl,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="lastarticleid != null">
+        lastArticleId,
+      </if>
+      <if test="nextarticleid != null">
+        nextArticleId,
+      </if>
+      <if test="articlecontent != null">
+        articleContent,
+      </if>
+      <if test="articletabloid != null">
+        articleTabloid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleid != null">
+        #{articleid,jdbcType=BIGINT},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="originalauthor != null">
+        #{originalauthor,jdbcType=VARCHAR},
+      </if>
+      <if test="articletitle != null">
+        #{articletitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articletags != null">
+        #{articletags,jdbcType=VARCHAR},
+      </if>
+      <if test="articletype != null">
+        #{articletype,jdbcType=VARCHAR},
+      </if>
+      <if test="articlecategories != null">
+        #{articlecategories,jdbcType=VARCHAR},
+      </if>
+      <if test="publishdate != null">
+        #{publishdate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="articleurl != null">
+        #{articleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="lastarticleid != null">
+        #{lastarticleid,jdbcType=BIGINT},
+      </if>
+      <if test="nextarticleid != null">
+        #{nextarticleid,jdbcType=BIGINT},
+      </if>
+      <if test="articlecontent != null">
+        #{articlecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articletabloid != null">
+        #{articletabloid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    update article
+    <set>
+      <if test="articleid != null">
+        articleId = #{articleid,jdbcType=BIGINT},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="originalauthor != null">
+        originalAuthor = #{originalauthor,jdbcType=VARCHAR},
+      </if>
+      <if test="articletitle != null">
+        articleTitle = #{articletitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articletags != null">
+        articleTags = #{articletags,jdbcType=VARCHAR},
+      </if>
+      <if test="articletype != null">
+        articleType = #{articletype,jdbcType=VARCHAR},
+      </if>
+      <if test="articlecategories != null">
+        articleCategories = #{articlecategories,jdbcType=VARCHAR},
+      </if>
+      <if test="publishdate != null">
+        publishDate = #{publishdate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        updateDate = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="articleurl != null">
+        articleUrl = #{articleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="lastarticleid != null">
+        lastArticleId = #{lastarticleid,jdbcType=BIGINT},
+      </if>
+      <if test="nextarticleid != null">
+        nextArticleId = #{nextarticleid,jdbcType=BIGINT},
+      </if>
+      <if test="articlecontent != null">
+        articleContent = #{articlecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articletabloid != null">
+        articleTabloid = #{articletabloid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    update article
+    set articleId = #{articleid,jdbcType=BIGINT},
+      author = #{author,jdbcType=VARCHAR},
+      originalAuthor = #{originalauthor,jdbcType=VARCHAR},
+      articleTitle = #{articletitle,jdbcType=VARCHAR},
+      articleTags = #{articletags,jdbcType=VARCHAR},
+      articleType = #{articletype,jdbcType=VARCHAR},
+      articleCategories = #{articlecategories,jdbcType=VARCHAR},
+      publishDate = #{publishdate,jdbcType=VARCHAR},
+      updateDate = #{updatedate,jdbcType=VARCHAR},
+      articleUrl = #{articleurl,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=INTEGER},
+      lastArticleId = #{lastarticleid,jdbcType=BIGINT},
+      nextArticleId = #{nextarticleid,jdbcType=BIGINT},
+      articleContent = #{articlecontent,jdbcType=LONGVARCHAR},
+      articleTabloid = #{articletabloid,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+    update article
+    set articleId = #{articleid,jdbcType=BIGINT},
+      author = #{author,jdbcType=VARCHAR},
+      originalAuthor = #{originalauthor,jdbcType=VARCHAR},
+      articleTitle = #{articletitle,jdbcType=VARCHAR},
+      articleTags = #{articletags,jdbcType=VARCHAR},
+      articleType = #{articletype,jdbcType=VARCHAR},
+      articleCategories = #{articlecategories,jdbcType=VARCHAR},
+      publishDate = #{publishdate,jdbcType=VARCHAR},
+      updateDate = #{updatedate,jdbcType=VARCHAR},
+      articleUrl = #{articleurl,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=INTEGER},
+      lastArticleId = #{lastarticleid,jdbcType=BIGINT},
+      nextArticleId = #{nextarticleid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

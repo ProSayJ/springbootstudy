@@ -2,8 +2,8 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-5.1.37.jar"/>
-
+    <!--<classPathEntry location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-5.1.37.jar"/>-->
+    <classPathEntry location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-8.0.13.jar"/>
 
 
     <context id="article" defaultModelType="flat" targetRuntime="MyBatis3">
@@ -14,7 +14,7 @@
         </commentGenerator>
 
         <jdbcConnection
-                connectionURL="jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&amp;characterEncoding=UTF-8"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC"
                 driverClass="com.mysql.jdbc.Driver" userId="root" password="root"/>
 
         <javaModelGenerator targetPackage="com.prosayj.springboot.models.article.domain"
