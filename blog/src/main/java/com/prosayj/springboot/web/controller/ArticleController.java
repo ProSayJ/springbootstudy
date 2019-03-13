@@ -1,6 +1,6 @@
-package com.prosayj.springboot.blog.controller;
+package com.prosayj.springboot.web.controller;
 
-import com.prosayj.springboot.blog.controller.vo.Blogs;
+import com.prosayj.springboot.web.controller.vo.Blogs;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

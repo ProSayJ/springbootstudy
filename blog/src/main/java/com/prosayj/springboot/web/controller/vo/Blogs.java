@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog.controller.vo;
+package com.prosayj.springboot.web.controller.vo;
 
 /**
  * @author yangjian

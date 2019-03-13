@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog;
+package com.prosayj.springboot.web;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import org.springframework.boot.SpringApplication;

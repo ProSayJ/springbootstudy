@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog.controller.constant;
+package com.prosayj.springboot.web.controller.constant;
 
 /**
  * @author yangjian
