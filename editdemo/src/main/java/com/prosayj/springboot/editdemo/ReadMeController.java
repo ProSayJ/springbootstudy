@@ -47,4 +47,10 @@ public class ReadMeController {
     public String testMd() {
         return Constant.mdSrc;
     }
+
+    @GetMapping("/use-requirejs.html")
+    public String useRequirejs() {
+        return "example/use-requirejs";
+    }
+
 }
