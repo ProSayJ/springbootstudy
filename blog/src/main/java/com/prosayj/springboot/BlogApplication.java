@@ -1,4 +1,4 @@
-package com.prosayj.springboot.web;
+package com.prosayj.springboot;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
 @SpringBootApplication(exclude = {
-        DataSourceAutoConfiguration.class,
+      /*  DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class,
-        DruidDataSourceAutoConfigure.class,
+        DruidDataSourceAutoConfigure.class,*/
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 public class BlogApplication {
 

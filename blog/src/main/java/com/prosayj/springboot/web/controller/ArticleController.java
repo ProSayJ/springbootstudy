@@ -1,6 +1,9 @@
 package com.prosayj.springboot.web.controller;
 
+import com.prosayj.springboot.models.article.ArticleService;
+import com.prosayj.springboot.models.article.module.ArticleDTO;
 import com.prosayj.springboot.web.controller.vo.Blogs;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,9 @@ import java.util.Map;
  */
 @Controller
 public class ArticleController {
+    @Autowired
+    private ArticleService articleService;
+    
     @GetMapping("/editor")
     public String login() {
         return "editor";
@@ -34,6 +40,11 @@ public class ArticleController {
         System.out.println(articleHtmlContent);
         Map<String, String> result = new HashMap<>();
         result.put("status", "200");
+
+        ArticleDTO articleDTO = new ArticleDTO();
+        articleDTO.setArticleMdContent(blogs.getArticleContent());
+        articleDTO.setArticleHtmlContent(blogs.getArticleHtmlContent());
+        articleService.insert(articleDTO);
         return result;
     }
 }
