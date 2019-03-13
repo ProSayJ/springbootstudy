@@ -1,14 +1,16 @@
-package com.prosayj.springboot.editdemo;
+package com.prosayj.springboot.editdemo.controller.constant;
 
 /**
  * @author yangjian
  * @description TODO
  * @email yangjian@bubi.cn
- * @creatTime 2019/3/12 18:03
+ * @creatTime 2019/3/13 11:18
  * @since 1.0.0
  */
 public class Constant {
-    public static final String mdSrc = "![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)\n" +
+    public static  String mdSrc_1 = "";
+
+    public static  String mdSrc = "![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)\n" +
             "\n" +
             "![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)\n" +
             "\n" +

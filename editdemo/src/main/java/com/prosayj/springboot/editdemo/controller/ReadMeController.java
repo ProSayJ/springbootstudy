@@ -1,11 +1,9 @@
-package com.prosayj.springboot.editdemo;
+package com.prosayj.springboot.editdemo.controller;
 
+import com.prosayj.springboot.editdemo.controller.constant.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author yangjian
@@ -45,7 +43,8 @@ public class ReadMeController {
     @GetMapping("/test.md")
     @ResponseBody
     public String testMd() {
-        return Constant.mdSrc;
+        return Constant.mdSrc_1;
+//        return Constant.mdSrc;
     }
 
     @GetMapping("/use-requirejs.html")
