@@ -20,34 +20,38 @@ public class ReadMeController {
     }
 
 
-    @GetMapping("/index")
+    @GetMapping("index")
     public String login() {
         return "example/index";
     }
 
-    @GetMapping("/simple.html")
+    @GetMapping("simple.html")
     public String simple() {
         return "example/simple";
     }
 
-    @GetMapping("/full.html")
+    @GetMapping("full.html")
     public String full() {
         return "example/full";
     }
 
-    @GetMapping("/emoji.html")
+    @GetMapping("emoji.html")
     public String emoji() {
         return "example/emoji";
     }
 
-    @GetMapping("/test.md")
-    @ResponseBody
-    public String testMd() {
-//        return Constant.mdSrc_1;
-        return Constant.mdSrc;
+    @GetMapping("html-preview-markdown-to-html.html")
+    public String htmlPreviewMarkdownToHtml() {
+        return "example/html-preview-markdown-to-html";
     }
 
-    @GetMapping("/use-requirejs.html")
+    @GetMapping("html-preview-markdown-to-html-custom-toc-container.html")
+    public String htmlPreviewMarkdownToHtmlCustomTocContainer() {
+        return "example/html-preview-markdown-to-html-custom-toc-container";
+    }
+
+
+    @GetMapping("use-requirejs.html")
     public String useRequirejs() {
         return "example/use-requirejs";
     }

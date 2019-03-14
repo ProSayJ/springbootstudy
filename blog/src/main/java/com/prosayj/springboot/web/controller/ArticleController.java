@@ -35,9 +35,9 @@ public class ArticleController {
         return "echo";
     }
 
-    @GetMapping("/read")
-    public String read() {
-        return "read";
+    @GetMapping("/preview")
+    public String preview() {
+        return "preview";
     }
 
     @PostMapping("/publishArticle")

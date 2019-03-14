@@ -33,15 +33,24 @@ public class EditArticleController {
         String mdArticleContent = blogs.getArticleContent();
         System.out.println(mdArticleContent);
 
-
         //获得文章html代码并生成摘要
         String articleHtmlContent = blogs.getArticleHtmlContent();
         System.out.println(articleHtmlContent);
 
-        Constant.mdSrc_1 = mdArticleContent;
+//        Constant.mdSrc_1 = mdArticleContent;
+        Constant.mdSrc = mdArticleContent;
 
         Map<String, String> result = new HashMap<>();
         result.put("status", "200");
         return result;
     }
+
+    @GetMapping("/test.md")
+    @ResponseBody
+    public String testMd() {
+//        return Constant.mdSrc_1;
+        return Constant.mdSrc;
+    }
+
+
 }
