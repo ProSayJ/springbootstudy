@@ -1,9 +1,8 @@
-package com.prosayj.springboot.models.article.module;
+package com.prosayj.springboot.blog.models.article.domain;
 
 import java.util.Date;
 
-public class ArticleDTO {
-
+public class ArticleDomain {
     private Long id;
 
     private Long articleId;
@@ -183,5 +182,4 @@ public class ArticleDTO {
     public void setArticleMdContent(String articleMdContent) {
         this.articleMdContent = articleMdContent;
     }
-
 }

@@ -1,6 +1,6 @@
-package com.prosayj.springboot.models.article;
+package com.prosayj.springboot.blog.models.article;
 
-import com.prosayj.springboot.models.article.module.ArticleDTO;
+import com.prosayj.springboot.blog.models.article.module.ArticleDTO;
 
 public interface ArticleService {
 

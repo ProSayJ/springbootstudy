@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.prosayj.springboot.models.article.mapper.ArticleDomainMapper">
-  <resultMap id="BaseResultMap" type="com.prosayj.springboot.models.article.domain.ArticleDomain">
+<mapper namespace="com.prosayj.springboot.blog.models.article.mapper.ArticleDomainMapper">
+  <resultMap id="BaseResultMap" type="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="article_id" jdbcType="BIGINT" property="articleId" />
     <result column="author_id" jdbcType="BIGINT" property="authorId" />
@@ -18,7 +18,7 @@
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     <result column="article_summary" jdbcType="LONGVARCHAR" property="articleSummary" />
     <result column="article_html_content" jdbcType="LONGVARCHAR" property="articleHtmlContent" />
     <result column="article_md_content" jdbcType="LONGVARCHAR" property="articleMdContent" />
@@ -43,7 +43,7 @@
     delete from article
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <insert id="insert" parameterType="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -62,7 +62,7 @@
       #{articleHtmlContent,jdbcType=LONGVARCHAR}, #{articleMdContent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <insert id="insertSelective" parameterType="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     update article
     <set>
       <if test="articleId != null">
@@ -231,7 +231,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     update article
     set article_id = #{articleId,jdbcType=BIGINT},
       author_id = #{authorId,jdbcType=BIGINT},
@@ -252,7 +252,7 @@
       article_md_content = #{articleMdContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.models.article.domain.ArticleDomain">
+  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.blog.models.article.domain.ArticleDomain">
     update article
     set article_id = #{articleId,jdbcType=BIGINT},
       author_id = #{authorId,jdbcType=BIGINT},

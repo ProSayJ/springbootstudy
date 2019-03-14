@@ -1,6 +1,6 @@
-package com.prosayj.springboot.models.article.mapper;
+package com.prosayj.springboot.blog.models.article.mapper;
 
-import com.prosayj.springboot.models.article.domain.ArticleDomain;
+import com.prosayj.springboot.blog.models.article.domain.ArticleDomain;
 
 public interface ArticleDomainMapper {
     int deleteByPrimaryKey(Long id);

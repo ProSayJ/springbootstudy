@@ -1,4 +1,4 @@
-package com.prosayj.springboot.web.controller.vo;
+package com.prosayj.springboot.blog.api.vo.input;
 
 /**
  * @author yangjian
@@ -7,7 +7,7 @@ package com.prosayj.springboot.web.controller.vo;
  * @creatTime 2019/3/13 12:01
  * @since 1.0.0
  */
-public class Blogs {
+public class BlogCreateVO {
 
 
     private int id;
@@ -235,7 +235,7 @@ public class Blogs {
 
     @Override
     public String toString() {
-        return "Blogs{" +
+        return "BlogCreateVO{" +
                 "id=" + id +
                 ", articleId=" + articleId +
                 ", author='" + author + '\'' +

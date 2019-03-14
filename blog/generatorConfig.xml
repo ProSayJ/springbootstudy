@@ -21,13 +21,13 @@
 
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.prosayj.springboot.models.article.domain"
+        <javaModelGenerator targetPackage="com.prosayj.springboot.blog.models.article.domain"
                             targetProject="src/main/java"/>
 
-        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.article.mapper"
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.blog.models.article.mapper"
                          targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.prosayj.springboot.models.article.mapper"
+        <javaClientGenerator targetPackage="com.prosayj.springboot.blog.models.article.mapper"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
         <!--schema="blog"-->

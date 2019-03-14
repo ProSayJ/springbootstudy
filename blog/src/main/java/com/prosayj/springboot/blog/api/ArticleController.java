@@ -1,15 +1,17 @@
-package com.prosayj.springboot.web.controller;
+package com.prosayj.springboot.blog.api;
 
-import com.prosayj.springboot.models.article.ArticleService;
-import com.prosayj.springboot.models.article.module.ArticleDTO;
-import com.prosayj.springboot.web.controller.vo.Blogs;
+import com.prosayj.springboot.blog.models.article.ArticleService;
+import com.prosayj.springboot.blog.models.article.module.ArticleDTO;
+import com.prosayj.springboot.blog.api.vo.input.BlogCreateVO;
+import com.prosayj.springboot.blog.api.vo.input.IdVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,29 +22,18 @@ import java.util.Map;
  * @creatTime 2019/3/12 10:57
  * @since 1.0.0
  */
+@Api(value = "article-controller", tags = "article-controller", description = "文章操作类")
 @Controller
+@RequestMapping("/article")
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/editor")
-    public String login() {
-        return "editor";
-    }
 
-    @GetMapping("/echo")
-    public String echo() {
-        return "echo";
-    }
-
-    @GetMapping("/preview")
-    public String preview() {
-        return "preview";
-    }
-
-    @PostMapping("/publishArticle")
+    @ApiOperation(value = "发布文章", nickname = "article-publish-article")
+    @PostMapping("/publish-article")
     @ResponseBody
-    public Map<String, String> publishArticle(Blogs blogs, HttpServletRequest request) {
+    public Map<String, String> publishArticle(BlogCreateVO blogs) {
         String mdArticleContent = blogs.getArticleContent();
         System.out.println(mdArticleContent);
         //获得文章html代码并生成摘要
@@ -58,9 +49,10 @@ public class ArticleController {
         return result;
     }
 
-    @PostMapping("/article/echo")
+    @ApiOperation(value = "文章内容回显", nickname = "article-echo")
+    @PostMapping("/echo")
     @ResponseBody
-    public String articleEcho(Blogs blogs, HttpServletRequest request) {
+    public String articleEcho(IdVO idVO) {
         String articleMdContent = articleService.getArticelByPrimaryKey(1L).getArticleMdContent();
         return articleMdContent;
     }
