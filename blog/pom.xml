@@ -68,6 +68,8 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                </excludes>
             </resource>
         </resources>
 
@@ -86,6 +88,20 @@
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>
+
+            <!--因为经过maven的filter，会破坏font文件的二进制文件格式，到时前台解析出错,所以要过滤字体文件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

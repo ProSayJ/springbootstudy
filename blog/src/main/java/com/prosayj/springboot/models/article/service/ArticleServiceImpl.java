@@ -4,6 +4,7 @@ import com.prosayj.springboot.models.article.ArticleService;
 import com.prosayj.springboot.models.article.domain.ArticleDomain;
 import com.prosayj.springboot.models.article.mapper.ArticleDomainMapper;
 import com.prosayj.springboot.models.article.module.ArticleDTO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,15 @@ public class ArticleServiceImpl implements ArticleService {
         articleDomain.setIsDelete((byte)2);
         articleDomainMapper.insert(articleDomain);
 
+    }
+
+    @Override
+    public ArticleDTO getArticelByPrimaryKey(Long id) {
+        ArticleDTO result = new ArticleDTO();
+        ArticleDomain articleDomain = articleDomainMapper.selectByPrimaryKey(id);
+        if (articleDomain != null) {
+            result.setArticleMdContent(articleDomain.getArticleMdContent());
+        }
+        return result;
     }
 }

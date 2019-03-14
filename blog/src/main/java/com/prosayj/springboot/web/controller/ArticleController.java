@@ -24,10 +24,20 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
-    
+
     @GetMapping("/editor")
     public String login() {
         return "editor";
+    }
+
+    @GetMapping("/echo")
+    public String echo() {
+        return "echo";
+    }
+
+    @GetMapping("/read")
+    public String read() {
+        return "read";
     }
 
     @PostMapping("/publishArticle")
@@ -47,4 +57,12 @@ public class ArticleController {
         articleService.insert(articleDTO);
         return result;
     }
+
+    @PostMapping("/article/echo")
+    @ResponseBody
+    public String articleEcho(Blogs blogs, HttpServletRequest request) {
+        String articleMdContent = articleService.getArticelByPrimaryKey(1L).getArticleMdContent();
+        return articleMdContent;
+    }
+
 }

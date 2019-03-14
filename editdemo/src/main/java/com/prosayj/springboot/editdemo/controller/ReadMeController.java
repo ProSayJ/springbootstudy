@@ -43,8 +43,8 @@ public class ReadMeController {
     @GetMapping("/test.md")
     @ResponseBody
     public String testMd() {
-        return Constant.mdSrc_1;
-//        return Constant.mdSrc;
+//        return Constant.mdSrc_1;
+        return Constant.mdSrc;
     }
 
     @GetMapping("/use-requirejs.html")

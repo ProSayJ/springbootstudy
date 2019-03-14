@@ -5,4 +5,7 @@ import com.prosayj.springboot.models.article.module.ArticleDTO;
 public interface ArticleService {
 
     void insert(ArticleDTO articleDTO);
+
+    ArticleDTO getArticelByPrimaryKey(Long id);
+
 }
