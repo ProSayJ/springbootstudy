@@ -72,7 +72,7 @@
         console.log(articleContentValues.toString());
         $.ajax({
             type: "POST",
-            url: "/publishArticle",
+            url: "/article/publish-article",
             traditional: true,// 传数组
             data: {
                 articleContent: articleContentValues,
