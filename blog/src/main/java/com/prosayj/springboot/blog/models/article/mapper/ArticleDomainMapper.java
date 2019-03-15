@@ -2,6 +2,8 @@ package com.prosayj.springboot.blog.models.article.mapper;
 
 import com.prosayj.springboot.blog.models.article.domain.ArticleDomain;
 
+import java.util.List;
+
 public interface ArticleDomainMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -16,4 +18,6 @@ public interface ArticleDomainMapper {
     int updateByPrimaryKeyWithBLOBs(ArticleDomain record);
 
     int updateByPrimaryKey(ArticleDomain record);
+
+    List<ArticleDomain> selectByCondition();
 }

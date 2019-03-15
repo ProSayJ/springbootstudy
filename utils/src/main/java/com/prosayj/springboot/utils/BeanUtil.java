@@ -68,7 +68,7 @@ public class BeanUtil {
     }
 
     /**
-     * @description 拷贝属性
+     * @description 拷贝对象属性
      * @author yangjian
      * @Date 10:53 2018/9/19
      * @since 1.0.0
@@ -103,14 +103,21 @@ public class BeanUtil {
         */
     }
 
+    /**
+     * 拷贝对象数组
+     *
+     * @param sourecList
+     * @param targeClass
+     * @param <S>
+     * @param <T>
+     * @return
+     */
     public static <S, T> List<T> toBeanList(List<S> sourecList, Class<T> targeClass) {
-        List<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<>(sourecList.size());
         sourecList.forEach(source -> {
-            String sourceStr = objectConvertToString(source);
             //Class<S> sourceClass = (Class<S>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-            result.add(toBean(sourceStr, targeClass));
+            result.add(toBean(objectConvertToString(source), targeClass));
             return;
-
         });
         return result;
     }

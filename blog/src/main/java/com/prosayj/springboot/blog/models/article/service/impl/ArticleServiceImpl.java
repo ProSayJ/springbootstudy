@@ -1,13 +1,18 @@
-package com.prosayj.springboot.blog.models.article.domain.service;
+package com.prosayj.springboot.blog.models.article.service.impl;
 
 import com.prosayj.springboot.blog.models.article.ArticleService;
 import com.prosayj.springboot.blog.models.article.domain.ArticleDomain;
 import com.prosayj.springboot.blog.models.article.mapper.ArticleDomainMapper;
 import com.prosayj.springboot.blog.models.article.module.ArticleDTO;
+import com.prosayj.springboot.utils.BeanUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -26,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
         articleDomain.setOriginalAuthor("张三");
         articleDomain.setArticleTitle("文章标题");
         articleDomain.setArticleSummary("文章摘要");
-        articleDomain.setArticleType((byte)1);
+        articleDomain.setArticleType((byte) 1);
         articleDomain.setArticleCategories("博客分类");
         articleDomain.setArticleUrl("www.baidu.com");
         articleDomain.setLikes("喜欢");
@@ -35,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
         articleDomain.setNextArticleId(2);
         articleDomain.setPublishDate(new Date());
         articleDomain.setUpdateDate(new Date());
-        articleDomain.setIsDelete((byte)2);
+        articleDomain.setIsDelete((byte) 2);
         articleDomainMapper.insert(articleDomain);
 
     }
@@ -48,5 +53,11 @@ public class ArticleServiceImpl implements ArticleService {
             result.setArticleMdContent(articleDomain.getArticleMdContent());
         }
         return result;
+    }
+
+    @Override
+    public List<ArticleDTO> query() {
+        List<ArticleDomain> articleDomains = articleDomainMapper.selectByCondition();
+        return BeanUtil.toBeanList(articleDomains, ArticleDTO.class);
     }
 }

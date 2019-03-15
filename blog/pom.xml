@@ -27,6 +27,13 @@
     </properties>
 
     <dependencies>
+        <!--内部依赖-->
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -41,6 +48,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--Springboot + thymeleaf 生成静态页面 异常：java.lang.NoClassDefFoundError: ognl/PropertyAccessor：需要加ognl的包-->
+        <dependency>
+            <groupId>ognl</groupId>
+            <artifactId>ognl</artifactId>
+            <version>3.1.12</version>
         </dependency>
 
         <dependency>

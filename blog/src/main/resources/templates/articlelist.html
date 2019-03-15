@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表页</title>
+    <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap-3.3.7/js/bootstrap.js}"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Panel heading</div>
+
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>主键</td>
+                <td>文章id</td>
+                <td>文章摘要</td>
+                <td>文章链接</td>
+                <td>操作</td>
+            </tr>
+            <tr th:each="article,stat:${articleList}">
+                <td th:text="${stat.index}"></td>
+                <td th:text="${article.id}"></td>
+                <td th:text="${article.articleSummary}"></td>
+                <td th:text="${article.articleTags}"></td>
+                <td th:text="${article.articleUrl}"></td>
+                <td><input type="button" th:onclick="'javascript:deail(\''+${article.id}+'\');'" value = "查看" /></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+
+<script th:inline="javascript">
+    function deail(id){
+        alert(id);
+    }
+
+
+
+
+
+    // $(function () {});
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: 'article/list', contentType: "application/json;charset=utf-8",
+            // data: JSON.stringify(jsonsdata),
+            success: function (articleList) {
+                console.log(articleList);
+                var inf = '<table class=\'table\'>';
+                inf += "<tr><th>id</th><th>name</th><th>age</th>";
+                /*<![CDATA[*>*/
+                for (var i = 0; i < articleList.length; i++) {
+                    /*]]>*/
+                    var article = articleList[i];
+                    inf += "<tr><td>" + article.originalAuthor + "</td></tr>";
+                }
+                inf += "</table>";
+                console.log(inf);
+                $(".showDataId").html(inf);
+            }
+        })
+
+
+    // window.onload();
+</script>
+
+
+</body>
+</html>
