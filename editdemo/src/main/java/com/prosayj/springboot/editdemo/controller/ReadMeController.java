@@ -56,4 +56,10 @@ public class ReadMeController {
         return "example/use-requirejs";
     }
 
+
+    @GetMapping("image-upload.html")
+    public String imageUpload() {
+        return "example/image-upload.html";
+    }
+
 }
