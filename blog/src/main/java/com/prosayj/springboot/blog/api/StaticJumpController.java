@@ -1,16 +1,9 @@
 package com.prosayj.springboot.blog.api;
 
-import com.prosayj.springboot.blog.api.vo.output.ArticleVO;
-import com.prosayj.springboot.blog.models.article.ArticleService;
-import com.prosayj.springboot.utils.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 /**
  * @author yangjian
@@ -22,8 +15,6 @@ import java.util.List;
 @Api(value = "static-jump-controller", tags = "static-jump-controller", description = "静态资源跳转类")
 @Controller
 public class StaticJumpController {
-    @Autowired
-    private ArticleService articleService;
 
 
     @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
@@ -47,6 +38,12 @@ public class StaticJumpController {
     }
 
 
+    @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
+    @GetMapping("/create")
+    public String create() {
+        return "create";
+    }
+
     @ApiOperation(value = "编辑文章", nickname = "static-jump-controller-editor")
     @GetMapping("/editor")
     public String editor() {
@@ -58,26 +55,6 @@ public class StaticJumpController {
     @GetMapping("/echo")
     public String echo() {
         return "echo";
-    }
-
-
-    @ApiOperation(value = "文章浏览", nickname = "static-jump-controller-preview")
-    @GetMapping("/preview")
-    public String preview() {
-        return "preview";
-    }
-
-    @ApiOperation(value = "文章预览列表页", nickname = "static-jump-controller-articlelist")
-    @GetMapping("/articlelist")
-    public String articlelist(Model model) {
-        model.addAttribute("title", "用户列表");
-        model.addAttribute("hello","Hello, Spring Boot!");
-
-
-        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
-        model.addAttribute("articleList",articleVOS);
-        return "articlelist";
-//        return "example";
     }
 
     @ApiOperation(value = "文章回显编辑", nickname = "static-jump-controller-echo")

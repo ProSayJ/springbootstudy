@@ -15,12 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +34,27 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+
+    @ApiOperation(value = "文章浏览", nickname = "static-jump-controller-preview")
+    @GetMapping("/preview")
+    public ModelAndView preview(IdVO idVO) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("preview");
+        modelAndView.addObject("previewId", idVO.getId());
+        return modelAndView;
+    }
+
+    @ApiOperation(value = "文章预览列表页", nickname = "static-jump-controller-articlelist")
+    @GetMapping("/list")
+    public String articlelist(Model model) {
+        /*
+        model.addAttribute("title", "用户列表");
+        model.addAttribute("hello", "Hello, Spring Boot!");
+        */
+        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
+        model.addAttribute("articleList", articleVOS);
+        return "articlelist";
+    }
 
 
     @ApiOperation(value = "发布文章", nickname = "article-publish-article")
@@ -63,43 +80,7 @@ public class ArticleController {
     @PostMapping("/echo")
     @ResponseBody
     public String articleEcho(IdVO idVO) {
-        String articleMdContent = articleService.getArticelByPrimaryKey(1L).getArticleMdContent();
+        String articleMdContent = articleService.getArticelByPrimaryKey(idVO.getId()).getArticleMdContent();
         return articleMdContent;
-    }
-
-    @ApiOperation(value = "文章列表", nickname = "article-list")
-    @PostMapping("/list")
-//    @ResponseBody
-//    public List<ArticleVO> articleList(IdVO idVO) throws IOException {
-    public void articleList(Model model) throws IOException {
-        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
-
-
-        //构造模板引擎
-        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-//        这里必须是resolver.setPrefix("templates/");不能是resolver.setPrefix("/templates/");
-        resolver.setPrefix("templates/");//模板所在目录，相对于当前classloader的classpath。
-        resolver.setSuffix(".html");//模板文件后缀
-        TemplateEngine templateEngine = new TemplateEngine();
-        templateEngine.setTemplateResolver(resolver);
-
-        //构造上下文(Model)
-        Context context = new Context();
-        context.setVariable("name", "蔬菜列表");
-        context.setVariable("array", new String[]{"土豆", "番茄", "白菜", "芹菜"});
-
-        //渲染模板
-        FileWriter write = new FileWriter("result.html");
-        templateEngine.process("example", context, write);
-
-
-//        return articleVOS;
-
-        model.addAttribute("title", "用户列表");
-        model.addAttribute("hello", "Hello, Spring Boot!");
-
-
-        model.addAttribute("articleList", articleVOS);
-//        return "articlelist";
     }
 }
