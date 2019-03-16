@@ -63,6 +63,10 @@ public class ArticleController {
         ArticleDTO articleDTO = new ArticleDTO();
         articleDTO.setArticleMdContent(blogs.getArticleContent());
         articleDTO.setArticleHtmlContent(blogs.getArticleHtmlContent());
+
+        articleDTO.setArticleTitle(blogs.getArticleTitle());
+        articleDTO.setArticleCategories(blogs.getArticleCategories());
+        articleDTO.setOriginalAuthor(blogs.getAuthor());
         articleService.insert(articleDTO);
         return result;
     }

@@ -2,6 +2,9 @@ package com.prosayj.springboot.blog.api.vo.input;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 /**
  * @author yangjian
  * @description TODO
@@ -17,13 +20,15 @@ public class BlogCreateVO {
     @ApiModelProperty(value = "文章id", required = false)
     private long articleId;
 
-    @ApiModelProperty(value = "文章作者", required = false)
+    @ApiModelProperty(value = "文章作者", required = true)
+    @NotEmpty
     private String author;
 
     @ApiModelProperty(value = "文章原作者", required = false)
     private String originalAuthor;
 
-    @ApiModelProperty(value = "主键", required = false)
+    @ApiModelProperty(value = "文章名称", required = true)
+    @NotNull
     private String articleTitle;
 
     @ApiModelProperty(value = "发布时间", required = false)
@@ -45,7 +50,8 @@ public class BlogCreateVO {
     @ApiModelProperty(value = "文章类型", required = false)
     private String articleType;
 
-    @ApiModelProperty(value = "博客分类", required = false)
+    @ApiModelProperty(value = "博客分类", required = true)
+    @NotEmpty
     private String articleCategories;
 
 

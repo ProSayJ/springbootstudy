@@ -14,20 +14,41 @@
         }
     </style>
     <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/move.js"></script>
     <script src="/static/editormd/src/editormd.js"></script>
 </head>
 <head th:replace="~{fragments/header :: header}"></head>
 <body>
-<div id="app">
-    <button id="publishBtn" type="button" class="btn btn-success" style="margin: auto">
-        发表博客
-    </button>
+<div align="center">
     <!--MarkDown的id标志 -->
     <div id="my-editormd">
         <!-- 书写与实时显示的textarea -->
         <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
         <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code")。 -->
         <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
+    </div>
+    <div align="right">
+        <button id="publishBtn" type="button" class="btn btn-success" style="margin: auto">
+            发表博客
+        </button>
+    </div>
+    <div class="form-group">
+        <!--<label for="password" class="col-form-label">标题</label>-->
+        <input type="text" style="width:30%" class="form-control" id="articleTitle" name="articleTitle"
+               maxlength="30"
+               placeholder="标题">
+    </div>
+    <div class="form-group">
+        <!--<label for="username" class="col-form-label">作者:</label>-->
+        <input type="text" style="width:30%" class="form-control " id="authorName" name="authorName" maxlength="50"
+               placeholder="作者">
+    </div>
+
+    <div class="form-group">
+        <!--<label for="username" class="col-form-label">分类:</label>-->
+        <input type="text" style="width:30%" class="form-control " id="articleCategories" name="articleCategories"
+               maxlength="50"
+               placeholder="分类">
     </div>
 </div>
 
@@ -36,8 +57,8 @@
     var testEditor;
     $(function () {
         testEditor = editormd("my-editormd", { //注意1：这里的就是上面的DIV的id属性值
-            width: "100%",
-            height: 840,
+            width: "90%",
+            height: 660,
             syncScrolling: true, //设置双向滚动
             path: "/static/editormd/lib/", //lib目录的路径
             // previewTheme : "dark", //代码块使用dark主题
@@ -63,20 +84,33 @@
 
     //提交
     var publishBtn = $('#publishBtn');
-    var articleContent = $('#my-editormd-html-code');
-
 
     publishBtn.click(function () {
+        var articleContent = $('#my-editormd-html-code');
         var articleContentValues = articleContent.val();
         var html = testEditor.getHTML();
-        console.log(articleContentValues.toString());
+
+
+        var articleTitle = $('#articleTitle').val();
+        var authorName = $('#authorName').val()
+        var articleCategories = $('#articleCategories').val();
+
+        if (articleTitle == "" || authorName=="" ||articleCategories=="") {
+            alert("不能为空~~");
+            return;
+        }
+
+
         $.ajax({
             type: "POST",
             url: "/article/publish",
             traditional: true,// 传数组
             data: {
                 articleContent: articleContentValues,
-                articleHtmlContent: html
+                articleHtmlContent: html,
+                articleTitle:articleTitle,
+                author:authorName,
+                articleCategories:articleCategories
             },
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             dataType: "json",

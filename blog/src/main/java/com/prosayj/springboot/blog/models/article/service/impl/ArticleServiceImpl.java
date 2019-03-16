@@ -25,14 +25,14 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleDomain articleDomain = new ArticleDomain();
         articleDomain.setArticleHtmlContent(articleDTO.getArticleHtmlContent());
         articleDomain.setArticleMdContent(articleDTO.getArticleMdContent());
+        articleDomain.setArticleCategories(articleDTO.getArticleCategories());
+        articleDomain.setOriginalAuthor(articleDTO.getOriginalAuthor());
+        articleDomain.setArticleTitle(articleDTO.getArticleTitle());
 
         articleDomain.setArticleId(2L);
         articleDomain.setAuthorId(2L);
-        articleDomain.setOriginalAuthor("张三");
-        articleDomain.setArticleTitle("文章标题");
         articleDomain.setArticleSummary("文章摘要");
         articleDomain.setArticleType((byte) 1);
-        articleDomain.setArticleCategories("博客分类");
         articleDomain.setArticleUrl("www.baidu.com");
         articleDomain.setLikes("喜欢");
         articleDomain.setLastArticleId("111");
