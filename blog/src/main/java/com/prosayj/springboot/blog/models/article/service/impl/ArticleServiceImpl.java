@@ -60,4 +60,13 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticleDomain> articleDomains = articleDomainMapper.selectByCondition();
         return BeanUtil.toBeanList(articleDomains, ArticleDTO.class);
     }
+
+    @Override
+    public void updateByCondition(ArticleDTO articleDTO) {
+        ArticleDomain articleDomain = new ArticleDomain();
+        BeanUtil.copyProperties(articleDTO, articleDomain);
+        articleDomain.setUpdateDate(new Date());
+        articleDomainMapper.updateByPrimaryKeySelective(articleDomain);
+
+    }
 }

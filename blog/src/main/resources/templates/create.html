@@ -19,6 +19,9 @@
 <head th:replace="~{fragments/header :: header}"></head>
 <body>
 <div id="app">
+    <button id="publishBtn" type="button" class="btn btn-success" style="margin: auto">
+        发表博客
+    </button>
     <!--MarkDown的id标志 -->
     <div id="my-editormd">
         <!-- 书写与实时显示的textarea -->
@@ -26,9 +29,6 @@
         <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code")。 -->
         <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
     </div>
-    <button id="publishBtn" type="button" class="btn btn-success" style="margin: auto">
-        发表博客
-    </button>
 </div>
 
 <script>
@@ -72,7 +72,7 @@
         console.log(articleContentValues.toString());
         $.ajax({
             type: "POST",
-            url: "/article/publish-article",
+            url: "/article/publish",
             traditional: true,// 传数组
             data: {
                 articleContent: articleContentValues,

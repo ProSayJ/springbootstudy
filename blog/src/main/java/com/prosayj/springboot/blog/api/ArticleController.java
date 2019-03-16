@@ -1,5 +1,6 @@
 package com.prosayj.springboot.blog.api;
 
+import com.prosayj.springboot.blog.api.vo.input.BlogUpdateVO;
 import com.prosayj.springboot.blog.api.vo.output.ArticleVO;
 import com.prosayj.springboot.blog.models.article.ArticleService;
 import com.prosayj.springboot.blog.models.article.module.ArticleDTO;
@@ -35,16 +36,7 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @ApiOperation(value = "文章浏览", nickname = "static-jump-controller-preview")
-    @GetMapping("/preview")
-    public ModelAndView preview(IdVO idVO) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("preview");
-        modelAndView.addObject("previewId", idVO.getId());
-        return modelAndView;
-    }
-
-    @ApiOperation(value = "文章预览列表页", nickname = "static-jump-controller-articlelist")
+    @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list")
     public String articlelist(Model model) {
         /*
@@ -56,9 +48,8 @@ public class ArticleController {
         return "articlelist";
     }
 
-
-    @ApiOperation(value = "发布文章", nickname = "article-publish-article")
-    @PostMapping("/publish-article")
+    @ApiOperation(value = "发布文章", nickname = "article-controller-publish")
+    @PostMapping("/publish")
     @ResponseBody
     public Map<String, String> publishArticle(BlogCreateVO blogs) {
         String mdArticleContent = blogs.getArticleContent();
@@ -76,11 +67,26 @@ public class ArticleController {
         return result;
     }
 
-    @ApiOperation(value = "文章内容回显", nickname = "article-echo")
-    @PostMapping("/echo")
+
+    @ApiOperation(value = "文章详情", nickname = "article-controller-detail")
+    @PostMapping("/detail")
     @ResponseBody
     public String articleEcho(IdVO idVO) {
         String articleMdContent = articleService.getArticelByPrimaryKey(idVO.getId()).getArticleMdContent();
         return articleMdContent;
+    }
+
+    @ApiOperation(value = "更新文章内容", nickname = "article-controller-update")
+    @PostMapping("/update")
+    @ResponseBody
+    public Map<String, String> update(BlogUpdateVO updateVO) {
+        ArticleDTO articleDTO = new ArticleDTO();
+        articleDTO.setArticleMdContent(updateVO.getArticleContent());
+        articleDTO.setArticleHtmlContent(updateVO.getArticleHtmlContent());
+        articleDTO.setId(updateVO.getId());
+        articleService.updateByCondition(articleDTO);
+        Map<String, String> result = new HashMap<>();
+        result.put("status", "200");
+        return result;
     }
 }

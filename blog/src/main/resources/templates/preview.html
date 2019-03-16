@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8"/>
-    <title>ProSayJ | 文章预览</title>
+    <title>ProSayJ | 博客预览</title>
     <link rel="stylesheet" href="/static/editormd/examples/css/style.css"/>
     <link rel="stylesheet" href="/static/editormd/css/editormd.preview.css"/>
     <link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">
@@ -91,7 +91,7 @@
 <script type="text/javascript">
     $(function () {
         var testEditormdView, testEditormdView2;
-        $.post("/article/echo?id=" + $(" #articleId ").val(), function (markdown) {
+        $.post("/article/detail?id=" + $(" #articleId ").val(), function (markdown) {
             $(".id").valueOf()
             // console.log(markdown.toString());
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {

@@ -20,4 +20,5 @@ public interface ArticleDomainMapper {
     int updateByPrimaryKey(ArticleDomain record);
 
     List<ArticleDomain> selectByCondition();
+
 }

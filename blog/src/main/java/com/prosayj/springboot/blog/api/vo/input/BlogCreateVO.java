@@ -1,5 +1,7 @@
 package com.prosayj.springboot.blog.api.vo.input;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author yangjian
  * @description TODO
@@ -9,63 +11,41 @@ package com.prosayj.springboot.blog.api.vo.input;
  */
 public class BlogCreateVO {
 
-
+    @ApiModelProperty(value = "主键", required = false)
     private int id;
 
-    /**
-     * 文章id
-     */
+    @ApiModelProperty(value = "文章id", required = false)
     private long articleId;
 
-    /**
-     * 文章作者
-     */
+    @ApiModelProperty(value = "文章作者", required = false)
     private String author;
 
-    /**
-     * 文章原作者
-     */
+    @ApiModelProperty(value = "文章原作者", required = false)
     private String originalAuthor;
 
-    /**
-     * 文章名
-     */
+    @ApiModelProperty(value = "主键", required = false)
     private String articleTitle;
 
-    /**
-     * 发布时间
-     */
+    @ApiModelProperty(value = "发布时间", required = false)
     private String publishDate;
 
-    /**
-     * 最后一次修改时间
-     */
+    @ApiModelProperty(value = "最后一次修改时间", required = false)
     private String updateDate;
 
-    /**
-     * 文章内容_md
-     */
+    @ApiModelProperty(value = "文章内容_md", required = false)
     private String articleContent;
 
-    /**
-     * 文章内容_html
-     */
+    @ApiModelProperty(value = "文章内容_html", required = false)
     private String articleHtmlContent;
 
 
-    /**
-     * 文章标签
-     */
+    @ApiModelProperty(value = "文章标签", required = false)
     private String articleTags;
 
-    /**
-     * 文章类型
-     */
+    @ApiModelProperty(value = "文章类型", required = false)
     private String articleType;
 
-    /**
-     * 博客分类
-     */
+    @ApiModelProperty(value = "博客分类", required = false)
     private String articleCategories;
 
 
@@ -74,26 +54,19 @@ public class BlogCreateVO {
      * 转载：则是转载的链接
      * 原创：则是在本博客中的链接
      */
+    @ApiModelProperty(value = "原文链接", required = false)
     private String articleUrl;
 
-    /**
-     * 文章摘要
-     */
+    @ApiModelProperty(value = "文章摘要", required = false)
     private String articleTabloid;
 
-    /**
-     * 上一篇文章id
-     */
+    @ApiModelProperty(value = "上一篇文章id", required = false)
     private long lastArticleId;
 
-    /**
-     * 下一篇文章id
-     */
+    @ApiModelProperty(value = "下一篇文章id", required = false)
     private long nextArticleId;
 
-    /**
-     * 喜欢
-     */
+    @ApiModelProperty(value = "喜欢", required = false)
     private int likes = 0;
 
 

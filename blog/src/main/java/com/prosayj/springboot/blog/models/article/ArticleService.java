@@ -12,5 +12,6 @@ public interface ArticleService {
 
     List<ArticleDTO> query();
 
+    void updateByCondition(ArticleDTO articleDTO);
 
 }

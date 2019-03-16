@@ -1,9 +1,11 @@
 package com.prosayj.springboot.blog.api;
 
+import com.prosayj.springboot.blog.api.vo.input.IdVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author yangjian
@@ -20,7 +22,8 @@ public class StaticJumpController {
     @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
     @GetMapping("/")
     public String root() {
-        return "redirect:/login";
+//        return "redirect:/login";
+        return "redirect:article/list";
     }
 
 
@@ -44,20 +47,26 @@ public class StaticJumpController {
         return "create";
     }
 
-    @ApiOperation(value = "编辑文章", nickname = "static-jump-controller-editor")
+
+    @ApiOperation(value = "文章预览", nickname = "static-jump-controller-preview")
+    @GetMapping("/preview")
+    public ModelAndView preview(IdVO idVO) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("preview");
+        modelAndView.addObject("previewId", idVO.getId());
+        return modelAndView;
+    }
+
+    @ApiOperation(value = "文章编辑", nickname = "static-jump-controller-editor")
     @GetMapping("/editor")
-    public String editor() {
-        return "editor";
+    public ModelAndView editor(IdVO idVO) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editor");
+        modelAndView.addObject("editorId", idVO.getId());
+        return modelAndView;
     }
 
-
-    @ApiOperation(value = "文章回显编辑", nickname = "static-jump-controller-echo")
-    @GetMapping("/echo")
-    public String echo() {
-        return "echo";
-    }
-
-    @ApiOperation(value = "文章回显编辑", nickname = "static-jump-controller-echo")
+    @ApiOperation(value = "example", nickname = "static-jump-controller-example")
     @GetMapping("/example")
     public String example() {
         return "example";

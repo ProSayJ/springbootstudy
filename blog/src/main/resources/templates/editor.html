@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>ProSayJ | 写文章</title>
+    <title>ProSayJ | 文章编辑</title>
     <link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">
     <link rel="stylesheet" href="/static/editormd/css/editormd.css"/>
     <style>
@@ -18,6 +18,9 @@
 <head th:replace="~{fragments/header :: header}"></head>
 <body>
 <div id="app">
+    <button id="publishBtn" type="button" class="btn btn-success" style="margin: 10px 15px 10px auto">
+        编辑博客
+    </button>
     <!--MarkDown的id标志 -->
     <div id="my-editormd">
         <!-- 书写与实时显示的textarea -->
@@ -26,18 +29,13 @@
         <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
     </div>
 
-
-
-    <button id="publishBtn" type="button" class="btn btn-success" style="margin: 10px 15px 10px auto">
-        发表博客
-    </button>
 </div>
-
+<input type="hidden" id="editorId" name="name" th:value="${editorId}">
 <script>
     //初始化md编辑器
     var testEditor;
     $(function () {
-        $.post('article/echo', function (md) {
+        $.post("/article/detail?id=" + $(" #editorId ").val(), function (md) {
             // console.log(md.toString());
             testEditor = editormd("my-editormd", {
                 width: "100%",
@@ -93,22 +91,25 @@
 
             });
         });
-    });
+    })
+    ;
 
     //提交
     var publishBtn = $('#publishBtn');
-    var articleContent = $('#my-editormd-html-code');
 
 
     publishBtn.click(function () {
+        var articleContent = $('#my-editormd-html-code');
         var articleContentValues = articleContent.val();
         var html = testEditor.getHTML();
+        var editorId = $(" #editorId ").val();
         console.log(articleContentValues.toString());
         $.ajax({
             type: "POST",
-            url: "/publishArticle",
+            url: "/article/update",
             traditional: true,// 传数组
             data: {
+                id: editorId,
                 articleContent: articleContentValues,
                 articleHtmlContent: html
             },
@@ -116,11 +117,11 @@
             dataType: "json",
             success: function (data) {
                 if (data['status'] == 200) {
-                    alert("发表博客成功！");
+                    alert("更新博客成功！");
                 }
             },
             error: function () {
-                alert("发表博客请求失败！")
+                alert("更新博客请求失败！")
             }
         })
 
