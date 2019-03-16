@@ -47,7 +47,7 @@
 
         <!--集中定义版本号-->
         <!--javase 模块依赖,没有写的则已存在springboot的起步依赖中-->
-        <commons-io.version>2.4</commons-io.version>
+        <commons-io.version>2.5</commons-io.version>
         <commons-dbutils.version>1.6</commons-dbutils.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <bcprov-jdk15on.version>1.54</bcprov-jdk15on.version>
