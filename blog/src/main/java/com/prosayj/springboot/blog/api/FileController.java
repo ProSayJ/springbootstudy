@@ -1,6 +1,7 @@
 package com.prosayj.springboot.blog.api;
 
 import com.prosayj.springboot.constants.Constants;
+import com.prosayj.springboot.utils.FileUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -41,54 +42,29 @@ public class FileController {
         if (!classpath.exists()) {
             classpath = new File(Constants.ENPTY_STRING);
         }
-        //获取根目录的绝对路径
+        //获取根目录的绝对路径D:\workspace\git\springbootstudy\blog\target\classes
         String absoluteClassPath = classpath.getAbsolutePath();
 
-        //处理路径指定到Resources下面的静态资源位置
+        //处理路径指定到Resources下面的静态资源位置：D:\workspace\git\springbootstudy\blog/src/main/resources/static/images/upload
         String srcImgDes = new StringBuffer()
                 .append(absoluteClassPath.substring(Constants.ZERO, absoluteClassPath.indexOf(Constants.TARGET)))
                 .append(Constants.RESOURCE_PATH).toString();
-        //创建Resources下面的静态资源目录
-        File srcImgDesPath = new File(srcImgDes);
-        if (!srcImgDesPath.exists() || !srcImgDesPath.isDirectory()) {
-            srcImgDesPath.mkdirs();
-        }
-        //创建Resources下面的静态资源目录中待上传的文件
-        File targetImgDes = new File(srcImgDesPath.getAbsolutePath(), fileName);
-        if (!targetImgDes.exists()) {
-            targetImgDes.createNewFile();
-        }
-        //保存文件到Resources下面的静态资源目录中
-        try {
-            file.transferTo(targetImgDes);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
+        FileUtils.transferImg(file,srcImgDes,fileName);
+
 
         //在target下新建文件目录
         File classImgDesPath = new File(absoluteClassPath, Constants.IMG_SRC);
         if (!classImgDesPath.exists() || !classImgDesPath.isDirectory()) {
             classImgDesPath.mkdirs();
         }
-        //在target下新建待上传的图片文件存储目录
-        File catalog = new File(classImgDesPath.getAbsolutePath());
-        if (!catalog.exists() || !catalog.isDirectory()) {
-            catalog.mkdirs();
-        }
-        //在target下的上传的图片文件存储目录新建空的待上传的文件
-        File targetFile = new File(classImgDesPath.getAbsolutePath(), fileName);
-        if (!targetFile.exists()) {
-            targetFile.createNewFile();
-        }
-        //上传图片到target下的图片文件存储目录
-        try {
-            file.transferTo(targetFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        FileUtils.transferImg(file,classImgDesPath.getAbsolutePath(),fileName);
+
 
         Map<String, Object> res = new HashMap<>();
-        res.put("url", "http://localhost/static/images/upload/" + targetFile.getName());
+        res.put("url", "http://localhost/static/images/upload/" + fileName);
         res.put("success", 1);
         res.put("message", "upload success!");
         return res;

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>文章列表页</title>
 
-    <link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">
+    <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
+    <link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>
 
     <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap-theme.css}" rel="stylesheet"/>
@@ -27,23 +28,22 @@
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
-                <td>主键</td>
-                <td>文章id</td>
-                <td>文章摘要</td>
-                <td>文章链接</td>
+                <td>作者</td>
+                <td>文章标题</td>
+                <td>文章分类</td>
                 <td>操作</td>
             </tr>
             <tr th:each="article,stat:${articleList}">
                 <td th:text="${stat.index}"></td>
-                <td th:text="${article.id}"></td>
-                <td th:text="${article.articleSummary}"></td>
-                <td th:text="${article.articleTags}"></td>
-                <td th:text="${article.articleUrl}"></td>
+                <td th:text="${article.id}" th:hidden="true"></td>
+                <td th:text="${article.originalAuthor}"></td>
+                <td th:text="${article.articleTitle}"></td>
+                <td th:text="${article.articleCategories}"></td>
                 <td>
-                    <button type="submit" class="btn-success" th:onclick="'javascript:preview(\''+${article.id}+'\');'">
+                    <button type="submit" class="btn-info" th:onclick="'javascript:preview(\''+${article.id}+'\');'">
                         查看
                     </button>
-                    <button type="submit" class="btn-success" th:onclick="'javascript:edit(\''+${article.id}+'\');'">
+                    <button type="submit" class="btn-info" th:onclick="'javascript:edit(\''+${article.id}+'\');'">
                         编辑
                     </button>
                 </td>
