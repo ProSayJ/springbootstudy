@@ -1,6 +1,7 @@
 package com.prosayj.springboot.utils;
 
 import com.prosayj.springboot.constants.Constants;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.stream.FileImageInputStream;
@@ -19,9 +20,9 @@ public class FileUtils {
     /**
      * 上传文件
      *
-     * @param file
-     * @param srcImgDes
-     * @param fileName
+     * @param file      文件流
+     * @param srcImgDes 文件目录
+     * @param fileName  文件名称
      */
     public static void transferImg(MultipartFile file, String srcImgDes, String fileName) {
         //创建Resources下面的静态资源目录
@@ -43,6 +44,31 @@ public class FileUtils {
             file.transferTo(targetImgDes);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 输入流转字节数组
+     *
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
+    public static byte[] inputStream2ByteArray(InputStream inputStream) throws IOException {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int num = inputStream.read(buffer);
+            while (num != -1) {
+                baos.write(buffer, 0, num);
+                num = inputStream.read(buffer);
+            }
+            baos.flush();
+            return baos.toByteArray();
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
         }
     }
 
@@ -147,6 +173,38 @@ public class FileUtils {
             else sb.append(Integer.toHexString(buf[k]));
         }
         return "0x" + sb.toString().toUpperCase();
+    }
+
+    /**
+     * 文件上传到項目的类路径
+     *
+     * @param fileMultipart
+     * @param fileName
+     * @throws IOException
+     */
+    public static void upload2ClassPath(MultipartFile fileMultipart, String fileName) throws IOException {
+        //获取根目录
+        File classpath = new File(ResourceUtils.getURL(Constants.CLASSPATH).getPath());
+        if (!classpath.exists()) {
+            classpath = new File(Constants.ENPTY_STRING);
+        }
+        //获取根目录的绝对路径D:\workspace\git\springbootstudy\blog\target\classes
+        String absoluteClassPath = classpath.getAbsolutePath();
+
+        //处理路径指定到Resources下面的静态资源位置：D:\workspace\git\springbootstudy\blog/src/main/resources/static/images/upload
+        String srcImgDes = new StringBuffer()
+                .append(absoluteClassPath.substring(Constants.ZERO, absoluteClassPath.indexOf(Constants.TARGET)))
+                .append(Constants.RESOURCE_PATH).toString();
+
+        FileUtils.transferImg(fileMultipart, srcImgDes, fileName);
+
+        //在target下新建文件目录
+        File classImgDesPath = new File(absoluteClassPath, Constants.IMG_SRC);
+        if (!classImgDesPath.exists() || !classImgDesPath.isDirectory()) {
+            classImgDesPath.mkdirs();
+        }
+
+        FileUtils.transferImg(fileMultipart, classImgDesPath.getAbsolutePath(), fileName);
     }
 
 }

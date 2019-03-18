@@ -31,7 +31,6 @@ public class Constants {
     public static final String ENPTY_STRING = "";
 
 
-
     public static final String CLASSPATH = "classpath:";
     public static final String RESOURCE_PATH = "/src/main/resources/static/images/upload";
     public static final String IMG_SRC = "static/images/upload/";

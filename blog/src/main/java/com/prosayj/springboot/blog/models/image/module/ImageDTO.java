@@ -26,6 +26,10 @@ public class ImageDTO {
 
     private byte[] imgSource;
 
+    private String imgSuffix;
+
+    private String imgName;
+
     public Long getId() {
         return id;
     }
@@ -88,5 +92,21 @@ public class ImageDTO {
 
     public void setImgSource(byte[] imgSource) {
         this.imgSource = imgSource;
+    }
+
+    public String getImgSuffix() {
+        return imgSuffix;
+    }
+
+    public void setImgSuffix(String imgSuffix) {
+        this.imgSuffix = imgSuffix;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
     }
 }

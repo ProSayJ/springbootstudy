@@ -1,127 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prosayj.springboot.blog.models.image.mapper.ImageDomainMapper">
-  <resultMap id="BaseResultMap" type="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="article_id" jdbcType="BIGINT" property="articleId" />
-    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
-    <result column="create_date" jdbcType="DATE" property="createDate" />
-    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
-    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
-    <result column="img_source" jdbcType="LONGVARBINARY" property="imgSource" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, user_id, article_id, img_url, create_date, update_date, is_delete
+    <resultMap id="BaseResultMap" type="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="article_id" jdbcType="BIGINT" property="articleId"/>
+        <result column="img_url" jdbcType="VARCHAR" property="imgUrl"/>
+        <result column="img_suffix" jdbcType="VARCHAR" property="imgSuffix"/>
+        <result column="img_name" jdbcType="VARCHAR" property="imgName"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="is_delete" jdbcType="TINYINT" property="isDelete"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+               type="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+        <result column="img_source" jdbcType="LONGVARBINARY" property="imgSource"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_id, article_id, img_url, create_date, update_date, is_delete,img_suffix,img_name
   </sql>
-  <sql id="Blob_Column_List">
+    <sql id="Blob_Column_List">
     img_source
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from image
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from image
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from image
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into image (user_id, article_id, img_url, 
-      create_date, update_date, is_delete, 
-      img_source)
-    values (#{userId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{imgUrl,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=DATE}, #{updateDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, 
-      #{imgSource,jdbcType=LONGVARBINARY})
-  </insert>
-  <insert id="insertSelective" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into image
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="articleId != null">
-        article_id,
-      </if>
-      <if test="imgUrl != null">
-        img_url,
-      </if>
-      <if test="createDate != null">
-        create_date,
-      </if>
-      <if test="updateDate != null">
-        update_date,
-      </if>
-      <if test="isDelete != null">
-        is_delete,
-      </if>
-      <if test="imgSource != null">
-        img_source,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="articleId != null">
-        #{articleId,jdbcType=BIGINT},
-      </if>
-      <if test="imgUrl != null">
-        #{imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=DATE},
-      </if>
-      <if test="updateDate != null">
-        #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=TINYINT},
-      </if>
-      <if test="imgSource != null">
-        #{imgSource,jdbcType=LONGVARBINARY},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
-    update image
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="articleId != null">
-        article_id = #{articleId,jdbcType=BIGINT},
-      </if>
-      <if test="imgUrl != null">
-        img_url = #{imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=DATE},
-      </if>
-      <if test="updateDate != null">
-        update_date = #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=TINYINT},
-      </if>
-      <if test="imgSource != null">
-        img_source = #{imgSource,jdbcType=LONGVARBINARY},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+    <insert id="insert" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into image (user_id, article_id, img_url,
+        create_date, update_date, is_delete,img_suffix,img_name,
+        img_source)
+        values (#{userId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{imgUrl,jdbcType=VARCHAR},
+        #{createDate,jdbcType=DATE}, #{updateDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT},
+        #{imgSuffix,jdbcType=VARCHAR},#{imgName,jdbcType=VARCHAR},
+        #{imgSource,jdbcType=LONGVARBINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into image
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="articleId != null">
+                article_id,
+            </if>
+            <if test="imgUrl != null">
+                img_url,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="imgSource != null">
+                img_source,
+            </if>
+            <if test="imgName != null">
+                img_name,
+            </if>
+            <if test="imgSuffix != null">
+                img_suffix,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="articleId != null">
+                #{articleId,jdbcType=BIGINT},
+            </if>
+            <if test="imgUrl != null">
+                #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=DATE},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=TINYINT},
+            </if>
+            <if test="imgSource != null">
+                #{imgSource,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="imgName != null">
+                #{imgName,jdbcType=VARCHAR},
+            </if>
+            <if test="imgSuffix != null">
+                #{imgSuffix,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+        update image
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="articleId != null">
+                article_id = #{articleId,jdbcType=BIGINT},
+            </if>
+            <if test="imgUrl != null">
+                img_url = #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=DATE},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=TINYINT},
+            </if>
+            <if test="imgSource != null">
+                img_source = #{imgSource,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="imgName != null">
+                img_name = #{imgName,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="imgSuffix != null">
+                img_suffix = #{imgSuffix,jdbcType=LONGVARBINARY},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs"
+            parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
     update image
     set user_id = #{userId,jdbcType=BIGINT},
       article_id = #{articleId,jdbcType=BIGINT},
@@ -129,10 +153,12 @@
       create_date = #{createDate,jdbcType=DATE},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       is_delete = #{isDelete,jdbcType=TINYINT},
-      img_source = #{imgSource,jdbcType=LONGVARBINARY}
+      img_source = #{imgSource,jdbcType=LONGVARBINARY},
+      img_name = #{imgName,jdbcType=VARCHAR},
+      img_suffix = #{imgSuffix,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
+    <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.blog.models.image.domain.ImageDomain">
     update image
     set user_id = #{userId,jdbcType=BIGINT},
       article_id = #{articleId,jdbcType=BIGINT},

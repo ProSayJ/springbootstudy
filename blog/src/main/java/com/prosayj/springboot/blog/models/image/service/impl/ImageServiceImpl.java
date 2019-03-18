@@ -31,6 +31,8 @@ public class ImageServiceImpl implements ImageService {
         imageDomain.setUpdateDate(new Date());
         imageDomain.setIsDelete((byte) 2);
         imageDomain.setImgSource(imageDTO.getImgSource());
+        imageDomain.setImgName(imageDTO.getImgName());
+        imageDomain.setImgSuffix(imageDTO.getImgSuffix());
         imageDomainMapper.insert(imageDomain);
         return imageDomain.getId();
     }
