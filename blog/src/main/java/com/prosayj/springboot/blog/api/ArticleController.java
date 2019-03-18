@@ -2,7 +2,7 @@ package com.prosayj.springboot.blog.api;
 
 import com.prosayj.springboot.blog.api.vo.input.BlogUpdateVO;
 import com.prosayj.springboot.blog.api.vo.output.ArticleVO;
-import com.prosayj.springboot.blog.models.article.ArticleService;
+import com.prosayj.springboot.blog.models.article.service.ArticleService;
 import com.prosayj.springboot.blog.models.article.module.ArticleDTO;
 import com.prosayj.springboot.blog.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.blog.api.vo.input.IdVO;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;

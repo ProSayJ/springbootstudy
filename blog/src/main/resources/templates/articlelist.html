@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>文章列表页</title>
+    <title>文章列表页-Spring Boot集成Jasypt安全框架</title>
 
     <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
     <link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>
@@ -13,15 +13,37 @@
 
     <script type="text/javascript" th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/bootstrap-3.3.7/js/bootstrap.js}"></script>
+    <style>
+        #external-frame{
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            background: #fff;
+            z-index: 100;
+            padding: 18px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom: none;
+        }
+
+    </style>
 </head>
 <body>
+<!--<iframe id="external-frame" minlength="20px" marginwidth="20px" width=820 height=330 frameborder=0 scrolling=auto src="./register.html">-->
+
+
+</iframe>
 
 <div class="container">
+
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" align="center">
             <button type="submit" class="btn-success" th:onclick="'javascript:create();'">
-                新建博客
+                新建博客-
             </button>
         </div>
 

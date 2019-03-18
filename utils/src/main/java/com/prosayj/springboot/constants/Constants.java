@@ -28,7 +28,7 @@ public class Constants {
 
 
     public static final String POINT = ".";
-    public static final String ENPTY_STRING = ":";
+    public static final String ENPTY_STRING = "";
 
 
 

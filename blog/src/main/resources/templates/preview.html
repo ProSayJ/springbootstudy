@@ -57,10 +57,28 @@
             padding-right: 430px;
             margin: 0;
         }
+        #external-frame{
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            background: #fff;
+            z-index: 100;
+            padding: 18px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom: none;
+        }
     </style>
 </head>
 <!--<head th:replace="~{fragments/header :: header}"></head>-->
 <body>
+<!--<iframe id="external-frame" minlength="20px" marginwidth="20px" width=820 height=330 frameborder=0 scrolling=auto src="./list">-->
+
+
+</iframe>
 <div id="layout">
     <header>
         <h1>Markdown转HTML的显示处理之自定义 ToC 容器</h1>

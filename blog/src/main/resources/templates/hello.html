@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: header}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表页-Spring Boot集成Jasypt安全框架</title>
 
+    <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
+    <link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>
+
+    <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap-theme.css}" rel="stylesheet"/>
+
+    <script type="text/javascript" th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap-3.3.7/js/bootstrap.js}"></script>
+    <style>
+        #external-frame {
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            background: #fff;
+            z-index: 100;
+            padding: 18px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom: none;
+        }
+
+    </style>
+</head>
 <body>
-<a href="http://www.fontawesome.com.cn/icons/search/" target="_blank">Font Awesome 图标搜索</a>
-<br>
-<a href="http://www.fontawesome.com.cn/examples/" target="_blank">Font Awesome 示例</a>
-<br>
-<a href="https://v3.bootcss.com/components/" target="_blank">bootstrap组件</a>
-<br>
-
-
-    <div class="container-fluid">
-
-    </div>
-
-
-
-
-
-
-<div th:replace="~{fragments/footer :: footer}">...</div>
+<iframe id="external-frame" minlength="20px" marginwidth="20px" width=820 height=330 frameborder=0 scrolling=auto src="http://www.baidu.com"></iframe>
 </body>
 </html>

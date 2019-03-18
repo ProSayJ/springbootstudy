@@ -33,7 +33,6 @@ public class StaticJumpController {
         return "login";
     }
 
-
     @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
     @GetMapping("/register")
     public String register() {
@@ -70,5 +69,11 @@ public class StaticJumpController {
     @GetMapping("/example")
     public String example() {
         return "example";
+    }
+
+    @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
+    @GetMapping("/article/register.html")
+    public String registerIframe() {
+        return "register";
     }
 }

@@ -17,7 +17,7 @@
         <jdbcConnection
                 connectionURL="jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC"
                 driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
-            <property name="nullCatalogMeansCurrent" value="true" />
+            <property name="nullCatalogMeansCurrent" value="true"/>
 
         </jdbcConnection>
 
@@ -32,6 +32,38 @@
                              type="XMLMAPPER"/>
         <!--schema="blog"-->
         <table tableName="article" domainObjectName="ArticleDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+    </context>
+
+    <context id="image" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.prosayj.springboot.blog.models.image.domain"
+                            targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.blog.models.image.mapper"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.prosayj.springboot.blog.models.image.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <!--schema="image"-->
+        <table tableName="image" domainObjectName="ImageDomain"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
