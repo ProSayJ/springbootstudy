@@ -15,7 +15,7 @@ public interface FileService {
      * @param needUpLoad2ClassPath 是否需要上传到项目类路径下：true：需要
      * @return
      */
-    Boolean uploadImg(MultipartFile multipartFile, Boolean needUpLoad2ClassPath) throws IOException;
+    Long uploadImg(MultipartFile multipartFile, Boolean needUpLoad2ClassPath) throws IOException;
 
     /**
      * 批量导出所有的图片文件

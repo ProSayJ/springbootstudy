@@ -33,15 +33,16 @@ public class FileController {
     @ApiOperation(value = "图片上传", nickname = "file-controller-img-upload")
     @PostMapping("/img-upload")
     @ResponseBody
-    public Object imgUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile fileMultipart) throws Exception {
+    public Map imgUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile fileMultipart) throws Exception {
         String trueFileName = fileMultipart.getOriginalFilename();
         String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
         String fileName = System.currentTimeMillis() + suffix;
-        fileService.uploadImg(fileMultipart, Boolean.FALSE);
+        Long fileId = fileService.uploadImg(fileMultipart, Boolean.FALSE);
 
 
         Map<String, Object> res = new HashMap<>();
-        res.put("url", "http://localhost/static/images/upload/" + fileName);
+//        res.put("url", "http://localhost/static/images/upload/" + fileName);//静态资源路径
+        res.put("url", "http://localhost/file/img-download?id=" + fileId);//db路径
         res.put("success", 1);
         res.put("message", "upload success!");
         return res;
@@ -57,6 +58,7 @@ public class FileController {
             e.printStackTrace();
         }
     }
+
     @ApiOperation(value = "导出所有图片到本地", nickname = "file-controller-img-expport-all")
     @PostMapping(value = "/img-expport-all")
     @ResponseBody

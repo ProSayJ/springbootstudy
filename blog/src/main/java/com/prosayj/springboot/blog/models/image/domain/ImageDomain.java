@@ -9,8 +9,13 @@ public class ImageDomain {
 
     private Long articleId;
 
-    private String imgUrl;
+    private String imgName;
 
+    private String imgSuffix;
+
+    private String imgDbUrl;
+
+    private String imgStaticUrl;
 
     private Date createDate;
 
@@ -19,10 +24,6 @@ public class ImageDomain {
     private Byte isDelete;
 
     private byte[] imgSource;
-
-    private String imgSuffix;
-
-    private String imgName;
 
     public Long getId() {
         return id;
@@ -48,12 +49,36 @@ public class ImageDomain {
         this.articleId = articleId;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImgName() {
+        return imgName;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getImgSuffix() {
+        return imgSuffix;
+    }
+
+    public void setImgSuffix(String imgSuffix) {
+        this.imgSuffix = imgSuffix;
+    }
+
+    public String getImgDbUrl() {
+        return imgDbUrl;
+    }
+
+    public void setImgDbUrl(String imgDbUrl) {
+        this.imgDbUrl = imgDbUrl;
+    }
+
+    public String getImgStaticUrl() {
+        return imgStaticUrl;
+    }
+
+    public void setImgStaticUrl(String imgStaticUrl) {
+        this.imgStaticUrl = imgStaticUrl;
     }
 
     public Date getCreateDate() {
@@ -86,21 +111,5 @@ public class ImageDomain {
 
     public void setImgSource(byte[] imgSource) {
         this.imgSource = imgSource;
-    }
-
-    public String getImgSuffix() {
-        return imgSuffix;
-    }
-
-    public void setImgSuffix(String imgSuffix) {
-        this.imgSuffix = imgSuffix;
-    }
-
-    public String getImgName() {
-        return imgName;
-    }
-
-    public void setImgName(String imgName) {
-        this.imgName = imgName;
     }
 }

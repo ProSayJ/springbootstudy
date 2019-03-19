@@ -7,7 +7,7 @@ import java.util.List;
 public interface ImageDomainMapper {
     int deleteByPrimaryKey(Long id);
 
-    Long insert(ImageDomain record);
+    int insert(ImageDomain record);
 
     int insertSelective(ImageDomain record);
 
@@ -18,7 +18,6 @@ public interface ImageDomainMapper {
     int updateByPrimaryKeyWithBLOBs(ImageDomain record);
 
     int updateByPrimaryKey(ImageDomain record);
-
 
     List<ImageDomain> getAllImage();
 }

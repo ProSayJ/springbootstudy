@@ -29,7 +29,7 @@ public class FileServiceImpl implements FileService {
     private ImageDomainMapper imageDomainMapper;
 
     @Override
-    public Boolean uploadImg(MultipartFile fileMultipart, Boolean needUpLoad2ClassPath) throws IOException {
+    public Long uploadImg(MultipartFile fileMultipart, Boolean needUpLoad2ClassPath) throws IOException {
         //目前只有一个文件上传的需求
         String trueFileName = fileMultipart.getOriginalFilename();
         String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
@@ -43,8 +43,7 @@ public class FileServiceImpl implements FileService {
         imageDTO.setImgSource(FileUtils.inputStream2ByteArray(inputStream));
         imageDTO.setImgSuffix(suffix);
         imageDTO.setImgName(fileName);
-        imageService.save(imageDTO);
-        return Boolean.TRUE;
+        return imageService.save(imageDTO);
     }
 
     @Override

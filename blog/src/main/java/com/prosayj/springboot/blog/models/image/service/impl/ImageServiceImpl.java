@@ -26,7 +26,8 @@ public class ImageServiceImpl implements ImageService {
         ImageDomain imageDomain = new ImageDomain();
         imageDomain.setUserId(99L);
         imageDomain.setArticleId(99L);
-        imageDomain.setImgUrl("www.baudi.com");
+        imageDomain.setImgDbUrl("www.baudi.com");
+        imageDomain.setImgStaticUrl("www.baudi.com");
         imageDomain.setCreateDate(new Date());
         imageDomain.setUpdateDate(new Date());
         imageDomain.setIsDelete((byte) 2);
