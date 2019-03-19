@@ -16,10 +16,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -35,29 +34,37 @@ public class FileServiceImpl implements FileService {
         String trueFileName = fileMultipart.getOriginalFilename();
         String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
         String fileName = System.currentTimeMillis() + suffix;
-
         if (needUpLoad2ClassPath) {
             FileUtils.upload2ClassPath(fileMultipart, fileName);
         }
-
         //image入db
         InputStream inputStream = fileMultipart.getInputStream();
-
         ImageDTO imageDTO = new ImageDTO();
         imageDTO.setImgSource(FileUtils.inputStream2ByteArray(inputStream));
         imageDTO.setImgSuffix(suffix);
         imageDTO.setImgName(fileName);
-
-        Long save = imageService.save(imageDTO);
+        imageService.save(imageDTO);
         return Boolean.TRUE;
     }
 
     @Override
-    public void downloadImg(Long id, String path) {
-        path = "D:\\img\\haha";
-        ImageDomain imageDomain = imageDomainMapper.selectByPrimaryKey(id);
-        FileUtils.byte2image(imageDomain.getImgSource(), path, imageDomain.getImgName());
+    public void exoprtAllImgs() {
+        String path = "D:\\img\\haha";
+        List<ImageDomain> allImage = imageDomainMapper.getAllImage();
+        allImage.forEach(data -> {
+            FileUtils.byte2image(data.getImgSource(), path, data.getImgName());
+        });
+    }
 
+    @Override
+    public void downloadImage(Long id, HttpServletResponse response) throws IOException {
+        ImageDomain imageDomain = imageDomainMapper.selectByPrimaryKey(id);
+        byte[] imgSource = imageDomain.getImgSource();
+        response.setContentType("application/force-download");// 设置强制下载不打开
+        response.addHeader("Content-Disposition",
+                "attachment;fileName=" + imageDomain.getImgName());// 设置文件名
+        OutputStream os = response.getOutputStream();
+        os.write(imgSource);
     }
 
     private boolean multipartCheck(HttpServletRequest request) {

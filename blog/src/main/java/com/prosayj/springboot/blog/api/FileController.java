@@ -1,31 +1,17 @@
 package com.prosayj.springboot.blog.api;
 
-import com.prosayj.springboot.blog.models.image.domain.ImageDomain;
-import com.prosayj.springboot.blog.models.image.mapper.ImageDomainMapper;
-import com.prosayj.springboot.blog.models.image.module.ImageDTO;
-import com.prosayj.springboot.blog.models.image.service.ImageService;
+import com.prosayj.springboot.blog.api.vo.input.IdVO;
 import com.prosayj.springboot.blog.models.service.FileService;
 import com.prosayj.springboot.constants.Constants;
-import com.prosayj.springboot.utils.FileUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.util.WebUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,9 +37,7 @@ public class FileController {
         String trueFileName = fileMultipart.getOriginalFilename();
         String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
         String fileName = System.currentTimeMillis() + suffix;
-
-
-        fileService.uploadImg(fileMultipart, Boolean.TRUE);
+        fileService.uploadImg(fileMultipart, Boolean.FALSE);
 
 
         Map<String, Object> res = new HashMap<>();
@@ -61,6 +45,24 @@ public class FileController {
         res.put("success", 1);
         res.put("message", "upload success!");
         return res;
+    }
+
+
+    @ApiOperation(value = "图片下载", nickname = "file-controller-img-download")
+    @RequestMapping(value = "/img-download", method = RequestMethod.GET)
+    public void downloadImage(IdVO idVO, HttpServletResponse response) {
+        try {
+            fileService.downloadImage(idVO.getId(), response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @ApiOperation(value = "导出所有图片到本地", nickname = "file-controller-img-expport-all")
+    @PostMapping(value = "/img-expport-all")
+    @ResponseBody
+    public boolean exportAllImgs() {
+        fileService.exoprtAllImgs();
+        return true;
     }
 
 }

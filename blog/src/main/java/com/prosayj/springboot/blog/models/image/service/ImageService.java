@@ -11,5 +11,11 @@ import com.prosayj.springboot.blog.models.image.module.ImageDTO;
  */
 public interface ImageService {
 
+    /**
+     * 保存图片，返回主键id
+     *
+     * @param imageDTO
+     * @return
+     */
     Long save(ImageDTO imageDTO);
 }
