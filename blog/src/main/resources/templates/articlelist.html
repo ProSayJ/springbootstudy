@@ -14,7 +14,7 @@
     <script type="text/javascript" th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/bootstrap-3.3.7/js/bootstrap.js}"></script>
     <style>
-        #external-frame{
+        #external-frame {
             width: 300px;
             height: 100%;
             position: fixed;
@@ -49,18 +49,22 @@
 
         <table class="table table-hover">
             <tr>
-                <td>序号</td>
-                <td>作者</td>
                 <td>文章标题</td>
+                <td>作者</td>
                 <td>文章分类</td>
+                <td>创建时间</td>
+                <td>更新时间</td>
                 <td>操作</td>
             </tr>
             <tr th:each="article,stat:${articleList}">
-                <td th:text="${stat.index}"></td>
+                <td th:text="${stat.index}" th:hidden="true"></td>
                 <td th:text="${article.id}" th:hidden="true"></td>
-                <td th:text="${article.originalAuthor}"></td>
+
                 <td th:text="${article.articleTitle}"></td>
+                <td th:text="${article.originalAuthor}"></td>
                 <td th:text="${article.articleCategories}"></td>
+                <td th:text="${#dates.format(article.publishDate, 'yyyy-MM-dd')}"></td>
+                <td th:text="${#dates.format(article.updateDate, 'yyyy-MM-dd HH:mm')}"></td>
                 <td>
                     <button type="submit" class="btn-info" th:onclick="'javascript:preview(\''+${article.id}+'\');'">
                         查看

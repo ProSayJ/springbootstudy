@@ -18,7 +18,9 @@ CREATE TABLE `article` (
   `update_date` datetime NOT NULL COMMENT '最后一次修改时间',
   `is_delete` tinyint(2) NOT NULL COMMENT '1-删除；2-未删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+
 
 
 
@@ -35,4 +37,5 @@ CREATE TABLE `image` (
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `is_delete` tinyint(2) NOT NULL COMMENT '1-删除；2-未删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+

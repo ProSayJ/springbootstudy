@@ -1,6 +1,7 @@
 package com.prosayj.springboot.blog.models.service;
 
 import com.prosayj.springboot.blog.api.vo.input.IdVO;
+import com.prosayj.springboot.blog.models.image.module.ImageDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,10 +13,11 @@ public interface FileService {
      * 上传图片
      *
      * @param multipartFile        文件上传对象
+     * @param articleId            文章id
      * @param needUpLoad2ClassPath 是否需要上传到项目类路径下：true：需要
      * @return
      */
-    Long uploadImg(MultipartFile multipartFile, Boolean needUpLoad2ClassPath) throws IOException;
+    String uploadImg(MultipartFile multipartFile, Long articleId, Boolean needUpLoad2ClassPath) throws IOException;
 
     /**
      * 批量导出所有的图片文件

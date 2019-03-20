@@ -1,6 +1,7 @@
 package com.prosayj.springboot.blog.api;
 
 import com.prosayj.springboot.blog.api.vo.input.IdVO;
+import com.prosayj.springboot.blog.models.image.module.ImageDTO;
 import com.prosayj.springboot.blog.models.service.FileService;
 import com.prosayj.springboot.constants.Constants;
 import io.swagger.annotations.Api;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.HashMap;
@@ -33,16 +35,14 @@ public class FileController {
     @ApiOperation(value = "图片上传", nickname = "file-controller-img-upload")
     @PostMapping("/img-upload")
     @ResponseBody
-    public Map imgUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile fileMultipart) throws Exception {
-        String trueFileName = fileMultipart.getOriginalFilename();
-        String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
-        String fileName = System.currentTimeMillis() + suffix;
-        Long fileId = fileService.uploadImg(fileMultipart, Boolean.FALSE);
-
+    public Map imgUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile fileMultipart, HttpServletRequest request) throws Exception {
+        Long editorId = Long.parseLong(request.getParameter("editorId"));
+        String imgDbUrl = fileService.uploadImg(fileMultipart, editorId, Boolean.FALSE);
 
         Map<String, Object> res = new HashMap<>();
 //        res.put("url", "http://localhost/static/images/upload/" + fileName);//静态资源路径
-        res.put("url", "http://localhost/file/img-download?id=" + fileId);//db路径
+//        res.put("url", "http://localhost/file/img-download?id=" + fileId);//db路径
+        res.put("url", "http://localhost" + imgDbUrl);//db路径
         res.put("success", 1);
         res.put("message", "upload success!");
         return res;

@@ -1,5 +1,7 @@
 package com.prosayj.springboot.blog.models.service.Impl;
 
+import com.prosayj.springboot.blog.models.article.domain.ArticleDomain;
+import com.prosayj.springboot.blog.models.article.mapper.ArticleDomainMapper;
 import com.prosayj.springboot.blog.models.image.domain.ImageDomain;
 import com.prosayj.springboot.blog.models.image.mapper.ImageDomainMapper;
 import com.prosayj.springboot.blog.models.image.module.ImageDTO;
@@ -27,31 +29,40 @@ public class FileServiceImpl implements FileService {
     private ImageService imageService;
     @Autowired
     private ImageDomainMapper imageDomainMapper;
+    @Autowired
+    private ArticleDomainMapper articleDomainMapper;
 
     @Override
-    public Long uploadImg(MultipartFile fileMultipart, Boolean needUpLoad2ClassPath) throws IOException {
+    public String uploadImg(MultipartFile fileMultipart, Long articleId, Boolean needUpLoad2ClassPath) throws IOException {
+        ArticleDomain articleDomain = articleDomainMapper.selectByPrimaryKey(articleId);
         //目前只有一个文件上传的需求
-        String trueFileName = fileMultipart.getOriginalFilename();
-        String suffix = trueFileName.substring(trueFileName.lastIndexOf(Constants.POINT));
-        String fileName = System.currentTimeMillis() + suffix;
+        String fullName = fileMultipart.getOriginalFilename();
+        String suffix = fullName.substring(fullName.lastIndexOf(Constants.POINT));
+        String trueFileName = fullName.substring(fullName.lastIndexOf(Constants.SEPARATOR) + 1, fullName.lastIndexOf(Constants.POINT));
+        String fileName = trueFileName + "_" + System.currentTimeMillis() + "_" + suffix;
         if (needUpLoad2ClassPath) {
             FileUtils.upload2ClassPath(fileMultipart, fileName);
         }
         //image入db
         InputStream inputStream = fileMultipart.getInputStream();
         ImageDTO imageDTO = new ImageDTO();
+        imageDTO.setArticleId(articleDomain.getId());
         imageDTO.setImgSource(FileUtils.inputStream2ByteArray(inputStream));
+        //后缀
         imageDTO.setImgSuffix(suffix);
+        //文件名+后缀
         imageDTO.setImgName(fileName);
+        //导出的静态资源的路径
+        imageDTO.setImgStaticUrl("\\static\\images\\upload\\" + articleDomain.getArticleTitle());
         return imageService.save(imageDTO);
     }
 
     @Override
     public void exoprtAllImgs() {
-        String path = "D:\\img\\haha";
+        String path = "D:\\static\\images\\upload";
         List<ImageDomain> allImage = imageDomainMapper.getAllImage();
         allImage.forEach(data -> {
-            FileUtils.byte2image(data.getImgSource(), path, data.getImgName());
+            FileUtils.byte2image(data.getImgSource(), "D:\\" + data.getImgStaticUrl(), data.getImgName());
         });
     }
 

@@ -4,6 +4,7 @@ import com.prosayj.springboot.blog.models.image.domain.ImageDomain;
 import com.prosayj.springboot.blog.models.image.mapper.ImageDomainMapper;
 import com.prosayj.springboot.blog.models.image.module.ImageDTO;
 import com.prosayj.springboot.blog.models.image.service.ImageService;
+import com.prosayj.springboot.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,12 @@ public class ImageServiceImpl implements ImageService {
     private ImageDomainMapper imageDomainMapper;
 
     @Override
-    public Long save(ImageDTO imageDTO) {
+    public String save(ImageDTO imageDTO) {
         ImageDomain imageDomain = new ImageDomain();
-        imageDomain.setUserId(99L);
-        imageDomain.setArticleId(99L);
-        imageDomain.setImgDbUrl("www.baudi.com");
-        imageDomain.setImgStaticUrl("www.baudi.com");
+        imageDomain.setUserId(Constants.NO_ID);
+        imageDomain.setArticleId(imageDTO.getArticleId());
+        imageDomain.setImgDbUrl(Constants.ENPTY_STRING);
+        imageDomain.setImgStaticUrl(imageDTO.getImgStaticUrl());
         imageDomain.setCreateDate(new Date());
         imageDomain.setUpdateDate(new Date());
         imageDomain.setIsDelete((byte) 2);
@@ -35,6 +36,14 @@ public class ImageServiceImpl implements ImageService {
         imageDomain.setImgName(imageDTO.getImgName());
         imageDomain.setImgSuffix(imageDTO.getImgSuffix());
         imageDomainMapper.insert(imageDomain);
-        return imageDomain.getId();
+        Long imageDomainId = imageDomain.getId();
+
+        //更新dburl
+        ImageDomain updateDomain = new ImageDomain();
+        updateDomain.setId(imageDomainId);
+        updateDomain.setImgDbUrl("\\file\\img-download?id=" + imageDomainId);
+        updateDomain.setUpdateDate(new Date());
+        imageDomainMapper.updateByPrimaryKeySelective(updateDomain);
+        return updateDomain.getImgDbUrl();
     }
 }

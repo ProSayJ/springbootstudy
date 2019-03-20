@@ -30,6 +30,10 @@ public class Constants {
     public static final String POINT = ".";
     public static final String ENPTY_STRING = "";
 
+    public static final String SEPARATOR = "\\";
+
+    public static final Long NO_ID = -1L;
+
 
     public static final String CLASSPATH = "classpath:";
     public static final String RESOURCE_PATH = "/src/main/resources/static/images/upload";

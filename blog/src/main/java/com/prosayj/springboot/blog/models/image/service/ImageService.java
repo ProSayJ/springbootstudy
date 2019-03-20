@@ -1,5 +1,6 @@
 package com.prosayj.springboot.blog.models.image.service;
 
+import com.prosayj.springboot.blog.models.image.domain.ImageDomain;
 import com.prosayj.springboot.blog.models.image.module.ImageDTO;
 
 /**
@@ -17,5 +18,5 @@ public interface ImageService {
      * @param imageDTO
      * @return
      */
-    Long save(ImageDTO imageDTO);
+    String save(ImageDTO imageDTO);
 }

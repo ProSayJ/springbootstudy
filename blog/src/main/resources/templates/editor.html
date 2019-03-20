@@ -72,7 +72,7 @@
                 //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
                 imageUpload: true, //上传图片
                 imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp", "JPG", "JPEG", "GIF", "PNG", "BMP", "WEBP"],
-                imageUploadURL: "/file/img-upload",
+                imageUploadURL: "/file/img-upload?editorId=" + $(" #editorId ").val(),
                 onload: function () {
                     console.log('onload', this);
                     //this.fullscreen();

@@ -56,8 +56,6 @@ public class ArticleController {
         //获得文章html代码并生成摘要
         String articleHtmlContent = blogs.getArticleHtmlContent();
         System.out.println(articleHtmlContent);
-        Map<String, String> result = new HashMap<>();
-        result.put("status", "200");
 
         ArticleDTO articleDTO = new ArticleDTO();
         articleDTO.setArticleMdContent(blogs.getArticleContent());
@@ -67,6 +65,9 @@ public class ArticleController {
         articleDTO.setArticleCategories(blogs.getArticleCategories());
         articleDTO.setOriginalAuthor(blogs.getAuthor());
         articleService.insert(articleDTO);
+
+        Map<String, String> result = new HashMap<>();
+        result.put("status", "200");
         return result;
     }
 
