@@ -26,7 +26,7 @@
         }
 
         #sidebar {
-            width: 450px;
+            width: 25%;
             height: 100%;
             position: fixed;
             top: 0;
@@ -57,7 +57,8 @@
             padding-right: 430px;
             margin: 0;
         }
-        #external-frame{
+
+        #external-frame {
             width: 300px;
             height: 100%;
             position: fixed;
@@ -75,16 +76,18 @@
 </head>
 <!--<head th:replace="~{fragments/header :: header}"></head>-->
 <body>
-<!--<iframe id="external-frame" minlength="20px" marginwidth="20px" width=820 height=330 frameborder=0 scrolling=auto src="./list">-->
-
-
+<!--<iframe id="external-frame" minlength="20px" marginwidth="20px" width=820 height=330 frameborder=0 scrolling=auto src="./list">
 </iframe>
+-->
 <div id="layout">
     <header>
         <h1>Markdown转HTML的显示处理之自定义 ToC 容器</h1>
         <p>即：非编辑情况下的HTML预览</p>
         <p>HTML Preview (markdown to html and custom ToC container)</p>
     </header>
+    <select id="preview-area-theme-select">
+        <option selected="selected" value="">select preview area themes</option>
+    </select>
     <div id="sidebar">
         <h1>Table of Contents</h1>
         <div class="markdown-body editormd-preview-container" id="custom-toc-container">#custom-toc-container</div>
@@ -110,7 +113,6 @@
     $(function () {
         var testEditormdView, testEditormdView2;
         $.post("/article/detail?id=" + $(" #articleId ").val(), function (markdown) {
-            $(".id").valueOf()
             // console.log(markdown.toString());
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                 markdown: markdown,//+ "\r\n" + $("#append-test").text(),
@@ -127,8 +129,16 @@
                 tex: true,  // 默认不解析
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
+                theme: (localStorage.theme) ? localStorage.theme : "dark",
+                previewTheme: (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
+                editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
+                path: '/static/editormd/lib/',
             });
+            themeSelect("preview-area-theme-select", editormd.previewThemes, "previewTheme", function ($this, theme) {
+                alert(theme);
+                testEditormdView.getEditor().setTheme(theme);
 
+            });
             //console.log("返回一个 jQuery 实例 =>", testEditormdView);
 
             // 获取Markdown源码
@@ -137,14 +147,42 @@
             //alert(testEditormdView.getMarkdown());
         });
 
-        testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-            htmlDecode: "style,script,iframe",  // you can filter tags decode
-            emoji: true,
-            taskList: true,
-            tex: true,  // 默认不解析
-            flowChart: true,  // 默认不解析
-            sequenceDiagram: true,  // 默认不解析
-        });
+        /*
+                testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
+                    htmlDecode: "style,script,iframe",  // you can filter tags decode
+                    emoji: true,
+                    taskList: true,
+                    tex: true,  // 默认不解析
+                    flowChart: true,  // 默认不解析
+                    sequenceDiagram: true,  // 默认不解析
+                });
+          */
+        function themeSelect(id, themes, lsKey, callback) {
+            var select = $("#" + id);
+
+            for (var i = 0, len = themes.length; i < len; i++) {
+                var theme = themes[i];
+                var selected = (localStorage[lsKey] == theme) ? " selected=\"selected\"" : "";
+
+                select.append("<option value=\"" + theme + "\"" + selected + ">" + theme + "</option>");
+            }
+
+            select.bind("change", function () {
+                var theme = $(this).val();
+
+                if (theme === "") {
+                    alert("theme == \"\"");
+                    return false;
+                }
+
+                console.log("lsKey =>", lsKey, theme);
+
+                localStorage[lsKey] = theme;
+                callback(select, theme);
+            });
+
+            return select;
+        }
     });
 </script>
 </body>

@@ -40,6 +40,11 @@ public class ReadMeController {
         return "example/emoji";
     }
 
+    @GetMapping("themes.html")
+    public String themes() {
+        return "example/themes";
+    }
+
     @GetMapping("html-preview-markdown-to-html.html")
     public String htmlPreviewMarkdownToHtml() {
         return "example/html-preview-markdown-to-html";

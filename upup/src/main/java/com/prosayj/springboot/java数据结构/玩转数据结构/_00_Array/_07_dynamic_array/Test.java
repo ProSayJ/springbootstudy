@@ -9,16 +9,16 @@ package com.prosayj.springboot.java数据结构.玩转数据结构._00_Array._07
  */
 public class Test {
     public static void main(String[] args) {
-        MyArray<Student> studentMyArray = new MyArray<>(2);
-        studentMyArray.addLast(new Student("张三", 20));
+        MyArray<Student> studentMyArray = new MyArray<>(1);
+        studentMyArray.addLast(new Student("张一", 20));
         System.out.println(studentMyArray);
-        studentMyArray.addLast(new Student("李四", 24));
+        studentMyArray.addLast(new Student("李二", 24));
         System.out.println(studentMyArray);
-        studentMyArray.addLast(new Student("王五", 25));
+        studentMyArray.addLast(new Student("王三", 25));
         System.out.println(studentMyArray);
-        studentMyArray.addLast(new Student("赵六", 27));
+        studentMyArray.addLast(new Student("赵四", 27));
         System.out.println(studentMyArray);
-        studentMyArray.addLast(new Student("王八", 28));
+        studentMyArray.addLast(new Student("王五", 28));
         System.out.println(studentMyArray);
     }
 }
