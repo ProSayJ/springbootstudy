@@ -6,7 +6,6 @@ categories:
   - Spring Framework_5.2.0
 date: 2019-03-05 15:30:00
 ---
-
 <font color="blue">** 
 Core Technologies
 Version 5.2.0.BUILD-SNAPSHOT 
