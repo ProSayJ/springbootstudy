@@ -41,6 +41,8 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
 import javafx.stage.Stage;
+/*
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.RowLayout;
@@ -48,6 +50,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
+*/
 
 public class TwoButtons extends Application {
 
@@ -57,18 +60,18 @@ public class TwoButtons extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {/*
         final Display display = new Display();
         final Shell shell = new Shell(display);
         final RowLayout layout = new RowLayout();
         shell.setLayout(layout);
 
-        /* Create the SWT button */
+        *//* Create the SWT button *//*
         final org.eclipse.swt.widgets.Button swtButton =
                 new org.eclipse.swt.widgets.Button(shell, SWT.PUSH);
         swtButton.setText("SWT Button");
 
-        /* Create an FXCanvas */
+        *//* Create an FXCanvas *//*
         final FXCanvas fxCanvas = new FXCanvas(shell, SWT.NONE) {
 
             @Override
@@ -80,22 +83,22 @@ public class TwoButtons extends Application {
                 return point;
             }
         };
-        /* Create a JavaFX Group node */
+        *//* Create a JavaFX Group node *//*
         Group group = new Group();
-        /* Create a JavaFX button */
+        *//* Create a JavaFX button *//*
         final Button jfxButton = new Button("JFX Button");
-        /* Assign the CSS ID ipad-dark-grey */
+        *//* Assign the CSS ID ipad-dark-grey *//*
         jfxButton.setId("ipad-dark-grey");
-        /* Add the button as a child of the Group node */
+        *//* Add the button as a child of the Group node *//*
         group.getChildren().add(jfxButton);
-        /* Create the Scene instance and set the group node as root */
+        *//* Create the Scene instance and set the group node as root *//*
         Scene scene = new Scene(group, Color.rgb(shell.getBackground().getRed(), shell.getBackground().getGreen(),
                 shell.getBackground().getBlue()));
-        /* Attach an external stylesheet */
+        *//* Attach an external stylesheet *//*
         scene.getStylesheets().add(getClass().getResource("Buttons.css").toExternalForm());
         fxCanvas.setScene(scene);
 
-        /* Add Listeners */
+        *//* Add Listeners *//*
         swtButton.addListener(SWT.Selection, new Listener() {
 
             @Override
@@ -119,7 +122,7 @@ public class TwoButtons extends Application {
                 display.sleep();
             }
         }
-        display.dispose();
+        display.dispose();*/
 
     }
 }

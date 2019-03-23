@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan({
-        "com.prosayj.springboot.blog.models.article.mapper",
-        "com.prosayj.springboot.blog.models.image.mapper"
+        "com.prosayj.springboot.blog_t.models.article.mapper",
+        "com.prosayj.springboot.blog_t.models.image.mapper"
 })
 public class MybatisMapperConfig {
 }

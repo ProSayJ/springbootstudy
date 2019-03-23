@@ -27,7 +27,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
                 //为controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.prosayj.springboot.blog.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.prosayj.springboot.blog_t.api"))
                 .paths(PathSelectors.any())
                 .build();
     }
