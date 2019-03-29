@@ -21,9 +21,7 @@
         <module>portal</module>
         <module>myblog</module>
         <module>blog</module>
-        <module>blog-business</module>
-        <module>blog-admin</module>
-        <module>blog-web</module>
+        <module>business</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->
