@@ -2,66 +2,486 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-5.1.37.jar"/>
+    <classPathEntry
+            location="../utils/src/main/java/com/prosayj/springboot/mybatisgen/mysql/mysql-connector-java-8.0.13.jar"/>
 
 
-
-    <context id="seckill" defaultModelType="flat" targetRuntime="MyBatis3">
+    <context id="biz_article" defaultModelType="flat" targetRuntime="MyBatis3">
         <!--不需要注释-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-
         <jdbcConnection
-                connectionURL="jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&amp;characterEncoding=UTF-8"
-                driverClass="com.mysql.jdbc.Driver" userId="root" password="root"/>
-
-        <javaModelGenerator targetPackage="com.prosayj.springboot.models.seckill.domain"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizarticle.domain"
                             targetProject="src/main/java"/>
-
-        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.seckill.mapper"
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizarticle.mapper"
                          targetProject="src/main/resources"/>
-
-        <javaClientGenerator targetPackage="com.prosayj.springboot.models.seckill.mapper"
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizarticle.mapper"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
-
-        <table schema="general" tableName="seckill" domainObjectName="SeckillDomain"
+        <table schema="general" tableName="biz_article" domainObjectName="BizArticleDomain"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
         </table>
-
     </context>
 
-    <context id="successkilled" defaultModelType="flat" targetRuntime="MyBatis3">
+
+
+    <context id="biz_article_look" defaultModelType="flat" targetRuntime="MyBatis3">
         <!--不需要注释-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-
         <jdbcConnection
-                connectionURL="jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&amp;characterEncoding=UTF-8"
-                driverClass="com.mysql.jdbc.Driver" userId="root" password="root"/>
-
-        <javaModelGenerator targetPackage="com.prosayj.springboot.models.successkilled.domain"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizarticlelook.domain"
                             targetProject="src/main/java"/>
-
-        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.successkilled.mapper"
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizarticlelook.mapper"
                          targetProject="src/main/resources"/>
-
-        <javaClientGenerator targetPackage="com.prosayj.springboot.models.successkilled.mapper"
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizarticlelook.mapper"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
-
-        <table schema="general" tableName="success_killed" domainObjectName="SuccessKilledDomain"
+        <table schema="general" tableName="biz_article_look" domainObjectName="BizArticleLookDomain"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
         </table>
-
     </context>
+    <!--/////-->
+    <context id="biz_article_love" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizarticlelove.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizarticlelove.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizarticlelove.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_article_love" domainObjectName="BizArticleLoveDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="biz_article_tags" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizarticletags.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizarticletags.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizarticletags.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_article_tags" domainObjectName="BizArticleTagsDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="biz_comment" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizcomment.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizcomment.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizcomment.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_comment" domainObjectName="BizCommentDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="biz_file" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.bizfile.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.bizfile.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.bizfile.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_file" domainObjectName="BizFileDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="biz_tags" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.biztags.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.biztags.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.biztags.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_tags" domainObjectName="BizTagsDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="biz_type" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.biztype.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.biztype.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.biztype.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="biz_type" domainObjectName="BizTypeDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_config" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysconfig.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysconfig.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysconfig.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_config" domainObjectName="SysConfigDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_link" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.syslink.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.syslink.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.syslink.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_link" domainObjectName="SysLinkDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_log" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.syslog.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.syslog.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.syslog.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_log" domainObjectName="SysLogDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_notice" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysnotice.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysnotice.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysnotice.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_notice" domainObjectName="SysNoticeDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_resources" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysresources.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysresources.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysresources.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_resources" domainObjectName="SysResourcesDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_role" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysrole.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysrole.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysrole.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_role" domainObjectName="SysRoleDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_role_resources" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysroleresources.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysroleresources.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysroleresources.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_role_resources" domainObjectName="SysRoleResourcesDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_template" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.systemplate.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.systemplate.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.systemplate.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_template" domainObjectName="SysTemplateDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_update_recorde" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysupdaterecorde.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysupdaterecorde.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysupdaterecorde.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_update_recorde" domainObjectName="SysUpdateRecordeDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_user" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysuser.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysuser.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysuser.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_user" domainObjectName="SysUserDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
+    <context id="sys_user_role" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!--不需要注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/yblog?serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;serverTimezone=Hongkong"
+                driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.prosayj.springboot.models.sysuserrole.domain"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.prosayj.springboot.models.sysuserrole.mapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.prosayj.springboot.models.sysuserrole.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table schema="general" tableName="sys_user_role" domainObjectName="SysUserRoleDomain"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+    </context>
+
 
 </generatorConfiguration>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prosayj.springboot.models.bizcomment.mapper.BizCommentDomainMapper">
+  <resultMap id="BaseResultMap" type="com.prosayj.springboot.models.bizcomment.domain.BizCommentDomain">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sid" jdbcType="BIGINT" property="sid" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="os_short_name" jdbcType="VARCHAR" property="osShortName" />
+    <result column="browser" jdbcType="VARCHAR" property="browser" />
+    <result column="browser_short_name" jdbcType="VARCHAR" property="browserShortName" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="support" jdbcType="INTEGER" property="support" />
+    <result column="oppose" jdbcType="INTEGER" property="oppose" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sid, user_id, pid, qq, nickname, avatar, email, url, status, ip, lng, lat, address, 
+    os, os_short_name, browser, browser_short_name, content, remark, support, oppose, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from biz_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from biz_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.prosayj.springboot.models.bizcomment.domain.BizCommentDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_comment (sid, user_id, pid, 
+      qq, nickname, avatar, 
+      email, url, status, ip, 
+      lng, lat, address, 
+      os, os_short_name, browser, 
+      browser_short_name, content, remark, 
+      support, oppose, create_time, 
+      update_time)
+    values (#{sid,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, 
+      #{qq,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{os,jdbcType=VARCHAR}, #{osShortName,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}, 
+      #{browserShortName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{support,jdbcType=INTEGER}, #{oppose,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.prosayj.springboot.models.bizcomment.domain.BizCommentDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="osShortName != null">
+        os_short_name,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="browserShortName != null">
+        browser_short_name,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="support != null">
+        support,
+      </if>
+      <if test="oppose != null">
+        oppose,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osShortName != null">
+        #{osShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="browserShortName != null">
+        #{browserShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="support != null">
+        #{support,jdbcType=INTEGER},
+      </if>
+      <if test="oppose != null">
+        #{oppose,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.models.bizcomment.domain.BizCommentDomain">
+    update biz_comment
+    <set>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osShortName != null">
+        os_short_name = #{osShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="browserShortName != null">
+        browser_short_name = #{browserShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="support != null">
+        support = #{support,jdbcType=INTEGER},
+      </if>
+      <if test="oppose != null">
+        oppose = #{oppose,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.models.bizcomment.domain.BizCommentDomain">
+    update biz_comment
+    set sid = #{sid,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      pid = #{pid,jdbcType=BIGINT},
+      qq = #{qq,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      os_short_name = #{osShortName,jdbcType=VARCHAR},
+      browser = #{browser,jdbcType=VARCHAR},
+      browser_short_name = #{browserShortName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      support = #{support,jdbcType=INTEGER},
+      oppose = #{oppose,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

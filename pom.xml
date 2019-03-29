@@ -13,7 +13,6 @@
         <module>spring5</module>
         <module>blockchain</module>
         <module>upup</module>
-        <module>business</module>
         <module>event</module>
         <module>nodejs</module>
         <module>gui</module>
@@ -22,8 +21,7 @@
         <module>portal</module>
         <module>myblog</module>
         <module>blog</module>
-        <module>blog-admin</module>
-        <module>blog-web</module>
+        <module>business</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

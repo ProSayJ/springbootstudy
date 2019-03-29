@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prosayj.springboot.models.bizfile.mapper.BizFileDomainMapper">
+  <resultMap id="BaseResultMap" type="com.prosayj.springboot.models.bizfile.domain.BizFileDomain">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="storage_type" jdbcType="VARCHAR" property="storageType" />
+    <result column="original_file_name" jdbcType="VARCHAR" property="originalFileName" />
+    <result column="size" jdbcType="BIGINT" property="size" />
+    <result column="suffix" jdbcType="VARCHAR" property="suffix" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="full_file_path" jdbcType="VARCHAR" property="fullFilePath" />
+    <result column="file_hash" jdbcType="VARCHAR" property="fileHash" />
+    <result column="upload_type" jdbcType="VARCHAR" property="uploadType" />
+    <result column="upload_start_time" jdbcType="TIMESTAMP" property="uploadStartTime" />
+    <result column="upload_end_time" jdbcType="TIMESTAMP" property="uploadEndTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, storage_type, original_file_name, size, suffix, width, height, file_path, 
+    full_file_path, file_hash, upload_type, upload_start_time, upload_end_time, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from biz_file
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from biz_file
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.prosayj.springboot.models.bizfile.domain.BizFileDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_file (user_id, storage_type, original_file_name, 
+      size, suffix, width, 
+      height, file_path, full_file_path, 
+      file_hash, upload_type, upload_start_time, 
+      upload_end_time, create_time, update_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{storageType,jdbcType=VARCHAR}, #{originalFileName,jdbcType=VARCHAR}, 
+      #{size,jdbcType=BIGINT}, #{suffix,jdbcType=VARCHAR}, #{width,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, #{fullFilePath,jdbcType=VARCHAR}, 
+      #{fileHash,jdbcType=VARCHAR}, #{uploadType,jdbcType=VARCHAR}, #{uploadStartTime,jdbcType=TIMESTAMP}, 
+      #{uploadEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.prosayj.springboot.models.bizfile.domain.BizFileDomain">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="storageType != null">
+        storage_type,
+      </if>
+      <if test="originalFileName != null">
+        original_file_name,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="suffix != null">
+        suffix,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="filePath != null">
+        file_path,
+      </if>
+      <if test="fullFilePath != null">
+        full_file_path,
+      </if>
+      <if test="fileHash != null">
+        file_hash,
+      </if>
+      <if test="uploadType != null">
+        upload_type,
+      </if>
+      <if test="uploadStartTime != null">
+        upload_start_time,
+      </if>
+      <if test="uploadEndTime != null">
+        upload_end_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="storageType != null">
+        #{storageType,jdbcType=VARCHAR},
+      </if>
+      <if test="originalFileName != null">
+        #{originalFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=BIGINT},
+      </if>
+      <if test="suffix != null">
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null">
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fullFilePath != null">
+        #{fullFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileHash != null">
+        #{fileHash,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        #{uploadType,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadStartTime != null">
+        #{uploadStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadEndTime != null">
+        #{uploadEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.prosayj.springboot.models.bizfile.domain.BizFileDomain">
+    update biz_file
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="storageType != null">
+        storage_type = #{storageType,jdbcType=VARCHAR},
+      </if>
+      <if test="originalFileName != null">
+        original_file_name = #{originalFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=BIGINT},
+      </if>
+      <if test="suffix != null">
+        suffix = #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fullFilePath != null">
+        full_file_path = #{fullFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileHash != null">
+        file_hash = #{fileHash,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        upload_type = #{uploadType,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadStartTime != null">
+        upload_start_time = #{uploadStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadEndTime != null">
+        upload_end_time = #{uploadEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.prosayj.springboot.models.bizfile.domain.BizFileDomain">
+    update biz_file
+    set user_id = #{userId,jdbcType=INTEGER},
+      storage_type = #{storageType,jdbcType=VARCHAR},
+      original_file_name = #{originalFileName,jdbcType=VARCHAR},
+      size = #{size,jdbcType=BIGINT},
+      suffix = #{suffix,jdbcType=VARCHAR},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      full_file_path = #{fullFilePath,jdbcType=VARCHAR},
+      file_hash = #{fileHash,jdbcType=VARCHAR},
+      upload_type = #{uploadType,jdbcType=VARCHAR},
+      upload_start_time = #{uploadStartTime,jdbcType=TIMESTAMP},
+      upload_end_time = #{uploadEndTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
