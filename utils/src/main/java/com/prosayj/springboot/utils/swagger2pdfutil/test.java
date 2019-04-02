@@ -1,11 +1,12 @@
 package com.prosayj.springboot.utils.swagger2pdfutil;
 
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.util.CollectionUtils;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
@@ -17,14 +18,19 @@ import java.util.*;
  * @since 1.0.0
  */
 public class test {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        getMap();
+
+    }
+
+    public static Map<String, Object> getMap() throws Exception {
         // 读文件:user
 //        File file = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
 //        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
 
         // 读文件:api
-        File file = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
-//        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+//        File file = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
+        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
         String jsonString = br.readLine().toString();
@@ -151,6 +157,10 @@ public class test {
                                                 if (responseKey.equals("schema")) {
                                                     String jsonStr = gson.toJson(stringObjectMap.get(responseKey));
                                                     Schema schema = gson.fromJson(jsonStr, Schema.class);
+                                                    if (schema.getFormat() == null || schema.getType() == null) {
+                                                        Map<String, String> objectRef = (Map<String, String>) stringObjectMap.get(responseKey);
+                                                        schema.setObjectRef(objectRef);
+                                                    }
                                                     swaggerResponse.setSchema(schema);
                                                 }
 
@@ -241,7 +251,81 @@ public class test {
         swaggerReqResEntities.forEach(data -> {
         });
         System.out.println(result);
+        return objectToMap(result);
 
+    }
+
+    public static Map<String, Object> objectToMap(Object obj) throws Exception {
+        if (obj == null) {
+            return null;
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        Field[] declaredFields = obj.getClass().getDeclaredFields();
+        for (Field field : declaredFields) {
+            field.setAccessible(true);
+            map.put(field.getName(), field.get(obj));
+        }
+
+        return map;
+    }
+
+    /**
+     * 获取JsonObject
+     *
+     * @param json
+     * @return
+     */
+    public static JsonObject parseJson(String json) {
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObj = parser.parse(json).getAsJsonObject();
+        return jsonObj;
+    }
+
+
+    /**
+     * 将JSONObjec对象转换成Map-List集合
+     *
+     * @param json
+     * @return
+     */
+    public static Map<String, Object> toMap(JsonObject json) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Set<Map.Entry<String, JsonElement>> entrySet = json.entrySet();
+        for (Iterator<Map.Entry<String, JsonElement>> iter = entrySet.iterator(); iter.hasNext(); ) {
+            Map.Entry<String, JsonElement> entry = iter.next();
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            if (value instanceof JsonArray)
+                map.put((String) key, toList((JsonArray) value));
+            else if (value instanceof JsonObject)
+                map.put((String) key, toMap((JsonObject) value));
+            else
+                map.put((String) key, value);
+        }
+        return map;
+    }
+
+    /**
+     * 将JSONArray对象转换成List集合
+     *
+     * @param json
+     * @return
+     */
+    public static List<Object> toList(JsonArray json) {
+        List<Object> list = new ArrayList<Object>();
+        for (int i = 0; i < json.size(); i++) {
+            Object value = json.get(i);
+            if (value instanceof JsonArray) {
+                list.add(toList((JsonArray) value));
+            } else if (value instanceof JsonObject) {
+                list.add(toMap((JsonObject) value));
+            } else {
+                list.add(value);
+            }
+        }
+        return list;
     }
 
     public static Object map2JavaBean(Class<?> clazz, Map<String, Object> map) throws Exception {
