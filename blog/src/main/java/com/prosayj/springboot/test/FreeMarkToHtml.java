@@ -1,4 +1,4 @@
-package com.prosayj.springboot.utils.test;
+package com.prosayj.springboot.test;
 
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.TemplateLoader;

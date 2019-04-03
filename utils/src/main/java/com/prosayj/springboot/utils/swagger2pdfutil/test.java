@@ -2,7 +2,9 @@ package com.prosayj.springboot.utils.swagger2pdfutil;
 
 
 import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
 import org.apache.poi.ss.formula.functions.T;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.io.*;
@@ -29,8 +31,8 @@ public class test {
 //        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
 
         // 读文件:api
-//        File file = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
-        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+        File file = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+//        File file = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
         String jsonString = br.readLine().toString();
@@ -246,12 +248,89 @@ public class test {
                 }
             }
         });
-        // 处理输入输出对象
         List<SwaggerReqResEntity> swaggerReqResEntities = result.getSwaggerReqResEntities();
-        swaggerReqResEntities.forEach(data -> {
+
+        BeanEntityDetail beanEntityDetail = result.getBeanEntityDetails().get(2);
+        BeanEntityDetailDeal beanEntityDetailDeal = dealBeanEntityDetail(beanEntityDetail);
+//        System.out.println(GsonFormatter(beanEntityDetailDeal, true));
+
+
+        //处理输出对象：返回实体是否是要求必填处理
+        List<BeanEntityDetail> beanEntityDetails = result.getBeanEntityDetails();
+        List<BeanEntityDetailDeal> beanEntityDetailDeals = new ArrayList<>(beanEntityDetails.size());
+        beanEntityDetails.forEach(beanEntityDetailSingle -> {
+            beanEntityDetailDeals.add(dealBeanEntityDetail(beanEntityDetailSingle));
         });
-        System.out.println(result);
-        return objectToMap(result);
+        HttpEntityDeal httpEntityDeal = new HttpEntityDeal();
+        BeanUtils.copyProperties(result, httpEntityDeal);
+        httpEntityDeal.setBeanEntityDetailsDeals(beanEntityDetailDeals);
+
+        //
+
+
+//        return objectToMap(result);
+        return objectToMap(httpEntityDeal);
+
+    }
+
+    /**
+     * 处理对象的属性是否是必填
+     *
+     * @param beanEntityDetail
+     * @return
+     */
+    private static BeanEntityDetailDeal dealBeanEntityDetail(BeanEntityDetail beanEntityDetail) {
+        BeanEntityDetailDeal beanEntityDetailDeal = new BeanEntityDetailDeal();
+        BeanUtils.copyProperties(beanEntityDetail, beanEntityDetailDeal);
+
+        List<String> requirePropertiesKeys = beanEntityDetail.getRequirePropertiesKeys();
+        List<PropertiesDetail> properties = beanEntityDetail.getProperties();
+
+        List<PropertiesDetailDeal> propertiesDetailDeals = new ArrayList<>(properties.size());
+
+        if (!CollectionUtils.isEmpty(properties) && !CollectionUtils.isEmpty(requirePropertiesKeys)) {
+            for (PropertiesDetail property : properties) {
+                PropertiesDetailDeal propertiesDetailDeal = new PropertiesDetailDeal();
+                propertiesDetailDeal.setFormat(property.getPropertiesKeyDes().getFormat());
+                propertiesDetailDeal.setDescription(property.getPropertiesKeyDes().getDescription());
+                propertiesDetailDeal.setType(property.getPropertiesKeyDes().getType());
+                propertiesDetailDeal.setPropertiesKey(property.getPropertiesKey());
+
+                if (requirePropertiesKeys.contains(property.getPropertiesKey())) {
+                    propertiesDetailDeal.setRequire(true);
+                } else {
+                    propertiesDetailDeal.setRequire(false);
+                }
+                propertiesDetailDeals.add(propertiesDetailDeal);
+            }
+        }
+        beanEntityDetailDeal.setPropertiesDeals(propertiesDetailDeals);
+        return beanEntityDetailDeal;
+    }
+
+    /**
+     * 使用Gson格式化对象，返回json
+     *
+     * @param object     对象内容
+     * @param needPrerry 是否需要美化：treu：需要
+     * @return
+     */
+    public static String GsonFormatter(Object object, boolean needPrerry) {
+        Gson gson = null;
+        if (needPrerry) {
+            gson = new GsonBuilder().setPrettyPrinting().create();
+        } else {
+            gson = new Gson();
+        }
+        if (gson == null) {
+            return "";
+        }
+        JsonReader reader = new JsonReader(new StringReader(gson.toJson(object)));
+        reader.setLenient(true);
+        JsonParser jsonPar = new JsonParser();
+        JsonElement jsonEl = jsonPar.parse(reader);
+        String prettyJson = gson.toJson(jsonEl);
+        return prettyJson;
 
     }
 
