@@ -5,7 +5,7 @@
     <title>tool</title>
     <style type="text/css">
         .bg {
-            background-color: rgb(84, 127, 177);
+            background-color: silver;
         }
 
         tr {
@@ -29,7 +29,7 @@
         <table border="1" cellspacing="0" cellpadding="0" width="100%">
             <tr>
                 <td>接口描述</td>
-                <td colspan="4">${t.getInfo().get()!""}</td>
+                <td colspan="4">${t.getInfo()!""}</td>
             </tr>
             <tr>
                 <td>根路径</td>

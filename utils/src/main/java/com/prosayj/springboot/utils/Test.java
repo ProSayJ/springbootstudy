@@ -3,6 +3,7 @@ package com.prosayj.springboot.utils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import io.swagger.models.Info;
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 
@@ -14,19 +15,20 @@ import java.util.Map;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        File fileSrc = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+        // 读文件:api
+//        File fileSrc = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+        File fileSrc = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
+//        File fileSrc = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileSrc), "utf-8"));
         String jsonString = br.readLine().toString();
-        Swagger swagger = new SwaggerParser().parse(jsonString);
-        Map<String, List<Swagger>> map = new HashMap<>();
-        List<Swagger> list = new ArrayList<>();
-        list.add(swagger);
-        map.put("swaggers", list);
+        Map<String, List<Swagger>> map = paseSwaggerSimple(jsonString);
 
         Configuration configuration = new Configuration(Configuration.getVersion());
         configuration.setClassForTemplateLoading(Test.class, "/template");
         configuration.setDefaultEncoding("utf-8");
+
+
         File file = new File("api.doc");
         try {
             Template template = configuration.getTemplate("word.ftl");
@@ -42,5 +44,14 @@ public class Test {
             throw new RuntimeException("create word failed.");
         }
 
+    }
+
+    public static Map<String, List<Swagger>> paseSwaggerSimple(String jsonString) {
+        Swagger swagger = new SwaggerParser().parse(jsonString);
+        Map<String, List<Swagger>> map = new HashMap<>();
+        List<Swagger> list = new ArrayList<>();
+        list.add(swagger);
+        map.put("swaggers", list);
+        return map;
     }
 }

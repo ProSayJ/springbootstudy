@@ -261,6 +261,8 @@ public class test {
         beanEntityDetails.forEach(beanEntityDetailSingle -> {
             beanEntityDetailDeals.add(dealBeanEntityDetail(beanEntityDetailSingle));
         });
+
+
         HttpEntityDeal httpEntityDeal = new HttpEntityDeal();
         BeanUtils.copyProperties(result, httpEntityDeal);
         httpEntityDeal.setBeanEntityDetailsDeals(beanEntityDetailDeals);
@@ -304,8 +306,25 @@ public class test {
                 propertiesDetailDeals.add(propertiesDetailDeal);
             }
         }
-        beanEntityDetailDeal.setPropertiesDeals(propertiesDetailDeals);
+//        propertiesDetailDeals==>map
+        Map<String, Map<String, Object>> maps = toResultMap(propertiesDetailDeals);
+        beanEntityDetailDeal.setPropertiesDeals(maps);
         return beanEntityDetailDeal;
+    }
+
+    private static Map<String, Map<String, Object>> toResultMap(List<PropertiesDetailDeal> propertiesDetailDeals) {
+        Map<String, Map<String, Object>> reslut = new HashMap<>();
+
+        propertiesDetailDeals.forEach(data -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("require",data.getRequire());
+            map.put("type",data.getType());
+            map.put("description",data.getDescription());
+            map.put("format",data.getFormat());
+            reslut.put(data.getPropertiesKey(),map);
+        });
+
+        return reslut;
     }
 
     /**

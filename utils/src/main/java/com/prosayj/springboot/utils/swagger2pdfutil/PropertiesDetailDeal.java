@@ -22,40 +22,45 @@ class PropertiesDetailDeal implements Serializable{
         return propertiesKey;
     }
 
-    public void setPropertiesKey(String propertiesKey) {
+    public PropertiesDetailDeal setPropertiesKey(String propertiesKey) {
         this.propertiesKey = propertiesKey;
+        return this;
     }
 
     public Boolean getRequire() {
         return require;
     }
 
-    public void setRequire(Boolean require) {
+    public PropertiesDetailDeal setRequire(Boolean require) {
         this.require = require;
+        return this;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public PropertiesDetailDeal setType(String type) {
         this.type = type;
+        return this;
     }
 
     public String getFormat() {
         return format;
     }
 
-    public void setFormat(String format) {
+    public PropertiesDetailDeal setFormat(String format) {
         this.format = format;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public PropertiesDetailDeal setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     @Override

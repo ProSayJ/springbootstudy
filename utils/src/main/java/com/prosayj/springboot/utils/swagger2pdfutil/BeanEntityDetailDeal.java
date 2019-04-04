@@ -1,6 +1,7 @@
 package com.prosayj.springboot.utils.swagger2pdfutil;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangjian
@@ -23,7 +24,13 @@ public class BeanEntityDetailDeal {
      * 对象属性+类型
      * key：properties
      */
-    private List<PropertiesDetailDeal> propertiesDeals;
+//    private List<PropertiesDetailDeal> propertiesDeals;
+
+    /**
+     * key为属性名称
+     * 内部的map为属性的其他详细描述
+     */
+    private Map<String, Map<String, Object>> propertiesDeals;
 
     public String getObjectName() {
         return objectName;
@@ -41,14 +48,12 @@ public class BeanEntityDetailDeal {
         this.objectType = objectType;
     }
 
-    public List<PropertiesDetailDeal> getPropertiesDeals() {
+    public Map<String, Map<String, Object>> getPropertiesDeals() {
         return propertiesDeals;
     }
 
-    public void setPropertiesDeals(List<PropertiesDetailDeal> propertiesDeals) {
+    public void setPropertiesDeals(Map<String, Map<String, Object>> propertiesDeals) {
         this.propertiesDeals = propertiesDeals;
     }
-
-
 }
 
