@@ -50,12 +50,13 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!--Springboot + thymeleaf 生成静态页面 异常：java.lang.NoClassDefFoundError: ognl/PropertyAccessor：需要加ognl的包-->
+        <!--
         <dependency>
             <groupId>ognl</groupId>
             <artifactId>ognl</artifactId>
             <version>3.1.12</version>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
@@ -74,18 +75,6 @@
             <version>${mysql.connector.java.version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>1.5.21</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>1.0.40</version>
-        </dependency>
-
         <!--swagger2-->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -98,25 +87,6 @@
             <version>${springfox-swagger-ui.version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.11.3</version>
-        </dependency>
-
-
-
-
-
     </dependencies>
 
     <build>
@@ -124,8 +94,6 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <excludes>
-                </excludes>
             </resource>
         </resources>
 

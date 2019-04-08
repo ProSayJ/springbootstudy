@@ -1,85 +1,160 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Welcome FreeMarker!</title>
-    <meta charset="utf-8"></meta>
+<#--<meta charset="utf-8"></meta>-->
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta http-equiv="x-ua-compatible" content="ie=edge"></meta>
-    <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico"></link>
-    <script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+
+
+    <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
+<#--<link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>-->
+    <link href="./static/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet"/>
+    <link href="./static/bootstrap-3.3.7/css/bootstrap-theme.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="./static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./static/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <style type="text/css">
+        .bg {
+            background-color: silver;
+        }
+
+        tr {
+            height: 20px;
+            font-size: 12px;
+        }
+
+        .specialHeight {
+            height: 40px;
+        }
+    </style>
 </head>
 <body>
+<div style="width:900px; margin: 0 auto">
+    <h1 style="text-align: center"> 接口说明文档</h1>
+    <br/>
 
-<#-- 单个属性 替换   -->
-
-<h1>Swagger版本号码： ${swagger}</h1>
-<h1>Swagger的Host: ${host}</h1>
-<h1>上下文路径: ${basePath}</h1>
-
-<h1>描述:${info.description}</h1>
-<h1>版本：${info.version}</h1>
-<h1>描述: ${info.title}</h1>
-<h1>地址：${info.termsOfService}</h1>
-
-
-<#--<#list beanEntityDetails as beanEntityDetail>
-    <table border="1">
+    <table class="table table-hover">
         <tr>
-            <td>对象名称:${beanEntityDetail.objectName} </td>
-            <td>对象属性：${beanEntityDetail.objectType} </td>
+            <td>Swagger版本号码：</td>
+            <td> ${swaggerInfo.infoVersion}</td>
+        </tr>
+        <tr>
+            <td>Swagger的Host:</td>
+            <td> ${swaggerInfo.swaggerHost}</td>
+        </tr>
+        <tr>
+            <td>上下文路径:</td>
+            <td> ${swaggerInfo.swaggerBasePath}</td>
+        </tr>
+        <tr>
+            <td>描述：</td>
+            <td> ${swaggerInfo.description}</td>
+        </tr>
+        <tr>
+            <td>标题:</td>
+            <td> ${swaggerInfo.infoTitle}</td>
+        </tr>
+        <tr>
+            <td>地址:</td>
+            <td> ${swaggerInfo.infoTermsOfService}</td>
         </tr>
     </table>
-</#list>-->
 
-<#list swaggerReqResEntities as swaggerReqResEntitie>
-    请求Url: ${swaggerReqResEntitie.request.requestUrl}</br>
+    <#list requestAndResponse as requestAndResponse>
+    <h2>第 ${requestAndResponse_index+1} 个请求url：</h2>
+    <hr>
+        <pre>Controller: ${requestAndResponse.requestTag}</pre>
+
+        <div>请求URL:</div>
+        <pre>${requestAndResponse.requestWay} ${requestAndResponse.requestUrl}</pre>
+
+        <div>请求描述：</div>
+        <pre> ${requestAndResponse.requestPostOperationSummary}</pre>
+
+        <div>请求参数类型：</div>
+        <pre>${requestAndResponse.requestParameterType}</pre>
+
+        <div>请求参数描述：</div>
+        <pre> ${requestAndResponse.requestParameterDescription}</pre>
 
 
-    tags:
-    <#list swaggerReqResEntitie.request.request.tags as tag>
-        ${tag}</br>
+        <div>请求体参数说明：</div>
+        <#if requestAndResponse.requestParameterType=="Object">
+            <table class="table table-bordered" style="vertical-align: middle !important;text-align: center;">
+                <tr class="bg-primary">
+                    <td>参数对象名称</td>
+                    <td>属性名称</td>
+                    <td>属性类型</td>
+                    <td>属性描述</td>
+                    <td>属性是否必填</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="${requestAndResponse.entityPropertiesDetail?size + 1}"
+                        style="vertical-align: middle !important;text-align: center;" class="bg-info">
+                        ${requestAndResponse.requestParameterObjectName}
+                    </td>
+                </tr>
+
+                <#list requestAndResponse.entityPropertiesDetail as entityPropertiesDetail>
+                    <tr>
+                        <td>${entityPropertiesDetail.propertiesName}</td>
+                        <td>${entityPropertiesDetail.propertiesType}</td>
+                        <td>${entityPropertiesDetail.propertiesDes}</td>
+                        <td>${entityPropertiesDetail.propertiesRequired}</td>
+                    </tr>
+                </#list>
+            </table>
+        </#if>
+
+
+        <#if requestAndResponse.requestParameterType =="baseParam">
+            <table class="table table-hover">
+                <tr>
+                    <td>类型</td>
+                    <td>描述</td>
+                    <td>是否必填</td>
+                    <td>范例</td>
+                </tr>
+                <tr>
+                    <td>${requestAndResponse.requestParameterQueryParameterBaseParamType}</td>
+                    <td>${requestAndResponse.requestParameterQueryParameterBaseParamDescription}</td>
+                    <td>${requestAndResponse.requestParameterQueryParameterBaseParamTRequire}</td>
+                    <td>${requestAndResponse.requestParameterQueryParameterBaseParamtFormat}</td>
+                </tr>
+            </table>
+        </#if>
+
+
+        <#if requestAndResponse.requestParameterType=="array">
+            <table class="table table-hover">
+                <#if requestAndResponse.requestParameterArraysValueType == "ref">
+                    <tr>
+                        <td>请求是数组,并且数组内容是自定义对象：对象名称是</td>
+                    </tr>
+
+                    <tr>
+                        <td>${requestAndResponse.requestParameterArraysObjectName}</td>
+                    </tr>
+                <#else>
+                    <tr>
+                        <td>请求是数组,并且数组内容是基本数据类型：类型是：</td>
+                        <td>样例是：</td>
+                    </tr>
+                    <tr>
+                        <td>${requestAndResponse.requestParameterArraysValueType}</td>
+                        <td>$${requestAndResponse.requestParameterArraysValueExample}</td>
+                    </tr>
+                </#if>
+            </table>
+        </#if>
+
+        <div>请求参数示例：</div>
+        <pre>${requestAndResponse.prettyJson}</pre>
+
     </#list>
-
-    摘要: ${swaggerReqResEntitie.request.request.summary}</br>
-    描述: ${swaggerReqResEntitie.request.request.description}</br>
-    请求方式: ${swaggerReqResEntitie.request.request.operationId}</br>
-
-    数据类型:
-    <#list swaggerReqResEntitie.request.request.consumes as consume>
-        ${consume}</br>
-    </#list>
-
-    produces:
-    <#list swaggerReqResEntitie.request.request.produces as produce>
-        ${produce}</br>
-    </#list>
-
-    请求参数:</br>
-    <#list swaggerReqResEntitie.request.request.parameters as parameter>
-        ${parameter.in}</br>
-        ${parameter.name}</br>
-        ${parameter.description}</br>
-        ${parameter.required}</br>
-        ${parameter.schema.$ref}</br>
-    </#list>
-    </br>
-    响应参数：</br>
-    <#list swaggerReqResEntitie.response as response1>
-        响应码：${response1.responseCode}  响应码描述：${response1.description}</br>
-
-        schema:<br/>
-        数据类型：${response1.schema.type}  样例：${response1.schema.format}</br>
-    <#--或者不是对象是数组-->
-        对象引用：${response1.schema.objectRef.$ref}</br>
-    </#list>
-
-    <hr/>
-
-<#--数据类型: ${swaggerReqResEntitie.request.request.consumes}</br>-->
-<#--produces: ${swaggerReqResEntitie.request.request.produces}</br>-->
-<#--<td>相应对象:${swaggerReqResEntitie.response} </td>-->
-</#list>
-
-
 </body>
+</div>
 </html>
