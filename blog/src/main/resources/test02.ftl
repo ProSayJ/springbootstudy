@@ -63,11 +63,11 @@
     </table>
 
     <#list requestAndResponse as requestAndResponse>
+    <h2>第 ${requestAndResponse_index+1} 个请求url：</h2>
     <hr>
-        <div>Controller:</div>
-        <pre>${requestAndResponse.requestTag}</pre>
+        <pre>Controller: ${requestAndResponse.requestTag}</pre>
 
-        <div>第 ${requestAndResponse_index+1} 个请求url：</div>
+        <div>请求URL:</div>
         <pre>${requestAndResponse.requestWay} ${requestAndResponse.requestUrl}</pre>
 
         <div>请求描述：</div>

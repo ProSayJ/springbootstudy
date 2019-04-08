@@ -1,12 +1,13 @@
 package com.prosayj.springboot.test;
 
 import com.prosayj.springboot.utils.Test02;
-import com.prosayj.springboot.utils.swagger2pdfutil.test;
-import io.swagger.models.ExternalDocs;
-import io.swagger.models.Model;
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -46,9 +47,19 @@ public class Test {
         map.put("entityDetailList", entityDetailList);
         URL url = Thread.currentThread().getContextClassLoader().getResource("");
         FreeMarkToHtml.freemarkToHtml(url.getPath(), "test02.ftl", map, url.getPath() + "result02.html");
-        XHtml2Pdf.XHtml2Pdf(url.getPath() + "result02.html", url.getPath() + "result02.pdf");
 
 
+        File htmlSrc = new File(url.getPath() + "result02.html");
+        StringBuffer htmlString = new StringBuffer();
+        String s;
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(htmlSrc), "utf-8"));
+        while((s=br.readLine()) != null){
+            htmlString.append(s+"\n");
+        }
+
+        Html2World.jacob_html2word(htmlString.toString());
+
+        //XHtml2Pdf.XHtml2Pdf(url.getPath() + "result02.html", url.getPath() + "result02.pdf");
 
         /*
         Map<String, Object> map = test.getMap();
@@ -58,5 +69,4 @@ public class Test {
 
         // XHtml2Pdf.XHtml2Pdf(url.getPath() + "result.html", url.getPath() + "result.pdf");
     }
-
 }
