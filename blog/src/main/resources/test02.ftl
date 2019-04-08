@@ -3,13 +3,13 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Welcome FreeMarker!</title>
-    <#--<meta charset="utf-8"></meta>-->
+<#--<meta charset="utf-8"></meta>-->
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta http-equiv="x-ua-compatible" content="ie=edge"></meta>
 
 
     <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
-    <#--<link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>-->
+<#--<link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>-->
     <link href="./static/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet"/>
     <link href="./static/bootstrap-3.3.7/css/bootstrap-theme.css" rel="stylesheet"/>
 
@@ -63,43 +63,39 @@
     </table>
 
     <#list requestAndResponse as requestAndResponse>
-        <table class="table table-hover">
-            <tr>
-                <td class="success">请求Controller：</td>
-                <td class="success">请求url</td>
-                <td class="success">请求方式</td>
-                <td class="success">请求描述</td>
-                <td class="success">请求参数类型是</td>
-                <td class="success">请求参数描述</td>
-            </tr>
-            <tr>
-                <td>${requestAndResponse.requestTag}</td>
-                <td>${requestAndResponse.requestUrl}</td>
-                <td>${requestAndResponse.requestWay}</td>
-                <td>${requestAndResponse.requestPostOperationSummary}</td>
-                <td>${requestAndResponse.requestParameterType}</td>
-                <td>${requestAndResponse.requestParameterDescription}</td>
-            </tr>
-        </table>
+    <hr>
+        <div>Controller:</div>
+        <pre>${requestAndResponse.requestTag}</pre>
 
-
-        <div>请求url：</div>
+        <div>第 ${requestAndResponse_index+1} 个请求url：</div>
         <pre>${requestAndResponse.requestWay} ${requestAndResponse.requestUrl}</pre>
+
+        <div>请求描述：</div>
+        <pre> ${requestAndResponse.requestPostOperationSummary}</pre>
+
+        <div>请求参数类型：</div>
+        <pre>${requestAndResponse.requestParameterType}</pre>
+
+        <div>请求参数描述：</div>
+        <pre> ${requestAndResponse.requestParameterDescription}</pre>
+
 
         <div>请求体参数说明：</div>
         <#if requestAndResponse.requestParameterType=="Object">
-            <table class="table table-hover">
-                <#--<td rowspan= ${requestAndResponse.entityPropertiesDetail?size}>请求参数明细：</td>-->
-                <#--<td> ${requestAndResponse.entityPropertiesDetail?size} 请求参数明细：</td>-->
-                <tr>
+            <table class="table table-bordered" style="vertical-align: middle !important;text-align: center;">
+                <tr class="bg-primary">
                     <td>参数对象名称</td>
                     <td>属性名称</td>
                     <td>属性类型</td>
                     <td>属性描述</td>
                     <td>属性是否必填</td>
                 </tr>
+
                 <tr>
-                    <td rowspan="${requestAndResponse.entityPropertiesDetail?size + 1}" align="center">${requestAndResponse.requestParameterObjectName}</td>
+                    <td rowspan="${requestAndResponse.entityPropertiesDetail?size + 1}"
+                        style="vertical-align: middle !important;text-align: center;" class="bg-info">
+                        ${requestAndResponse.requestParameterObjectName}
+                    </td>
                 </tr>
 
                 <#list requestAndResponse.entityPropertiesDetail as entityPropertiesDetail>
