@@ -2951,3 +2951,10 @@ body {
     text-align: justify;
   }
 }
+
+header{ width: 90% !important; }
+header.post-header {
+  width: auto !important;
+}
+.container .main-inner { width: 90%; }
+.content-wrap { width: calc(100% - 250px); }

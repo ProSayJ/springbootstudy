@@ -32,6 +32,12 @@
             <groupId>com.prosayj.springboot</groupId>
             <artifactId>utils</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
