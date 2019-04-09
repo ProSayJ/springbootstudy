@@ -189,7 +189,12 @@ public class AttachmentController {
                     File delFile = new File(delPath.toString());
                     File delSmallFile = new File(delSmallPath.toString());
                     if (delFile.exists() && delFile.isFile()) {
-                        flag = delFile.delete() && delSmallFile.delete();
+                        try {
+                            flag = delFile.delete() && delSmallFile.delete();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 } else if (attachLocation.equals(QINIU.getDesc())) {
                     String key = attachPath.substring(attachPath.lastIndexOf("/") + 1);
