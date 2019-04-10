@@ -27,7 +27,7 @@ import org.junit.Test;
  * @Date 0:33 2018/11/11
  * @since 1.0.0
  */
-public class _02_LambdaTest {
+public class LambdaTest {
 
 
     @Test

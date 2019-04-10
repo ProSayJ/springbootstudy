@@ -12,11 +12,14 @@ public class _02_Consumer {
 
             }
          });*/
+        //method((t) -> System.out.println("你好啊"));//打印你好啊
 
-        method((t) -> System.out.println("你好啊"));//打印你好啊
-        method(System.out::print);//拿到t值，转去操作别的，不会产生引用。结果hello
-        System.out.println("----------------------------");
+        //method(System.out::println);//拿到t值，转去操作别的，不会产生引用。结果hello
+
+        //System.out.println("----------------------------");
+
         method((Object t) -> System.out.println(t));//hello
+
         method(System.out::println);//对象引用成员方法，拿到对象直接对对象进行操作//hello
 
 

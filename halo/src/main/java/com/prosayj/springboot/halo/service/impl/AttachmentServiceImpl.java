@@ -38,6 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -163,8 +164,15 @@ public class AttachmentServiceImpl extends AbstractCrudService<Attachment, Long>
         final Map<String, String> resultMap = new HashMap<>(6);
         final String dateString = DateUtil.format(DateUtil.date(), "yyyyMMddHHmmss");
         try {
+            final StrBuilder uploadPath = new StrBuilder();
             //用户目录
-            final StrBuilder uploadPath = new StrBuilder(System.getProperties().getProperty("user.home"));
+            String parentPath = System.getProperties().getProperty("user.home");
+            URL url = Thread.currentThread().getContextClassLoader().getResource("");
+            String resourcePath = url.getPath();
+
+            uploadPath.append(parentPath);
+//            uploadPath.append(resourcePath);
+
             uploadPath.append("/halo/");
             uploadPath.append("upload/");
 

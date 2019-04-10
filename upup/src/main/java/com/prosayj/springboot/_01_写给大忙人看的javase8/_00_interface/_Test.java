@@ -19,3 +19,14 @@ public class _Test implements MyInterface {
         myInterface.sayByebye();
     }
 }
+
+/**
+ * Java 8 允许我们使用default关键字，为接口声明添加非抽象的方法实现。这个特性又被称为扩展方法
+ */
+interface MyInterface {
+    void sayHello();
+
+    default void sayByebye() {
+        System.out.println("default sayBaybay~~");
+    }
+}

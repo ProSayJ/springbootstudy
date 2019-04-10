@@ -27,13 +27,7 @@ import org.junit.Test;
  * @Date 0:19 2018/11/11
  * @since 1.0.0
  */
-
-/**
-
- *
- *
- */
-public class _00_Lambda {
+public class Lambda {
     /**
      * 语法格式一：无参，无返回值
      */
