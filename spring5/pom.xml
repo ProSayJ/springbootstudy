@@ -14,53 +14,59 @@
     <dependencies>
 
 
-       <!-- <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${mockito-version}</version>
-            <scope>test</scope>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.mockito</groupId>
+             <artifactId>mockito-all</artifactId>
+             <version>${mockito-version}</version>
+             <scope>test</scope>
+         </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <!--<version>${spring4-context-version}</version>-->
             <version>${spring5-context-version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>${spring-aspects-version}</version>
+            <version>${spring5-aspects-version}</version>
         </dependency>
 
-        <dependency>
+        <!--
+
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-tx</artifactId>
+                    <version>4.3.13.RELEASE</version>
+                    <scope>compile</scope>
+                </dependency>
+        -->
+
+        <!--<dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
+        </dependency>-->
 
+        <!--
+         <dependency>
+             <groupId>javax.inject</groupId>
+             <artifactId>javax.inject</artifactId>
+             <version>1</version>
+         </dependency>
+ -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>4.3.13.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+
+        <!--  <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-jdbc</artifactId>
+          </dependency>-->
 
 
         <!-- <dependency>

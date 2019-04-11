@@ -73,7 +73,8 @@
         <spring-aspects-version>4.3.13.RELEASE</spring-aspects-version>
 
         <!-- spring5 模块依赖-->
-        <spring5-context-version>5.0.3.RELEASE</spring5-context-version>
+        <spring5-context-version>5.1.2.RELEASE</spring5-context-version>
+        <spring5-aspects-version>5.1.2.RELEASE</spring5-aspects-version>
 
 
         <!--utils 模块依赖 -->
@@ -107,25 +108,31 @@
 
 
     <dependencies>
+        <!--
+                <dependency>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>druid-spring-boot-starter</artifactId>
+                    <version>1.1.9</version>
+                </dependency>
+        -->
+        <!--
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.9</version>
-        </dependency>
+                &lt;!&ndash; spring boot web支持：mvc,aop... &ndash;&gt;
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-security</artifactId>
+                </dependency>
+        -->
 
-        <!-- spring boot web支持：mvc,aop... -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--
+               <dependency>
+                   <groupId>org.springframework.boot</groupId>
+                   <artifactId>spring-boot-starter-test</artifactId>
+                   <scope>test</scope>
+               </dependency>
+       -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 
