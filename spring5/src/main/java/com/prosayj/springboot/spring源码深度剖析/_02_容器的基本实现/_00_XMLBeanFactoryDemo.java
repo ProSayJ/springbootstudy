@@ -10,6 +10,5 @@ public class _00_XMLBeanFactoryDemo {
         XmlBeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("com/prosayj/springboot/spring_annotation/beans.xml"));
         Person person = (Person)beanFactory.getBean("person");
         System.out.printf(person.toString());
-
     }
 }

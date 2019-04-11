@@ -75,6 +75,8 @@
         <!-- spring5 模块依赖-->
         <spring5-context-version>5.1.2.RELEASE</spring5-context-version>
         <spring5-aspects-version>5.1.2.RELEASE</spring5-aspects-version>
+        <spring5-tx-version>5.1.2.RELEASE</spring5-tx-version>
+        <spring5-jdbc-version>5.1.5.RELEASE</spring5-jdbc-version>
 
 
         <!--utils 模块依赖 -->
