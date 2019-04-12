@@ -37,7 +37,11 @@ public class PaserSwaggerJson2Objects {
 
         dealrequestAndResponseParams(requestAndResponse, entityDetailList, swagger);
 
+        Map<String, List<Map<String, String>>> swaggerTagsInfo = getSwaggerTagsInfo(swagger);
+
+
         System.out.println(requestAndResponse);
+
 
 /*
 
@@ -51,6 +55,24 @@ public class PaserSwaggerJson2Objects {
         System.out.println(swagger.toString());
         swagger.getInfo().getTitle();
 */
+    }
+
+    public static Map<String, List<Map<String, String>>> getSwaggerTagsInfo(Swagger swagger) {
+        Map<String, List<Map<String, String>>> result = new HashMap<>(1);
+        List<Map<String, String>> tagList = new ArrayList<>(swagger.getTags().size());
+
+        List<Tag> tags = swagger.getTags();
+        tags.forEach(tag -> {
+            HashMap<String, String> tagMap = new HashMap<>(2);
+            tagMap.put("tagName", tag.getName());
+            tagMap.put("tagDescription", tag.getDescription());
+            tagList.add(tagMap);
+        });
+
+        result.put("tagDetails", tagList);
+        return result;
+
+
     }
 
     public static void dealrequestAndResponseParams(List<Map<String, Object>> requestAndResponse, List<Map<String, List<Map<String, String>>>> entityDetailList, Swagger swagger) {

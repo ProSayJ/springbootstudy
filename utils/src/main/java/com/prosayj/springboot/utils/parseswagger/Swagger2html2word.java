@@ -26,7 +26,7 @@ public class Swagger2html2word {
         HashMap<String, String> swaggerInfo = PaserSwaggerJson2Objects.getSwaggerInfo(swagger);
         List<Map<String, Object>> requestAndResponse = PaserSwaggerJson2Objects.getRequestAndResponse(swagger);
         List<Map<String, List<Map<String, String>>>> entityDetailList = PaserSwaggerJson2Objects.getEntityDetailList(swagger);
-
+        Map<String, List<Map<String, String>>> swaggerTagsInfo = PaserSwaggerJson2Objects.getSwaggerTagsInfo(swagger);
 
         PaserSwaggerJson2Objects.dealrequestAndResponseParams(requestAndResponse, entityDetailList, swagger);
 
@@ -48,6 +48,7 @@ public class Swagger2html2word {
         map.put("swaggerInfo", swaggerInfo);
         map.put("requestAndResponse", requestAndResponse);
         map.put("entityDetailList", entityDetailList);
+        map.put("swaggerTagsInfo", swaggerTagsInfo);
         map.put("createTime", new SimpleDateFormat("yyyy-MM-dd HH:mm SSS").format(new Date()));
 
         URL url = Thread.currentThread().getContextClassLoader().getResource("");

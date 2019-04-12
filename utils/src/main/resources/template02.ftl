@@ -2492,17 +2492,12 @@
 </div>
 
 
-
-
-
 <div id="content">
     <div class="sect1">
         <h2 id="_overview">Overview(标题)</h2>
         <div class="sectionbody">
             <div class="paragraph">
-
                 <p>${swaggerInfo.infoTitle}</p>
-
             </div>
             <div class="sect2">
                 <h3 id="_version_information">Version information</h3>
@@ -2528,28 +2523,16 @@
                 <h3 id="_tags">Tags</h3>
                 <div class="ulist">
                     <ul>
-                        <#--
-                        <li>
-                            <p>article-controller : 文章操作类</p>
-                        </li>
-                        <li>
-                            <p>file-controller : 文件上传控制器</p>
-                        </li>
-                        <li>
-                            <p>hello-controller : 测试类</p>
-                        </li>
-                        <li>
-                            <p>static-jump-controller : 静态资源跳转类</p>
-                        </li>
-                        -->
-
+                          <#list swaggerTagsInfo.tagDetails as tagDetail>
+                              <li>
+                                  <p>${tagDetail.tagName} : ${tagDetail.tagDescription}</p>
+                              </li>
+                          </#list>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 
     <div class="sect1">
