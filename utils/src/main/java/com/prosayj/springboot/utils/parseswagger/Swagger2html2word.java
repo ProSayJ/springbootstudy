@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,11 +48,14 @@ public class Swagger2html2word {
         map.put("swaggerInfo", swaggerInfo);
         map.put("requestAndResponse", requestAndResponse);
         map.put("entityDetailList", entityDetailList);
+        map.put("createTime", new SimpleDateFormat("yyyy-MM-dd HH:mm SSS").format(new Date()));
 
         URL url = Thread.currentThread().getContextClassLoader().getResource("");
-        FreeMarkToHtml.freemarkToHtml(url.getPath(), "test02.ftl", map, url.getPath() + "result02.html");
+//        FreeMarkToHtml.freemarkToHtml(url.getPath(), "template01.ftl", map, url.getPath() + "result01.html");
+        FreeMarkToHtml.freemarkToHtml(url.getPath(), "template02.ftl", map, url.getPath() + "result02.html");
 
 
+//        File htmlSrc = new File(url.getPath() + "result01.html");
         File htmlSrc = new File(url.getPath() + "result02.html");
         StringBuffer htmlString = new StringBuffer();
         String s;

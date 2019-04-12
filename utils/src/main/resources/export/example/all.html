@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<body class="article toc2 toc-left">
+<div id="header">
+    <h1>Spring Boot2.0使用 Swagger2 构建RestFul API</h1>
+    <div id="toc" class="toc2">
+        <div id="toctitle">Table of Contents</div>
+        <ul class="sectlevel1">
+            <li><a href="#_overview">Overview</a>
+                <ul class="sectlevel2">
+                    <li><a href="#_version_information">Version information</a></li>
+                    <li><a href="#_contact_information">Contact information</a></li>
+                    <li><a href="#_uri_scheme">URI scheme</a></li>
+                    <li><a href="#_tags">Tags</a></li>
+                </ul>
+            </li>
+            <li><a href="#_paths">Paths</a>
+                <ul class="sectlevel2">
+                    <li><a href="#_static-jump-controller">登陆跳转</a></li>
+                    <li><a href="#_article-controller-detail">文章详情</a></li>
+                    <li><a href="#_article-controller-list">文章列表</a></li>
+                    <li><a href="#_article-controller-publish">发布文章</a></li>
+                    <li><a href="#_static-jump-controller-register_1">注册</a></li>
+                    <li><a href="#_article-controller-update">更新文章内容</a></li>
+                    <li><a href="#_static-jump-controller-create">新建文章</a></li>
+                    <li><a href="#_static-jump-controller-editor">文章编辑</a></li>
+                    <li><a href="#_static-jump-controller-example">example</a></li>
+                    <li><a href="#_file-controller-img-download">图片下载</a></li>
+                    <li><a href="#_file-controller-img-expport-all">导出所有图片到本地</a></li>
+                    <li><a href="#_file-controller-img-upload">图片上传</a></li>
+                    <li><a href="#_loginusingget">login</a></li>
+                    <li><a href="#_static-jump-controller-login">登陆</a></li>
+                    <li><a href="#_static-jump-controller-preview">文章预览</a></li>
+                    <li><a href="#_static-jump-controller-register">注册</a></li>
+                </ul>
+            </li>
+            <li><a href="#_definitions">Definitions</a>
+                <ul class="sectlevel2">
+                    <li><a href="#_modelandview">ModelAndView</a></li>
+                    <li><a href="#_view">View</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="content">
+    <div class="sect1">
+        <h2 id="_overview">Overview</h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>API接口文档</p>
+            </div>
+            <div class="sect2">
+                <h3 id="_version_information">Version information</h3>
+                <div class="paragraph">
+                    <p><em>Version</em> : 1.0</p>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_contact_information">Contact information</h3>
+                <div class="paragraph">
+                    <p><em>Contact</em> : ProSayJ<br>
+                        <em>Contact Email</em> : <a href="mailto:ProSayJ@gmail.com">ProSayJ@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_uri_scheme">URI scheme</h3>
+                <div class="paragraph">
+                    <p><em>Host</em> : localhost<br>
+                        <em>BasePath</em> : /</p>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_tags">Tags</h3>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>article-controller : 文章操作类</p>
+                        </li>
+                        <li>
+                            <p>file-controller : 文件上传控制器</p>
+                        </li>
+                        <li>
+                            <p>hello-controller : 测试类</p>
+                        </li>
+                        <li>
+                            <p>static-jump-controller : 静态资源跳转类</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="sect1">
+        <h2 id="_paths">Paths</h2>
+        <div class="sectionbody">
+            <div class="sect2">
+                <h3 id="_static-jump-controller">登陆跳转</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_2">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_article-controller-detail">文章详情</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>POST /article/detail</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>businessId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">业务主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_2">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_consumes">Consumes</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code>application/json</code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_2">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_3">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>article-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_article-controller-list">文章列表</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /article/list</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_3">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_3">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_4">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>article-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_article-controller-publish">发布文章</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>POST /article/publish</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_2">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleCategories</strong><br>
+                                <em>required</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">博客分类</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleContent</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章内容_md</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleHtmlContent</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章内容_html</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleTabloid</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章摘要</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleTags</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章标签</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleTitle</strong><br>
+                                <em>required</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章名称</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleType</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章类型</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleUrl</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">原文链接</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>author</strong><br>
+                                <em>required</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章作者</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int32)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>lastArticleId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">上一篇文章id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>likes</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">喜欢</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int32)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>nextArticleId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">下一篇文章id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>originalAuthor</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章原作者</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>publishDate</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">发布时间</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>updateDate</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">最后一次修改时间</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_4">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; string, string
+                                &gt; map</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_consumes_2">Consumes</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code>application/json</code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_4">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_5">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>article-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-register_1">注册</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /article/register.html</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_5">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_5">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_6">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_article-controller-update">更新文章内容</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>POST /article/update</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_3">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleContent</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章内容_md</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>articleHtmlContent</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章内容_html</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>articleId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">文章id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_6">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; string, string
+                                &gt; map</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_consumes_3">Consumes</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code>application/json</code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_6">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_7">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>article-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-create">新建文章</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /create</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_7">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_7">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_8">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-editor">文章编辑</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /editor</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_4">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>businessId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">业务主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_8">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><a
+                                    href="#_modelandview">ModelAndView</a></p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_8">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_9">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-example">example</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /example</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_9">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_9">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_10">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_file-controller-img-download">图片下载</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /file/img-download</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_5">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>businessId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">业务主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_10">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_10">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_11">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>file-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_file-controller-img-expport-all">导出所有图片到本地</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>POST /file/img-expport-all</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_11">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_consumes_4">Consumes</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code>application/json</code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_11">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_12">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>file-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_file-controller-img-upload">图片上传</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>POST /file/img-upload</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_6">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>FormData</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>editormd-image-file</strong><br>
+                                <em>required</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                editormd-image-file</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">file</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_12">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">object</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_consumes_5">Consumes</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code>multipart/form-data</code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_12">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_13">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>file-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_loginusingget">login</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /hello</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_13">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_13">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_14">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>hello-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-login">登陆</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /login</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_14">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_14">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_15">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-preview">文章预览</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /preview</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_parameters_7">Parameters</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 11.1111%;">
+                            <col style="width: 16.6666%;">
+                            <col style="width: 50%;">
+                            <col style="width: 22.2223%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">Type</th>
+                            <th class="tableblock halign-left valign-middle">Name</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>businessId</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">业务主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>Query</strong></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                                <strong>id</strong><br>
+                                <em>optional</em></p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">主键Id</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">integer (int64)</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_15">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><a
+                                    href="#_modelandview">ModelAndView</a></p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_15">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_16">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="_static-jump-controller-register">注册</h3>
+                <div class="literalblock">
+                    <div class="content">
+                        <pre>GET /register</pre>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_responses_16">Responses</h4>
+                    <table class="tableblock frame-all grid-all spread">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                            <th class="tableblock halign-left valign-middle">Description</th>
+                            <th class="tableblock halign-left valign-middle">Schema</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        <tr>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong>
+                            </p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                            <td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sect3">
+                    <h4 id="_produces_16">Produces</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p><code><strong>/</strong></code></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="_tags_17">Tags</h4>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>static-jump-controller</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="sect1">
+        <h2 id="_definitions">Definitions</h2>
+        <div class="sectionbody">
+            <div class="sect2">
+                <h3 id="_modelandview">ModelAndView</h3>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 42.8571%;">
+                        <col style="width: 57.1429%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-middle">Name</th>
+                        <th class="tableblock halign-left valign-middle">Schema</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                            <strong>empty</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                            <strong>model</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">object</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>modelMap</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; string, object &gt;
+                            map</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                            <strong>reference</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                            <strong>status</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (100 CONTINUE, 101
+                            SWITCHING_PROTOCOLS, 102 PROCESSING, 103 CHECKPOINT, 200 OK, 201 CREATED, 202 ACCEPTED, 203
+                            NON_AUTHORITATIVE_INFORMATION, 204 NO_CONTENT, 205 RESET_CONTENT, 206 PARTIAL_CONTENT, 207
+                            MULTI_STATUS, 208 ALREADY_REPORTED, 226 IM_USED, 300 MULTIPLE_CHOICES, 301
+                            MOVED_PERMANENTLY, 302 FOUND, 302 MOVED_TEMPORARILY, 303 SEE_OTHER, 304 NOT_MODIFIED, 305
+                            USE_PROXY, 307 TEMPORARY_REDIRECT, 308 PERMANENT_REDIRECT, 400 BAD_REQUEST, 401
+                            UNAUTHORIZED, 402 PAYMENT_REQUIRED, 403 FORBIDDEN, 404 NOT_FOUND, 405 METHOD_NOT_ALLOWED,
+                            406 NOT_ACCEPTABLE, 407 PROXY_AUTHENTICATION_REQUIRED, 408 REQUEST_TIMEOUT, 409 CONFLICT,
+                            410 GONE, 411 LENGTH_REQUIRED, 412 PRECONDITION_FAILED, 413 PAYLOAD_TOO_LARGE, 413
+                            REQUEST_ENTITY_TOO_LARGE, 414 URI_TOO_LONG, 414 REQUEST_URI_TOO_LONG, 415
+                            UNSUPPORTED_MEDIA_TYPE, 416 REQUESTED_RANGE_NOT_SATISFIABLE, 417 EXPECTATION_FAILED, 418
+                            I_AM_A_TEAPOT, 419 INSUFFICIENT_SPACE_ON_RESOURCE, 420 METHOD_FAILURE, 421
+                            DESTINATION_LOCKED, 422 UNPROCESSABLE_ENTITY, 423 LOCKED, 424 FAILED_DEPENDENCY, 426
+                            UPGRADE_REQUIRED, 428 PRECONDITION_REQUIRED, 429 TOO_MANY_REQUESTS, 431
+                            REQUEST_HEADER_FIELDS_TOO_LARGE, 451 UNAVAILABLE_FOR_LEGAL_REASONS, 500
+                            INTERNAL_SERVER_ERROR, 501 NOT_IMPLEMENTED, 502 BAD_GATEWAY, 503 SERVICE_UNAVAILABLE, 504
+                            GATEWAY_TIMEOUT, 505 HTTP_VERSION_NOT_SUPPORTED, 506 VARIANT_ALSO_NEGOTIATES, 507
+                            INSUFFICIENT_STORAGE, 508 LOOP_DETECTED, 509 BANDWIDTH_LIMIT_EXCEEDED, 510 NOT_EXTENDED, 511
+                            NETWORK_AUTHENTICATION_REQUIRED)</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>view</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_view">View</a>
+                        </p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>viewName</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sect2">
+                <h3 id="_view">View</h3>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 42.8571%;">
+                        <col style="width: 57.1429%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-middle">Name</th>
+                        <th class="tableblock halign-left valign-middle">Schema</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                            <strong>contentType</strong><br>
+                            <em>optional</em></p></td>
+                        <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div id="footer-text">
+        Last updated 2019-04-12 14:57:06 CST
+    </div>
+</div>
+</body>
+</html>
