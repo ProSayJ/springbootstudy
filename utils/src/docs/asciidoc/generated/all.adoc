@@ -1,0 +1,5472 @@
+= User API文档
+
+
+[[_overview]]
+== Overview
+User api document
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 1.0.0
+
+
+=== Contact information
+[%hardbreaks]
+__Contact__ : wusonghui
+__Contact Email__ : wusonghui@bubi.cn
+
+
+=== License information
+[%hardbreaks]
+__Terms of service__ : http://www.yinuojr.cn
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:11019
+__BasePath__ : /
+
+
+=== Tags
+
+* function-tree-controller : 功能树相关的操作
+* menu-controller : 菜单管理相关的操作
+* module-controller : 模块管理相关的操作
+* page-controller : 页面相关的操作
+* permission-item-controller : 权限项相关
+* resource-controller : 资源管理的操作
+* role-controller : 角色相关的操作
+* user-controller : 用户相关的操作
+* user-repair-controller : 修复接口
+
+
+
+
+[[_paths]]
+== Paths
+
+[[_createusingpost]]
+=== 创建功能（非根节点）
+....
+POST /functiontree/create
+....
+
+
+==== Description
+填写功能必要的信息
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_functiontreecreateinputform,FunctionTreeCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_createrootusingpost]]
+=== 创建根节点功能
+....
+POST /functiontree/create/root
+....
+
+
+==== Description
+填写功能必要的信息
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_functiontreecreaterootinputform,FunctionTreeCreateRootInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_deleteusingpost]]
+=== 删除功能
+....
+POST /functiontree/delete
+....
+
+
+==== Description
+删除功能
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|需要删除功能的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_getusingpost]]
+=== 获取功能详情
+....
+POST /functiontree/get
+....
+
+
+==== Description
+功能详情
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|需要获取功能详情的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_functiondetailoutputform,FunctionDetailOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_getfunctionidlistnoworkbenchusingpost]]
+=== 获取所有功能（业务模块）id集合（排除工作台的）
+....
+POST /functiontree/get/function/ids/no/workbench
+....
+
+
+==== Description
+可用于保存时候，校验功能树id的正确性
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< integer (int64) > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_treeusingpost]]
+=== 获取功能树
+....
+POST /functiontree/tree
+....
+
+
+==== Description
+直接获取
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|模块的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_functiontreeoutputform,FunctionTreeOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_treefunctiontree4operatorusingpost]]
+=== 提供给 运营方 获取功能树（获取业务模块，针对全量搜索）
+....
+POST /functiontree/tree/for/operator
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_functiontreenoworkbenchoutputform,FunctionTreeNoWorkbenchOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_treefunctiontreenoworkbenchusingpost]]
+=== 获取功能树（获取业务模块，针对全量搜索）
+....
+POST /functiontree/tree/no/workbench
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_functiontreenoworkbenchoutputform,FunctionTreeNoWorkbenchOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_treefunctiontreenoworkbenchbyfunctionidlistusingpost]]
+=== 通过功能（业务模块）id集合（排除工作台的），获取功能树
+....
+POST /functiontree/tree/no/workbench/by/function/ids
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**toCheckFunctionIdListInputForm** +
+__required__|toCheckFunctionIdListInputForm|<<_tocheckfunctionidlistinputform,ToCheckFunctionIdListInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_functiontreenoworkbenchoutputform,FunctionTreeNoWorkbenchOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_updateusingpost]]
+=== 更新功能
+....
+POST /functiontree/update
+....
+
+
+==== Description
+输入更新功能相关的内容
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**update** +
+__required__|update|<<_functiontreeupdateinputform,FunctionTreeUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* function-tree-controller
+
+
+[[_createusingpost_1]]
+=== 创建菜单
+....
+POST /menu/create
+....
+
+
+==== Description
+输入创建菜单相关的内容，菜单类型如果不输入，按默认处理
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_760a3a12d2f6027d8a236b65ed830de8,创建菜单实体（非目录）>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_createdirusingpost]]
+=== 创建目录
+....
+POST /menu/create/dir
+....
+
+
+==== Description
+输入创建菜单相关的内容，菜单类型如果不输入，按默认处理
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_67cba14b4f90cbf03af69faf4d8a1d5e,创建目录实体>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_deleteusingpost_1]]
+=== 删除菜单
+....
+POST /menu/delete
+....
+
+
+==== Description
+输入更新菜单相关的内容
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|删除菜单的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_getusingpost_1]]
+=== 通过id获取菜单详情
+....
+POST /menu/get
+....
+
+
+==== Description
+可用菜单id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|菜单id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_menudetailoutputform,MenuDetailOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_treeusingpost_1]]
+=== 获取菜单树
+....
+POST /menu/tree
+....
+
+
+==== Description
+通过模块获取菜单
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|模块id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_menutreemanageroutputform,MenuTreeManagerOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_updateusingpost_1]]
+=== 更新菜单
+....
+POST /menu/update
+....
+
+
+==== Description
+输入更新菜单相关的内容
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**update** +
+__required__|update|<<_menuupdateinputform,MenuUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* menu-controller
+
+
+[[_createusingpost_2]]
+=== 创建模块
+....
+POST /module/create
+....
+
+
+==== Description
+需要传入相应的模块的必要信息, 返回创建完的模块的id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**创建模块信息** +
+__optional__|创建模块信息，除了 optional 项，其他为必填|<<_modulecreateinputform,ModuleCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* module-controller
+
+
+[[_deleteusingpost_2]]
+=== 删除模块
+....
+POST /module/delete
+....
+
+
+==== Description
+需要删除模块的id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|需要删除的模块id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* module-controller
+
+
+[[_listallusingpost]]
+=== 获取所有的模块(无分页)
+....
+POST /module/list/all
+....
+
+
+==== Description
+无需传参
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_moduleoutputform,ModuleOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* module-controller
+
+
+[[_listusingpost]]
+=== 分页获取所有的模块
+....
+POST /module/query
+....
+
+
+==== Description
+需要分页参数，其他参数无需传递
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**pageParam** +
+__required__|pageParam|<<_pageparam,PageParam>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_10513d3389bd6d63f5ca02803f57c5b7,PageData«ModuleOutputForm»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* module-controller
+
+
+[[_updateusingpost_2]]
+=== 更新模块
+....
+POST /module/update
+....
+
+
+==== Description
+需要传入相应的模块的需要更新信息, 返回更新完的模块的id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**updateInputForm** +
+__required__|updateInputForm|<<_moduleupdateinputform,ModuleUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* module-controller
+
+
+[[_createusingpost_3]]
+=== 增加页面
+....
+POST /page/create
+....
+
+
+==== Description
+传入页面内容,创建页面
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_pagecreateinputform,PageCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* page-controller
+
+
+[[_deleteusingpost_3]]
+=== 删除页面
+....
+POST /page/delete
+....
+
+
+==== Description
+根据id删除
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|待删除页面的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* page-controller
+
+
+[[_listallusingpost_1]]
+=== 获取所有的页面
+....
+POST /page/list
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_pageoutputform,PageOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* page-controller
+
+
+[[_queryusingpost]]
+=== 查询
+....
+POST /page/query
+....
+
+
+==== Description
+根据名查询
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**pageQueryInputForm** +
+__required__|pageQueryInputForm|<<_pagequeryinputform,PageQueryInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_7383647394b757ea14573eb2f3ad770e,PageData«PageOutputForm»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* page-controller
+
+
+[[_updateusingpost_3]]
+=== 更新页面
+....
+POST /page/update
+....
+
+
+==== Description
+传入页面更新内容,更新页面
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**update** +
+__required__|update|<<_pageupdateinputform,PageUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* page-controller
+
+
+[[_batchbindresourcesusingpost]]
+=== 批量权限项绑定接口资源
+....
+POST /permissionitem/batch/bind/resources
+....
+
+
+==== Description
+传递接口资源code集合和权限项code，将更新当前权限项所绑定的接口，返回绑定资源的权限项code
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**createInputForm** +
+__required__|createInputForm|<<_permissionitemresourcebatchcreateinputform,PermissionItemResourceBatchCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|string
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_bindresourcesusingpost]]
+=== 权限项绑定接口资源
+....
+POST /permissionitem/bind/resources
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**createInputForm** +
+__required__|createInputForm|<<_permissionitemresourcecreateinputform,PermissionItemResourceCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|string
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_createusingpost_4]]
+=== 增加权限项
+....
+POST /permissionitem/create
+....
+
+
+==== Description
+传入权限项内容,创建权限项
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_permissionitemcreateinputform,PermissionItemCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_deleteusingpost_4]]
+=== 删除权限项
+....
+POST /permissionitem/delete
+....
+
+
+==== Description
+根据id删除
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**delete** +
+__required__|delete|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_getpermissionitemresourceusingpost]]
+=== 获取权限项绑定的资源
+....
+POST /permissionitem/get/bind/resources
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**permissionItemCode** +
+__optional__|权限项code|<<_stringinputform,StringInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_resourceoutputform,ResourceOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_queryusingpost_1]]
+=== 查询
+....
+POST /permissionitem/query
+....
+
+
+==== Description
+根据权限名称查询
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**queryInputForm** +
+__required__|queryInputForm|<<_permissionitemqueryinputform,PermissionItemQueryInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_ed7168cb9502fedba1ccb5f0bb2e98ea,PageData«PermissionItemOutputForm»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_unbindresourceusingpost]]
+=== 权限项解绑接口资源
+....
+POST /permissionitem/unbind/resources
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**unBindResourceFrom** +
+__required__|unBindResourceFrom|<<_permissionitemresourcecreateinputform,PermissionItemResourceCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|string
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_updateusingpost_4]]
+=== 更新权限项
+....
+POST /permissionitem/update
+....
+
+
+==== Description
+传入权限项更新内容,更新权限项
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**update** +
+__required__|update|<<_permissionitemupdateinputform,PermissionItemUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* permission-item-controller
+
+
+[[_repaircommonusermenuandrolepermissionusingpost]]
+=== 修复普通员工的角色菜单和角色权限项的情况
+....
+POST /repair/user/role-menu-and-role-permission
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-repair-controller
+
+
+[[_repairusermultianybodyroleusingpost]]
+=== 修复普通员工的角色菜单和角色权限项的情况
+....
+POST /repair/user/user-multi-anybody-role
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-repair-controller
+
+
+[[_listallrestapiusingpost]]
+=== 通过条件获取所有接口资源
+....
+POST /resource/list
+....
+
+
+==== Description
+如果没有传参，默认查询所有可用的接口资源
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**resourceInputForm** +
+__required__|resourceInputForm|<<_resourceinputform,ResourceInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_resourceoutputform,ResourceOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* resource-controller
+
+
+[[_listusingpost_1]]
+=== 通过code集合获取
+....
+POST /resource/list/by/codes
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**resourceList4CodesInputForm** +
+__required__|resourceList4CodesInputForm|<<_resourcelist4codesinputform,ResourceList4CodesInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_resourceoutputform,ResourceOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* resource-controller
+
+
+[[_listallservicenameusingpost]]
+=== 获取资源的所有服务类型
+....
+POST /resource/list/service/name
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_servicenameoutputform,ServiceNameOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* resource-controller
+
+
+[[_bindmenuusingpost]]
+=== 给角色绑定菜单
+....
+POST /role/admin/bind/menu
+....
+
+
+==== Description
+传入 可用的 角色id 和 菜单id集合
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleMenuCreateInputForm** +
+__required__|roleMenuCreateInputForm|<<_rolemenucreateinputform,RoleMenuCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_bindpermissionitemusingpost]]
+=== 给角色绑定权限
+....
+POST /role/admin/bind/permission
+....
+
+
+==== Description
+传入 可用的 角色id 和 功能code集合
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**rolePermissionItemCreateInputForm** +
+__required__|rolePermissionItemCreateInputForm|<<_rolepermissionitemcreateinputform,RolePermissionItemCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getrolemenuusingpost]]
+=== 返回模块的菜单及获取该角色相应模块菜单勾选情况
+....
+POST /role/admin/get/menu
+....
+
+
+==== Description
+传入 可用的 角色id 和 模块id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleMenuInputForm** +
+__required__|roleMenuInputForm|<<_rolemenuinputform,RoleMenuInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_rolemenuoutputform,RoleMenuOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getpermissionitemusingpost]]
+=== 获取该角色权限项
+....
+POST /role/admin/get/permission
+....
+
+
+==== Description
+传入 可用的 角色id 和 功能id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**rolePermissionItemCreateInputForm** +
+__required__|rolePermissionItemCreateInputForm|<<_rolepermissioniteminputform,RolePermissionItemInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_rolepermissionitemoutputform,RolePermissionItemOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_commonbindmenuusingpost]]
+=== 给角色绑定菜单 （必须为当前操作人拥有的菜单）
+....
+POST /role/common/bind/menu
+....
+
+
+==== Description
+传入 可用的 角色id 和 菜单id集合
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleMenuCreateInputForm** +
+__required__|roleMenuCreateInputForm|<<_rolemenucreateinputform,RoleMenuCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_treeusingpost_2]]
+=== 根据当前的用户获取对应的功能树
+....
+POST /role/common/function/tree
+....
+
+
+==== Description
+直接获取
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|模块的id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_functiontreeoutputform,FunctionTreeOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getcurrentusermenuandrolemenuusingpost]]
+=== 返回当前用户的菜单，并返回当前编辑的角色的菜单勾选情况
+....
+POST /role/common/get/menu
+....
+
+
+==== Description
+传入 可用的 角色id 和 模块id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleMenuInputForm** +
+__required__|roleMenuInputForm|<<_rolemenuinputform,RoleMenuInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_rolemenuoutputform,RoleMenuOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_commongetpermissionitemusingpost]]
+=== 获取该角色权限项，不允许超出当前用户的权限范围
+....
+POST /role/common/get/permission
+....
+
+
+==== Description
+传入 可用的 角色id 和 功能id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**rolePermissionItemCreateInputForm** +
+__required__|rolePermissionItemCreateInputForm|<<_rolepermissioniteminputform,RolePermissionItemInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_rolepermissionitemoutputform,RolePermissionItemOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_commonsavebindpermissionitemusingpost]]
+=== 给角色绑定权限，不允许超出当前用户的权限范围(内部使用)，提交
+....
+POST /role/common/save/bind/permission
+....
+
+
+==== Description
+传入 可用的 角色id 和 功能code集合
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**rolePermissionItemCreateInputForm** +
+__required__|rolePermissionItemCreateInputForm|<<_rolepermissionitemsigncreateinputform,RolePermissionItemSignCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_userblockchainpermissionoutputform,UserBlockchainPermissionOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_commonsubmitbindpermissionitemusingpost]]
+=== 给角色绑定权限，不允许超出当前用户的权限范围(内部使用)，确认入库 
+....
+POST /role/common/submit/bind/permission
+....
+
+
+==== Description
+传入 可用的 角色id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**待缓存key** +
+__optional__|stringInputForm|<<_stringinputform,StringInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_createusingpost_5]]
+=== 增加角色
+....
+POST /role/create
+....
+
+
+==== Description
+传入角色相关属性, 创建角色
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**create** +
+__required__|create|<<_rolecreateinputform,RoleCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_role-delete]]
+=== 删除角色
+....
+POST /role/delete
+....
+
+
+==== Description
+根据id删除
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**id** +
+__required__|id|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_disableusingpost]]
+=== 停用角色
+....
+POST /role/disable
+....
+
+
+==== Description
+根据id停用
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**idInputForm** +
+__required__|idInputForm|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_enableusingpost]]
+=== 启用角色
+....
+POST /role/enable
+....
+
+
+==== Description
+根据id启用
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**idInputForm** +
+__required__|idInputForm|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getprivilegeattributesusingpost]]
+=== 获取拥有该资源的角色
+....
+POST /role/get/privilege/attributes
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**获取该接口的权限** +
+__required__|获取该接口的权限|<<_roleprivilegeinputform,RolePrivilegeInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< string > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getroleblockchainpermissionusingpost]]
+=== 获取角色是否有区块链权重
+....
+POST /role/get/role/blockchain/permission
+....
+
+
+==== Description
+传入 可用的 角色ids
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**ids** +
+__required__|ids|< integer (int64) > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_getuserblockchainpermissionusingpost]]
+=== 获取用户是否有区块链权重
+....
+POST /role/get/user/blockchain/permission
+....
+
+
+==== Description
+传入 可用的 用id
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**idInputForm** +
+__required__|idInputForm|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_listbuildinroleusingpost]]
+=== 返回企业角色列表
+....
+POST /role/list/build/in/role
+....
+
+
+==== Description
+无需传递参数
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_buildinroleoutputform,BuildInRoleOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_queryusingpost_3]]
+=== 查询
+....
+POST /role/query
+....
+
+
+==== Description
+根据角色名（模糊查询）、启动与否 查询
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleQueryInputForm** +
+__required__|roleQueryInputForm|<<_rolequeryinputform,RoleQueryInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_e4a5f18fb2402b90a68ebbf0147d3fbf,PageData«RoleOutputForm»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_queryusingpost_2]]
+=== 查询
+....
+POST /role/query/byids
+....
+
+
+==== Description
+根据角色id查询角色列表信息
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**ids** +
+__required__|ids|< integer (int64) > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_roleoutputform,RoleOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_queryrolelistbyuseridusingpost]]
+=== 查询角色信息
+....
+POST /role/query/rolelist/byuserid
+....
+
+
+==== Description
+根据用户id,角色ids获取用户拥有的，未拥有的角色详细信息
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**inputForm** +
+__required__|inputForm|<<_userrolelistqueryinputform,UserRoleListQueryInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_roleoutputform,RoleOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_updateusingpost_5]]
+=== 更新角色
+....
+POST /role/update
+....
+
+
+==== Description
+传入角色id，和更新的角色名称,更新角色
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**roleInputForm** +
+__required__|roleInputForm|<<_roleupdateinputform,RoleUpdateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* role-controller
+
+
+[[_addenterpriseroleusingpost]]
+=== 给用户添加企业角色
+....
+POST /user/add/enterprise/role
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**enterpriseRoleCreateInputForm** +
+__required__|enterpriseRoleCreateInputForm|<<_enterpriserolecreateinputform,EnterpriseRoleCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< integer (int64) > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_adduserrolesusingpost]]
+=== 添加用户角色
+....
+POST /user/add/user/roles
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**用户角色绑定关系** +
+__required__|用户角色绑定关系|<<_userroleinputform,UserRoleInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_checknameexitusingpost]]
+=== 检查用户名是否存在
+....
+POST /user/check/isexist
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**nameInputForm** +
+__required__|用户名name对象|<<_nameinputform,NameInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_checkloginpasswordusingpost]]
+=== 检查用户的登录密码是否正确
+....
+POST /user/check/loginpwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userPwdCheckInputForm** +
+__required__|用户密码校验信息|<<_userpwdcheckinputform,UserPwdCheckInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_checkrule4usernameusingpost]]
+=== 校验用户名是否符合规则或是否不存在
+....
+POST /user/check/namerule
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**nameInputForm** +
+__required__|用户名name对象|<<_nameinputform,NameInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_checkpaypasswordusingpost]]
+=== 检查用户的支付密码是否正确
+....
+POST /user/check/paypwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userPwdCheckInputForm** +
+__required__|用户密码校验信息|<<_userpwdcheckinputform,UserPwdCheckInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_createusingpost_6]]
+=== 添加用户
+....
+POST /user/create
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userCreateInputForm** +
+__required__|添加用户|<<_usercreateinputform,UserCreateInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_currentusermenuusingpost]]
+=== 获取当前用户拥有的菜单
+....
+POST /user/current/user/menu
+....
+
+
+==== Description
+无需传参
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**id** +
+__optional__|当前使用模块id|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_usermenuoutputform,UserMenuOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_currentuserpermissionitemcodeusingpost]]
+=== 根据传入的功能code集合，返回该用户实际拥有的功能code集合
+....
+POST /user/current/user/permission/item/code
+....
+
+
+==== Description
+传参
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**permissionItemCodeInputForm** +
+__optional__|permissionItemCodeInputForm|<<_permissionitemcodeinputform,PermissionItemCodeInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_permissionitemcodeoutputform,PermissionItemCodeOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_fixnoticedatausingpost]]
+=== 修复notice数据
+....
+POST /user/fix/notice
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**fixNoticeDataInputForm** +
+__required__|fixNoticeDataInputForm|<<_fixnoticedatainputform,FixNoticeDataInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getuserlistusingpost]]
+=== 组织机构员工列表查询
+....
+POST /user/list/query
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**staffListQueryInputFrom** +
+__required__|staffListQueryInputFrom|<<_stafflistqueryinputfrom,StaffListQueryInputFrom>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_stafflistqueryoutputform,StaffListQueryOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_listuseridlistbyroleidusingpost]]
+=== 通过角色id集合获取用户id列表
+....
+POST /user/list/user/by/roleid
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**角色id list** +
+__required__|roleIds|< integer (int64) > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_userinfo4noticeoutputform,UserInfo4NoticeOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_forgetloginpwdusingpost]]
+=== 忘记登录密码
+....
+POST /user/login/forgetloginpwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**loginPwdForgetInputForm** +
+__required__|待找回的登录密码|<<_loginpwdforgetinputform,LoginPwdForgetInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_modifyloginpwdusingpost]]
+=== 修改登录密码
+....
+POST /user/login/modifyloginpwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**loginPwdModifyInputForm** +
+__required__|待修改的登录密码|<<_loginpwdmodifyinputform,LoginPwdModifyInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_modifyuserinfousingpost]]
+=== 修改用户信息
+....
+POST /user/modify/userinfo
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userInfoInputForm** +
+__required__|待修改的用户信息|<<_userinfoinputform,UserInfoInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_modifyuserinfolistusingpost]]
+=== 批量启用/禁用用户
+....
+POST /user/modify/userinfolist
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**list** +
+__required__|启用/禁用的用户信息列表|< <<_userinfoinputform,UserInfoInputForm>> > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_forgetpaypwdusingpost]]
+=== 忘记支付密码
+....
+POST /user/pay/forgetpaypwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**payPwdForgetInputForm** +
+__required__|待找回的支付密码|<<_paypwdforgetinputform,PayPwdForgetInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_modifypaypwdusingpost]]
+=== 修改支付密码
+....
+POST /user/pay/modifypaypwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**payPwdModifyInputForm** +
+__required__|待修改的支付密码|<<_paypwdmodifyinputform,PayPwdModifyInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_setpaypwdusingpost]]
+=== 设置支付密码
+....
+POST /user/pay/setpaypwd
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**payPwdSetInputForm** +
+__required__|待设置的支付密码|<<_paypwdsetinputform,PayPwdSetInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|boolean
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getuserbyidusingpost]]
+=== 根据用户id查询用户基本信息
+....
+POST /user/query/byid
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**idInputForm** +
+__required__|用户id对象|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_userinfooutputform,UserInfoOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getuserbynameusingpost]]
+=== 根据用户名查询用户基本信息
+....
+POST /user/query/byname
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**nameInputForm** +
+__required__|用户名name对象|<<_nameinputform,NameInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_userinfooutputform,UserInfoOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getlikeuserlistusingpost]]
+=== 根据name或truename等模糊查询用户基本信息列表
+....
+POST /user/query/likeuserlist
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userInfoInputForm** +
+__required__|待查询的用户信息|<<_userinfoinputform,UserInfoInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_userinfooutputform,UserInfoOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getloginuserinfobynameusingpost]]
+=== 登录时候获取用户信息
+....
+POST /user/query/logininfo/byname
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**loginUserNameInputForm** +
+__required__|loginUserNameInputForm|<<_loginusernameinputform,LoginUserNameInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_loginuserinfooutputform,LoginUserInfoOutputForm>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getuserinfolistusingpost]]
+=== 根据用户id/name/truename/phone等查询用户基本信息列表
+....
+POST /user/query/userinfolist
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**list** +
+__required__|待查询的用户信息列表|< <<_userinfoinputform,UserInfoInputForm>> > array
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_userinfooutputform,UserInfoOutputForm>> > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_getroleidsbyuseridusingpost]]
+=== 根据用户id查询角色列表id
+....
+POST /user/queryroles/byid
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**idInputForm** +
+__required__|用户id对象|<<_idinputform,IdInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< integer (int64) > array
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_registerusingpost]]
+=== 用户注册
+....
+POST /user/register
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**userRegisterInputForm** +
+__required__|用户注册信息|<<_userregisterinputform,UserRegisterInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+[[_saveuserrolesusingpost]]
+=== 用户关联角色-添加用户角色（全量替换）
+....
+POST /user/save/user/roles
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**用户角色绑定关系** +
+__required__|用户角色绑定关系|<<_userrolebatchinputform,UserRoleBatchInputForm>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|integer (int64)
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-controller
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_buildinroleoutputform]]
+=== BuildInRoleOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|角色创建时间|string (date-time)
+|**enable** +
+__optional__|角色状态|integer (int32)
+|**id** +
+__optional__|角色id|integer (int64)
+|**name** +
+__optional__|角色名称|string
+|**remark** +
+__optional__|备注|string
+|**type** +
+__optional__|企业类型：1:核心企业, 2:供应商, 3: 资金方, 4:运营方, 5:渠道方, 6:平台方|enum (CORE_ENTERPRISE_ADMIN, SUPPLIER_ADMIN, FINANCIAL_INSTITUTION_ADMIN, OPERATOR_ADMIN, CHANNEL_ADMIN, PLATFORM_ADMIN, TRUST_ADMIN, UNKNOWN_TYPE)
+|**updateTime** +
+__optional__|角色更新时间|string (date-time)
+|===
+
+
+[[_enterpriserolecreateinputform]]
+=== EnterpriseRoleCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**roleIdList** +
+__optional__|需要添加企业角色的列表|< integer (int64) > array
+|**userId** +
+__required__|用户ids|integer (int64)
+|===
+
+
+[[_fixnoticedatainputform]]
+=== FixNoticeDataInputForm
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**roleId** +
+__optional__|integer (int64)
+|**userIds** +
+__optional__|< integer (int64) > array
+|===
+
+
+[[_functiondetailoutputform]]
+=== FunctionDetailOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_treenode,TreeNode>> > array
+|**code** +
+__optional__|编码|string
+|**enable** +
+__optional__|是否启动|integer (int32)
+|**id** +
+__optional__||integer (int64)
+|**name** +
+__optional__|名称|string
+|**parentId** +
+__optional__||integer (int64)
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|**type** +
+__optional__|类型|integer (int32)
+|===
+
+
+[[_functiontreecreateinputform]]
+=== FunctionTreeCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**moduleId** +
+__required__|模块id|integer (int64)
+|**name** +
+__required__|功能名称|string
+|**parentId** +
+__required__|父节点|integer (int64)
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__required__|排序|integer (int32)
+|===
+
+
+[[_functiontreecreaterootinputform]]
+=== FunctionTreeCreateRootInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**moduleId** +
+__required__|模块id|integer (int64)
+|**name** +
+__required__|功能名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__required__|排序|integer (int32)
+|===
+
+
+[[_functiontreenoworkbenchoutputform]]
+=== FunctionTreeNoWorkbenchOutputForm
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**children** +
+__optional__|< <<_treenode,TreeNode>> > array
+|**id** +
+__optional__|integer (int64)
+|**name** +
+__optional__|string
+|**parentId** +
+__optional__|integer (int64)
+|===
+
+
+[[_functiontreeoutputform]]
+=== FunctionTreeOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_treenode,TreeNode>> > array
+|**code** +
+__optional__|编码|string
+|**id** +
+__optional__||integer (int64)
+|**name** +
+__optional__|名称|string
+|**parentId** +
+__optional__||integer (int64)
+|===
+
+
+[[_functiontreeupdateinputform]]
+=== FunctionTreeUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**id** +
+__required__|修改节点id|integer (int64)
+|**name** +
+__optional__|名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|===
+
+
+[[_idinputform]]
+=== IdInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**id** +
+__required__|id|integer (int64)
+|===
+
+
+[[_loginpwdforgetinfoinputform]]
+=== LoginPwdForgetInfoInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**nonce** +
+__required__|nonce|string
+|**password** +
+__required__|密码|string
+|===
+
+
+[[_loginpwdforgetinputform]]
+=== LoginPwdForgetInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**loginPwdForgetInfoInputForm** +
+__required__|原数据|<<_loginpwdforgetinfoinputform,LoginPwdForgetInfoInputForm>>
+|**publicKey** +
+__required__|公钥|string
+|**signStr** +
+__required__|加密串|string
+|===
+
+
+[[_loginpwdmodifyinfoinputform]]
+=== LoginPwdModifyInfoInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**newPwd** +
+__required__|新密码|string
+|**oldPwd** +
+__required__|原密码|string
+|===
+
+
+[[_loginpwdmodifyinputform]]
+=== LoginPwdModifyInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**loginPwdModifyInfoInputForm** +
+__required__|待修改支付密码信息|<<_loginpwdmodifyinfoinputform,LoginPwdModifyInfoInputForm>>
+|**pubKey** +
+__required__|公钥Key|string
+|**signStr** +
+__required__|签名数据|string
+|===
+
+
+[[_loginuserinfooutputform]]
+=== LoginUserInfoOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|注册时间|string (date-time)
+|**enable** +
+__optional__|账号是否可用 +
+**Example** : `false`|boolean
+|**id** +
+__optional__|用户id|integer (int64)
+|**name** +
+__optional__|用户名|string
+|**password** +
+__optional__|登录密码|string
+|**phone** +
+__optional__|手机号|string
+|**remark** +
+__optional__|用户备注|string
+|**roleIds** +
+__optional__|用户角色集合|< integer (int64) > array
+|**status** +
+__optional__|状态|enum (INIT, NOMAL, INIT_PAY)
+|**trueName** +
+__optional__|用户中文名称|string
+|**updateTime** +
+__optional__|更新时间|string (date-time)
+|===
+
+
+[[_loginusernameinputform]]
+=== LoginUserNameInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**name** +
+__optional__|用户名|string
+|===
+
+
+[[_menudetailoutputform]]
+=== MenuDetailOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_treenode,TreeNode>> > array
+|**icon** +
+__optional__|菜单图标|string
+|**id** +
+__optional__||integer (int64)
+|**name** +
+__optional__|菜单名称|string
+|**pageId** +
+__optional__|页面id|integer (int64)
+|**pageName** +
+__optional__|页面名称|string
+|**parentId** +
+__optional__||integer (int64)
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|**type** +
+__optional__|类型|integer (int32)
+|===
+
+
+[[_menutreemanageroutputform]]
+=== MenuTreeManagerOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_treenode,TreeNode>> > array
+|**id** +
+__optional__||integer (int64)
+|**name** +
+__optional__|菜单名称|string
+|**parentId** +
+__optional__||integer (int64)
+|===
+
+
+[[_menuupdateinputform]]
+=== MenuUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**icon** +
+__optional__|菜单图标|string
+|**id** +
+__required__|修改的节点id|integer (int64)
+|**name** +
+__optional__|菜单名称|string
+|**pageId** +
+__optional__|页面id|integer (int64)
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|===
+
+
+[[_modulecreateinputform]]
+=== ModuleCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**description** +
+__optional__|描述|string
+|**icon** +
+__required__|模块图标|string
+|**isCheckCert** +
+__required__|是否需要校验证书;0:不需要，1:需要|integer (int32)
+|**name** +
+__required__|模块名称|string
+|**sort** +
+__required__|模块排序|integer (int32)
+|===
+
+
+[[_moduleoutputform]]
+=== ModuleOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**description** +
+__optional__|描述|string
+|**enable** +
+__optional__|是否启动;0:启动，1:禁用|integer (int32)
+|**icon** +
+__optional__|icon|string
+|**id** +
+__optional__|模块id|integer (int64)
+|**isCheckCert** +
+__optional__|是否需要校验证书;0:不需要，1:需要|integer (int32)
+|**name** +
+__optional__|模块名称|string
+|**sort** +
+__optional__|排序|integer (int32)
+|===
+
+
+[[_moduleupdateinputform]]
+=== ModuleUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**description** +
+__optional__|描述|string
+|**icon** +
+__optional__|模块图标|string
+|**id** +
+__required__|模块id|integer (int64)
+|**isCheckCert** +
+__optional__|是否需要校验证书;0:不需要，1:需要|integer (int32)
+|**name** +
+__optional__|模块名称|string
+|**sort** +
+__optional__|模块排序|integer (int32)
+|===
+
+
+[[_nameinputform]]
+=== NameInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|用户名|string
+|===
+
+
+[[_pagecreateinputform]]
+=== PageCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__required__|功能id|integer (int64)
+|**href** +
+__required__|路由|string
+|**name** +
+__required__|页面名称|string
+|**remark** +
+__optional__|备注|string
+|===
+
+
+[[_10513d3389bd6d63f5ca02803f57c5b7]]
+=== PageData«ModuleOutputForm»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**list** +
+__optional__|< <<_moduleoutputform,ModuleOutputForm>> > array
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|**pages** +
+__optional__|integer (int32)
+|**total** +
+__optional__|integer (int64)
+|===
+
+
+[[_7383647394b757ea14573eb2f3ad770e]]
+=== PageData«PageOutputForm»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**list** +
+__optional__|< <<_pageoutputform,PageOutputForm>> > array
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|**pages** +
+__optional__|integer (int32)
+|**total** +
+__optional__|integer (int64)
+|===
+
+
+[[_ed7168cb9502fedba1ccb5f0bb2e98ea]]
+=== PageData«PermissionItemOutputForm»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**list** +
+__optional__|< <<_permissionitemoutputform,PermissionItemOutputForm>> > array
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|**pages** +
+__optional__|integer (int32)
+|**total** +
+__optional__|integer (int64)
+|===
+
+
+[[_e4a5f18fb2402b90a68ebbf0147d3fbf]]
+=== PageData«RoleOutputForm»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**list** +
+__optional__|< <<_roleoutputform,RoleOutputForm>> > array
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|**pages** +
+__optional__|integer (int32)
+|**total** +
+__optional__|integer (int64)
+|===
+
+
+[[_pageoutputform]]
+=== PageOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**href** +
+__optional__|路由|string
+|**id** +
+__optional__|页面id|integer (int64)
+|**name** +
+__optional__|页面名称|string
+|**remark** +
+__optional__|备注|string
+|**updateTime** +
+__optional__|更新时间|string (date-time)
+|===
+
+
+[[_pageparam]]
+=== PageParam
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|===
+
+
+[[_pagequeryinputform]]
+=== PageQueryInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__optional__|功能树节点id|integer (int64)
+|**name** +
+__optional__|页面名称|string
+|**pageNum** +
+__optional__||integer (int32)
+|**pageSize** +
+__optional__||integer (int32)
+|===
+
+
+[[_pageupdateinputform]]
+=== PageUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**href** +
+__optional__|路由|string
+|**id** +
+__required__|页面id|integer (int64)
+|**name** +
+__optional__|页面名称|string
+|**remark** +
+__optional__|备注|string
+|===
+
+
+[[_paypwdforgetinfoinputform]]
+=== PayPwdForgetInfoInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**newPwd** +
+__required__|新支付密码|string
+|**userName** +
+__required__|用户名|string
+|===
+
+
+[[_paypwdforgetinputform]]
+=== PayPwdForgetInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**payPwdForgetInfoInputForm** +
+__optional__|支付密码忘记信息|<<_paypwdforgetinfoinputform,PayPwdForgetInfoInputForm>>
+|**publicKey** +
+__required__|公钥|string
+|**signStr** +
+__required__|签名串|string
+|===
+
+
+[[_paypwdmodifyinfoinputform]]
+=== PayPwdModifyInfoInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**newPwd** +
+__required__|新支付密码|string
+|**oldPwd** +
+__required__|原支付密码|string
+|===
+
+
+[[_paypwdmodifyinputform]]
+=== PayPwdModifyInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**payPwdModifyInfoInputForm** +
+__required__|待修改支付密码信息|<<_paypwdmodifyinfoinputform,PayPwdModifyInfoInputForm>>
+|**pubKey** +
+__required__|公钥key|string
+|**signStr** +
+__required__|签名串|string
+|===
+
+
+[[_paypwdsetinputform]]
+=== PayPwdSetInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**id** +
+__required__|用户id|integer (int64)
+|**payPassword** +
+__required__||string
+|**pubKey** +
+__optional__||string
+|===
+
+
+[[_permissionitemcodeinputform]]
+=== PermissionItemCodeInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**permissionItemCodes** +
+__optional__|功能code集合|< string > array
+|===
+
+
+[[_permissionitemcodeoutputform]]
+=== PermissionItemCodeOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**permissionItemCodes** +
+__optional__|功能code map 集合，如果为false则表示没有拥有该权限|< string, boolean > map
+|===
+
+
+[[_permissionitemcreateinputform]]
+=== PermissionItemCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**code** +
+__required__|权限项code|string
+|**functionId** +
+__required__|功能id|integer (int64)
+|**name** +
+__required__|名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__required__|排序|integer (int32)
+|===
+
+
+[[_permissionitemoutputform]]
+=== PermissionItemOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**code** +
+__optional__|权限项code|string
+|**id** +
+__optional__|权限项 id|integer (int64)
+|**name** +
+__optional__|页面名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|**updateTime** +
+__optional__|更新时间|string (date-time)
+|===
+
+
+[[_permissionitemqueryinputform]]
+=== PermissionItemQueryInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__required__|功能树节点id|integer (int64)
+|**name** +
+__optional__|权限项名称|string
+|**pageNum** +
+__optional__||integer (int32)
+|**pageSize** +
+__optional__||integer (int32)
+|===
+
+
+[[_permissionitemresourcebatchcreateinputform]]
+=== PermissionItemResourceBatchCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**permissionItemCode** +
+__required__|权限项code|string
+|**resourceCodes** +
+__optional__|需要绑定的接口资源集合|< string > array
+|===
+
+
+[[_permissionitemresourcecreateinputform]]
+=== PermissionItemResourceCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**permissionItemCode** +
+__required__|权限项code|string
+|**resourceCode** +
+__optional__|需要绑定的接口资源|string
+|===
+
+
+[[_permissionitemupdateinputform]]
+=== PermissionItemUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**code** +
+__optional__|权限项code|string
+|**id** +
+__optional__|权限项 id|integer (int64)
+|**name** +
+__optional__|名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int32)
+|===
+
+
+[[_resourceinputform]]
+=== ResourceInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**blockchainPermission** +
+__optional__|接口资源code|integer (int32)
+|**serviceName** +
+__optional__|服务名称|string
+|===
+
+
+[[_resourcelist4codesinputform]]
+=== ResourceList4CodesInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**codes** +
+__required__|查询的资源的code|< string > array
+|===
+
+
+[[_resourceoutputform]]
+=== ResourceOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**code** +
+__optional__|接口资源code|string
+|**name** +
+__optional__|接口资源名称|string
+|**serviceName** +
+__optional__|服务名称|string
+|**value** +
+__optional__|接口路径|string
+|===
+
+
+[[_rolecreateinputform]]
+=== RoleCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|角色名称|string
+|**remark** +
+__optional__|角色备注|string
+|===
+
+
+[[_rolemenucreateinputform]]
+=== RoleMenuCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**menuIds** +
+__required__|菜单id|< integer (int64) > array
+|**moduleId** +
+__required__|模块id|integer (int64)
+|**roleId** +
+__required__|角色id|integer (int64)
+|===
+
+
+[[_rolemenuinputform]]
+=== RoleMenuInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**moduleId** +
+__required__|模块id|integer (int64)
+|**roleId** +
+__required__|角色id|integer (int64)
+|===
+
+
+[[_rolemenuoutputform]]
+=== RoleMenuOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**menuTree** +
+__optional__|菜单树|< <<_menutreemanageroutputform,MenuTreeManagerOutputForm>> > array
+|**selectedMenuIds** +
+__optional__|已被勾选的菜单id|< integer (int64) > array
+|===
+
+
+[[_roleoutputform]]
+=== RoleOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|角色创建时间|string (date-time)
+|**enable** +
+__optional__|角色状态|integer (int32)
+|**flag** +
+__optional__||string
+|**id** +
+__optional__|角色id|integer (int64)
+|**name** +
+__optional__|角色名称|string
+|**remark** +
+__optional__|备注|string
+|**type** +
+__optional__|企业类型：1:核心企业, 2:供应商, 3: 资金方, 4:运营方, 5:渠道方, 6:平台方, 12:信托机构, -1: 未知类型|enum (CORE_ENTERPRISE_ADMIN, SUPPLIER_ADMIN, FINANCIAL_INSTITUTION_ADMIN, OPERATOR_ADMIN, CHANNEL_ADMIN, PLATFORM_ADMIN, TRUST_ADMIN, UNKNOWN_TYPE)
+|**updateTime** +
+__optional__|角色更新时间|string (date-time)
+|===
+
+
+[[_rolepermissionitemcreateinputform]]
+=== RolePermissionItemCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__required__|功能id|integer (int64)
+|**permissionItemCodes** +
+__optional__|权限项code集合|< string > array
+|**roleId** +
+__required__|角色id|integer (int64)
+|===
+
+
+[[_rolepermissioniteminputform]]
+=== RolePermissionItemInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__required__|功能id|integer (int64)
+|**roleId** +
+__required__|角色id|integer (int64)
+|===
+
+
+[[_rolepermissionitemoutputform]]
+=== RolePermissionItemOutputForm
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**isSelected** +
+__optional__|boolean
+|**permissionItemCode** +
+__optional__|string
+|**permissionName** +
+__optional__|string
+|===
+
+
+[[_rolepermissionitemsigncreateinputform]]
+=== RolePermissionItemSignCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionId** +
+__required__|功能id|integer (int64)
+|**permissionItemCodes** +
+__optional__|权限项code集合|< string > array
+|**redisKey** +
+__optional__|待缓存key|string
+|**roleId** +
+__required__|角色id|integer (int64)
+|===
+
+
+[[_roleprivilegeinputform]]
+=== RolePrivilegeInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**api** +
+__required__|访问的接口|string
+|**serviceName** +
+__required__|访问的服务名称|string
+|===
+
+
+[[_rolequeryinputform]]
+=== RoleQueryInputForm
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**enable** +
+__optional__|integer (int32)
+|**name** +
+__optional__|string
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|===
+
+
+[[_roleupdateinputform]]
+=== RoleUpdateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**id** +
+__required__|角色id|integer (int64)
+|**name** +
+__required__|角色名称|string
+|**remark** +
+__optional__|角色备注|string
+|===
+
+
+[[_servicenameoutputform]]
+=== ServiceNameOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**names** +
+__optional__|服务名称列表|< string > array
+|===
+
+
+[[_stafflistqueryinputfrom]]
+=== StaffListQueryInputFrom
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**roleName** +
+__optional__|角色名|string
+|**userIds** +
+__optional__|用户ids|< integer (int64) > array
+|**userName** +
+__optional__|用户名|string
+|===
+
+
+[[_stafflistqueryoutputform]]
+=== StaffListQueryOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**email** +
+__optional__|用户邮箱|string
+|**phone** +
+__optional__|用户手机号|string
+|**remark** +
+__optional__|员工备注|string
+|**roleId** +
+__optional__|角色id|integer (int64)
+|**roleName** +
+__optional__|角色名|string
+|**trueName** +
+__optional__|姓名|string
+|**userId** +
+__optional__|用户id|integer (int64)
+|**userName** +
+__optional__|用户名|string
+|===
+
+
+[[_stringinputform]]
+=== StringInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**value** +
+__required__|字符串|string
+|===
+
+
+[[_tocheckfunctionidlistinputform]]
+=== ToCheckFunctionIdListInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**functionIdList** +
+__optional__|待校验待功能树id集合，不能为空|< integer (int64) > array
+|===
+
+
+[[_treenode]]
+=== TreeNode
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**children** +
+__optional__|< <<_treenode,TreeNode>> > array
+|**id** +
+__optional__|integer (int64)
+|**parentId** +
+__optional__|integer (int64)
+|===
+
+
+[[_userblockchainpermissionoutputform]]
+=== UserBlockchainPermissionOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**userBlockchainPermission** +
+__optional__|用户是否需要区块链权限|< string, boolean > map
+|===
+
+
+[[_usercreateinputform]]
+=== UserCreateInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**email** +
+__optional__|邮箱|string
+|**name** +
+__required__|用户名|string
+|**password** +
+__optional__|登录密码|string
+|**payPassword** +
+__optional__|支付密码|string
+|**phone** +
+__optional__|手机号码|string
+|**remark** +
+__optional__|用户备注|string
+|**salt** +
+__optional__|盐值|string
+|**status** +
+__optional__|用户状态|enum (INIT, NOMAL, INIT_PAY)
+|**trueName** +
+__optional__|用户真实姓名|string
+|===
+
+
+[[_userinfo4noticeoutputform]]
+=== UserInfo4NoticeOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**email** +
+__optional__|用户邮箱|string
+|**id** +
+__optional__|用户id|integer (int64)
+|**phone** +
+__optional__|用户手机号码|string
+|===
+
+
+[[_userinfoinputform]]
+=== UserInfoInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**email** +
+__optional__|邮箱|string
+|**enable** +
+__optional__|启用状态 +
+**Example** : `false`|boolean
+|**id** +
+__optional__|用户id|integer (int64)
+|**loginPwd** +
+__optional__|用户登录密码|string
+|**name** +
+__optional__|用户名|string
+|**phone** +
+__optional__|手机号|string
+|**remark** +
+__optional__|用户备注|string
+|**status** +
+__optional__|用户状态|enum (INIT, NOMAL, INIT_PAY)
+|**trueName** +
+__optional__|真实姓名|string
+|===
+
+
+[[_userinfooutputform]]
+=== UserInfoOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createTime** +
+__optional__|注册时间|string (date-time)
+|**email** +
+__optional__|邮箱|string
+|**enable** +
+__optional__|账号是否可用 +
+**Example** : `false`|boolean
+|**id** +
+__optional__|用户id|integer (int64)
+|**name** +
+__optional__|用户名|string
+|**password** +
+__optional__|登录密码|string
+|**payPassword** +
+__optional__|支付密码|string
+|**phone** +
+__optional__|手机号|string
+|**remark** +
+__optional__|用户备注|string
+|**status** +
+__optional__|状态|integer (int32)
+|**trueName** +
+__optional__|用户中文名称|string
+|**updateTime** +
+__optional__|更新时间|string (date-time)
+|===
+
+
+[[_usermenuoutputform]]
+=== UserMenuOutputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_treenode,TreeNode>> > array
+|**icon** +
+__optional__|菜单图标|string
+|**id** +
+__optional__||integer (int64)
+|**name** +
+__optional__|菜单名称|string
+|**pageUrl** +
+__optional__|页面url|string
+|**parentId** +
+__optional__||integer (int64)
+|===
+
+
+[[_userpwdcheckinputform]]
+=== UserPwdCheckInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**password** +
+__required__|用户密码|string
+|**pubKey** +
+__required__|公钥Key|string
+|**userId** +
+__required__|用户id|integer (int64)
+|===
+
+
+[[_userregisterinputform]]
+=== UserRegisterInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**email** +
+__optional__|邮箱|string
+|**initRoleList** +
+__optional__|初始化角色列表|< integer (int64) > array
+|**name** +
+__required__|用户名|string
+|**password** +
+__required__|密码|string
+|**phone** +
+__optional__|用户手机号码|string
+|**pubKey** +
+__optional__|公钥|string
+|**remark** +
+__optional__|用户备注|string
+|**status** +
+__optional__|用户状态|enum (INIT, NOMAL, INIT_PAY)
+|**trueName** +
+__optional__|用户真实姓名|string
+|===
+
+
+[[_userrolebatchinputform]]
+=== UserRoleBatchInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**roleIds** +
+__optional__|角色ids|< integer (int64) > array
+|**userId** +
+__required__|用户id|integer (int64)
+|===
+
+
+[[_userroleinputform]]
+=== UserRoleInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**roleIds** +
+__required__|角色ids|< integer (int64) > array
+|**userId** +
+__required__|用户id|integer (int64)
+|===
+
+
+[[_userrolelistqueryinputform]]
+=== UserRoleListQueryInputForm
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**ids** +
+__optional__||< integer (int64) > array
+|**userId** +
+__required__|userId|integer (int64)
+|===
+
+
+[[_67cba14b4f90cbf03af69faf4d8a1d5e]]
+=== 创建目录实体
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**icon** +
+__optional__|图标|string
+|**moduleId** +
+__required__|模块id|integer (int64)
+|**name** +
+__required__|目录名称|string
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__required__|排序|integer (int32)
+|===
+
+
+[[_760a3a12d2f6027d8a236b65ed830de8]]
+=== 创建菜单实体（非目录）
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|菜单名称|string
+|**pageId** +
+__required__|页面id|integer (int64)
+|**parentId** +
+__required__|父节点id|integer (int64)
+|**remark** +
+__optional__|备注|string
+|**sort** +
+__required__|排序|integer (int32)
+|===
+
+
+
+
+

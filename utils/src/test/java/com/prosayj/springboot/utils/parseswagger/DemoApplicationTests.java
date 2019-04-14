@@ -101,7 +101,8 @@ public class DemoApplicationTests {
 
     public static String getSwaggerJosn(String fileName) throws IOException {
         URL url = Thread.currentThread().getContextClassLoader().getResource("");
-        String filePath = "C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\resources\\export\\in\\" + fileName;
+//        String filePath = "C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\resources\\export\\in\\" + fileName;
+        String filePath = "D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\resources\\export\\in\\" + fileName;
         File fileSrc = new File(filePath);
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileSrc), "utf-8"));
         return br.readLine();

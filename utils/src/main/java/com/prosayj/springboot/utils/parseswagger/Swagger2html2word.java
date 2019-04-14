@@ -2,6 +2,7 @@ package com.prosayj.springboot.utils.parseswagger;
 
 import com.prosayj.springboot.utils.parseswagger.assemble.FreeMarkToHtml;
 import com.prosayj.springboot.utils.parseswagger.assemble.Html2World;
+import com.prosayj.springboot.utils.test.XHtml2Pdf;
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 
@@ -20,7 +21,7 @@ public class Swagger2html2word {
 
     public static void main(String[] args) throws Exception {
 
-        String swaggerJosn = PaserSwaggerJson2Objects.getSwaggerJosn("api-docs_api.json");
+        String swaggerJosn = PaserSwaggerJson2Objects.getSwaggerJosn("api-docs_user.json");
         Swagger swagger = new SwaggerParser().parse(swaggerJosn);
 
         HashMap<String, String> swaggerInfo = PaserSwaggerJson2Objects.getSwaggerInfo(swagger);
@@ -75,6 +76,7 @@ public class Swagger2html2word {
         FreeMarkToHtml.freemarkToHtml(url.getPath(), "test.ftl", map, url.getPath() + "result.html");
         */
 
-        // XHtml2Pdf.XHtml2Pdf(url.getPath() + "result.html", url.getPath() + "result.pdf");
+//         XHtml2Pdf.XHtml2Pdf(url.getPath() + "result.html", url.getPath() + "result.pdf");
+//         XHtml2Pdf.XHtml2Pdf(url.getPath() + "result02.html", url.getPath() + "result.pdf");
     }
 }

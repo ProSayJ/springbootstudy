@@ -27,7 +27,7 @@ public class Html2World {
     public static void jacob_html2word(String html) throws IOException {
         MSOfficeGeneratorUtils officeUtils = new MSOfficeGeneratorUtils(false); // 将生成过程设置为不可见
         int imgIndex = 1;
-        Map<String, String> imgMap = new HashMap<String, String>(); //存放图片标识符及物理路径  {"image_1","D:\img.png"};
+        Map<String, String> imgMap = new HashMap<>(); //存放图片标识符及物理路径  {"image_1","D:\img.png"};
         try {
             Document document = Jsoup.parse(html);
             Elements elements = document.select("img");
@@ -49,9 +49,10 @@ public class Html2World {
             fw.close();
 
 //            String newFileName = "D:\\" + String.valueOf(System.currentTimeMillis()) + ".doc";
-            String newFileName = "D:\\result.doc";
+
+            String newFileName = "D:\\result.docx";
             // temp_A3_2L.doc为A3两栏的模板，这里模板不动，复制了一个副本 用于写入数据
-            FileUtils.copyFile(new File("D:\\temp_A3_2L.doc"), new File(newFileName));
+            FileUtils.copyFile(new File("D:\\temp_A3_2L.docx"), new File(newFileName));
             // html文件转为word
             officeUtils.html2Word("D:\\tt.html", newFileName);
 

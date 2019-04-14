@@ -1,0 +1,6208 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "User api document",
+    "version": "1.0.0",
+    "title": "User API文档",
+    "termsOfService": "http://www.yinuojr.cn",
+    "contact": {
+      "name": "wusonghui",
+      "url": "wusonghui@bubi.cn",
+      "email": "wusonghui@bubi.cn"
+    }
+  },
+  "host": "localhost:11019",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "function-tree-controller",
+      "description": "功能树相关的操作"
+    },
+    {
+      "name": "user-controller",
+      "description": "用户相关的操作"
+    },
+    {
+      "name": "menu-controller",
+      "description": "菜单管理相关的操作"
+    },
+    {
+      "name": "module-controller",
+      "description": "模块管理相关的操作"
+    },
+    {
+      "name": "permission-item-controller",
+      "description": "权限项相关"
+    },
+    {
+      "name": "resource-controller",
+      "description": "资源管理的操作"
+    },
+    {
+      "name": "user-repair-controller",
+      "description": "修复接口"
+    },
+    {
+      "name": "page-controller",
+      "description": "页面相关的操作"
+    },
+    {
+      "name": "role-controller",
+      "description": "角色相关的操作"
+    }
+  ],
+  "paths": {
+    "/functiontree/create": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "创建功能（非根节点）",
+        "description": "填写功能必要的信息",
+        "operationId": "createUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FunctionTreeCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/create/root": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "创建根节点功能",
+        "description": "填写功能必要的信息",
+        "operationId": "createRootUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FunctionTreeCreateRootInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/delete": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "删除功能",
+        "description": "删除功能",
+        "operationId": "deleteUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "需要删除功能的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/get": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "获取功能详情",
+        "description": "功能详情",
+        "operationId": "getUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "需要获取功能详情的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FunctionDetailOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/get/function/ids/no/workbench": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "获取所有功能（业务模块）id集合（排除工作台的）",
+        "description": "可用于保存时候，校验功能树id的正确性",
+        "operationId": "getFunctionIdListNoWorkbenchUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/tree": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "获取功能树",
+        "description": "直接获取",
+        "operationId": "treeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "模块的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FunctionTreeOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/tree/for/operator": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "提供给 运营方 获取功能树（获取业务模块，针对全量搜索）",
+        "operationId": "treeFunctionTree4OperatorUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FunctionTreeNoWorkbenchOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/tree/no/workbench": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "获取功能树（获取业务模块，针对全量搜索）",
+        "operationId": "treeFunctionTreeNoWorkbenchUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FunctionTreeNoWorkbenchOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/tree/no/workbench/by/function/ids": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "通过功能（业务模块）id集合（排除工作台的），获取功能树",
+        "operationId": "treeFunctionTreeNoWorkbenchByFunctionIdListUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "toCheckFunctionIdListInputForm",
+            "description": "toCheckFunctionIdListInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ToCheckFunctionIdListInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FunctionTreeNoWorkbenchOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/functiontree/update": {
+      "post": {
+        "tags": [
+          "function-tree-controller"
+        ],
+        "summary": "更新功能",
+        "description": "输入更新功能相关的内容",
+        "operationId": "updateUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "update",
+            "description": "update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FunctionTreeUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/create": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "创建菜单",
+        "description": "输入创建菜单相关的内容，菜单类型如果不输入，按默认处理",
+        "operationId": "createUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/创建菜单实体（非目录）"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/create/dir": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "创建目录",
+        "description": "输入创建菜单相关的内容，菜单类型如果不输入，按默认处理",
+        "operationId": "createDirUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/创建目录实体"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/delete": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "删除菜单",
+        "description": "输入更新菜单相关的内容",
+        "operationId": "deleteUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "删除菜单的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/get": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "通过id获取菜单详情",
+        "description": "可用菜单id",
+        "operationId": "getUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "菜单id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MenuDetailOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/tree": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "获取菜单树",
+        "description": "通过模块获取菜单",
+        "operationId": "treeUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "模块id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MenuTreeManagerOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/menu/update": {
+      "post": {
+        "tags": [
+          "menu-controller"
+        ],
+        "summary": "更新菜单",
+        "description": "输入更新菜单相关的内容",
+        "operationId": "updateUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "update",
+            "description": "update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MenuUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/module/create": {
+      "post": {
+        "tags": [
+          "module-controller"
+        ],
+        "summary": "创建模块",
+        "description": "需要传入相应的模块的必要信息, 返回创建完的模块的id",
+        "operationId": "createUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "创建模块信息",
+            "description": "创建模块信息，除了 optional 项，其他为必填",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/ModuleCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/module/delete": {
+      "post": {
+        "tags": [
+          "module-controller"
+        ],
+        "summary": "删除模块",
+        "description": "需要删除模块的id",
+        "operationId": "deleteUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "需要删除的模块id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/module/list/all": {
+      "post": {
+        "tags": [
+          "module-controller"
+        ],
+        "summary": "获取所有的模块(无分页)",
+        "description": "无需传参",
+        "operationId": "listAllUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ModuleOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/module/query": {
+      "post": {
+        "tags": [
+          "module-controller"
+        ],
+        "summary": "分页获取所有的模块",
+        "description": "需要分页参数，其他参数无需传递",
+        "operationId": "listUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageParam",
+            "description": "pageParam",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageData«ModuleOutputForm»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/module/update": {
+      "post": {
+        "tags": [
+          "module-controller"
+        ],
+        "summary": "更新模块",
+        "description": "需要传入相应的模块的需要更新信息, 返回更新完的模块的id",
+        "operationId": "updateUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "updateInputForm",
+            "description": "updateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ModuleUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/page/create": {
+      "post": {
+        "tags": [
+          "page-controller"
+        ],
+        "summary": "增加页面",
+        "description": "传入页面内容,创建页面",
+        "operationId": "createUsingPOST_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/page/delete": {
+      "post": {
+        "tags": [
+          "page-controller"
+        ],
+        "summary": "删除页面",
+        "description": "根据id删除",
+        "operationId": "deleteUsingPOST_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "待删除页面的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/page/list": {
+      "post": {
+        "tags": [
+          "page-controller"
+        ],
+        "summary": "获取所有的页面",
+        "operationId": "listAllUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PageOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/page/query": {
+      "post": {
+        "tags": [
+          "page-controller"
+        ],
+        "summary": "查询",
+        "description": "根据名查询",
+        "operationId": "queryUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageQueryInputForm",
+            "description": "pageQueryInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQueryInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageData«PageOutputForm»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/page/update": {
+      "post": {
+        "tags": [
+          "page-controller"
+        ],
+        "summary": "更新页面",
+        "description": "传入页面更新内容,更新页面",
+        "operationId": "updateUsingPOST_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "update",
+            "description": "update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/batch/bind/resources": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "批量权限项绑定接口资源",
+        "description": "传递接口资源code集合和权限项code，将更新当前权限项所绑定的接口，返回绑定资源的权限项code",
+        "operationId": "batchBindResourcesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createInputForm",
+            "description": "createInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemResourceBatchCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/bind/resources": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "权限项绑定接口资源",
+        "operationId": "bindResourcesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createInputForm",
+            "description": "createInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemResourceCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/create": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "增加权限项",
+        "description": "传入权限项内容,创建权限项",
+        "operationId": "createUsingPOST_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/delete": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "删除权限项",
+        "description": "根据id删除",
+        "operationId": "deleteUsingPOST_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "delete",
+            "description": "delete",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/get/bind/resources": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "获取权限项绑定的资源",
+        "operationId": "getPermissionItemResourceUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "permissionItemCode",
+            "description": "权限项code",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/StringInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ResourceOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/query": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "查询",
+        "description": "根据权限名称查询",
+        "operationId": "queryUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "queryInputForm",
+            "description": "queryInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemQueryInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageData«PermissionItemOutputForm»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/unbind/resources": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "权限项解绑接口资源",
+        "operationId": "unBindResourceUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "unBindResourceFrom",
+            "description": "unBindResourceFrom",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemResourceCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/permissionitem/update": {
+      "post": {
+        "tags": [
+          "permission-item-controller"
+        ],
+        "summary": "更新权限项",
+        "description": "传入权限项更新内容,更新权限项",
+        "operationId": "updateUsingPOST_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "update",
+            "description": "update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/repair/user/role-menu-and-role-permission": {
+      "post": {
+        "tags": [
+          "user-repair-controller"
+        ],
+        "summary": "修复普通员工的角色菜单和角色权限项的情况",
+        "operationId": "repairCommonUserMenuAndRolePermissionUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/repair/user/user-multi-anybody-role": {
+      "post": {
+        "tags": [
+          "user-repair-controller"
+        ],
+        "summary": "修复普通员工的角色菜单和角色权限项的情况",
+        "operationId": "repairUserMultiAnybodyRoleUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/resource/list": {
+      "post": {
+        "tags": [
+          "resource-controller"
+        ],
+        "summary": "通过条件获取所有接口资源",
+        "description": "如果没有传参，默认查询所有可用的接口资源",
+        "operationId": "listAllRestApiUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resourceInputForm",
+            "description": "resourceInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ResourceOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/resource/list/by/codes": {
+      "post": {
+        "tags": [
+          "resource-controller"
+        ],
+        "summary": "通过code集合获取",
+        "operationId": "listUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resourceList4CodesInputForm",
+            "description": "resourceList4CodesInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceList4CodesInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ResourceOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/resource/list/service/name": {
+      "post": {
+        "tags": [
+          "resource-controller"
+        ],
+        "summary": "获取资源的所有服务类型",
+        "operationId": "listAllServiceNameUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ServiceNameOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/admin/bind/menu": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "给角色绑定菜单",
+        "description": "传入 可用的 角色id 和 菜单id集合",
+        "operationId": "bindMenuUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleMenuCreateInputForm",
+            "description": "roleMenuCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleMenuCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/admin/bind/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "给角色绑定权限",
+        "description": "传入 可用的 角色id 和 功能code集合",
+        "operationId": "bindPermissionItemUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "rolePermissionItemCreateInputForm",
+            "description": "rolePermissionItemCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePermissionItemCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/admin/get/menu": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "返回模块的菜单及获取该角色相应模块菜单勾选情况",
+        "description": "传入 可用的 角色id 和 模块id",
+        "operationId": "getRoleMenuUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleMenuInputForm",
+            "description": "roleMenuInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleMenuInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleMenuOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/admin/get/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "获取该角色权限项",
+        "description": "传入 可用的 角色id 和 功能id",
+        "operationId": "getPermissionItemUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "rolePermissionItemCreateInputForm",
+            "description": "rolePermissionItemCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePermissionItemInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolePermissionItemOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/bind/menu": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "给角色绑定菜单 （必须为当前操作人拥有的菜单）",
+        "description": "传入 可用的 角色id 和 菜单id集合",
+        "operationId": "commonBindMenuUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleMenuCreateInputForm",
+            "description": "roleMenuCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleMenuCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/function/tree": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "根据当前的用户获取对应的功能树",
+        "description": "直接获取",
+        "operationId": "treeUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "模块的id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FunctionTreeOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/get/menu": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "返回当前用户的菜单，并返回当前编辑的角色的菜单勾选情况",
+        "description": "传入 可用的 角色id 和 模块id",
+        "operationId": "getCurrentUserMenuAndRoleMenuUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleMenuInputForm",
+            "description": "roleMenuInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleMenuInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleMenuOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/get/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "获取该角色权限项，不允许超出当前用户的权限范围",
+        "description": "传入 可用的 角色id 和 功能id",
+        "operationId": "commonGetPermissionItemUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "rolePermissionItemCreateInputForm",
+            "description": "rolePermissionItemCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePermissionItemInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolePermissionItemOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/save/bind/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "给角色绑定权限，不允许超出当前用户的权限范围(内部使用)，提交",
+        "description": "传入 可用的 角色id 和 功能code集合",
+        "operationId": "commonSaveBindPermissionItemUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "rolePermissionItemCreateInputForm",
+            "description": "rolePermissionItemCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePermissionItemSignCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserBlockchainPermissionOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/common/submit/bind/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "给角色绑定权限，不允许超出当前用户的权限范围(内部使用)，确认入库 ",
+        "description": "传入 可用的 角色id",
+        "operationId": "commonSubmitBindPermissionItemUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "待缓存key",
+            "description": "stringInputForm",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/StringInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/create": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "增加角色",
+        "description": "传入角色相关属性, 创建角色",
+        "operationId": "createUsingPOST_5",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "description": "create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/delete": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "删除角色",
+        "description": "根据id删除",
+        "operationId": "role-delete",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/disable": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "停用角色",
+        "description": "根据id停用",
+        "operationId": "disableUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "idInputForm",
+            "description": "idInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/enable": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "启用角色",
+        "description": "根据id启用",
+        "operationId": "enableUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "idInputForm",
+            "description": "idInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/get/privilege/attributes": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "获取拥有该资源的角色",
+        "operationId": "getPrivilegeAttributesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "获取该接口的权限",
+            "description": "获取该接口的权限",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePrivilegeInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/get/role/blockchain/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "获取角色是否有区块链权重",
+        "description": "传入 可用的 角色ids",
+        "operationId": "getRoleBlockchainPermissionUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ids",
+            "description": "ids",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/get/user/blockchain/permission": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "获取用户是否有区块链权重",
+        "description": "传入 可用的 用id",
+        "operationId": "getUserBlockchainPermissionUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "idInputForm",
+            "description": "idInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/list/build/in/role": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "返回企业角色列表",
+        "description": "无需传递参数",
+        "operationId": "listBuildInRoleUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BuildInRoleOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/query": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "查询",
+        "description": "根据角色名（模糊查询）、启动与否 查询",
+        "operationId": "queryUsingPOST_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleQueryInputForm",
+            "description": "roleQueryInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleQueryInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageData«RoleOutputForm»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/query/byids": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "查询",
+        "description": "根据角色id查询角色列表信息",
+        "operationId": "queryUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "ids",
+            "description": "ids",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RoleOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/query/rolelist/byuserid": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "查询角色信息",
+        "description": "根据用户id,角色ids获取用户拥有的，未拥有的角色详细信息",
+        "operationId": "queryRoleListByUserIdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inputForm",
+            "description": "inputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRoleListQueryInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RoleOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/role/update": {
+      "post": {
+        "tags": [
+          "role-controller"
+        ],
+        "summary": "更新角色",
+        "description": "传入角色id，和更新的角色名称,更新角色",
+        "operationId": "updateUsingPOST_5",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "roleInputForm",
+            "description": "roleInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleUpdateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/add/enterprise/role": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "给用户添加企业角色",
+        "operationId": "addEnterpriseRoleUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "enterpriseRoleCreateInputForm",
+            "description": "enterpriseRoleCreateInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnterpriseRoleCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/add/user/roles": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "添加用户角色",
+        "operationId": "addUserRolesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "用户角色绑定关系",
+            "description": "用户角色绑定关系",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRoleInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/check/isexist": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "检查用户名是否存在",
+        "operationId": "checkNameExitUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "nameInputForm",
+            "description": "用户名name对象",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NameInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/check/loginpwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "检查用户的登录密码是否正确",
+        "operationId": "checkLoginPasswordUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userPwdCheckInputForm",
+            "description": "用户密码校验信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPwdCheckInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/check/namerule": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "校验用户名是否符合规则或是否不存在",
+        "operationId": "checkRule4UserNameUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "nameInputForm",
+            "description": "用户名name对象",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NameInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/check/paypwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "检查用户的支付密码是否正确",
+        "operationId": "checkPayPasswordUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userPwdCheckInputForm",
+            "description": "用户密码校验信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPwdCheckInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/create": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "添加用户",
+        "operationId": "createUsingPOST_6",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userCreateInputForm",
+            "description": "添加用户",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCreateInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/current/user/menu": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "获取当前用户拥有的菜单",
+        "description": "无需传参",
+        "operationId": "currentUserMenuUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "当前使用模块id",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserMenuOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/current/user/permission/item/code": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据传入的功能code集合，返回该用户实际拥有的功能code集合",
+        "description": "传参",
+        "operationId": "currentUserPermissionItemCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "permissionItemCodeInputForm",
+            "description": "permissionItemCodeInputForm",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/PermissionItemCodeInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PermissionItemCodeOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/fix/notice": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "修复notice数据",
+        "operationId": "fixNoticeDataUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "fixNoticeDataInputForm",
+            "description": "fixNoticeDataInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FixNoticeDataInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/list/query": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "组织机构员工列表查询",
+        "operationId": "getUserListUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "staffListQueryInputFrom",
+            "description": "staffListQueryInputFrom",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StaffListQueryInputFrom"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/StaffListQueryOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/list/user/by/roleid": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "通过角色id集合获取用户id列表",
+        "operationId": "listUserIdListByRoleIdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "角色id list",
+            "description": "roleIds",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfo4NoticeOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/login/forgetloginpwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "忘记登录密码",
+        "operationId": "forgetLoginPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "loginPwdForgetInputForm",
+            "description": "待找回的登录密码",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginPwdForgetInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/login/modifyloginpwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "修改登录密码",
+        "operationId": "modifyLoginPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "loginPwdModifyInputForm",
+            "description": "待修改的登录密码",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginPwdModifyInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/modify/userinfo": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "修改用户信息",
+        "operationId": "modifyUserInfoUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userInfoInputForm",
+            "description": "待修改的用户信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserInfoInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/modify/userinfolist": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "批量启用/禁用用户",
+        "operationId": "modifyUserInfoListUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list",
+            "description": "启用/禁用的用户信息列表",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfoInputForm"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/pay/forgetpaypwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "忘记支付密码",
+        "operationId": "forgetPayPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payPwdForgetInputForm",
+            "description": "待找回的支付密码",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PayPwdForgetInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/pay/modifypaypwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "修改支付密码",
+        "operationId": "modifyPayPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payPwdModifyInputForm",
+            "description": "待修改的支付密码",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PayPwdModifyInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/pay/setpaypwd": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "设置支付密码",
+        "operationId": "setPayPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payPwdSetInputForm",
+            "description": "待设置的支付密码",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PayPwdSetInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/query/byid": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据用户id查询用户基本信息",
+        "operationId": "getUserByIdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "idInputForm",
+            "description": "用户id对象",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserInfoOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/query/byname": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据用户名查询用户基本信息",
+        "operationId": "getUserByNameUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "nameInputForm",
+            "description": "用户名name对象",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NameInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserInfoOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/query/likeuserlist": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据name或truename等模糊查询用户基本信息列表",
+        "operationId": "getLikeUserListUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userInfoInputForm",
+            "description": "待查询的用户信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserInfoInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfoOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/query/logininfo/byname": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "登录时候获取用户信息",
+        "operationId": "getLoginUserInfoByNameUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "loginUserNameInputForm",
+            "description": "loginUserNameInputForm",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginUserNameInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoginUserInfoOutputForm"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/query/userinfolist": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据用户id/name/truename/phone等查询用户基本信息列表",
+        "operationId": "getUserInfoListUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list",
+            "description": "待查询的用户信息列表",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfoInputForm"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfoOutputForm"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/queryroles/byid": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "根据用户id查询角色列表id",
+        "operationId": "getRoleIdsByUserIdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "idInputForm",
+            "description": "用户id对象",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IdInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/register": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "用户注册",
+        "operationId": "registerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userRegisterInputForm",
+            "description": "用户注册信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegisterInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/user/save/user/roles": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "用户关联角色-添加用户角色（全量替换）",
+        "operationId": "saveUserRolesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "用户角色绑定关系",
+            "description": "用户角色绑定关系",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRoleBatchInputForm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BuildInRoleOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "角色创建时间"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "description": "角色状态"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        },
+        "name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "type": {
+          "type": "string",
+          "description": "企业类型：1:核心企业, 2:供应商, 3: 资金方, 4:运营方, 5:渠道方, 6:平台方",
+          "enum": [
+            "CORE_ENTERPRISE_ADMIN",
+            "SUPPLIER_ADMIN",
+            "FINANCIAL_INSTITUTION_ADMIN",
+            "OPERATOR_ADMIN",
+            "CHANNEL_ADMIN",
+            "PLATFORM_ADMIN",
+            "TRUST_ADMIN",
+            "UNKNOWN_TYPE"
+          ]
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "角色更新时间"
+        }
+      }
+    },
+    "EnterpriseRoleCreateInputForm": {
+      "type": "object",
+      "required": [
+        "userId"
+      ],
+      "properties": {
+        "roleIdList": {
+          "type": "array",
+          "description": "需要添加企业角色的列表",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ids"
+        }
+      }
+    },
+    "FixNoticeDataInputForm": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "FunctionDetailOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "code": {
+          "type": "string",
+          "description": "编码"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否启动"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "类型"
+        }
+      }
+    },
+    "FunctionTreeCreateInputForm": {
+      "type": "object",
+      "required": [
+        "moduleId",
+        "name",
+        "parentId",
+        "sort"
+      ],
+      "properties": {
+        "moduleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "name": {
+          "type": "string",
+          "description": "功能名称"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "父节点"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "FunctionTreeCreateRootInputForm": {
+      "type": "object",
+      "required": [
+        "moduleId",
+        "name",
+        "sort"
+      ],
+      "properties": {
+        "moduleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "name": {
+          "type": "string",
+          "description": "功能名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "FunctionTreeNoWorkbenchOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "FunctionTreeOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "code": {
+          "type": "string",
+          "description": "编码"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "FunctionTreeUpdateInputForm": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "修改节点id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "IdInputForm": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "id"
+        }
+      }
+    },
+    "LoginPwdForgetInfoInputForm": {
+      "type": "object",
+      "required": [
+        "nonce",
+        "password"
+      ],
+      "properties": {
+        "nonce": {
+          "type": "string",
+          "description": "nonce"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "LoginPwdForgetInputForm": {
+      "type": "object",
+      "required": [
+        "loginPwdForgetInfoInputForm",
+        "publicKey",
+        "signStr"
+      ],
+      "properties": {
+        "loginPwdForgetInfoInputForm": {
+          "description": "原数据",
+          "$ref": "#/definitions/LoginPwdForgetInfoInputForm"
+        },
+        "publicKey": {
+          "type": "string",
+          "description": "公钥"
+        },
+        "signStr": {
+          "type": "string",
+          "description": "加密串"
+        }
+      }
+    },
+    "LoginPwdModifyInfoInputForm": {
+      "type": "object",
+      "required": [
+        "newPwd",
+        "oldPwd"
+      ],
+      "properties": {
+        "newPwd": {
+          "type": "string",
+          "description": "新密码"
+        },
+        "oldPwd": {
+          "type": "string",
+          "description": "原密码"
+        }
+      }
+    },
+    "LoginPwdModifyInputForm": {
+      "type": "object",
+      "required": [
+        "loginPwdModifyInfoInputForm",
+        "pubKey",
+        "signStr"
+      ],
+      "properties": {
+        "loginPwdModifyInfoInputForm": {
+          "description": "待修改支付密码信息",
+          "$ref": "#/definitions/LoginPwdModifyInfoInputForm"
+        },
+        "pubKey": {
+          "type": "string",
+          "description": "公钥Key"
+        },
+        "signStr": {
+          "type": "string",
+          "description": "签名数据"
+        }
+      }
+    },
+    "LoginUserInfoOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "注册时间"
+        },
+        "enable": {
+          "type": "boolean",
+          "example": false,
+          "description": "账号是否可用"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "登录密码"
+        },
+        "phone": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "remark": {
+          "type": "string",
+          "description": "用户备注"
+        },
+        "roleIds": {
+          "type": "array",
+          "description": "用户角色集合",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "状态",
+          "enum": [
+            "INIT",
+            "NOMAL",
+            "INIT_PAY"
+          ]
+        },
+        "trueName": {
+          "type": "string",
+          "description": "用户中文名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      }
+    },
+    "LoginUserNameInputForm": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        }
+      }
+    },
+    "MenuDetailOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "icon": {
+          "type": "string",
+          "description": "菜单图标"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "pageId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面id"
+        },
+        "pageName": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "类型"
+        }
+      }
+    },
+    "MenuTreeManagerOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "MenuUpdateInputForm": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "icon": {
+          "type": "string",
+          "description": "菜单图标"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "修改的节点id"
+        },
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "pageId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面id"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "ModuleCreateInputForm": {
+      "type": "object",
+      "required": [
+        "icon",
+        "isCheckCert",
+        "name",
+        "sort"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "描述"
+        },
+        "icon": {
+          "type": "string",
+          "description": "模块图标"
+        },
+        "isCheckCert": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否需要校验证书;0:不需要，1:需要"
+        },
+        "name": {
+          "type": "string",
+          "description": "模块名称"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "模块排序"
+        }
+      }
+    },
+    "ModuleOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "description": {
+          "type": "string",
+          "description": "描述"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否启动;0:启动，1:禁用"
+        },
+        "icon": {
+          "type": "string",
+          "description": "icon"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "isCheckCert": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否需要校验证书;0:不需要，1:需要"
+        },
+        "name": {
+          "type": "string",
+          "description": "模块名称"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "ModuleUpdateInputForm": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "描述"
+        },
+        "icon": {
+          "type": "string",
+          "description": "模块图标"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "isCheckCert": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否需要校验证书;0:不需要，1:需要"
+        },
+        "name": {
+          "type": "string",
+          "description": "模块名称"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "模块排序"
+        }
+      }
+    },
+    "NameInputForm": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        }
+      }
+    },
+    "PageCreateInputForm": {
+      "type": "object",
+      "required": [
+        "functionId",
+        "href",
+        "name"
+      ],
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能id"
+        },
+        "href": {
+          "type": "string",
+          "description": "路由"
+        },
+        "name": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        }
+      }
+    },
+    "PageData«ModuleOutputForm»": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModuleOutputForm"
+          }
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PageData«PageOutputForm»": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PageOutputForm"
+          }
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PageData«PermissionItemOutputForm»": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionItemOutputForm"
+          }
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PageData«RoleOutputForm»": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleOutputForm"
+          }
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PageOutputForm": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "路由"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面id"
+        },
+        "name": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      }
+    },
+    "PageParam": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PageQueryInputForm": {
+      "type": "object",
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能树节点id"
+        },
+        "name": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PageUpdateInputForm": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "路由"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面id"
+        },
+        "name": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        }
+      }
+    },
+    "PayPwdForgetInfoInputForm": {
+      "type": "object",
+      "required": [
+        "newPwd",
+        "userName"
+      ],
+      "properties": {
+        "newPwd": {
+          "type": "string",
+          "description": "新支付密码"
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名"
+        }
+      }
+    },
+    "PayPwdForgetInputForm": {
+      "type": "object",
+      "required": [
+        "publicKey",
+        "signStr"
+      ],
+      "properties": {
+        "payPwdForgetInfoInputForm": {
+          "description": "支付密码忘记信息",
+          "$ref": "#/definitions/PayPwdForgetInfoInputForm"
+        },
+        "publicKey": {
+          "type": "string",
+          "description": "公钥"
+        },
+        "signStr": {
+          "type": "string",
+          "description": "签名串"
+        }
+      }
+    },
+    "PayPwdModifyInfoInputForm": {
+      "type": "object",
+      "required": [
+        "newPwd",
+        "oldPwd"
+      ],
+      "properties": {
+        "newPwd": {
+          "type": "string",
+          "description": "新支付密码"
+        },
+        "oldPwd": {
+          "type": "string",
+          "description": "原支付密码"
+        }
+      }
+    },
+    "PayPwdModifyInputForm": {
+      "type": "object",
+      "required": [
+        "payPwdModifyInfoInputForm",
+        "pubKey",
+        "signStr"
+      ],
+      "properties": {
+        "payPwdModifyInfoInputForm": {
+          "description": "待修改支付密码信息",
+          "$ref": "#/definitions/PayPwdModifyInfoInputForm"
+        },
+        "pubKey": {
+          "type": "string",
+          "description": "公钥key"
+        },
+        "signStr": {
+          "type": "string",
+          "description": "签名串"
+        }
+      }
+    },
+    "PayPwdSetInputForm": {
+      "type": "object",
+      "required": [
+        "id",
+        "payPassword"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "payPassword": {
+          "type": "string"
+        },
+        "pubKey": {
+          "type": "string"
+        }
+      }
+    },
+    "PermissionItemCodeInputForm": {
+      "type": "object",
+      "properties": {
+        "permissionItemCodes": {
+          "type": "array",
+          "description": "功能code集合",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PermissionItemCodeOutputForm": {
+      "type": "object",
+      "properties": {
+        "permissionItemCodes": {
+          "type": "object",
+          "description": "功能code map 集合，如果为false则表示没有拥有该权限",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "PermissionItemCreateInputForm": {
+      "type": "object",
+      "required": [
+        "code",
+        "functionId",
+        "name",
+        "sort"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "权限项code"
+        },
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "PermissionItemOutputForm": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "权限项code"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "权限项 id"
+        },
+        "name": {
+          "type": "string",
+          "description": "页面名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      }
+    },
+    "PermissionItemQueryInputForm": {
+      "type": "object",
+      "required": [
+        "functionId"
+      ],
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能树节点id"
+        },
+        "name": {
+          "type": "string",
+          "description": "权限项名称"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PermissionItemResourceBatchCreateInputForm": {
+      "type": "object",
+      "required": [
+        "permissionItemCode"
+      ],
+      "properties": {
+        "permissionItemCode": {
+          "type": "string",
+          "description": "权限项code"
+        },
+        "resourceCodes": {
+          "type": "array",
+          "description": "需要绑定的接口资源集合",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PermissionItemResourceCreateInputForm": {
+      "type": "object",
+      "required": [
+        "permissionItemCode"
+      ],
+      "properties": {
+        "permissionItemCode": {
+          "type": "string",
+          "description": "权限项code"
+        },
+        "resourceCode": {
+          "type": "string",
+          "description": "需要绑定的接口资源"
+        }
+      }
+    },
+    "PermissionItemUpdateInputForm": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "权限项code"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "权限项 id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "ResourceInputForm": {
+      "type": "object",
+      "properties": {
+        "blockchainPermission": {
+          "type": "integer",
+          "format": "int32",
+          "description": "接口资源code"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "服务名称"
+        }
+      }
+    },
+    "ResourceList4CodesInputForm": {
+      "type": "object",
+      "required": [
+        "codes"
+      ],
+      "properties": {
+        "codes": {
+          "type": "array",
+          "description": "查询的资源的code",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResourceOutputForm": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "接口资源code"
+        },
+        "name": {
+          "type": "string",
+          "description": "接口资源名称"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "服务名称"
+        },
+        "value": {
+          "type": "string",
+          "description": "接口路径"
+        }
+      }
+    },
+    "RoleCreateInputForm": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "角色备注"
+        }
+      }
+    },
+    "RoleMenuCreateInputForm": {
+      "type": "object",
+      "required": [
+        "menuIds",
+        "moduleId",
+        "roleId"
+      ],
+      "properties": {
+        "menuIds": {
+          "type": "array",
+          "description": "菜单id",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "moduleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        }
+      }
+    },
+    "RoleMenuInputForm": {
+      "type": "object",
+      "required": [
+        "moduleId",
+        "roleId"
+      ],
+      "properties": {
+        "moduleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        }
+      }
+    },
+    "RoleMenuOutputForm": {
+      "type": "object",
+      "properties": {
+        "menuTree": {
+          "type": "array",
+          "description": "菜单树",
+          "items": {
+            "$ref": "#/definitions/MenuTreeManagerOutputForm"
+          }
+        },
+        "selectedMenuIds": {
+          "type": "array",
+          "description": "已被勾选的菜单id",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "RoleOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "角色创建时间"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "description": "角色状态"
+        },
+        "flag": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        },
+        "name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "type": {
+          "type": "string",
+          "description": "企业类型：1:核心企业, 2:供应商, 3: 资金方, 4:运营方, 5:渠道方, 6:平台方, 12:信托机构, -1: 未知类型",
+          "enum": [
+            "CORE_ENTERPRISE_ADMIN",
+            "SUPPLIER_ADMIN",
+            "FINANCIAL_INSTITUTION_ADMIN",
+            "OPERATOR_ADMIN",
+            "CHANNEL_ADMIN",
+            "PLATFORM_ADMIN",
+            "TRUST_ADMIN",
+            "UNKNOWN_TYPE"
+          ]
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "角色更新时间"
+        }
+      }
+    },
+    "RolePermissionItemCreateInputForm": {
+      "type": "object",
+      "required": [
+        "functionId",
+        "roleId"
+      ],
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能id"
+        },
+        "permissionItemCodes": {
+          "type": "array",
+          "description": "权限项code集合",
+          "items": {
+            "type": "string"
+          }
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        }
+      }
+    },
+    "RolePermissionItemInputForm": {
+      "type": "object",
+      "required": [
+        "functionId",
+        "roleId"
+      ],
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能id"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        }
+      }
+    },
+    "RolePermissionItemOutputForm": {
+      "type": "object",
+      "properties": {
+        "isSelected": {
+          "type": "boolean"
+        },
+        "permissionItemCode": {
+          "type": "string"
+        },
+        "permissionName": {
+          "type": "string"
+        }
+      }
+    },
+    "RolePermissionItemSignCreateInputForm": {
+      "type": "object",
+      "required": [
+        "functionId",
+        "roleId"
+      ],
+      "properties": {
+        "functionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "功能id"
+        },
+        "permissionItemCodes": {
+          "type": "array",
+          "description": "权限项code集合",
+          "items": {
+            "type": "string"
+          }
+        },
+        "redisKey": {
+          "type": "string",
+          "description": "待缓存key"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        }
+      }
+    },
+    "RolePrivilegeInputForm": {
+      "type": "object",
+      "required": [
+        "api",
+        "serviceName"
+      ],
+      "properties": {
+        "api": {
+          "type": "string",
+          "description": "访问的接口"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "访问的服务名称"
+        }
+      }
+    },
+    "RoleQueryInputForm": {
+      "type": "object",
+      "properties": {
+        "enable": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "RoleUpdateInputForm": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        },
+        "name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "角色备注"
+        }
+      }
+    },
+    "ServiceNameOutputForm": {
+      "type": "object",
+      "properties": {
+        "names": {
+          "type": "array",
+          "description": "服务名称列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "StaffListQueryInputFrom": {
+      "type": "object",
+      "properties": {
+        "roleName": {
+          "type": "string",
+          "description": "角色名"
+        },
+        "userIds": {
+          "type": "array",
+          "description": "用户ids",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名"
+        }
+      }
+    },
+    "StaffListQueryOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "email": {
+          "type": "string",
+          "description": "用户邮箱"
+        },
+        "phone": {
+          "type": "string",
+          "description": "用户手机号"
+        },
+        "remark": {
+          "type": "string",
+          "description": "员工备注"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "角色id"
+        },
+        "roleName": {
+          "type": "string",
+          "description": "角色名"
+        },
+        "trueName": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名"
+        }
+      }
+    },
+    "StringInputForm": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "字符串"
+        }
+      }
+    },
+    "ToCheckFunctionIdListInputForm": {
+      "type": "object",
+      "properties": {
+        "functionIdList": {
+          "type": "array",
+          "description": "待校验待功能树id集合，不能为空",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "TreeNode": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UserBlockchainPermissionOutputForm": {
+      "type": "object",
+      "properties": {
+        "userBlockchainPermission": {
+          "type": "object",
+          "description": "用户是否需要区块链权限",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "UserCreateInputForm": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "登录密码"
+        },
+        "payPassword": {
+          "type": "string",
+          "description": "支付密码"
+        },
+        "phone": {
+          "type": "string",
+          "description": "手机号码"
+        },
+        "remark": {
+          "type": "string",
+          "description": "用户备注"
+        },
+        "salt": {
+          "type": "string",
+          "description": "盐值"
+        },
+        "status": {
+          "type": "string",
+          "description": "用户状态",
+          "enum": [
+            "INIT",
+            "NOMAL",
+            "INIT_PAY"
+          ]
+        },
+        "trueName": {
+          "type": "string",
+          "description": "用户真实姓名"
+        }
+      }
+    },
+    "UserInfo4NoticeOutputForm": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "用户邮箱"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "phone": {
+          "type": "string",
+          "description": "用户手机号码"
+        }
+      }
+    },
+    "UserInfoInputForm": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        },
+        "enable": {
+          "type": "boolean",
+          "example": false,
+          "description": "启用状态"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "loginPwd": {
+          "type": "string",
+          "description": "用户登录密码"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "phone": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "remark": {
+          "type": "string",
+          "description": "用户备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "用户状态",
+          "enum": [
+            "INIT",
+            "NOMAL",
+            "INIT_PAY"
+          ]
+        },
+        "trueName": {
+          "type": "string",
+          "description": "真实姓名"
+        }
+      }
+    },
+    "UserInfoOutputForm": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "注册时间"
+        },
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        },
+        "enable": {
+          "type": "boolean",
+          "example": false,
+          "description": "账号是否可用"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "登录密码"
+        },
+        "payPassword": {
+          "type": "string",
+          "description": "支付密码"
+        },
+        "phone": {
+          "type": "string",
+          "description": "手机号"
+        },
+        "remark": {
+          "type": "string",
+          "description": "用户备注"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态"
+        },
+        "trueName": {
+          "type": "string",
+          "description": "用户中文名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      }
+    },
+    "UserMenuOutputForm": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TreeNode"
+          }
+        },
+        "icon": {
+          "type": "string",
+          "description": "菜单图标"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "pageUrl": {
+          "type": "string",
+          "description": "页面url"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UserPwdCheckInputForm": {
+      "type": "object",
+      "required": [
+        "password",
+        "pubKey",
+        "userId"
+      ],
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "用户密码"
+        },
+        "pubKey": {
+          "type": "string",
+          "description": "公钥Key"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        }
+      }
+    },
+    "UserRegisterInputForm": {
+      "type": "object",
+      "required": [
+        "name",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        },
+        "initRoleList": {
+          "type": "array",
+          "description": "初始化角色列表",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "phone": {
+          "type": "string",
+          "description": "用户手机号码"
+        },
+        "pubKey": {
+          "type": "string",
+          "description": "公钥"
+        },
+        "remark": {
+          "type": "string",
+          "description": "用户备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "用户状态",
+          "enum": [
+            "INIT",
+            "NOMAL",
+            "INIT_PAY"
+          ]
+        },
+        "trueName": {
+          "type": "string",
+          "description": "用户真实姓名"
+        }
+      }
+    },
+    "UserRoleBatchInputForm": {
+      "type": "object",
+      "required": [
+        "userId"
+      ],
+      "properties": {
+        "roleIds": {
+          "type": "array",
+          "description": "角色ids",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        }
+      }
+    },
+    "UserRoleInputForm": {
+      "type": "object",
+      "required": [
+        "roleIds",
+        "userId"
+      ],
+      "properties": {
+        "roleIds": {
+          "type": "array",
+          "description": "角色ids",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        }
+      }
+    },
+    "UserRoleListQueryInputForm": {
+      "type": "object",
+      "required": [
+        "userId"
+      ],
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "userId"
+        }
+      }
+    },
+    "创建目录实体": {
+      "type": "object",
+      "required": [
+        "moduleId",
+        "name",
+        "sort"
+      ],
+      "properties": {
+        "icon": {
+          "type": "string",
+          "description": "图标"
+        },
+        "moduleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模块id"
+        },
+        "name": {
+          "type": "string",
+          "description": "目录名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
+    "创建菜单实体（非目录）": {
+      "type": "object",
+      "required": [
+        "name",
+        "pageId",
+        "parentId",
+        "sort"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "pageId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面id"
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "父节点id"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    }
+  }
+}

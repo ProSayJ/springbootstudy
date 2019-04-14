@@ -18,6 +18,12 @@
             <version>1.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring5-context-version}</version>
+        </dependency>
+
 
 
     </dependencies>

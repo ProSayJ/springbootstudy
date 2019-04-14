@@ -89,6 +89,10 @@
         <swagger-parser.version>1.0.40</swagger-parser.version>
         <junit.version>4.12</junit.version>
 
+
+
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+
         <!--main模块-->
 
 

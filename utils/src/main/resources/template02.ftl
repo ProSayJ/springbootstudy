@@ -791,12 +791,12 @@
 
         #toc ul {
             font-family: "Open Sans", "DejaVu Sans", sans-serif;
-            list-style-type: none
+            list-style-type: circle; /*square、circle、none*/
         }
 
         #toc li {
             line-height: 1.3334;
-            margin-top: .3334em
+            margin-top: .3334em;
         }
 
         #toc a {
@@ -875,7 +875,7 @@
 
         @media only screen and (min-width: 1280px) {
             body.toc2 {
-                padding-left: 20em;
+                padding-left: 23em;
                 padding-right: 0
             }
 
@@ -2458,9 +2458,15 @@
 
 <div id="header">
     <h1>Spring Boot2.0使用 Swagger2 构建RestFul API</h1>
+    <#--<h1>${swaggerInfo.infoTitle}</h1>-->
+
+
+    <#--页面左侧菜单-->
     <div id="toc" class="toc2">
         <div id="toctitle">Table of Contents</div>
         <ul class="sectlevel1">
+
+            <#--swagger简述-->
             <li><a href="#_overview">Overview</a>
                 <ul class="sectlevel2">
                     <li><a href="#_version_information">Version information</a></li>
@@ -2469,24 +2475,37 @@
                     <li><a href="#_tags">Tags</a></li>
                 </ul>
             </li>
+
+
             <li><a href="#_paths">Paths</a>
                 <ul class="sectlevel2">
 
+                    <#list requestAndResponse as requestAndResponse>
+                        <li>
+                            <a href="#_${requestAndResponse.requestUrl}">
+                                ID:${requestAndResponse_index+1} : ${requestAndResponse.requestPostOperationSummary}
+                            </a>
+                        </li>
+                    </#list>
+                    <#--<li><a href="#_createusingpost">创建功能（非根节点）</a></li>
                     <li><a href="#_static-jump-controller">登陆跳转</a></li>
                     <li><a href="#_article-controller-detail">文章详情</a></li>
                     <li><a href="#_article-controller-list">文章列表</a></li>
                     <li><a href="#_article-controller-publish">发布文章</a></li>
                     <li><a href="#_static-jump-controller-register_1">注册</a></li>
-                    <li><a href="#_article-controller-update">更新文章内容</a></li>
-
+                    <li><a href="#_article-controller-update">更新文章内容</a></li>-->
                 </ul>
             </li>
+
+
             <li><a href="#_definitions">Definitions</a>
                 <ul class="sectlevel2">
                     <li><a href="#_modelandview">ModelAndView</a></li>
                     <li><a href="#_view">View</a></li>
                 </ul>
             </li>
+
+
         </ul>
     </div>
 </div>
@@ -2500,6 +2519,12 @@
                 <p>${swaggerInfo.infoTitle}</p>
             </div>
             <div class="sect2">
+                <h3 id="_version_information">Description</h3>
+                <div class="paragraph">
+                    <p><em>Description</em> : ${swaggerInfo.infoDescription}</p>
+                </div>
+            </div>
+            <div class="sect2">
                 <h3 id="_version_information">Version information</h3>
                 <div class="paragraph">
                     <p><em>Version</em> : ${swaggerInfo.infoVersion}</p>
@@ -2508,8 +2533,8 @@
             <div class="sect2">
                 <h3 id="_contact_information">Contact information</h3>
                 <div class="paragraph">
-                    <p><em>Contact</em> : ProSayJ<br>
-                        <em>Contact Email</em> : <a href="mailto:ProSayJ@gmail.com">ProSayJ@gmail.com</a></p>
+                    <p><em>Contact</em> : ${swaggerInfo.infoName}<br>
+                        <em>Contact Email</em> : <a href="${swaggerInfo.infoEmail}">${swaggerInfo.infoEmail}</a></p>
                 </div>
             </div>
             <div class="sect2">
@@ -2523,11 +2548,11 @@
                 <h3 id="_tags">Tags</h3>
                 <div class="ulist">
                     <ul>
-                          <#list swaggerTagsInfo.tagDetails as tagDetail>
-                              <li>
-                                  <p>${tagDetail.tagName} : ${tagDetail.tagDescription}</p>
-                              </li>
-                          </#list>
+                        <#list swaggerTagsInfo.tagDetails as tagDetail>
+                            <li>
+                                <p>${tagDetail.tagName} : ${tagDetail.tagDescription}</p>
+                            </li>
+                        </#list>
                     </ul>
                 </div>
             </div>
@@ -2537,7 +2562,139 @@
 
     <div class="sect1">
         <h2 id="_paths">Paths</h2>
+        <div class="sectionbody">
+            <#list requestAndResponse as requestAndResponse>
+                <div class="sect2">
+                    <h3 id="_${requestAndResponse.requestUrl}">${requestAndResponse.requestPostOperationSummary}</h3>
 
+                    <#--content-->
+                    <div class="literalblock">
+                        <div class="content">
+                            <pre>${requestAndResponse.requestWay}  ${requestAndResponse.requestUrl}</pre>
+                        </div>
+                    </div>
+
+                    <#--Description-->
+                    <div class="sect3">
+                        <h4 id="_description">Description</h4>
+                        <div class="paragraph">
+                            <p>${requestAndResponse.requestPostOperationDescription}</p>
+                        </div>
+                    </div>
+
+                    <#--Parameters-->
+                    <div class="sect3">
+                        <h4 id="_parameters">Parameters</h4>
+                        <table class="tableblock frame-all grid-all spread">
+                            <colgroup>
+                                <col style="width: 11.1111%;">
+                                <col style="width: 16.6666%;">
+                                <col style="width: 50%;">
+                                <col style="width: 22.2223%;">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th class="tableblock halign-left valign-middle">Type</th>
+                                <th class="tableblock halign-left valign-middle">Name</th>
+                                <th class="tableblock halign-left valign-middle">Description</th>
+                                <th class="tableblock halign-left valign-middle">Schema</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="tableblock halign-left valign-middle">
+                                    <p class="tableblock"><strong>Body</strong></p>
+                                </td>
+                                <td class="tableblock halign-left valign-middle">
+                                    <p class="tableblock">
+                                        <strong>create</strong>
+                                        <br>
+                                        <em>required</em>
+                                    </p>
+                                </td>
+                                <td class="tableblock halign-left valign-middle">
+                                    <p class="tableblock">
+                                        ${requestAndResponse.requestPostOperationDescription}
+                                    </p>
+                                </td>
+                                <td class="tableblock halign-left valign-middle">
+                                    <p class="tableblock">
+                                        <a href="#_${requestAndResponse.requestParameterObjectName}">${requestAndResponse.requestParameterObjectName}</a>
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <#--RequestExample-->
+                    <div class="sect3">
+                        <h4 id="_description">RequestExample</h4>
+                        <div class="literalblock">
+                            <div class="content">
+                                <pre style="white-space:pre-wrap">${requestAndResponse.prettyJson}</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <#--ParametersDetails-->
+                    <div class="sect3">
+                        <h4 id="_description">ParametersDetails</h4>
+                        <div class="sectionbody">
+                            <div id="_${requestAndResponse.requestParameterObjectName}">
+                                ${requestAndResponse.requestParameterObjectName}:</br>
+                            </div>
+
+                            <table class="tableblock frame-all grid-all spread">
+                                <colgroup>
+                                    <col style="width: 16.6666%;">
+                                    <col style="width: 61.1111%;">
+                                    <col style="width: 22.2223%;">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th class="tableblock halign-left valign-middle">Name</th>
+                                    <th class="tableblock halign-left valign-middle">Description</th>
+                                    <th class="tableblock halign-left valign-middle">Schema</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <#list requestAndResponse.entityPropertiesDetail as entityPropertiesDetailArryList>
+                                    <#list entityPropertiesDetailArryList as entityPropertiesDetailKeyMap>
+                                        <tr>
+                                            <td class="tableblock halign-left valign-middle">
+                                                <p class="tableblock">
+                                                    <strong>
+                                                        ${entityPropertiesDetailKeyMap.propertiesName}
+                                                    </strong><br>
+                                                    <em>必填？：${entityPropertiesDetailKeyMap.propertiesRequired}</em>
+                                                </p>
+                                            </td>
+                                            <td class="tableblock halign-left valign-middle">
+                                                <p class="tableblock">
+                                                    ${entityPropertiesDetailKeyMap.propertiesDes}
+                                                </p>
+                                            </td>
+                                            <td class="tableblock halign-left valign-middle">
+                                                <p class="tableblock"><#--string (date-time)-->
+                                                    ${entityPropertiesDetailKeyMap.propertiesType}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </#list>
+
+                                </#list>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </#list>
+        </div>
     </div>
 
 
@@ -2546,6 +2703,7 @@
 
     </div>
 </div>
+
 
 <div id="content">
 
