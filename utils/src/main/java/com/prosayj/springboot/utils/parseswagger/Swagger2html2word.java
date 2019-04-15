@@ -66,7 +66,7 @@ public class Swagger2html2word {
             htmlString.append(s + "\n");
         }
 
-        Html2World.jacob_html2word(htmlString.toString());
+        //Html2World.jacob_html2word(htmlString.toString());
 
         //XHtml2Pdf.XHtml2Pdf(url.getPath() + "result02.html", url.getPath() + "result02.pdf");
 

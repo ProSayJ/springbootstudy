@@ -2565,7 +2565,7 @@
         <div class="sectionbody">
             <#list requestAndResponse as requestAndResponse>
                 <div class="sect2">
-                    <h3 id="_${requestAndResponse.requestUrl}">${requestAndResponse.requestPostOperationSummary}</h3>
+                    <h3 id="_${requestAndResponse.requestUrl}">接口：${requestAndResponse.requestPostOperationSummary}</h3>
 
                     <#--content-->
                     <div class="literalblock">
@@ -2627,23 +2627,16 @@
                         </table>
                     </div>
 
-                    <#--RequestExample-->
-                    <div class="sect3">
-                        <h4 id="_description">RequestExample</h4>
-                        <div class="literalblock">
-                            <div class="content">
-                                <pre style="white-space:pre-wrap">${requestAndResponse.prettyJson}</pre>
-                            </div>
-                        </div>
-                    </div>
-
                     <#--ParametersDetails-->
                     <div class="sect3">
-                        <h4 id="_description">ParametersDetails</h4>
+                        <#--<h4 id="_description">ParametersDetails of ${requestAndResponse.requestParameterObjectName}:</h4>-->
+                        <h4 id="_${requestAndResponse.requestParameterObjectName}">ParametersDetails of ${requestAndResponse.requestParameterObjectName}:</h4>
                         <div class="sectionbody">
+                            <#--
                             <div id="_${requestAndResponse.requestParameterObjectName}">
                                 ${requestAndResponse.requestParameterObjectName}:</br>
                             </div>
+                            -->
 
                             <table class="tableblock frame-all grid-all spread">
                                 <colgroup>
@@ -2691,6 +2684,15 @@
                         </div>
                     </div>
 
+                    <#--RequestExample-->
+                    <div class="sect3">
+                        <h4 id="_description">RequestExample</h4>
+                        <div class="literalblock">
+                            <div class="content">
+                                <pre style="white-space:pre-wrap">${requestAndResponse.prettyJson}</pre>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </#list>
