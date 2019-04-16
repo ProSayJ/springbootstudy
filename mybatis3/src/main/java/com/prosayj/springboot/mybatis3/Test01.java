@@ -14,7 +14,7 @@ import java.io.InputStream;
 
 /**
  * @author yangjian
- * @description TODO
+ * @description http://www.mybatis.org/mybatis-3/zh/getting-started.html
  * @email yangjian@bubi.cn
  * @creatTime 2019/4/16 17:56
  * @since 1.0.0
@@ -23,9 +23,21 @@ public class Test01 {
     public static void main(String[] args) {
 //        SqlSessionFactory sqlSessionFactoryFromJava = getSqlSessionFactoryFromJava();
         SqlSessionFactory sqlSessionFactoryFromXml = getSqlSessionFactoryFromXml();
+
+
+        //old
         SqlSession session = sqlSessionFactoryFromXml.openSession();
         try {
             Blog blog = (Blog) session.selectOne("org.mybatis.example.BlogMapper.selectBlog", 101);
+        } finally {
+            session.close();
+        }
+
+        //new
+        SqlSession session02 = sqlSessionFactoryFromXml.openSession();
+        try {
+            BlogMapper mapper = session02.getMapper(BlogMapper.class);
+            Blog blog = mapper.selectBlog(101);
         } finally {
             session.close();
         }
