@@ -22,6 +22,7 @@
         <module>myblog</module>
         <module>blog</module>
         <module>business</module>
+        <module>mybatis3</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->
@@ -64,6 +65,7 @@
         <stax-api.version>1.0.1</stax-api.version>
         <wstx-asl.version>3.2.9</wstx-asl.version>
         <jibx-bind.version>1.2.5</jibx-bind.version>
+        <mybatis.version>3.5.1</mybatis.version>
 
         <!-- spring4 模块依赖-->
         <junit-version>4.12</junit-version>
