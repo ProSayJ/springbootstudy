@@ -28,20 +28,21 @@ public class Test01 {
         //old
         SqlSession session = sqlSessionFactoryFromXml.openSession();
         try {
-            Blog blog = (Blog) session.selectOne("org.mybatis.example.BlogMapper.selectBlog", 101);
+            session.selectOne("org.mybatis.example.BlogMapper.selectBlog", 101);
         } finally {
             session.close();
         }
 
         //new
         SqlSession session02 = sqlSessionFactoryFromXml.openSession();
+        /*
         try {
             BlogMapper mapper = session02.getMapper(BlogMapper.class);
             Blog blog = mapper.selectBlog(101);
         } finally {
             session.close();
         }
-
+*/
     }
 
     private static SqlSessionFactory getSqlSessionFactoryFromXml() {
