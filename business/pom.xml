@@ -12,16 +12,48 @@
     <artifactId>business</artifactId>
 
     <dependencies>
-        <!--内部依赖-->
+        <!-- 布比平台依赖 -->
         <dependency>
-            <groupId>com.prosayj.springboot</groupId>
-            <artifactId>utils</artifactId>
-            <version>${project.version}</version>
+            <groupId>cn.bubi.access.sdk</groupId>
+            <artifactId>sdk-starter</artifactId>
+            <version>2.0.1.beta2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate.validator</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>cn.bubi.access.sdk</groupId>
+            <artifactId>sdk-core</artifactId>
+            <version>2.0.1.beta2</version>
+        </dependency>
+        <!--框架依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--
+                <dependency>
+                    <groupId>com.prosayj.springboot</groupId>
+                    <artifactId>utils</artifactId>
+                    <version>${project.version}</version>
+                </dependency>-->
+        <!--内部依赖-->
         <dependency>
             <groupId>com.prosayj.springboot</groupId>
             <artifactId>event</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>utils</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
         </dependency>
 
 
@@ -35,6 +67,7 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper.spring.boot.starter.version}</version>
         </dependency>
+
 
     </dependencies>
 

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
     private static final Logger logger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_BUSINESS.getModuleNickName());
-
     public void addByMessageData(String data) {
         logger.info("订阅者收到消息:{}",data);
     }
