@@ -1,5 +1,11 @@
 package com.prosayj.springboot._04_Java高并发编程详解._01_;
 
+/**
+ * @author yangjian
+ * @description 模板方法
+ * @Date 9:33 2019/4/19
+ * @since 1.0.0
+ */
 public class _03_TemplateMethod {
     public static void main(String[] args) {
         _03_TemplateMethod t1 = new _03_TemplateMethod() {
@@ -22,7 +28,7 @@ public class _03_TemplateMethod {
     }
 
 
-    public void print(String message) {
+    public final void print(String message) {
         System.out.println("##########################");
         warpPrint(message);
         System.out.println("##########################");

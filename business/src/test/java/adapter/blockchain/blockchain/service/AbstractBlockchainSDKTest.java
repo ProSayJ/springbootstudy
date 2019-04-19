@@ -36,8 +36,21 @@ public class AbstractBlockchainSDKTest {
     private RpcService rpcService;
 
     //企业实名第一步：创建企业主体的区块链地址和公钥私钥和地址：
+
+    /**
+     * 现实业务：
+     * 实名的时候：
+     * 将第一个证书账户地址添加到企业主体所在区块链账户的签名列表里面
+     */
+
     @Test
     public void createCompany() {
+        pastCert();
+        createCompanyByAccountPool();
+        createCompanyByUser();
+    }
+
+    private void pastCert() {
         /**
          * 证书的基本信息：C:\java_soft\v3.4.0.1\程序\Demo\MsgSign.html
          企业名称：苏州缘来无界工艺品有限公司
@@ -73,6 +86,10 @@ public class AbstractBlockchainSDKTest {
         String adminCFCACertKeyPairPubKey = adminCFCACertKeyPair.getPubKey();
         //证书的区块链地址：
         String adminCFCACertKeyPairBubiAddress = adminCFCACertKeyPair.getBubiAddress();
+        System.out.println(adminCFCACertKeyPairPriKey + "<===>" + adminCFCACertKeyPairPubKey + "<===>" + adminCFCACertKeyPairBubiAddress);
+    }
+
+    private void createCompanyByUser() {
 
         /**
          * 2：生成企业主体三元素
@@ -123,7 +140,55 @@ public class AbstractBlockchainSDKTest {
         } catch (SdkException e) {
             e.printStackTrace();
         }
+    }
 
+    private void createCompanyByAccountPool() {
+        //新创建企业主体三元素：公钥、私钥、区块链地址
+        BlockchainKeyPair newCompany = SecureKeyGenerator.generateBubiKeyPair();
+        String newCompanyBubiAddress = newCompany.getBubiAddress();
+        String newCompanyPriKey = newCompany.getPriKey();
+        String newCompanyPubKey = newCompany.getPubKey();
+
+        /**
+         * 组装交易体(没有发起人)
+         */
+        try {
+            // 3.1创建交易内的操作：可以是多个。
+            CreateAccountOperation.Builder createAccountOperationBuild = new CreateAccountOperation.Builder()
+                    .buildDestAddress(newCompanyBubiAddress)
+                    // 权限部分
+                    .buildPriMasterWeight(100)
+                    .buildPriTxThreshold(100);
+            CreateAccountOperation createAccountOperation = createAccountOperationBuild.build();
+
+            //3.2：提交交易，使用账户池
+            /**
+             3.2.2：交易发起人通过帐户池来对发起交易，由账户池内的账户来对交易进行签名打包分发到区块链底层。
+             eg：a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
+             查看账户：http://192.168.6.46:19333/getAccount?address=a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
+             查看该账户的交易：http://192.168.6.46:19333/getTransactionHistory?hash=a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
+             */
+            operationService.newTransactionByAccountPool()
+                    .buildAddOperation(createAccountOperation)
+                    .commit();
+
+
+
+
+            /**
+             3.2.1：交易发起人自己对交易进行签名后发起交易。交易发起人区块链账户
+             */
+            String sponsorAddr = "a001b283997ff78f6ad2ff857efd1183af4a7cbcb73b09";
+            String sponsorPub = "b0015363ce09c777f4322c52bcecc4e3050ec2a3da80f30335ce3467339e5604b46515";
+            String sponsorPriv = "c00181aab142365deefa41954969d0a516a0e622b5f3fc38d1af621b766d1bf12386d1";
+            operationService.newTransaction(sponsorAddr)
+                    .buildAddOperation(createAccountOperation)
+                    .buildAddSigner(sponsorPub, sponsorPriv)
+                    .commit();
+            System.out.println("新的企业主体信息是：" + newCompany);
+        } catch (SdkException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
