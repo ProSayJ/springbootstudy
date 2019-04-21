@@ -16,6 +16,6 @@ public class _Test {
         Instant now = Instant.now();
         System.out.println(now);
         LocalDate now1 = LocalDate.now();
-        System.out.println(now1.atStartOfDay().format( DateTimeFormatter.ISO_DATE));
+        System.out.println(now1.atStartOfDay().format(DateTimeFormatter.ISO_DATE));
     }
 }
