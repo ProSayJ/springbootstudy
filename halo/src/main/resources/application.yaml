@@ -58,5 +58,8 @@ spring:
   # 多语言资源文件路径
   messages:
     basename: i18n/messages
+  profiles:
+    active: dev
 logging:
   file: ./logs/log.log
+

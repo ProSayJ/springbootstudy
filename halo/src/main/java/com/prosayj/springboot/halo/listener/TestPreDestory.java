@@ -8,7 +8,6 @@ import javax.annotation.PreDestroy;
 public class TestPreDestory {
     @PreDestroy
     public void destory() {
-
         System.out.println("@PreDestory的方式");
     }
 }
