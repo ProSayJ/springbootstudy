@@ -1,8 +1,7 @@
-package com.prosayj.springboot.security;
+package com.prosayj.springboot.utils.security;
 
 public class RSAKeyPair {
     private byte[] publicKey;
-
     private byte[] privateKey;
 
 

@@ -1,4 +1,4 @@
-package com.prosayj.springboot.security;
+package com.prosayj.springboot.utils.security;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -25,6 +25,7 @@ public class RSAUtils {
 
     /**
      * 生成公私钥对
+     *
      * @param keySize
      * @return
      */
@@ -45,6 +46,7 @@ public class RSAUtils {
 
     /**
      * 加密
+     *
      * @param data
      * @param publicKey
      * @return
@@ -75,6 +77,7 @@ public class RSAUtils {
 
     /**
      * 解密
+     *
      * @param cipherData
      * @param privateKey
      * @return

@@ -1,5 +1,7 @@
 package adapter.blockchain.blockchain.service;
 
+import adapter.blockchain.blockchain.AdapterBlockSDKUtil;
+import adapter.blockchain.blockchain.config.RedisConfig;
 import cn.bubi.access.adaptation.blockchain.bc.OperationTypeV3;
 import cn.bubi.access.adaptation.blockchain.bc.RpcService;
 import cn.bubi.access.adaptation.blockchain.bc.response.TransactionHistory;
@@ -8,25 +10,22 @@ import cn.bubi.access.starter.BCAutoConfigurationSpi;
 import cn.bubi.access.utils.blockchain.BlockchainKeyPair;
 import cn.bubi.access.utils.blockchain.SecureKeyGenerator;
 import cn.bubi.sdk.core.exception.SdkException;
-import cn.bubi.sdk.core.operation.OperationFactory;
 import cn.bubi.sdk.core.operation.impl.CreateAccountOperation;
 import cn.bubi.sdk.core.operation.impl.SetMetadataOperation;
 import cn.bubi.sdk.core.spi.BcOperationService;
 import cn.bubi.sdk.core.transaction.Transaction;
-import cn.bubi.sdk.core.transaction.TransactionContent;
-import cn.bubi.sdk.core.transaction.model.TransactionBlob;
 import cn.bubi.sdk.core.transaction.model.TransactionCommittedResult;
+import cn.bubi.sdk.core.transaction.model.TransactionSerializable;
+import cn.bubi.sdk.core.utils.SerializeUtil;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
-import com.prosayj.springboot.adapter.blockchain.model.BlockchainAccount;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.concurrent.TimeUnit;
+import java.nio.charset.Charset;
 
 /**
  * @description 区块链数据模拟
@@ -34,89 +33,16 @@ import java.util.concurrent.TimeUnit;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class})
-public class AbstractBlockchainSDKTest {
+@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfig.class})
+public class PaseCertTest {
     @Autowired
     private BcOperationService operationService;
     @Autowired
     private RpcService rpcService;
-
-    /**
-     * 创建一个目标账户(企业主体)
-     * 查看账户：http://192.168.6.46:19333/getAccount?address=a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
-     * 查看该账户的交易：http://192.168.6.46:19333/getTransactionHistory?hash=a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
-     */
-    @Test
-    public void createCompanyByUserCert() {
-        /**
-         * 生成企业主体三元素
-         */
-        //新创建企业主体三元素：公钥、私钥、区块链地址
-        BlockchainKeyPair newCompany = SecureKeyGenerator.generateBubiKeyPair();
-        String newCompanyBubiAddress = newCompany.getBubiAddress();
-        String newCompanyPriKey = newCompany.getPriKey();
-        String newCompanyPubKey = newCompany.getPubKey();
-
-        /**
-         * 发起人发起交易
-         * 创建企业的区块链地址，并将admin证书的区块链地址添加至
-         */
-        try {
-            // 1：创建交易内的操作：可以是多个。
-            CreateAccountOperation.Builder createAccountOperationBuild = new CreateAccountOperation.Builder()
-                    .buildDestAddress(newCompanyBubiAddress)
-                    // 设置自己的基础权限
-                    .buildPriMasterWeight(100)
-                    //设置权限基础门限值
-                    .buildPriTxThreshold(100);
-            CreateAccountOperation createAccountOperation = createAccountOperationBuild.build();
-
-            //2：交易发起人自己对交易进行签名后发起交易。交易发起人区块链账户
-            //eg：a001e4cb3a25dcd5af0d57fb17a71b591bcd6d75d22bf9
-            String sponsorAddr = "a001b283997ff78f6ad2ff857efd1183af4a7cbcb73b09";
-            String sponsorPub = "b0015363ce09c777f4322c52bcecc4e3050ec2a3da80f30335ce3467339e5604b46515";
-            String sponsorPriv = "c00181aab142365deefa41954969d0a516a0e622b5f3fc38d1af621b766d1bf12386d1";
-            operationService.newTransaction(sponsorAddr)
-                    .buildAddOperation(createAccountOperation)
-                    .buildAddSigner(sponsorPub, sponsorPriv)
-                    .commit();
-            System.out.println("新的企业主体信息是：" + newCompany);
-        } catch (SdkException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 为目标账户的签名列表添加一个地址，并设置权重
-     */
-    @Test
-    public void addSignerAndSetWeight() {
-        String targetAddress = "a00180eba77b3ce25c68655840dff72d3d88bd6042ecd4";
-        String signerAddress = "123";
-        Integer weight = 55;
-        try {
-            //新建一个交易
-            Transaction transaction = operationService
-                    .newTransaction(targetAddress)
-                    .buildAddOperation(OperationFactory.newSetSignerWeightOperation(signerAddress, weight));
-
-            //获取交易
-            TransactionBlob transactionBlob = transaction
-                    //默认每一个交易等待的区块链偏移量：1个区块偏移量=3秒或1分钟，可以用3s进行推断，最快情况1分钟=20个区块偏移量
-                    .buildFinalNotifySeqOffset(100)
-                    .generateBlob();
-
-            //暂存transaction，签名后提交
-            TransactionContent.put(transactionBlob.getHash(), transaction);
-            System.out.println("发起交易之前获取获取交易的hash 和 blob：" + transactionBlob.getHash());
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
 
-            //前端拿到hash提交
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     //企业实名第一步：创建企业主体的区块链地址和公钥私钥和地址：
@@ -224,7 +150,6 @@ public class AbstractBlockchainSDKTest {
          MIIFOgYJKoZIhvcNAQcCoIIFKzCCBScCAQExCzAJBgUrDgMCGgUAMCEGCSqGSIb3DQEHAaAUBBI5MTMyMDUwODM0NjM4NjM4NU6gggPlMIID4TCCAsmgAwIBAgIFEBCXclEwDQYJKoZIhvcNAQEFBQAwWDELMAkGA1UEBhMCQ04xMDAuBgNVBAoTJ0NoaW5hIEZpbmFuY2lhbCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTEXMBUGA1UEAxMOQ0ZDQSBURVNUIE9DQTEwHhcNMTcxMDIzMDUyMDU5WhcNMTkxMDIzMDUyMDU5WjCBmDELMAkGA1UEBhMCY24xFzAVBgNVBAoTDkNGQ0EgVEVTVCBPQ0ExMQ0wCwYDVQQLEwRCVUJJMRQwEgYDVQQLEwtFbnRlcnByaXNlczFLMEkGA1UEAwxCMDQxQE45MTM0MDg4MTY3NDIzMDA4MFVA5a6J5b695pe65p2l5peg57q65biD5pyJ6ZmQ5YWs5Y+4QDAwMDAwMDAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCjz3skGnkEQljL4/yAhpiiRO1pKOiwx0sbm8WrRRmmUiTsXsrtJMWP782nWNv27EVPS7rLOgecPHRZr38WBtOuv5Qava3opKML32Vi3N8UN2KQRBU75Hcjc0IVMg5BgGId96tNRKHggVKM5HRFM6vqJ7Kw2SX2pV5hZ/RgG/e6nQIDAQABo4H0MIHxMB8GA1UdIwQYMBaAFM9wnWHrnXwuuPfLAkD3CZ3+M3SAMEgGA1UdIARBMD8wPQYIYIEchu8qAQEwMTAvBggrBgEFBQcCARYjaHR0cDovL3d3dy5jZmNhLmNvbS5jbi91cy91cy0xNC5odG0wOQYDVR0fBDIwMDAuoCygKoYoaHR0cDovL3VjcmwuY2ZjYS5jb20uY24vUlNBL2NybDIxODAxLmNybDALBgNVHQ8EBAMCA+gwHQYDVR0OBBYEFAn/+cLg7oxDH0ASzCr3CRJ6beLVMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDANBgkqhkiG9w0BAQUFAAOCAQEAAwcjnelyBZLvh0Yxef8Uquy/UDRr3ygbfrfkcMET34QDPNzFwAhUk9roZYva2a6r8yeQ0euAFi2yYbmSA98A+d1r7HCe+gWp6Qj2jM1tnK+FayrpkAlH1k2Gfr9gSlRGWIlewTVduGu7jQPI9aBMEEIGIZCA2zsdmxWcLb6f0lZSwwAPZ7xYGNv552btMw9LkXoX2RSQ1lFAE0Zv3IGqGOdaNJspoKUZebZTbJ6Ims7f8z/pyC7H9+ZeqcELy9vdGpo1nxgfSFhASIAIqb4VSfbXf/CpmxvHKqUXE5wVUXURicSWtVYhDsOmEvsCVy0Rv53a5TMJZ2pAacEl46bC4zGCAQcwggEDAgEBMGEwWDELMAkGA1UEBhMCQ04xMDAuBgNVBAoTJ0NoaW5hIEZpbmFuY2lhbCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTEXMBUGA1UEAxMOQ0ZDQSBURVNUIE9DQTECBRAQl3JRMAkGBSsOAwIaBQAwDQYJKoZIhvcNAQEBBQAEgYCE7QOZDuP1Wjc9zbVwAWlzVyC2+9wtaIwPxLdQtXo9SB2kKBdw4X3IoF4avJvEKyQ8u2s0gE3cLx89RgmhDkLYSV9CjXG/K6R3uKQhozQNnBnm6iROMeEx+/nP328nRRaAMpvbiHLedw/XGCzi61RuBAZcGy/TzTNTpgtdTGmQ9g==
          */
 
-
         /**
          * 1：解析交易发起方的区块链地址
          * sdk支持key的base64签名计算出CFCA证书所在的区块链地址和对应的公钥私钥对和其所在的区块链地址：
@@ -240,44 +165,6 @@ public class AbstractBlockchainSDKTest {
         String adminCFCACertKeyPairBubiAddress = adminCFCACertKeyPair.getBubiAddress();
         System.out.println("证书的公钥是：" + adminCFCACertKeyPairPubKey);
         System.out.println("证书的地址是：" + adminCFCACertKeyPairBubiAddress);
-    }
-
-    /**
-     * 通过账户池提交交易
-     */
-    @Test
-    public void createCompanyByAccountPool() {
-        //新创建企业主体三元素：公钥、私钥、区块链地址
-        BlockchainKeyPair newCompany = SecureKeyGenerator.generateBubiKeyPair();
-        String newCompanyBubiAddress = newCompany.getBubiAddress();
-        String newCompanyPriKey = newCompany.getPriKey();
-        String newCompanyPubKey = newCompany.getPubKey();
-
-        /**
-         * 组装交易体(没有发起人)
-         */
-        try {
-            // 创建交易内的操作：可以是多个。
-            CreateAccountOperation.Builder createAccountOperationBuild = new CreateAccountOperation.Builder()
-                    .buildDestAddress(newCompanyBubiAddress)
-                    // 权限部分
-                    .buildPriMasterWeight(100)
-                    .buildPriTxThreshold(100);
-            CreateAccountOperation createAccountOperation = createAccountOperationBuild.build();
-
-
-            /**
-             提交交易，使用账户池：
-             交易发起人通过帐户池来对发起交易，由账户池内的账户来对交易进行签名打包分发到区块链底层。
-             通过账户池发起交易无需使用方对发起人签名，提交时账户池会自动为此笔交易签名
-             */
-            operationService.newTransactionByAccountPool()
-                    .buildAddOperation(createAccountOperation)
-                    .commit();
-            System.out.println("新的企业主体信息是：" + newCompany);
-        } catch (SdkException e) {
-            e.printStackTrace();
-        }
     }
 
 

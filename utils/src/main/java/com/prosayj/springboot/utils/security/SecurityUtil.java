@@ -1,4 +1,4 @@
-package com.prosayj.springboot.security;
+package com.prosayj.springboot.utils.security;
 
 import com.prosayj.springboot.constants.Constants;
 
@@ -15,7 +15,6 @@ import java.security.SecureRandom;
  * @since 1.0.0
  */
 public class SecurityUtil {
-
 
     /**
      * DES的加密解密代码

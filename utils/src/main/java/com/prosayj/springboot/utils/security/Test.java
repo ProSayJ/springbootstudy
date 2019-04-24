@@ -1,4 +1,4 @@
-package com.prosayj.springboot.security;
+package com.prosayj.springboot.utils.security;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
