@@ -17,6 +17,7 @@ public class DbBackUp {
                 "bunuo",
                 "yinuojr_user",
                 "yinuojr_certification",
+                "yinuojr_settlement",
                 "yinuojr_pay",
                 "yinuojr_tbank",
                 "yinuojr_oss",
