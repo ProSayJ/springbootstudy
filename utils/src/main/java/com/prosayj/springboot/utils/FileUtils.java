@@ -1,12 +1,17 @@
 package com.prosayj.springboot.utils;
 
+import ch.qos.logback.core.util.FileUtil;
 import com.prosayj.springboot.constants.Constants;
+import org.apache.commons.lang3.text.StrBuilder;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.FileImageOutputStream;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * @author yangjian
@@ -205,6 +210,24 @@ public class FileUtils {
         }
 
         FileUtils.transferImg(fileMultipart, classImgDesPath.getAbsolutePath(), fileName);
+    }
+
+    public static void copayBolgImgs2Forder() {
+        final StrBuilder srcPathStr = new StrBuilder(System.getProperties().getProperty("user.home")).append("/halo/upload/");
+        final File srcPath = new File(srcPathStr.toString());
+        final File[] files = srcPath.listFiles();
+        // 遍历文件
+        if (null != files) {
+            for (File file : files) {
+                if (file.isFile()) {
+                }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        copayBolgImgs2Forder();
     }
 
 }

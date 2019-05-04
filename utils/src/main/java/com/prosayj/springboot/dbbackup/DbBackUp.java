@@ -11,10 +11,11 @@ import java.io.*;
  */
 public class DbBackUp {
     public static void main(String[] args) throws Exception {
+
         backup("192.168.6.79",
                 "root",
                 "db79",
-                "bunuo",
+                /*"bunuo",
                 "yinuojr_user",
                 "yinuojr_certification",
                 "yinuojr_settlement",
@@ -22,7 +23,7 @@ public class DbBackUp {
                 "yinuojr_tbank",
                 "yinuojr_oss",
                 "yinuojr_auth",
-                "yinuojr_ops",
+                "yinuojr_ops",*/
                 "yinuojr_metadata");
 
         restore("localhost", "root", "root");
@@ -51,9 +52,15 @@ public class DbBackUp {
         fout = new FileOutputStream("D:\\all.sql");
         writer = new OutputStreamWriter(fout, "utf-8");
 
-        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B " + dataBasesNamesStr.toString();
+        //mysql5.7
+        //String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
+        //mysql8.0
+        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
+
         long startTime = System.currentTimeMillis();
         System.out.println("开始执行备份数据库sql语句：" + command);
+
+
 
         Process child = Runtime.getRuntime().exec(command);
 
