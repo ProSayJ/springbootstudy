@@ -11,11 +11,15 @@ import java.io.*;
  */
 public class DbBackUp {
     public static void main(String[] args) throws Exception {
+        Process child = Runtime.getRuntime().exec("mysql --version");
+        System.out.println(inputStream2String(child.getInputStream()));
+        System.out.println(inputStream2String(child.getErrorStream()));
+
 
         backup("192.168.6.79",
                 "root",
                 "db79",
-                /*"bunuo",
+                "bunuo",
                 "yinuojr_user",
                 "yinuojr_certification",
                 "yinuojr_settlement",
@@ -23,10 +27,23 @@ public class DbBackUp {
                 "yinuojr_tbank",
                 "yinuojr_oss",
                 "yinuojr_auth",
-                "yinuojr_ops",*/
+                "yinuojr_ops",
                 "yinuojr_metadata");
 
-        restore("localhost", "root", "root");
+//        restore("localhost", "root", "root");
+    }
+
+    private static String inputStream2String(InputStream inputStream) throws Exception {
+        String inStr;
+        StringBuffer sb = new StringBuffer();
+        String outStr;
+        BufferedReader br = null;
+        br = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
+        while ((inStr = br.readLine()) != null) {
+            sb.append(inStr + "\r\n");
+        }
+        outStr = sb.toString();
+        return outStr;
     }
 
     /**
@@ -59,7 +76,6 @@ public class DbBackUp {
 
         long startTime = System.currentTimeMillis();
         System.out.println("开始执行备份数据库sql语句：" + command);
-
 
 
         Process child = Runtime.getRuntime().exec(command);
