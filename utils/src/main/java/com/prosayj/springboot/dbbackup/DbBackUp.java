@@ -30,7 +30,7 @@ public class DbBackUp {
                 "yinuojr_ops",
                 "yinuojr_metadata");
 
-//        restore("localhost", "root", "root");
+        restore("localhost", "root", "root");
     }
 
     private static String inputStream2String(InputStream inputStream) throws Exception {
@@ -70,9 +70,9 @@ public class DbBackUp {
         writer = new OutputStreamWriter(fout, "utf-8");
 
         //mysql5.7
-        //String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
+        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
         //mysql8.0
-        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
+//        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
 
         long startTime = System.currentTimeMillis();
         System.out.println("开始执行备份数据库sql语句：" + command);
