@@ -33,6 +33,12 @@ public class DbBackUp {
         restore("localhost", "root", "root");
     }
 
+    /***
+     * 输入流转String
+     * @param inputStream
+     * @return
+     * @throws Exception
+     */
     private static String inputStream2String(InputStream inputStream) throws Exception {
         String inStr;
         StringBuffer sb = new StringBuffer();
@@ -47,7 +53,7 @@ public class DbBackUp {
     }
 
     /**
-     * 备份
+     * 备份数据库
      *
      * @param remoteIp       服务器ip
      * @param userName       用户名
@@ -112,7 +118,7 @@ public class DbBackUp {
     }
 
     /**
-     * 还原
+     * 还原数据库：
      */
     public static void restore(String remoteIp, String userName, String pwd) {
         try {

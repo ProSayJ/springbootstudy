@@ -19,7 +19,6 @@
         <module>javafx</module>
         <module>apollo</module>
         <module>portal</module>
-        <module>myblog</module>
         <module>blog</module>
         <module>business</module>
         <module>mybatis3</module>
