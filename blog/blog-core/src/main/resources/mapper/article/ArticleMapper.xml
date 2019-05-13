@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.dblearn.blog.mapper.article.ArticleMapper">
+<mapper namespace="com.prosayj.springboot.blog.core.mapper.article.ArticleMapper">
 
     <sql id="homeArticleColumn">
         id,title,description,author,read_num,comment_num,like_num,cover,cover_type,create_time,top
     </sql>
 
-    <select id="listArticleVo" resultType="cn.dblearn.blog.entity.article.vo.ArticleVo">
+    <select id="listArticleVo" resultType="com.prosayj.springboot.blog.core.entity.article.vo.ArticleVo">
         select * from article
         <where>
             <if test="params.title!=null and params.title !=''">
@@ -15,8 +15,10 @@
         </where>
     </select>
 
-    <select id="queryPageCondition" resultType="cn.dblearn.blog.entity.article.vo.ArticleVo">
-        select <include refid="homeArticleColumn"/> from article 
+    <select id="queryPageCondition" resultType="com.prosayj.springboot.blog.core.entity.article.vo.ArticleVo">
+        select
+        <include refid="homeArticleColumn"/>
+        from article
         <where>
             <if test="params.recommend != null and params.recommend != ''">
                 and recommend = true
@@ -45,8 +47,10 @@
         update article set read_num = read_num + 1 where id = #{id}
     </update>
 
-    <select id="getSimpleArticleVo" resultType="cn.dblearn.blog.entity.article.vo.ArticleVo">
-        select <include refid="homeArticleColumn"/> from article where id = #{id}
+    <select id="getSimpleArticleVo" resultType="com.prosayj.springboot.blog.core.entity.article.vo.ArticleVo">
+        select
+        <include refid="homeArticleColumn"/>
+        from article where id = #{id}
     </select>
 
     <update id="updateLikeNum">

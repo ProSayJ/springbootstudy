@@ -1,7 +1,7 @@
-package com.prosayj.springboot.blog.search.search.config;
+package com.prosayj.springboot.blog.search.config;
 
 
-import com.prosayj.springboot.blog.search.search.controller.ArticleEsController;
+import com.prosayj.springboot.blog.search.controller.ArticleEsController;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;

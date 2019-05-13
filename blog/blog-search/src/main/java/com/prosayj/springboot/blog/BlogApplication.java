@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog.search;
+package com.prosayj.springboot.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

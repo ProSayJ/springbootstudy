@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog.search.search.mapper;
+package com.prosayj.springboot.blog.search.mapper;
 
 import com.prosayj.springboot.blog.core.entity.article.Article;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

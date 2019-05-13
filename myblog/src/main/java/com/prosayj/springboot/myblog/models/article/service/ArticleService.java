@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.models.article.service;
+package com.prosayj.springboot.myblog.models.article.service;
 
 import com.prosayj.springboot.blog_t.models.article.module.ArticleDTO;
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.dblearn.blog.mapper.book.BookMapper">
+<mapper namespace="com.prosayj.springboot.blog.core.mapper.book.BookMapper">
 
     <sql id="homeBookColumn">
         id,title,description,author,read_num,comment_num,like_num,cover,create_time,reading,progress
     </sql>
 
-    <select id="listBookVo" resultType="cn.dblearn.blog.entity.book.vo.BookVo">
+    <select id="listBookVo" resultType="com.prosayj.springboot.blog.core.entity.book.vo.BookVo">
         select * from book
         <where>
             <if test="params.title!=null and params.title!=''">
@@ -15,8 +15,10 @@
         </where>
     </select>
 
-    <select id="queryPageCondition" resultType="cn.dblearn.blog.entity.book.vo.BookVo">
-        select <include refid="homeBookColumn"/> from book
+    <select id="queryPageCondition" resultType="com.prosayj.springboot.blog.core.entity.book.vo.BookVo">
+        select
+        <include refid="homeBookColumn"/>
+        from book
         <where>
             <if test="params.recommend != null">
                 and recommend = true

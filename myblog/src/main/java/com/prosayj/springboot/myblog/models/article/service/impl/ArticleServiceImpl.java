@@ -1,9 +1,9 @@
-package com.prosayj.springboot.blog_t.models.article.service.impl;
+package com.prosayj.springboot.myblog.models.article.service.impl;
 
-import com.prosayj.springboot.blog_t.models.article.service.ArticleService;
 import com.prosayj.springboot.blog_t.models.article.domain.ArticleDomain;
 import com.prosayj.springboot.blog_t.models.article.mapper.ArticleDomainMapper;
 import com.prosayj.springboot.blog_t.models.article.module.ArticleDTO;
+import com.prosayj.springboot.myblog.models.article.service.ArticleService;
 import com.prosayj.springboot.utils.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

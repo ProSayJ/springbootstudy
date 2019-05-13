@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog.search.search.controller;
+package com.prosayj.springboot.blog.search.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -7,7 +7,7 @@ import com.prosayj.springboot.blog.core.common.Result;
 import com.prosayj.springboot.blog.core.common.constants.RabbitMqConstants;
 import com.prosayj.springboot.blog.core.entity.article.Article;
 import com.prosayj.springboot.blog.protal.article.service.ArticleService;
-import com.prosayj.springboot.blog.search.search.mapper.ArticleRepository;
+import com.prosayj.springboot.blog.search.mapper.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
