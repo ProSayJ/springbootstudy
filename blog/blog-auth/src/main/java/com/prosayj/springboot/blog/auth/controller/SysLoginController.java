@@ -49,8 +49,8 @@ public class SysLoginController extends AbstractController {
     @ApiOperation(value = "图片验证码", nickname = "SysLoginController-captcha")
     @GetMapping("captcha.jpg")
     public void captcha(HttpServletResponse response,
-                        @ApiParam(name = "uuid", value = "随机串",required = true)
-                        @Valid @NotNull @NotEmpty  @PathVariable("uuid") String uuid) throws IOException {
+                        @ApiParam(name = "uuid", value = "随机串", required = true)
+                        @Valid @NotNull @NotEmpty @PathVariable("uuid") @RequestParam String uuid) throws IOException {
 
 
         response.setHeader("Cache-Control", "no-store, no-cache");
