@@ -8,9 +8,10 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
- * InitialConfig
- *
- * @description
+ * @author yangjian
+ * @description 初始化配置
+ * @Date 16:11 2019/5/14
+ * @since 1.0.0
  */
 @Configuration
 public class InitialConfig {

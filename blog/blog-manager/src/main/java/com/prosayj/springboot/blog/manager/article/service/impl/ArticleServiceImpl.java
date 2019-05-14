@@ -37,7 +37,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private CategoryService categoryService;
 
     /**
-     * 分页查询博文列表
+     * 分页查询文章列表
      *
      * @param params
      * @return

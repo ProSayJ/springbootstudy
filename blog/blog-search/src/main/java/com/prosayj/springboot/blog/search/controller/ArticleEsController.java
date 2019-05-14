@@ -8,6 +8,9 @@ import com.prosayj.springboot.blog.core.common.constants.RabbitMqConstants;
 import com.prosayj.springboot.blog.core.entity.article.Article;
 import com.prosayj.springboot.blog.protal.article.service.ArticleService;
 import com.prosayj.springboot.blog.search.mapper.ArticleRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -20,8 +23,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * ArticleEsController
+ * @author yangjian
+ * @description
+ * @Date 16:00 2019/5/14
+ * @since 1.0.0
  */
+@Api(value = "ArticleEsController", tags = "ArticleEsController", description = "文章关键字搜索控制器")
 @RestController
 @Slf4j
 public class ArticleEsController {
@@ -39,8 +46,10 @@ public class ArticleEsController {
      * @param keywords
      * @return
      */
+    @ApiOperation(value = "搜索标题，描述，内容", nickname = "articleesController-articles/search")
     @GetMapping("articles/search")
-    public Result search(@RequestParam("keywords") String keywords) {
+    public Result search(
+            @ApiParam(name = "keywords", value = "搜索关键词（标题、描述、内容）") @RequestParam("keywords") String keywords) {
         // 对所有索引进行搜索
         QueryBuilder queryBuilder = QueryBuilders.queryStringQuery(keywords);
 

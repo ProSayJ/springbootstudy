@@ -5,6 +5,9 @@ import com.prosayj.springboot.blog.core.common.base.AbstractController;
 import com.prosayj.springboot.blog.core.common.validator.ValidatorUtils;
 import com.prosayj.springboot.blog.core.entity.book.BookSense;
 import com.prosayj.springboot.blog.manager.book.service.BookSenseService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-/**
- * <p>
- * 读后感 前端控制器
- * </p>
- */
+@Api(value = "BookSenseController", tags = "BookSenseController", description = "读后感 前端控制器")
 @RestController
 @Slf4j
 @RequestMapping("/admin/book/sense")
@@ -25,9 +24,12 @@ public class BookSenseController extends AbstractController {
     @Autowired
     private BookSenseService bookSenseService;
 
+    @ApiOperation(value = "获取读后感", nickname = "BookSenseController-getinfo")
     @GetMapping("/{bookId}")
     @RequiresPermissions("book:info")
-    public Result getReadSense(@PathVariable Integer bookId) {
+    public Result getReadSense(
+            @ApiParam(name = "bookId", value = "图书id", required = true)
+            @PathVariable Integer bookId) {
         BookSense bookSense = bookSenseService.getBookSense(bookId);
         return Result.ok().put("bookSense", bookSense);
     }

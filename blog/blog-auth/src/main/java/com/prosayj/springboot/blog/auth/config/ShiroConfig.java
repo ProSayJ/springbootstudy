@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * @author yangjian
- * @description Shiro配置類
+ * @description Shiro配置类
  * @Date 16:21 2019/5/10
  * @since 1.0.0
  */
