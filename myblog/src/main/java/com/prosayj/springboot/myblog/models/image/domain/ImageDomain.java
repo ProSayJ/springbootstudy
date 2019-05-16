@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.models.image.domain;
+package com.prosayj.springboot.myblog.models.image.domain;
 
 import java.util.Date;
 

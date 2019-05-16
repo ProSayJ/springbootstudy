@@ -1,4 +1,4 @@
-package com.prosayj.springboot.config;
+package com.prosayj.springboot.myblogconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

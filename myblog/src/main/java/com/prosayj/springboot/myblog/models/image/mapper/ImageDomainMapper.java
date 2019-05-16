@@ -1,6 +1,7 @@
-package com.prosayj.springboot.blog_t.models.image.mapper;
+package com.prosayj.springboot.myblog.models.image.mapper;
 
-import com.prosayj.springboot.blog_t.models.image.domain.ImageDomain;
+
+import com.prosayj.springboot.myblog.models.image.domain.ImageDomain;
 
 import java.util.List;
 

@@ -37,6 +37,71 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
         </table>
 
+
+        <context id="article_tags" defaultModelType="flat" targetRuntime="MyBatis3">
+            <!--不需要注释-->
+            <commentGenerator>
+                <property name="suppressDate" value="true"/>
+                <property name="suppressAllComments" value="true"/>
+            </commentGenerator>
+
+            <jdbcConnection
+                    connectionURL="jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC"
+                    driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+                <property name="nullCatalogMeansCurrent" value="true"/>
+
+            </jdbcConnection>
+
+            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.domain"
+                                targetProject="src/main/java"/>
+
+            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.mapper"
+                             targetProject="src/main/resources"/>
+
+            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.mapper"
+                                 targetProject="src/main/java"
+                                 type="XMLMAPPER"/>
+            <!--schema="article_tags"-->
+            <table tableName="article_tags" domainObjectName="ArticleTagsDomain"
+                   enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                   enableSelectByExample="false" selectByExampleQueryId="false">
+                <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+            </table>
+
+        </context>
+
+        <context id="tags" defaultModelType="flat" targetRuntime="MyBatis3">
+            <!--不需要注释-->
+            <commentGenerator>
+                <property name="suppressDate" value="true"/>
+                <property name="suppressAllComments" value="true"/>
+            </commentGenerator>
+
+            <jdbcConnection
+                    connectionURL="jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC"
+                    driverClass="com.mysql.jdbc.Driver" userId="root" password="root">
+                <property name="nullCatalogMeansCurrent" value="true"/>
+
+            </jdbcConnection>
+
+            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.domain"
+                                targetProject="src/main/java"/>
+
+            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.mapper"
+                             targetProject="src/main/resources"/>
+
+            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.mapper"
+                                 targetProject="src/main/java"
+                                 type="XMLMAPPER"/>
+            <!--schema="tags"-->
+            <table tableName="tags" domainObjectName="TagsDomain"
+                   enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                   enableSelectByExample="false" selectByExampleQueryId="false">
+                <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+            </table>
+
+        </context>
+
     </context>
 
     <context id="image" defaultModelType="flat" targetRuntime="MyBatis3">

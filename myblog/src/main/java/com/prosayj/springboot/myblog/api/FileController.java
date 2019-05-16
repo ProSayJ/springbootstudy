@@ -1,7 +1,6 @@
-package com.prosayj.springboot.blog_t.api;
+package com.prosayj.springboot.myblog.api;
 
-import com.prosayj.springboot.blog_t.api.vo.input.IdVO;
-import com.prosayj.springboot.blog_t.models.service.FileService;
+import com.prosayj.springboot.myblog.models.service.FileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +48,7 @@ public class FileController {
 
     @ApiOperation(value = "图片下载", nickname = "file-controller-img-download")
     @RequestMapping(value = "/img-download", method = RequestMethod.GET)
-    public void downloadImage(IdVO idVO, HttpServletResponse response) {
+    public void downloadImage(com.prosayj.springboot.blog_t.api.vo.input.IdVO idVO, HttpServletResponse response) {
         try {
             fileService.downloadImage(idVO.getId(), response);
         } catch (IOException e) {

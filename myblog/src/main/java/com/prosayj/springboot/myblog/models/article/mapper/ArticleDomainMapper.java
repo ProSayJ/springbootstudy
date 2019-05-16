@@ -1,6 +1,7 @@
-package com.prosayj.springboot.blog_t.models.article.mapper;
+package com.prosayj.springboot.myblog.models.article.mapper;
 
-import com.prosayj.springboot.blog_t.models.article.domain.ArticleDomain;
+
+import com.prosayj.springboot.myblog.models.article.domain.ArticleDomain;
 
 import java.util.List;
 

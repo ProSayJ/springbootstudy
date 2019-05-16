@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.models.service;
+package com.prosayj.springboot.myblog.models.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -36,8 +36,11 @@ public class Constants {
 
 
     public static final String CLASSPATH = "classpath:";
-    public static final String RESOURCE_PATH = "/src/main/resources/static/images/upload";
-    public static final String IMG_SRC = "static/images/upload/";
+    public static final String RESOURCE_PATH = "\\src\\main\\resources\\static\\images\\upload";
+    public static final String RESOURCE_BACKUP_PATH = "\\src\\main\\resources\\backup";
+    public static final String RESOURCE_BACKUP_BLOG_IMG = "\\halo\\img";
+    public static final String RESOURCE_BACKUP_BLOG_DB = "\\halo\\db";
+    public static final String IMG_SRC = "static\\images\\upload\\";
     public static final String TARGET = "\\target";
 
     /**

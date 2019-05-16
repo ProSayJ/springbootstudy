@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.api;
+package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.blog_t.api.vo.input.IdVO;
 import io.swagger.annotations.Api;

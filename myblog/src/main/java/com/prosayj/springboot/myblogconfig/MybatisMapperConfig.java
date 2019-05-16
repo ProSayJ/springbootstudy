@@ -1,4 +1,4 @@
-package com.prosayj.springboot.config;
+package com.prosayj.springboot.myblogconfig;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +12,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan({
-        "com.prosayj.springboot.blog_t.models.article.mapper",
-        "com.prosayj.springboot.blog_t.models.image.mapper"
+        "com.prosayj.springboot.myblog.models.article.mapper",
+        "com.prosayj.springboot.myblog.models.articletags.mapper",
+        "com.prosayj.springboot.myblog.models.image.mapper",
+        "com.prosayj.springboot.myblog.models.tags.mapper",
 })
 public class MybatisMapperConfig {
 }

@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.api;
+package com.prosayj.springboot.myblog.api;
 
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,5 @@
 package com.prosayj.springboot.utils;
 
-import ch.qos.logback.core.util.FileUtil;
 import com.prosayj.springboot.constants.Constants;
 import org.apache.commons.lang3.text.StrBuilder;
 import org.springframework.util.ResourceUtils;
@@ -9,9 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.FileImageOutputStream;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.nio.channels.FileChannel;
 
 /**
  * @author yangjian
@@ -113,28 +110,6 @@ public class FileUtils {
      * @param fullPathAndSuffix 图片全路径(有名称有后缀)
      */
 
-    public static void byte2image(byte[] data, String fullPathAndSuffix) {
-        if (data.length < 3 || fullPathAndSuffix.equals(Constants.ENPTY_STRING)) {
-            return;
-        }
-/*
-        String path = fullPathAndSuffix.substring(Constants.ZERO, fullPathAndSuffix.lastIndexOf(Constants.POINT));
-
-        try {
-            File fdir = new File(substring);
-            if (!fdir.isDirectory() || !fdir.exists()) {
-                fdir.mkdirs();
-            }
-            File emptyFile = new File(fdir, "hhh.jpg");
-            FileImageOutputStream imageOutput = new FileImageOutputStream(emptyFile);
-            imageOutput.write(data, 0, data.length);
-            imageOutput.close();
-//            System.out.println("Make Picture success,Please find image in " + path);
-        } catch (Exception ex) {
-//            System.out.println("Exception: " + ex);
-            ex.printStackTrace();
-        }*/
-    }
 
     /**
      * @param data     图片二进制文件
@@ -212,22 +187,128 @@ public class FileUtils {
         FileUtils.transferImg(fileMultipart, classImgDesPath.getAbsolutePath(), fileName);
     }
 
-    public static void copayBolgImgs2Forder() {
+    /**
+     * 备份hblog的所有博客上传的图片文件
+     *
+     * @param targetImgPath 目标根目录
+     * @throws FileNotFoundException
+     */
+    public static void copayBolgImgs2Forder(String targetImgPath) throws IOException {
+        //获取源文件夹
         final StrBuilder srcPathStr = new StrBuilder(System.getProperties().getProperty("user.home")).append("/halo/upload/");
         final File srcPath = new File(srcPathStr.toString());
         final File[] files = srcPath.listFiles();
         // 遍历文件
         if (null != files) {
+            File classpath = new File(ResourceUtils.getURL(Constants.CLASSPATH).getPath());
+            if (!classpath.exists()) {
+                classpath = new File(Constants.ENPTY_STRING);
+            }
+            //生成目标文件根目录：
+            String absoluteClassPath = classpath.getAbsolutePath();
+            String desImgFatherDes = new StringBuffer()
+                    .append(absoluteClassPath.substring(Constants.ZERO, absoluteClassPath.indexOf(Constants.TARGET)))
+                    .append(Constants.RESOURCE_BACKUP_PATH).append(Constants.RESOURCE_BACKUP_BLOG_IMG).toString();
             for (File file : files) {
-                if (file.isFile()) {
+                //拷贝文件
+                copyAllFiles(file, desImgFatherDes);
+            }
+        }
+    }
+
+
+    /**
+     * 递归copy获取文件加下面所有的文件到指定的目录
+     *
+     * @param file            待拷贝的文件(夹)
+     * @param desImgFatherDes 目标文件夹
+     */
+    public static void copyAllFiles(File file, String desImgFatherDes) throws IOException {
+        if (file == null) return;
+        if (file.isFile()) {
+            String sourcePath = file.getAbsolutePath();
+            String subPath = sourcePath.substring(sourcePath.indexOf("\\halo"), sourcePath.length());
+
+            copyFile(file, new File(desImgFatherDes + subPath));
+        }
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            for (File fileInner : files) {
+                copyAllFiles(fileInner, desImgFatherDes);
+            }
+        }
+    }
+
+    /**
+     * 复制文件,使用nio以提高性能
+     *
+     * @param src  - 源文件
+     * @param dest - 目标文件
+     */
+    public static void copyFile(File src, File dest) throws IOException {
+        if (!src.exists()) {
+            throw new FileNotFoundException(src.getAbsolutePath() + "==>找不到被拷贝的源文件");
+        }
+        if (!dest.exists()) {
+            //处理目标目录
+            String absolutePath = dest.getAbsolutePath();
+            String fileNameAndSuffix = absolutePath.substring(absolutePath.lastIndexOf("\\") + 1, absolutePath.length());
+            String parentPath = absolutePath.substring(0, absolutePath.lastIndexOf("\\"));
+
+            System.out.println(absolutePath);
+            System.out.println(fileNameAndSuffix);
+            System.out.println(parentPath);
+
+            //创建文件所在的目录
+            File desImgDesPath = new File(parentPath);
+            if (!desImgDesPath.exists() || !desImgDesPath.isDirectory()) {
+                desImgDesPath.mkdirs();
+            }
+            //创建文件
+            File targetImgDes = new File(desImgDesPath.getAbsolutePath(), fileNameAndSuffix);
+            if (!targetImgDes.exists()) {
+                targetImgDes.createNewFile();
+            }
+            try {
+                dest.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            FileInputStream fis = null;
+            FileOutputStream fos = null;
+            FileChannel in = null;
+            FileChannel out = null;
+            try {
+                fis = new FileInputStream(src);
+                fos = new FileOutputStream(dest);
+                // 得到对应的文件通道
+                in = fis.getChannel();
+                // 得到对应的文件通道
+                out = fos.getChannel();
+                // 连接两个通道，并且从in通道读取，然后写入out通道
+                in.transferTo(0, in.size(), out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (in.isOpen()) {
+                    try {
+                        fis.close();
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (out.isOpen()) {
+                    try {
+                        fos.close();
+                        out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-
     }
 
-    public static void main(String[] args) {
-        copayBolgImgs2Forder();
-    }
 
 }

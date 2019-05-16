@@ -1,11 +1,13 @@
-package com.prosayj.springboot.blog_t.api;
+package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.blog_t.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.blog_t.api.vo.input.BlogUpdateVO;
 import com.prosayj.springboot.blog_t.api.vo.input.IdVO;
 import com.prosayj.springboot.blog_t.api.vo.output.ArticleVO;
-import com.prosayj.springboot.blog_t.models.article.module.ArticleDTO;
-import com.prosayj.springboot.myblog.models.article.service.ArticleService;
+import com.prosayj.springboot.myblog.models.dto.ArticleDTO;
+import com.prosayj.springboot.myblog.models.dto.TagsDTO;
+import com.prosayj.springboot.myblog.models.service.ArticleService;
+import com.prosayj.springboot.myblog.models.service.TagService;
 import com.prosayj.springboot.utils.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,6 +36,8 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private TagService tagService;
 
     @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list")
@@ -92,5 +96,13 @@ public class ArticleController {
         Map<String, String> result = new HashMap<>();
         result.put("status", "200");
         return result;
+    }
+
+    @ApiOperation(value = "获取文章所有的标签", nickname = "article-controller-getalltags")
+    @PostMapping("/getalltags")
+    @ResponseBody
+    public List<TagsDTO> getAllTags() {
+        List<TagsDTO> allTags = tagService.getAllTags();
+        return allTags;
     }
 }
