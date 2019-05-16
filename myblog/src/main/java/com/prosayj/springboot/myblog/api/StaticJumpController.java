@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * @author yangjian
@@ -75,5 +76,12 @@ public class StaticJumpController {
     @GetMapping("/article/register.html")
     public String registerIframe() {
         return "register";
+    }
+
+    @ApiOperation(value = "articlelistbytagid", nickname = "static-jump-controller-articlelistbytagid")
+    @GetMapping("/articlelistbytagid")
+    public String registerIframe(IdVO idVO,RedirectAttributes model) {
+        model.addFlashAttribute("id",idVO.getId());
+        return "redirect:article/list/articlelistbytagid";
     }
 }

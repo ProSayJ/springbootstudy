@@ -20,6 +20,6 @@ public interface ArticleDomainMapper {
 
     int updateByPrimaryKey(ArticleDomain record);
 
-    List<ArticleDomain> selectByCondition();
+    List<ArticleDomain> selectByCondition(ArticleDomain record);
 
 }

@@ -13,6 +13,8 @@ public interface ArticleService {
 
     List<ArticleDTO> query();
 
+    List<ArticleDTO> queryByTags(Long tags);
+
     void updateByCondition(ArticleDTO articleDTO);
 
 }

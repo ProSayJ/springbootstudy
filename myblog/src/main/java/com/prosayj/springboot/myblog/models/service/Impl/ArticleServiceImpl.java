@@ -54,7 +54,15 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleDTO> query() {
-        List<ArticleDomain> articleDomains = articleDomainMapper.selectByCondition();
+        List<ArticleDomain> articleDomains = articleDomainMapper.selectByCondition(null);
+        return BeanUtil.toBeanList(articleDomains, ArticleDTO.class);
+    }
+
+    @Override
+    public List<ArticleDTO> queryByTags(Long tags) {
+        ArticleDomain articleDomain = new ArticleDomain();
+        articleDomain.setArticleTags(tags + "");
+        List<ArticleDomain> articleDomains = articleDomainMapper.selectByCondition(articleDomain);
         return BeanUtil.toBeanList(articleDomains, ArticleDTO.class);
     }
 

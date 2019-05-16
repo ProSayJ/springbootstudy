@@ -14,10 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +44,9 @@ public class ArticleController {
         model.addAttribute("hello", "Hello, Spring Boot!");
         */
         List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
+        List<TagsDTO> allTags = tagService.getAllTags();
         model.addAttribute("articleList", articleVOS);
+        model.addAttribute("allTags", allTags);
         return "articlelist";
     }
 
@@ -104,5 +103,16 @@ public class ArticleController {
     public List<TagsDTO> getAllTags() {
         List<TagsDTO> allTags = tagService.getAllTags();
         return allTags;
+    }
+
+    @ApiOperation(value = "文章列表", nickname = "article-controller-list")
+    @GetMapping("/list/articlelistbytagid")
+    public String articlelistbytagid(@ModelAttribute("id") Long id, Model model) {
+        System.out.println("11111111>" + id);
+        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
+        List<TagsDTO> allTags = tagService.getAllTags();
+        model.addAttribute("articleList", articleVOS);
+        model.addAttribute("allTags", allTags);
+        return "articlelist";
     }
 }

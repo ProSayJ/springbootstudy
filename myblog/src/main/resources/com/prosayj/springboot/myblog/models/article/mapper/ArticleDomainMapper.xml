@@ -274,11 +274,16 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="selectByCondition" resultMap="ResultMapWithBLOBs">
+    <select id="selectByCondition" resultMap="ResultMapWithBLOBs"
+            parameterType="com.prosayj.springboot.myblog.models.article.domain.ArticleDomain">
         select
         <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
-        from article order by update_date desc
+        from article
+        <where>
+            <if test="articleTags != null">
+                and article_tags = #{articleTags,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by update_date desc
     </select>
 </mapper>

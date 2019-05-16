@@ -47,6 +47,12 @@
             </button>
         </div>
 
+        <select name="status" th:field="*{allTags}" id="optionChange" class="input-select" th:value="*{allTags}">
+            <option value="">--请选择--</option>
+            <option th:each="tag,start:${allTags}" th:value="${tag.id}" th:text="${tag.tagName}"></option>
+        </select>
+
+
         <table class="table table-hover">
             <tr>
                 <td>ID</td>
@@ -80,6 +86,12 @@
 </div>
 
 <script type="text/javascript">
+    /*
+    (function tagList() {
+        alert("hahha")
+    })();
+    */
+
     function create() {
         window.open("/create");
     }
@@ -91,6 +103,17 @@
     function edit(id) {
         window.open("/editor?id=" + id);
     }
+
+    $(function () {
+        $("#optionChange").change(function (data) {
+            var tagId = $("#optionChange option:selected").attr("value");
+            /*  var url = "/report/city/cityid/" + cityid;
+              window.location.href = url;*/
+            // alert(tagId);
+            window.open("/articlelistbytagid?id=" + tagId);
+        });
+    });
+
 </script>
 </body>
 </html>
