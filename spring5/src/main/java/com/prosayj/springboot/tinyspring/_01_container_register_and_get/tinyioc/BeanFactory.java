@@ -14,7 +14,7 @@ public class BeanFactory {
     private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
     /**
-     * 获取Bean
+     * 通过bean的名称获取Bean
      *
      * @param name
      * @return

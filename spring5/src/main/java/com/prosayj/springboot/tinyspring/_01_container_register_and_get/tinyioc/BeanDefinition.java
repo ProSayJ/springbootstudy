@@ -14,6 +14,10 @@ public class BeanDefinition {
         this.bean = bean;
     }
 
+    /**
+     * 获取bean对象实例
+     * @return
+     */
     public Object getBean() {
         return bean;
     }

@@ -11,12 +11,13 @@ import java.util.EnumMap;
  */
 public class PersionFactory {
 
-    public static EnumMap<Man,Persion> in
+    public static EnumMap<Man, Persion> enumMap;
+
     private PersionFactory() {
     }
 
     public static Persion getPersionByIn() {
 
-
+        return null;
     }
 }
