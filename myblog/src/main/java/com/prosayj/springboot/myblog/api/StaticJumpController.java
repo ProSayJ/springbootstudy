@@ -44,7 +44,7 @@ public class StaticJumpController {
     @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
     @GetMapping("/create")
     public String create() {
-        return "create";
+        return "redirect:article/create";
     }
 
 
@@ -80,8 +80,8 @@ public class StaticJumpController {
 
     @ApiOperation(value = "articlelistbytagid", nickname = "static-jump-controller-articlelistbytagid")
     @GetMapping("/articlelistbytagid")
-    public String registerIframe(IdVO idVO,RedirectAttributes model) {
-        model.addFlashAttribute("id",idVO.getId());
+    public String registerIframe(IdVO idVO, RedirectAttributes model) {
+        model.addFlashAttribute("id", idVO.getId());
         return "redirect:article/list/articlelistbytagid";
     }
 }

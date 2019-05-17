@@ -50,6 +50,15 @@ public class ArticleController {
         return "articlelist";
     }
 
+    @ApiOperation(value = "创建文章", nickname = "article-controller-create")
+    @GetMapping("/create")
+    public String create(Model model) {
+        List<TagsDTO> allTags = tagService.getAllTags();
+        model.addAttribute("allTags", allTags);
+        return "create";
+    }
+
+
     @ApiOperation(value = "发布文章", nickname = "article-controller-publish")
     @PostMapping("/publish")
     @ResponseBody
@@ -65,7 +74,7 @@ public class ArticleController {
         articleDTO.setArticleHtmlContent(blogs.getArticleHtmlContent());
 
         articleDTO.setArticleTitle(blogs.getArticleTitle());
-        articleDTO.setArticleCategories(blogs.getArticleCategories());
+        articleDTO.setArticleTags(blogs.getArticleTags());
         articleDTO.setOriginalAuthor(blogs.getAuthor());
         articleService.insert(articleDTO);
 

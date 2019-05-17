@@ -22,10 +22,10 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleDomain articleDomain = new ArticleDomain();
         articleDomain.setArticleHtmlContent(articleDTO.getArticleHtmlContent());
         articleDomain.setArticleMdContent(articleDTO.getArticleMdContent());
-        articleDomain.setArticleCategories(articleDTO.getArticleCategories());
         articleDomain.setOriginalAuthor(articleDTO.getOriginalAuthor());
         articleDomain.setArticleTitle(articleDTO.getArticleTitle());
 
+        articleDomain.setArticleCategories("");
         articleDomain.setArticleId(2L);
         articleDomain.setAuthorId(2L);
         articleDomain.setArticleSummary("文章摘要");
@@ -33,7 +33,7 @@ public class ArticleServiceImpl implements ArticleService {
         articleDomain.setArticleUrl("www.baidu.com");
         articleDomain.setLikes("喜欢");
         articleDomain.setLastArticleId("111");
-        articleDomain.setArticleTags("文章标签");
+        articleDomain.setArticleTags(articleDTO.getArticleTags());
         articleDomain.setNextArticleId(2);
         articleDomain.setPublishDate(new Date());
         articleDomain.setUpdateDate(new Date());

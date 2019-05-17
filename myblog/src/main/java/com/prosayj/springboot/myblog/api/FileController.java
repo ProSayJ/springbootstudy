@@ -64,4 +64,11 @@ public class FileController {
         return true;
     }
 
+    @ApiOperation(value = "修复所有文件的静态资源路径位置", nickname = "file-controller-img-expport-all")
+    @PostMapping(value = "/img-staticsrc-repair")
+    @ResponseBody
+    public boolean staticSrcRepair() {
+        return true;
+    }
+
 }

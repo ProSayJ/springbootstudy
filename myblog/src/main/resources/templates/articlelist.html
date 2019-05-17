@@ -5,30 +5,21 @@
     <meta charset="UTF-8">
     <title>文章列表页-Spring Boot集成Jasypt安全框架</title>
 
+
     <!--<link rel="icon" type="image/x-icon" href="/static/ico/favicon.ico">-->
     <link alt="test" rel="icon" type="image/x-icon" th:src="@{/static/ico/favicon.ico}"/>
 
     <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/static/bootstrap-3.3.7/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <link th:href="@{/static/bootstrap-select-1.13.9/css/bootstrap-select.min.css}" rel="stylesheet"/>
+
 
     <script type="text/javascript" th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/bootstrap-3.3.7/js/bootstrap.js}"></script>
-    <style>
-        #external-frame {
-            width: 300px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            background: #fff;
-            z-index: 100;
-            padding: 18px;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-bottom: none;
-        }
 
+    <script type="text/javascript" th:src="@{/static/bootstrap-select-1.13.9/js/bootstrap-select.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap-select-1.13.9/js/i18n/defaults-zh_CN.min.js}"></script>
+    <style>
     </style>
 </head>
 <body>
@@ -42,12 +33,13 @@
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" align="center">
-            <button type="submit" class="btn-success" th:onclick="'javascript:create();'">
+            <button type="submit" class="btn-default" th:onclick="'javascript:create();'">
                 新建博客-
             </button>
+
         </div>
 
-        <select name="status" th:field="*{allTags}" id="optionChange" class="input-select" th:value="*{allTags}">
+        <select name="" id="optionChange" class="selectpicker">
             <option value="">--请选择--</option>
             <option th:each="tag,start:${allTags}" th:value="${tag.id}" th:text="${tag.tagName}"></option>
         </select>
@@ -67,18 +59,26 @@
                 <td th:text="${stat.index}" th:hidden="true"></td>
                 <td th:text="${article.id}"></td>
 
-                <td th:text="${article.articleTitle}"></td>
+                <td>
+                    <div style="margin-bottom:5px">
+                        <a th:text="${article.articleTitle}" class="btn btn-inverse"
+                           th:onclick="'javascript:preview(\''+${article.id}+'\');'">文章名称</a>
+                    </div>
+                </td>
+
                 <td th:text="${article.originalAuthor}"></td>
                 <td th:text="${article.articleCategories}"></td>
                 <td th:text="${#dates.format(article.publishDate, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#dates.format(article.updateDate, 'yyyy-MM-dd HH:mm')}"></td>
                 <td>
-                    <button type="submit" class="btn-info" th:onclick="'javascript:preview(\''+${article.id}+'\');'">
-                        查看
-                    </button>
-                    <button type="submit" class="btn-info" th:onclick="'javascript:edit(\''+${article.id}+'\');'">
-                        编辑
-                    </button>
+
+                    <div class="btn-group-vertical" role="group" aria-label="">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default"
+                                    th:onclick="'javascript:edit(\''+${article.id}+'\');'">编辑
+                            </button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </table>

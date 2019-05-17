@@ -284,6 +284,6 @@
                 and article_tags = #{articleTags,jdbcType=VARCHAR}
             </if>
         </where>
-        order by update_date desc
+        order by publish_date desc
     </select>
 </mapper>
