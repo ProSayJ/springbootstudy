@@ -30,4 +30,5 @@ CLOSE userInfoCursor;
 END $$
 DELIMITER ;
 CALL update_linkName_linkPhome();
-DROP PROCEDURE if exists update_linkName_linkPhome; 
+DROP PROCEDURE if exists update_linkName_linkPhome;
+

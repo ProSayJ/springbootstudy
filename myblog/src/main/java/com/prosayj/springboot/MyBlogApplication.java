@@ -8,7 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         DataSourceTransactionManagerAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class,
         DruidDataSourceAutoConfigure.class,*/
-        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+
+//        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+
+})
 public class MyBlogApplication {
 
     public static void main(String[] args) {
