@@ -2,7 +2,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
 
 /**
  * @author yangjian
- * @description TODO
+ * @description 导读_线程加入
  * @email ProSayj@gmail.com
  * @creatTime 2018/11/24 15:12
  * @since 1.0.0
@@ -18,6 +18,7 @@ public class _00_YieldThread {
                 Thread.yield();
             }
         });
+
         Thread t2 = new Thread() {
             @Override
             public void run() {

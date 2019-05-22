@@ -3,7 +3,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
 
 /**
  * @author yangjian
- * @description TODO
+ * @description 不安全的停止线程的方法——stop
  * @email ProSayj@gmail.com
  * @creatTime 2018/11/24 15:24
  * @since 1.0.0
@@ -23,6 +23,9 @@ public class _01_StopThreadUnsafe {
         }
     }
 
+    /**
+     * 启动一个读线程：当用户名称和id不一样的时候，打印出来不一样的值
+     */
     public static class ReadObjectThread extends Thread {
         @Override
         public void run() {
@@ -37,6 +40,9 @@ public class _01_StopThreadUnsafe {
         }
     }
 
+    /**
+     * 修改对象的值：用户名和id都是现在的值：
+     */
     public static class ChangeObjectThread extends Thread {
         @Override
         public void run() {
@@ -49,7 +55,7 @@ public class _01_StopThreadUnsafe {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    user.setName(v + "");
+                    user.setName(String.valueOf(v));
                 }
                 Thread.yield();
             }
@@ -84,38 +90,39 @@ public class _01_StopThreadUnsafe {
             }
         }
     }
-}
 
-class User {
-    private int id;
-    private String name;
+    static class User {
+        private int id;
+        private String name;
 
-    public int getId() {
-        return id;
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public User() {
+            this.id = 0;
+            this.name = "0";
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "name='" + name + '\'' +
+                    ", id=" + id +
+                    '}';
+        }
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public User() {
-        this.id = 0;
-        this.name = "0";
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                '}';
-    }
 }
