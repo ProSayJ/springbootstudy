@@ -1,4 +1,4 @@
-package com.prosayj.springboot._04_Java高并发编程详解._01_._06_jdbcexample;
+package com.prosayj.springboot._04_Java高并发编程详解._01__快速认识线程._05_Runnable接口的引入以及策略模式在Thread中的使用._06_jdbcexample;
 
 import java.sql.ResultSet;
 

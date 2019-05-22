@@ -1,6 +1,5 @@
-package com.prosayj.springboot._04_Java高并发编程详解._02_;
+package com.prosayj.springboot._04_Java高并发编程详解._02_深入理解Thread构造函数;
 
-import java.io.InputStream;
 import java.util.stream.IntStream;
 
 /**

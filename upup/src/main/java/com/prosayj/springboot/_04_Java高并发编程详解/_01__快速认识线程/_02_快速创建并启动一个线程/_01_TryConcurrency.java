@@ -1,4 +1,6 @@
-package com.prosayj.springboot._04_Java高并发编程详解._01_;
+package com.prosayj.springboot._04_Java高并发编程详解._01__快速认识线程._02_快速创建并启动一个线程;
+
+import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,27 +12,28 @@ import java.util.concurrent.TimeUnit;
  * @since 1.0.0
  */
 public class _01_TryConcurrency {
-    /*
-    public static void main(String[] args) {
+    @Test
+    //单线程启动
+    public void m1() {
         browseNews();
         enjoyMusic();
     }
-    */
 
-    /*
-    public static void main(String[] args) {
-        new Thread(()->{
+    @Test
+    //匿名内部类启动一个线程
+    public void m2() {
+        new Thread(() -> {
             enjoyMusic();
         }).start();
         browseNews();
     }
-    */
 
-    public static void main(String[] args) {
+    @Test
+    //jdk1.8新特性启动一个线程
+    public void m3() {
         new Thread(_01_TryConcurrency::enjoyMusic).start();
         browseNews();
     }
-
 
     /**
      * Browse the news

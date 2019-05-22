@@ -1,4 +1,4 @@
-package com.prosayj.springboot._04_Java高并发编程详解._01_;
+package com.prosayj.springboot._04_Java高并发编程详解._01__快速认识线程._02_快速创建并启动一个线程;
 
 import java.util.concurrent.TimeUnit;
 
