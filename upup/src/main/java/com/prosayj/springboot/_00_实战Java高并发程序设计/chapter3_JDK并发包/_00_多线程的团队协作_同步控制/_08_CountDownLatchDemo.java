@@ -14,7 +14,6 @@ import java.util.concurrent.Executors;
  */
 public class _08_CountDownLatchDemo {
     /**
-     *
      * 表示需要有10个线程完成了任务，主线程才能继续执行。
      */
     static final CountDownLatch end = new CountDownLatch(10);
@@ -40,5 +39,6 @@ public class _08_CountDownLatchDemo {
         System.out.println("Fire!");
         executorService.shutdown();
     }
+
 }
 

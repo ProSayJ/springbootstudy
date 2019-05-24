@@ -18,4 +18,5 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ImportResource(value = {"classpath:com/prosayj/springboot/application-task.xml"})
 @EnableScheduling
 public class MultiThreadConfig {
+
 }
