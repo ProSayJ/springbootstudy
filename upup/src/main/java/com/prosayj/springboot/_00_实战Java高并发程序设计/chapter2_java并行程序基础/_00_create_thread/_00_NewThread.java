@@ -1,13 +1,12 @@
 package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础._00_create_thread;
 
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * @author yangjian
@@ -17,16 +16,20 @@ import java.util.concurrent.Future;
  * @since 1.0.0
  */
 public class _00_NewThread {
-    public static void main(String[] args) throws Exception {
-        /**
-         * 方式一：继承Thread
-         */
+    @Test
+    /**
+     * 方式一：继承Thread
+     */
+    public void m1() {
         MyThread t1 = new MyThread();
         t1.start();
+    }
 
-        /**
-         * 方式二(1)：实现Runnable接口
-         */
+    @Test
+    /**
+     * 方式二(1)：实现Runnable接口
+     */
+    public void m2() {
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -34,10 +37,13 @@ public class _00_NewThread {
             }
         });
         t2.start();
+    }
 
-        /**
-         * 方式二(2)：实现Runnable接口_内部类
-         */
+    @Test
+    /**
+     * 方式二(2)：实现Runnable接口_内部类
+     */
+    public void m3() {
         Thread t3 = new Thread() {
             @Override
             public void run() {
@@ -45,18 +51,25 @@ public class _00_NewThread {
             }
         };
         t3.start();
+    }
 
-        /**
-         * 方式二(3)：实现Runnable接口_使用jdk1.8的新特性替代匿名内部类
-         */
+    @Test
+    /**
+     * 方式二(3)：实现Runnable接口_使用jdk1.8的新特性替代匿名内部类
+     */
+    public void m4() {
+
         Thread t4 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName());
         });
         t4.start();
+    }
 
-        /**
-         * 方式三：实现Callable接口通过FutureTask包装器来创建Thread线程
-         */
+    @Test
+    /**
+     * 方式三：实现Callable接口通过FutureTask包装器来创建Thread线程
+     */
+    public void m5() throws Exception {
         MyCallable myCallable = new MyCallable("张三的线程");
         System.out.println(myCallable.call());
 
@@ -96,7 +109,6 @@ public class _00_NewThread {
         }
         // 关闭线程池
         pool.shutdown();
-
     }
 
 
