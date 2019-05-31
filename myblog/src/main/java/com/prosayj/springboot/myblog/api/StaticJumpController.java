@@ -1,6 +1,6 @@
 package com.prosayj.springboot.myblog.api;
 
-import com.prosayj.springboot.blog_t.api.vo.input.IdVO;
+import com.prosayj.springboot.myblog.api.vo.input.IdVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;

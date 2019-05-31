@@ -1,9 +1,9 @@
 package com.prosayj.springboot.myblog.api;
 
-import com.prosayj.springboot.blog_t.api.vo.input.BlogCreateVO;
-import com.prosayj.springboot.blog_t.api.vo.input.BlogUpdateVO;
-import com.prosayj.springboot.blog_t.api.vo.input.IdVO;
-import com.prosayj.springboot.blog_t.api.vo.output.ArticleVO;
+import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
+import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
+import com.prosayj.springboot.myblog.api.vo.input.IdVO;
+import com.prosayj.springboot.myblog.api.vo.output.ArticleVO;
 import com.prosayj.springboot.myblog.models.dto.ArticleDTO;
 import com.prosayj.springboot.myblog.models.dto.TagsDTO;
 import com.prosayj.springboot.myblog.models.service.ArticleService;

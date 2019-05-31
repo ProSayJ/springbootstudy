@@ -1,4 +1,4 @@
-package com.prosayj.springboot.blog_t.api.vo.output;
+package com.prosayj.springboot.myblog.api.vo.output;
 
 import java.util.Date;
 

@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         HibernateJpaAutoConfiguration.class,
         DruidDataSourceAutoConfigure.class,*/
 
-//        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+    //关闭安全认证
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 
 })
 public class MyBlogApplication {

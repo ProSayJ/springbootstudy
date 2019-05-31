@@ -48,7 +48,7 @@ public class FileController {
 
     @ApiOperation(value = "图片下载", nickname = "file-controller-img-download")
     @RequestMapping(value = "/img-download", method = RequestMethod.GET)
-    public void downloadImage(com.prosayj.springboot.blog_t.api.vo.input.IdVO idVO, HttpServletResponse response) {
+    public void downloadImage(com.prosayj.springboot.myblog.api.vo.input.IdVO idVO, HttpServletResponse response) {
         try {
             fileService.downloadImage(idVO.getId(), response);
         } catch (IOException e) {

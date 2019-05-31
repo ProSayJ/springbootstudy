@@ -1,8 +1,8 @@
-package com.prosayj.springboot.blog_t.api.vo.input;
+package com.prosayj.springboot.myblog.api.vo.input;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
