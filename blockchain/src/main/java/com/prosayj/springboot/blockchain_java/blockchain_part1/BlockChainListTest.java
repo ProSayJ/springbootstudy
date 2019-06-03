@@ -40,7 +40,7 @@ public class BlockChainListTest {
         loger.info("Blockchain is Valid: " + isChainValid());
 //        String json = new GsonBuilder().setPrettyPrinting().create().toJson(blockChain);
 
-        loger.info(BeanUtil.objectConvertToString(blockChain));
+        loger.info(BeanUtil.object2StringFastJson(blockChain));
     }
 
     /**

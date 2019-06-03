@@ -16,11 +16,12 @@ import org.slf4j.LoggerFactory;
 
 public class BlockChainTest {
     public static final Logger loger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_BLOCKCHAIN.getModuleNickName());
+
     public static void main(String[] args) {
         //first，第一个区块又称为创世区块
         Block firstBlock = new Block("first", "0");
         loger.info("Hash for block 1: {}" + firstBlock.hash);
-        loger.info(BeanUtil.objectConvertToString(firstBlock));
+        loger.info(BeanUtil.object2StringFastJson(firstBlock));
 
         //second
         Block secondBlock = new Block("second", firstBlock.hash);
