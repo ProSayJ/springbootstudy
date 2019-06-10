@@ -1,10 +1,11 @@
-package com.prosayj.springboot.myblog.api;
+package com.prosayj.springboot.myblog.api_freemark;
 
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,14 +18,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Api(value = "static-jump-controller", tags = "static-jump-controller", description = "静态资源跳转类")
 @Controller
-public class StaticJumpController {
+@RequestMapping("/fee")
+public class StaticJumpFreeController {
 
 
     @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
     @GetMapping("/")
     public String root() {
 //        return "redirect:/login";
-        return "redirect:articlefee/list";
+        return "redirect:article/list";
     }
 
 
@@ -44,7 +46,7 @@ public class StaticJumpController {
     @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
     @GetMapping("/create")
     public String create() {
-        return "redirect:article/create";
+        return "redirect:/articlefee/create";
     }
 
 
@@ -69,19 +71,19 @@ public class StaticJumpController {
     @ApiOperation(value = "example", nickname = "static-jump-controller-example")
     @GetMapping("/example")
     public String example() {
-        return "html/example";
+        return "freemark/example";
     }
 
     @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
     @GetMapping("/article/register.html")
     public String registerIframe() {
-        return "html/register";
+        return "freemark/register";
     }
 
     @ApiOperation(value = "articlelistbytagid", nickname = "static-jump-controller-articlelistbytagid")
     @GetMapping("/articlelistbytagid")
     public String registerIframe(IdVO idVO, RedirectAttributes model) {
         model.addFlashAttribute("id", idVO.getId());
-        return "redirect:article/list/articlelistbytagid";
+        return "redirect:/articlefee/list/articlelistbytagid";
     }
 }

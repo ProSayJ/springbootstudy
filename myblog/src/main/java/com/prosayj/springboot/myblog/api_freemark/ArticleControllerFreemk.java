@@ -1,4 +1,4 @@
-package com.prosayj.springboot.myblog.api;
+package com.prosayj.springboot.myblog.api_freemark;
 
 import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
@@ -13,8 +13,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,8 +29,8 @@ import java.util.Map;
  */
 @Api(value = "article-controller", tags = "article-controller", description = "文章操作类")
 @Controller
-@RequestMapping("/article")
-public class ArticleController {
+@RequestMapping("/articlefee")
+public class ArticleControllerFreemk {
     @Autowired
     private ArticleService articleService;
     @Autowired
@@ -38,24 +38,22 @@ public class ArticleController {
 
     @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list")
-    public String articlelist(Model model) {
-        /*
-        model.addAttribute("title", "用户列表");
-        model.addAttribute("hello", "Hello, Spring Boot!");
-        */
+    public ModelAndView articlelist(ModelAndView mv) {
         List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
         List<TagsDTO> allTags = tagService.getAllTags();
-        model.addAttribute("articleList", articleVOS);
-        model.addAttribute("allTags", allTags);
-        return "html/articlelist";
+        mv.addObject("articleList", articleVOS);
+        mv.addObject("allTags", allTags);
+        mv.setViewName("freemark/articlelist");
+        return mv;
     }
 
     @ApiOperation(value = "创建文章", nickname = "article-controller-create")
     @GetMapping("/create")
-    public String create(Model model) {
+    public ModelAndView create(ModelAndView mv) {
         List<TagsDTO> allTags = tagService.getAllTags();
-        model.addAttribute("allTags", allTags);
-        return "html/create";
+        mv.addObject("allTags", allTags);
+        mv.setViewName("freemark/create");
+        return mv;
     }
 
 
@@ -116,12 +114,13 @@ public class ArticleController {
 
     @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list/articlelistbytagid")
-    public String articlelistbytagid(@ModelAttribute("id") Long id, Model model) {
+    public ModelAndView articlelistbytagid(@ModelAttribute("id") Long id, ModelAndView mv) {
         System.out.println("11111111>" + id);
         List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
         List<TagsDTO> allTags = tagService.getAllTags();
-        model.addAttribute("articleList", articleVOS);
-        model.addAttribute("allTags", allTags);
-        return "html/articlelist";
+        mv.addObject("articleList", articleVOS);
+        mv.addObject("allTags", allTags);
+        mv.setViewName("freemark/articlelist");
+        return mv;
     }
 }
