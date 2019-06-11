@@ -24,10 +24,12 @@ public class StaticJumpController {
     @GetMapping("/")
     public String root() {
 //        return "redirect:/login";
-        return "redirect:articlefee/list";
+//        return "redirect:articlefee/list";
+        return "redirect:taglist";
     }
 
 
+/*
     @ApiOperation(value = "登陆", nickname = "static-jump-controller-login")
     @GetMapping("/login")
     public String login() {
@@ -39,6 +41,7 @@ public class StaticJumpController {
     public String register() {
         return "register";
     }
+*/
 
 
     @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")

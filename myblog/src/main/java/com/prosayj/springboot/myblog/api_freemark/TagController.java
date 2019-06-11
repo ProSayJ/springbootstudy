@@ -18,14 +18,14 @@ import java.util.List;
  * @creatTime 2019/3/12 10:57
  * @since 1.0.0
  */
-@Api(value = "freemark-controller", tags = "freemark-controller", description = "freemark测试controller")
+@Api(value = "tag-controller", tags = "tag-controller", description = "tagcontroller")
 @Controller
-public class FreeTestController {
+public class TagController {
     @Autowired
     TagsDomainMapper tagsDomainMapper;
 
 
-    @ApiOperation(value = "taglist", nickname = "freemark-controller-taglist",notes = "所有标签页面")
+    @ApiOperation(value = "taglist", nickname = "tag-controller",notes = "控制器标签页面")
     @GetMapping("/taglist")
     public ModelAndView taglist(ModelAndView mv) {
         List<TagsDomain> all = tagsDomainMapper.getAll();
