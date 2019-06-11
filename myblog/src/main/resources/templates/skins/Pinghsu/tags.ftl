@@ -17,36 +17,32 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-<#include "../../common-template/macro-common_head.ftl">
+<#--<#include "../../common-template/macro-common_head.ftl">-->
 <!DOCTYPE html>
 <html>
 <head>
-<@head title="${allTagsLabel} - ${blogTitle}">
-    <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
-</@head>
+    <link rel=stylesheet href="/static/skins/Pinghsu/css/base.css">
 </head>
+
+
 <body class="body--gray" class="fn__flex-1">
-<#include "header.ftl">
 <main id="pjax">
-    <#if pjax><!---- pjax {#pjax} start ----></#if>
     <div class="wrapper--min wrapper">
         <div class="page__title">
             <span class="ft__red">#</span>
-            ${sumLabel} ${tags?size} ${tagLabel}
+            共 ${tags?size} 个标签
         </div>
 
         <div class="page__content page__tags fn__clear">
          <#list tags as tag>
-             <a rel="tag" data-count="${tag.tagPublishedRefCount}" class="tag tag--${tag_index % 10}"
-                href="${servePath}/tags/${tag.tagTitle?url('UTF-8')}">
-                 <span class="name">${tag.tagTitle}</span>
-                 (<b>${tag.tagPublishedRefCount}</b>)
+             <a rel="tag" data-count="${tag.id}" class="tag tag--${tag_index % 10}"
+                href="http://www.baidu.com">
+                 <span class="name">${tag.tagName}</span>
+                 (<b>${tag.tagName}</b>)
              </a>
          </#list>
         </div>
     </div>
-    <#if pjax><!---- pjax {#pjax} end ----></#if>
 </main>
-<#include "footer.ftl">
 </body>
 </html>

@@ -27,7 +27,7 @@ import java.util.Map;
  * @creatTime 2019/3/12 10:57
  * @since 1.0.0
  */
-@Api(value = "article-controller", tags = "article-controller", description = "文章操作类")
+@Api(value = "articlefee-controller", tags = "article-controller", description = "文章操作类")
 @Controller
 @RequestMapping("/articlefee")
 public class ArticleControllerFreemk {

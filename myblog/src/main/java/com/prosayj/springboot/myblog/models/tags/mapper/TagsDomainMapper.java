@@ -18,4 +18,7 @@ public interface TagsDomainMapper {
     int updateByPrimaryKey(TagsDomain record);
 
     List<TagsDomain> getTagsByArticelId(Long articleId);
+
+
+    List<TagsDomain> getAll();
 }
