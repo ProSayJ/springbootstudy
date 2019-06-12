@@ -15,7 +15,8 @@ public enum LoggerModelEnum {
     PROSAYJ_MAIN(4, "main模块日志", "prosayj.main"),
     PROSAYJ_SPRING5(5, "spring5模块日志", "prosayj.spring5"),
     PROSAYJ_UPUP(6, "upup模块日志", "prosayj.upup"),
-    PROSAYJ_UTILS(6, "utils模块日志", "prosayj.utlis"),
+    PROSAYJ_UTILS(7, "utils模块日志", "prosayj.utlis"),
+    PROSAYJ_MYBLOG(8, "myblog模块日志", "prosayj.myblog"),
 
 
     ;
