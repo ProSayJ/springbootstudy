@@ -10,7 +10,6 @@
         <module>apollo</module>
         <module>blog</module>
         <module>blockchain</module>
-        <module>main</module>
         <module>javase</module>
         <module>utils</module>
         <module>spring5</module>
