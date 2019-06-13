@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--    <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.2.0.BUILD-SNAPSHOT</version>
+            <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+        </parent>-->
+
+    <parent>
+        <artifactId>prosayj</artifactId>
+        <groupId>com.prosayj.springboot</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.prosayj.springboot</groupId>
+    <artifactId>main</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>test</name>
+    <description>PortalApplication</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!--外部依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- jsp标签库 -->
+        <!-- <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>jstl</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>javax.servlet-api</artifactId>
+             <scope>provided</scope>
+         </dependency>-->
+
+
+        <!--解除HTML严格语法-->
+        <!-- <dependency>
+             <groupId>net.sourceforge.nekohtml</groupId>
+             <artifactId>nekohtml</artifactId>
+         </dependency>-->
+
+        <!--bootstrap-->
+        <!-- <dependency>
+             <groupId>org.webjars</groupId>
+             <artifactId>bootstrap</artifactId>
+             <version>3.3.5</version>
+         </dependency>
+         <dependency>
+             <groupId>org.webjars</groupId>
+             <artifactId>jquery</artifactId>
+             <version>3.1.1</version>
+         </dependency>-->
+
+
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-freemarker</artifactId>
+         </dependency>-->
+
+        <!--swagger2-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger-ui.version}</version>
+        </dependency>
+
+        <!--内部依赖-->
+        <!--项目内部依赖-->
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>apollo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>blockchain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+       <!-- <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>business</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>event</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>gui</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>javafx</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>javase</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>mybatis3</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>spring5</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>upup</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.prosayj.springboot</groupId>
+            <artifactId>utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
