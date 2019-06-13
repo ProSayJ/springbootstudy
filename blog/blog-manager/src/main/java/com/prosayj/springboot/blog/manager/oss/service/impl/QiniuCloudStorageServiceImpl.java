@@ -30,7 +30,7 @@ public class QiniuCloudStorageServiceImpl extends CloudStorageService {
     public QiniuCloudStorageServiceImpl(CloudStorageConfig config) {
         this.config = config;
         //初始化
-        init();
+//        init();
     }
 
     private void init() {

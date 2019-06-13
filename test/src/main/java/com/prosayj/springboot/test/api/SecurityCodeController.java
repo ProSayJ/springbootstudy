@@ -19,47 +19,9 @@ import java.awt.*;
  * @creatTime 2018/9/5 16:20
  * @since 1.0.0
  */
-@Api(value = "hello-controller", tags = "hello-controller", description = "测试类")
+@Api(value = "security-controller", tags = "security-controller", description = "图形验证码测试类")
 @Controller
-@RequestMapping("/user")
-public class HelloController {
-/*
-
-    @Autowired
-    private UserService userService;
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    @ApiOperation(value = "用户列表全量查询", nickname = "user-list")
-    public @ResponseBody
-    List<UserVO> getAllUserList() {
-        return BeanUtil.toBeanList(userService.queryAllUser(), UserVO.class);
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    @ApiOperation(value = "用户列表全量查询", nickname = "user")
-    public ModelAndView getAll() {
-        try {
-            Thread.sleep(5000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ModelAndView modelAndView = new ModelAndView();
-        List<UserDTO> list = userService.queryAllUser();
-        modelAndView.addObject("list", list);
-        modelAndView.setViewName("userList");
-        return modelAndView;
-    }
-
-    @PostMapping(value = "/query")
-    @ApiOperation(value = "用户列表条件查询", nickname = "user-query")
-    public @ResponseBody
-    List<UserVO> queryList(
-            @ApiParam(name = "查询实体", value = "实体内容")
-            @Valid @RequestBody UserQuery userQuery) {
-        return BeanUtil.toBeanList(userService.queryAllUser(), UserVO.class);
-    }
-*/
-
+public class SecurityCodeController {
     @GetMapping("/index")
     public String index() {
         return "index";

@@ -1,4 +1,4 @@
-package com.prosayj.springboot.moduleinit;
+package com.prosayj.springboot.test.moduleinit;
 
 import com.prosayj.springboot.constants.LoggerModelEnum;
 import com.prosayj.springboot.event.eventcore.moduleinit.AbstractModuleInit;

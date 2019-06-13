@@ -1,7 +1,5 @@
-package com.prosayj;
+package com.prosayj.springboot;
 
-import com.prosayj.springboot.BussinessConfig;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -23,7 +21,11 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
         DataSourceTransactionManagerAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class,
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
-@MapperScan(basePackageClasses = BussinessConfig.class)
+//@MapperScan(basePackageClasses = BussinessConfig.class)
+/*@ComponentScan(excludeFilters = {
+        @ComponentScan.Filter(),
+        @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com\\.prosayj\\.springboot\\.designmode\\.研磨设计模式\\..*")
+})*/
 public class TestApplication {
 
     public static void main(String[] args) {

@@ -51,7 +51,7 @@ public class MainConfig2 {
      */
 //	@Scope("prototype")
     @Lazy
-    @Bean("person")
+    @Bean("person2")
     public Person person() {
         System.out.println("给容器中添加Person....");
         return new Person("张三", 25);

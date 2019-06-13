@@ -8,7 +8,7 @@ package com.prosayj.springboot.spring_annotation.bean;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("car1")
 public class Car {
 
     public Car() {

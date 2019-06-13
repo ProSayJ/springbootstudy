@@ -6,7 +6,6 @@ import com.prosayj.springboot.websocketutils.WebSocketServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Api(value = "MessagePush-Controller-controller", tags = "MessagePush-Controller-controller", description = "消息及时推送控制器")
-@Controller
+//@Controller
 @RequestMapping("/msg")
 public class MessagePushController {
 

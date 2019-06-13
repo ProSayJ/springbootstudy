@@ -7,11 +7,13 @@
     <artifactId>prosayj</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
+        <module>apollo</module>
+        <module>blog</module>
+        <module>blockchain</module>
         <module>main</module>
         <module>javase</module>
         <module>utils</module>
         <module>spring5</module>
-        <module>blockchain</module>
         <module>upup</module>
         <module>event</module>
         <module>nodejs</module>
@@ -21,7 +23,6 @@
         <module>myblog</module>
         <module>business</module>
         <module>mybatis3</module>
-        <module>blog</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->
@@ -115,35 +116,4 @@
 
 
     </properties>
-
-
-    <dependencies>
-        <!--
-                <dependency>
-                    <groupId>com.alibaba</groupId>
-                    <artifactId>druid-spring-boot-starter</artifactId>
-                    <version>1.1.9</version>
-                </dependency>
-        -->
-        <!--
-
-                &lt;!&ndash; spring boot web支持：mvc,aop... &ndash;&gt;
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-security</artifactId>
-                </dependency>
-        -->
-
-
-        <!--
-               <dependency>
-                   <groupId>org.springframework.boot</groupId>
-                   <artifactId>spring-boot-starter-test</artifactId>
-                   <scope>test</scope>
-               </dependency>
-       -->
-
-    </dependencies>
-
-
 </project>
