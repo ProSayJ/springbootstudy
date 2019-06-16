@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>apollo</module>
-        <module>blog</module>
         <module>blockchain</module>
         <module>javase</module>
         <module>utils</module>
@@ -22,6 +21,7 @@
         <module>myblog</module>
         <module>business</module>
         <module>mybatis3</module>
+        <module>poi</module>
     </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->

@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>blog</artifactId>
         <groupId>com.prosayj.springboot</groupId>
+        <artifactId>blog-root</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
 
     <artifactId>blog-search</artifactId>
+    <packaging>jar</packaging>
 
 
     <dependencies>
@@ -21,19 +21,140 @@
         </dependency>
     </dependencies>
 
-
     <build>
-        <finalName>blog</finalName>
         <plugins>
+            <!--添加SpringBoot插件:tomcat-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration><!-- 指定该Main Class为全局的唯一入口 -->
+                <configuration>
                     <mainClass>com.prosayj.springboot.blog.BlogApplication</mainClass>
-                    <layout>ZIP</layout>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-
         </plugins>
     </build>
+
+    <!--    <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>&lt;!&ndash; 指定该Main Class为全局的唯一入口 &ndash;&gt;
+                        <mainClass>com.prosayj.springboot.blog.BlogApplication</mainClass>
+                        <layout>ZIP</layout>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>-->
+    <!--<build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                &lt;!&ndash;防止.jks文件被maven错误解析&ndash;&gt;
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <id>generate-jsw-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-daemons</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryLayout>flat</repositoryLayout>
+                            &lt;!&ndash; copy conf &ndash;&gt;
+                            <configurationDirectory>conf</configurationDirectory>
+                            <configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
+                            <copyConfigurationDirectory>true</copyConfigurationDirectory>
+
+                            <logsDirectory>logs</logsDirectory>
+                            <target>${appassembler.target}</target>
+
+                            <daemons>
+                                <daemon>
+                                    <id>${daemon.id}</id>
+                                    <mainClass>com.prosayj.springboot.blog.BlogApplication</mainClass>
+                                    <generatorConfigurations>
+                                        <generatorConfiguration>
+                                            <generator>jsw</generator>
+                                            <includes>
+                                                <include>linux-x86-64</include>
+                                                <include>windows-x86-64</include>
+                                            </includes>
+
+                                            <configuration>
+                                                <property>
+                                                    &lt;!&ndash;手动添加一个系统启动时依赖的第一个classpath，这里通常写为配置文件的目录名，如果不配置，配置文件无法找到&ndash;&gt;
+                                                    <name>configuration.directory.in.classpath.first</name>
+                                                    <value>conf</value>
+                                                </property>
+                                                <property>
+                                                    <name>wrapper.logfile</name>
+                                                    <value>logs/wrapper.log</value>
+                                                </property>
+                                            </configuration>
+
+                                        </generatorConfiguration>
+                                    </generatorConfigurations>
+
+                                    <platforms>
+                                        <platform>jsw</platform>
+                                    </platforms>
+
+                                    &lt;!&ndash;<jvmSettings>
+                                        <initialMemorySize>2048M</initialMemorySize>
+                                        <maxMemorySize>2048M</maxMemorySize>
+
+                                        <extraArguments>
+                                            <extraArgument>-server</extraArgument>
+                                            <extraArgument>-XX:+HeapDumpOnOutOfMemoryError</extraArgument>
+                                            <extraArgument>-XX:ErrorFile="logs/java_error_%p.log"</extraArgument>
+                                            <extraArgument>-XX:+PrintGC</extraArgument>
+                                            <extraArgument>-XX:+PrintGCDetails</extraArgument>
+                                            <extraArgument>-XX:+PrintGCTimeStamps</extraArgument>
+                                            <extraArgument>-Xloggc:logs/gc.log</extraArgument>
+                                            &lt;!&ndash;<extraArgument>-agentpath:/opt/jprofiler9/bin/linux-x64/libjprofilerti.so=port=12009,nowait</extraArgument>&ndash;&gt;
+                                        </extraArguments>
+                                    </jvmSettings>&ndash;&gt;
+                                </daemon>
+                            </daemons>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <finalName>${finalName}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/assembly/assembly-descriptor.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>-->
 </project>
