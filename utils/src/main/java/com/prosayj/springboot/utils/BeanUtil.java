@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prosayj.springboot.utils.test.Student;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -42,8 +43,8 @@ public class BeanUtil {
     /**
      * Json字符串转化成对象
      *
-     * @param jsonString
-     * @param clazz
+     * @param jsonString json格式的字符串
+     * @param clazz 需要被转换的对象
      * @param <T>
      * @return
      * @throws Exception
@@ -58,6 +59,10 @@ public class BeanUtil {
         return null;
     }
 
+    public static void main(String[] args) {
+        String jsonString = "{\"age\":\"23\",\"name\":\"张三\"}";
+        Student student = jsonString2Obj(jsonString, Student.class);
+    }
 
     /**
      * @description 对象转json字符串

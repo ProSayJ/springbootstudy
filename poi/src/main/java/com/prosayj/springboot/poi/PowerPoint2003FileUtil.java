@@ -1,6 +1,5 @@
 package com.prosayj.springboot.poi;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.hslf.usermodel.HSLFSlideShowImpl;
 import org.apache.poi.sl.usermodel.SlideShow;
@@ -64,6 +63,6 @@ public class PowerPoint2003FileUtil extends BasePowerPointFileUtil {
                 }
             }
         }
-        return StringUtils.trimToNull(returnValue.toString());
+        return returnValue.toString();
     }
 }

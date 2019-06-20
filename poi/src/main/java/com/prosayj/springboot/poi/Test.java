@@ -21,7 +21,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws IOException {
 //        SlideShow slideShow = null;
-        File sakuraFile = new File(Main.class.getResource("/data/123.pptx").getFile());
+        File sakuraFile = new File(Test.class.getResource("/data/source/model.pptx").getFile());
         FileInputStream fileInputStream = new FileInputStream(sakuraFile);
 
         if (sakuraFile.getName().endsWith(".ppt")) {
@@ -35,7 +35,7 @@ public class Test {
                 List<Slide> slides = slideShow.getSlides();
                 for (int j = 0; j < slides.size(); j++) {
                     List shapes = slides.get(j).getShapes();
-                    if (shapes != null && j == 4) {
+                    if (shapes != null /*&& j == 11*/) {
                         for (int i = 0; i < shapes.size(); i++) {
                             Shape shape = (Shape) shapes.get(i);
                             if (shape instanceof HSLFTextShape) {// 文本框
@@ -62,7 +62,10 @@ public class Test {
                                     }
                                 }
                             }
+                            //XSLFChart
+                            //XSLFTable
                             if (shape instanceof XSLFTable) {// 表格
+                                System.out.println("表格");
                                 int rowSize = ((XSLFTable) shape).getNumberOfRows();
                                 int columnSize = ((XSLFTable) shape).getNumberOfColumns();
                                 for (int rowNum = 0; rowNum < rowSize; rowNum++) {
@@ -77,16 +80,23 @@ public class Test {
                                 }
                             }
                             if (shape instanceof XSLFGraphicFrame) {
+                                System.out.println("图标");
 //                                ShapeType shapeType = ((XSLFGraphicFrame) shape).getShapeType();
 //                                int shapeId = ((XSLFGraphicFrame) shape).getShapeId();
 //                                String shapeName = ((XSLFGraphicFrame) shape).getShapeName();
                                 XSLFSheet sheet = ((XSLFGraphicFrame) shape).getSheet();
                                 XMLSlideShow slideShow1 = sheet.getSlideShow();
+                                List<XSLFSlide> slides1 = slideShow1.getSlides();
+                                slides1.forEach(data->{
+                                    System.out.println("图标中的excle==>" + data.getTitle());
+                                });
+
+
                                 XSLFNotesMaster notesMaster = slideShow1.getNotesMaster();
                                 MasterSheet<XSLFShape, XSLFTextParagraph> masterSheet = notesMaster.getMasterSheet();
-                                masterSheet.forEach(data->{
+                               /* masterSheet.forEach(data->{
                                     data.getShapeId();
-                                });
+                                });*/
                             }
                         }
                     }

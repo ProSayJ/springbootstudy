@@ -1,5 +1,6 @@
 package com.prosayj.springboot.myblog.api_freemark;
 
+import com.alibaba.fastjson.JSONObject;
 import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
@@ -11,11 +12,15 @@ import com.prosayj.springboot.myblog.models.service.TagService;
 import com.prosayj.springboot.utils.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +32,7 @@ import java.util.Map;
  * @creatTime 2019/3/12 10:57
  * @since 1.0.0
  */
-@Api(value = "articlefee-controller", tags = "article-controller", description = "文章操作类")
+@Api(value = "articlefee-controller", tags = "articlefee-controller", description = "文章操作类")
 @Controller
 @RequestMapping("/articlefee")
 public class ArticleControllerFreemk {
@@ -35,6 +40,25 @@ public class ArticleControllerFreemk {
     private ArticleService articleService;
     @Autowired
     private TagService tagService;
+
+    @ApiOperation(value = "测试", nickname = "article-test-test")
+    @PostMapping(path = "/test")
+    public Map<String, Object> addNewModel(
+            @ApiParam(name = "新增module对象模型VO", value = "PublicModulePageVO")
+            @RequestBody String vo, HttpSession session) {
+        //Date yyyymMdd = new SimpleDateFormat("YYYYMMdd").parse("20190614");
+        try {
+            vo = URLDecoder.decode(vo, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String substring = vo.substring(6, vo.lastIndexOf("\""));
+        PublicModulePageVO publicModulePageVO = JSONObject.parseObject(substring, PublicModulePageVO.class);
+        System.out.println(publicModulePageVO.toString());
+        return null;
+    }
+
+
 
     @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list")
