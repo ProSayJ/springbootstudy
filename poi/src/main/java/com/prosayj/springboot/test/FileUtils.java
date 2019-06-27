@@ -1,23 +1,19 @@
 package com.prosayj.springboot.test;
 
-import org.apache.poi.hslf.record.Slide;
-import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.sl.usermodel.SlideShow;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableCell;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @author yangjian
@@ -34,6 +30,7 @@ public class FileUtils {
 
     /**
      * 读取Excel表格表头的内容
+     *
      * @param
      * @return String 表头内容的数组
      */
@@ -61,6 +58,7 @@ public class FileUtils {
 
     /**
      * 读取Excel数据内容
+     *
      * @param
      * @return Map 包含单元格数据内容的Map对象
      */
@@ -101,6 +99,7 @@ public class FileUtils {
 
     /**
      * 根据HSSFCell类型设置数据
+     *
      * @param cell
      * @return
      */
@@ -150,8 +149,9 @@ public class FileUtils {
 
     public static String readPPT(String filePath) {
         String str = "";
+        /*
         InputStream is = null;
-//            PowerPointExtractor extractor = null;
+        PowerPointExtractor extractor = null;
         try {
             is = new FileInputStream(filePath);
             SlideShow ss = new SlideShow(new HSLFSlideShow(is));
@@ -180,8 +180,10 @@ public class FileUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
         return str;
     }
+
     public static String readXls(String filePath) {
         Map content = readExcelContent(filePath);
         String[] title = readExcelTitle(filePath);
@@ -189,20 +191,22 @@ public class FileUtils {
         for (int index = 0; index < title.length; index++) {
             str += title[index];
         }
-        content.keySet().forEach(keys->{
-            str = str + content.get(keys);
-        }});
-       /* Iterator iterator = content.entrySet().iterator();
+        content.keySet().forEach(keys -> {
+            //str+=content.get(keys);
+        });
+        Iterator iterator = content.entrySet().iterator();
         while (iterator.hasNext()) {
-            Map.Entry map = iterator.next();
-            String value = map.getValue();
-            str = str + value;
-        }*/
+        /*    iterator.next();
+        Map.Entry map = iterator.next();
+        String value = map.getValue();
+        str = str + value;*/
+        }
         return str;
     }
-    public static String readXlsx(String filePath ) {
+
+    public static String readXlsx(String filePath) {
         String str = "";
-        try{
+        try {
             InputStream is = new FileInputStream(filePath);
             // 构造 XSSFWorkbook 对象，strPath 传入文件路径
             XSSFWorkbook xwb = new XSSFWorkbook(is);
@@ -212,18 +216,19 @@ public class FileUtils {
             XSSFRow row;
             String cell;
             // 循环输出表格中的内容
-            for (int i = sheet.getFirstRowNum()+1; i < sheet.getPhysicalNumberOfRows(); i++) {
+            for (int i = sheet.getFirstRowNum() + 1; i < sheet.getPhysicalNumberOfRows(); i++) {
                 row = sheet.getRow(i);
                 for (int j = row.getFirstCellNum(); j < row.getPhysicalNumberOfCells(); j++) {
                     // 通过 row.getCell(j).toString() 获取单元格内容，
                     cell = row.getCell(j).toString();
-                    str = str+cell;
+                    str = str + cell;
                 }
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("已运行xlRead() : " + e );
-        }finally {
+            System.out.println("已运行xlRead() : " + e);
+        } finally {
             return str;
         }
+    }
 }

@@ -1,7 +1,5 @@
 package com.prosayj.springboot.poi;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 
@@ -30,8 +28,7 @@ public class PowerPointFileUtil extends BasePowerPointFileUtil {
         String resultText = null;
 
         if (powerPointFile != null && powerPointFile.exists()) {
-
-            String extension = FilenameUtils.getExtension(powerPointFile.getName());
+          /*  String extension = FilenameUtils.getExtension(powerPointFile.getName());
             if (StringUtils.equalsIgnoreCase("ppt", extension)) {
 
                 //Office2003版文件处理
@@ -43,7 +40,7 @@ public class PowerPointFileUtil extends BasePowerPointFileUtil {
             } else {
 
                 //文件类型有误
-            }
+            }*/
         }
 
         return resultText;
