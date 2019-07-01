@@ -119,10 +119,10 @@ public class BackUp {
     /**
      * 还原数据库：
      */
-    public static void restore(String remoteIp, String userName, String pwd) {
+    public static void restore(String localhostIp, String userName, String pwd) {
         try {
             Runtime runtime = Runtime.getRuntime();
-            String command = "mysql -h " + remoteIp + " -u" + userName + " -p" + pwd + " --default-character-set=utf8 ";
+            String command = "mysql -h " + localhostIp + " -u" + userName + " -p" + pwd + " --default-character-set=utf8 ";
 
             System.out.println("开始执行还原数据库sql文件：" + command);
             long startTime = System.currentTimeMillis();

@@ -25,7 +25,8 @@ public class WorkDBBackUp {
                 "yinuojr_oss",
                 "yinuojr_auth",
                 "yinuojr_ops",
-                "yinuojr_metadata");
+                "yinuojr_metadata"
+        );
 
         BackUp.restore("localhost", "root", "root");
     }

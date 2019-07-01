@@ -1,6 +1,6 @@
 package adapter.blockchain.blockchain.service;
 
-import adapter.blockchain.blockchain.config.RedisConfig;
+import adapter.blockchain.blockchain.config.RedisConfigMy;
 import cn.bubi.access.starter.BCAutoConfiguration;
 import cn.bubi.access.starter.BCAutoConfigurationSpi;
 import cn.bubi.sdk.core.operation.OperationFactory;
@@ -32,7 +32,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfig.class})
+@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfigMy.class})
 public class _01_BlockChainOpreatorSignature {
     @Autowired
     private BcOperationService operationService;

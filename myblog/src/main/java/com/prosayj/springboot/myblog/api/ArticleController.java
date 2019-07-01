@@ -118,8 +118,8 @@ public class ArticleController {
     @GetMapping("/list/articlelistbytagid")
     public String articlelistbytagid(@ModelAttribute("id") Long id, Model model) {
         System.out.println("11111111>" + id);
-        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
         List<TagsDTO> allTags = tagService.getAllTags();
+        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
         model.addAttribute("articleList", articleVOS);
         model.addAttribute("allTags", allTags);
         return "html/articlelist";

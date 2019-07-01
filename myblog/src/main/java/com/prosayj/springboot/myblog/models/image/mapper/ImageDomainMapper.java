@@ -21,4 +21,6 @@ public interface ImageDomainMapper {
     int updateByPrimaryKey(ImageDomain record);
 
     List<ImageDomain> getAllImage();
+
+    List<ImageDomain> getByArticleId(Long articleId);
 }

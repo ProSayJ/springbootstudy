@@ -63,7 +63,7 @@ public class StaticJumpFreeController {
     @GetMapping("/editor")
     public ModelAndView editor(IdVO idVO) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("html/editor");
+        modelAndView.setViewName("freemark/editor");
         modelAndView.addObject("editorId", idVO.getId());
         return modelAndView;
     }

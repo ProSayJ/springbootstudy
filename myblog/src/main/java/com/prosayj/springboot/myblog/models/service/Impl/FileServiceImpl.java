@@ -36,6 +36,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public String uploadImg(MultipartFile fileMultipart, Long articleId, Boolean needUpLoad2ClassPath) throws IOException {
         ArticleDomain articleDomain = articleDomainMapper.selectByPrimaryKey(articleId);
+        String articleMdContent = articleDomain.getArticleMdContent();
         //目前只有一个文件上传的需求
         String fullName = fileMultipart.getOriginalFilename();
         String suffix = fullName.substring(fullName.lastIndexOf(Constants.POINT));
@@ -55,6 +56,14 @@ public class FileServiceImpl implements FileService {
         imageDTO.setImgName(fileName);
         //导出的静态资源的路径
         imageDTO.setImgStaticUrl("\\static\\images\\upload\\" + articleDomain.getArticleTitle());
+        //处理原文中不需要的file文件：
+        List<ImageDomain> imgs = imageDomainMapper.getByArticleId(articleId);
+        imgs.forEach(img->{
+            if (!articleMdContent.contains(img.getImgDbUrl())){
+                imageDomainMapper.deleteByPrimaryKey(img.getId());
+            }
+        });
+
         return imageService.save(imageDTO);
     }
 

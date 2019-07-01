@@ -188,8 +188,14 @@
     <select id="getAllImage" resultMap="ResultMapWithBLOBs">
         select
         <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
         from image
     </select>
+
+    <select id="getByArticleId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        from image
+        where article_id = #{articleId,jdbcType=BIGINT}
+    </select>
+
 </mapper>
