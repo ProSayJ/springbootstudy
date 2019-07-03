@@ -14,15 +14,12 @@ public class ExecuteOrderPractice {
     public void orderPractice() {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 5; i++) {
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1000);
-                        System.out.println(Thread.currentThread().getName() + " do something");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            executorService.execute(() -> {
+                try {
+                    Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName() + " do something");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             });
         }

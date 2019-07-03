@@ -21,30 +21,38 @@ import java.util.concurrent.locks.ReentrantLock;
  * @creatTime 2018/7/8 19:09
  * @since 1.0.0
  */
-public class _00_ReenterLock implements Runnable {
+public class _00_ReenterLock_02 implements Runnable {
+
     public static ReentrantLock lock = new ReentrantLock();
     public static int i = 0;
+
     @Override
     public void run() {
         for (int j = 0; j < 1000000; j++) {
+            lock.lock();
             lock.lock();
             try {
                 i++;
             } finally {
                 lock.unlock();
+                lock.unlock();
             }
 
         }
     }
+
     public static void main(String args[]) throws InterruptedException {
-        _00_ReenterLock reenterLock = new _00_ReenterLock();
+        _00_ReenterLock_02 reenterLock = new _00_ReenterLock_02();
         Thread thread1 = new Thread(reenterLock);
         Thread thread2 = new Thread(reenterLock);
+
         thread1.start();
         thread2.start();
+
         thread1.join();
         thread2.join();
 
         System.out.println(i);
     }
+
 }
