@@ -15,9 +15,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
  * @since 1.0.0
  */
 public class _02_SimpleWaitAndNotify {
-
     final static Object object = new Object();
-
     public static class Thread1 extends Thread {
         @Override
         public void run() {
@@ -26,7 +24,6 @@ public class _02_SimpleWaitAndNotify {
                 try {
                     System.out.println(System.currentTimeMillis() + ":thread1 waiting.... for object !");
                     //mian保证了t1先执行。t1执行wait()方法自己等待，但是会释放锁资源。
-
                     object.wait();
                     System.out.println(System.currentTimeMillis() + ":thread1 被唤醒，获取锁资源中。。。 !");
                     Thread.sleep(2000);
@@ -38,7 +35,6 @@ public class _02_SimpleWaitAndNotify {
             }
         }
     }
-
     public static class Thread2 extends Thread {
         @Override
         public void run() {
