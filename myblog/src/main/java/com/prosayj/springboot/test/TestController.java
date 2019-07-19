@@ -21,7 +21,7 @@ import java.util.List;
  * @creatTime 2019/3/12 10:57
  * @since 1.0.0
  */
-@Api(value = "test-controller", tags = "test-controller", description = "文章操作类")
+@Api(value = "test-controller", tags = "test-controller", description = "测试controller")
 @Controller
 @RequestMapping("/test")
 public class TestController {
@@ -30,6 +30,7 @@ public class TestController {
     public void articlelist(@RequestParam("dataString") String dataString) {
         System.out.println(dataString);
         List<JSONObject> jsonObjects = JSONArray.parseArray(dataString).toJavaList(JSONObject.class);
+        System.out.println(jsonObjects.toString());
 
     }
 

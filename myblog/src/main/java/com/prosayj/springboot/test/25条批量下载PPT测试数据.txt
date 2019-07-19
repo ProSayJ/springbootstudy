@@ -1,0 +1,274 @@
+[{
+    "chartTypes": [
+      {"seriesName":"WTI","barOrLine":"bar"},
+      {"seriesName":"布伦特期货","barOrLine":"bar"},
+      {"seriesName":"迪拜现货","barOrLine":"line"},
+      {"seriesName":"布伦特现货","barOrLine":"line"},
+      {"seriesName":"布伦特-迪拜","barOrLine":"bar"},
+      {"seriesName":"布伦特-WTI","barOrLine":"bar"},
+      {"seriesName":"三种油自然月","barOrLine":"bar"}
+    ],
+    "id": "113",
+    "pageNo": 1,
+    "pptName": "国际市场情况",
+    "pptType": "chart"
+  },
+
+
+  {
+    "chartTypes": [
+      {"seriesName":"迪拜现货","barOrLine":"bar"},
+
+      {"seriesName":"新加坡汽油","barOrLine":"bar"},
+      {"seriesName":"新加坡柴油","barOrLine":"line"},
+      {"seriesName":"新加坡航煤","barOrLine":"line"},
+      {"seriesName":"日本石脑油","barOrLine":"bar"},
+      {"seriesName":"汽油-原油","barOrLine":"line"},
+      {"seriesName":"柴油-原油","barOrLine":"line"}
+    ],
+    "id": "114",
+    "pageNo": 2,
+    "pptName": "国际市场走势分析",
+    "pptType": "chart"
+  },
+
+
+   {
+    "chartTypes":null,
+    "id": "115",
+    "pageNo": 3,
+    "pptName": "销售公司成品油分渠道购销情况-汽油",
+    "pptType": "table"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"胜利内部","barOrLine":"bar"},
+
+      {"seriesName":"胜利中石油","barOrLine":"bar"},
+      {"seriesName":"胜利地炼","barOrLine":"line"}
+    ],
+    "id": "116",
+    "pageNo": 4,
+    "pptName": "自产原油价格情况胜利油田",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"西北内部","barOrLine":"bar"},
+
+      {"seriesName":"西北中石油","barOrLine":"bar"},
+      {"seriesName":"西北地炼","barOrLine":"line"}
+    ],
+    "id": "117",
+    "pageNo": 5,
+    "pptName": "自产原油价格情况西北油田",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"油田企业自销天然气价格","barOrLine":"bar"},
+
+      {"seriesName":"天然气分公司川气管线销售价格","barOrLine":"bar"},
+      {"seriesName":"天然气分公司榆济管线销售价格","barOrLine":"line"},
+      {"seriesName":"油田企业供天分平均价格","barOrLine":"line"}
+    ],
+    "id": "118",
+    "pageNo": 6,
+    "pptName": "天然气价格情况",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"胜利油田","barOrLine":"bar"},
+
+      {"seriesName":"上海海洋","barOrLine":"line"},
+      {"seriesName":"西北分公司","barOrLine":"line"},
+      {"seriesName":"西南分公司","barOrLine":"line"},
+      {"seriesName":"油田企业平均销售价格","barOrLine":"bar"}
+    ],
+    "id": "119",
+    "pageNo": 7,
+    "pptName": "分企业天然气销售情况",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"与迪拜原油价差","barOrLine":"bar"},
+
+      {"seriesName":"自产计价期迪拜原油价格","barOrLine":"bar"},
+      {"seriesName":"供内部企业","barOrLine":"line"},
+      {"seriesName":"外销地炼","barOrLine":"line"},
+      {"seriesName":"外销中石油","barOrLine":"bar"},
+      {"seriesName":"股份公司自产原油合计","barOrLine":"line"}
+    ],
+    "id": "120",
+    "pageNo":8,
+    "pptName": "自产原油价格分析",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"销售价格","barOrLine":"bar"},
+      {"seriesName":"销量","barOrLine":"bar"},
+      {"seriesName":"采购价格","barOrLine":"line"}
+    ],
+    "id": "121",
+    "pageNo": 9,
+    "pptName": "汽柴油经营总体情况-汽油",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"销售价格","barOrLine":"bar"},
+      {"seriesName":"销量","barOrLine":"line"},
+      {"seriesName":"采购价格","barOrLine":"line"}
+    ],
+    "id": "122",
+    "pageNo": 10,
+    "pptName": "汽柴油经营总体情况-柴油",
+    "pptType": "chart"
+  },
+
+    {
+    "chartTypes": [
+      {"seriesName":"石蜡","barOrLine":"bar"},
+
+      {"seriesName":"商品液化气","barOrLine":"bar"},
+      {"seriesName":"硫磺","barOrLine":"line"},
+      {"seriesName":"石油焦","barOrLine":"bar"},
+      {"seriesName":"普通道路沥青","barOrLine":"bar"},
+      {"seriesName":"高等级沥青","barOrLine":"line"},
+      {"seriesName":"三种油","barOrLine":"bar"}
+
+    ],
+    "id": "123",
+    "pageNo": 11,
+    "pptName": "炼油自销产品价格情况",
+    "pptType": "chart"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "124",
+    "pageNo": 12,
+    "pptName": "汽油销售情况",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "125",
+    "pageNo": 13,
+    "pptName": "柴油销售情况",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "126",
+    "pageNo": 14,
+    "pptName": "销售公司采购情况-汽油",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "127",
+    "pageNo": 15,
+    "pptName": "销售公司采购情况-柴油",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "128",
+    "pageNo": 16,
+    "pptName": "销售公司成品油分渠道购销情况-汽油",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "129",
+    "pageNo": 17,
+    "pptName": "销售公司成品油分渠道购销情况-柴油",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "130",
+    "pageNo": 18,
+    "pptName": "自产天然气销售情况",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "585",
+    "pageNo": 19,
+    "pptName": "总体经营情况-汽油销售情况",
+    "pptType": "table"
+  },
+ 
+     {
+    "chartTypes":null,
+    "id": "589",
+    "pageNo": 20,
+    "pptName": "总体经营情况-柴油销售情况",
+    "pptType": "table"
+  },
+ 
+   {
+    "chartTypes":null,
+    "id": "871",
+    "pageNo": 21,
+    "pptName": "化工品-图二化工原料",
+    "pptType": "table"
+  },
+  
+   {
+    "chartTypes":null,
+    "id": "872",
+    "pageNo": 22,
+    "pptName": "化工品-图三合成树脂",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "873",
+    "pageNo": 23,
+    "pptName": "化工品-图四合成橡胶",
+    "pptType": "table"
+  },
+
+     {
+    "chartTypes":null,
+    "id": "874",
+    "pageNo": 24,
+    "pptName": "化工品-图五合纤单体",
+    "pptType": "table"
+  },
+  
+     {
+    "chartTypes":null,
+    "id": "875",
+    "pageNo": 25,
+    "pptName": "化工品-图六合成纤维",
+    "pptType": "table"
+  }
+
+]
+
+
+
+
+
