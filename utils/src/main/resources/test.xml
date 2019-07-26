@@ -1,0 +1,11 @@
+<AttributeStatement>
+    <Attribute Name="UserId" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <AttributeValue>junwei.yang</AttributeValue>
+    </Attribute>
+    <Attribute Name="Acount" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <AttributeValue>yangjw1988</AttributeValue>
+    </Attribute>
+    <Attribute Name="Password" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <AttributeValue>Yangjunwei@#11</AttributeValue>
+    </Attribute>
+</AttributeStatement>

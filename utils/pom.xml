@@ -184,6 +184,10 @@
             <artifactId>pegdown</artifactId>
             <version>1.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
         <!--测试类解析swagger依赖 结束-->
 
 
