@@ -7,7 +7,6 @@ public class _00_Worker implements Runnable {
             //doWork();
         }
     }
-
     public static void main(String[] args) {
         _00_Worker worker = new _00_Worker();
         new Thread(worker).start();

@@ -8,6 +8,7 @@ public class _02_LengthComparator implements Comparator<String> {
     public int compare(String first, String second) {
         return Integer.compare(first.length(), second.length());
     }
+
     public static void main(String[] args) {
         String[] strings = {"a", "bb", "ccc"};
         Arrays.sort(strings, new _02_LengthComparator());

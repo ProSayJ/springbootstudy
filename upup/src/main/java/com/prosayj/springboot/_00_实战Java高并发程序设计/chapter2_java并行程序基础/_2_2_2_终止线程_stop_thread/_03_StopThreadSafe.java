@@ -1,0 +1,94 @@
+package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java并行程序基础._2_2_2_终止线程_stop_thread;
+
+/**
+ * @author yangjian
+ * @description TODO
+ * @email ProSayj@gmail.com
+ * @creatTime 2018/11/24 15:11
+ * @since 1.0.0
+ */
+public class _03_StopThreadSafe {
+    public static User u = new User();
+
+    public static class User {
+        private int id;
+
+        private String name;
+
+        public User() {
+            id = 0;
+            name = "0";
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "User [id=" + id + ", name=" + name + "]";
+        }
+    }
+
+    public static class ChangeObjectThread extends Thread {
+
+        @Override
+        public void run() {
+            while (true) {
+                if (Thread.currentThread().isInterrupted()) {
+                    System.out.println("exit with interrupted");
+                    break;
+                }
+                synchronized (u) {
+                    int v = (int) (System.currentTimeMillis() / 1000);
+                    u.setId(v);
+                    //Oh, do sth. else
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        //重要，重置中断状态
+                        Thread.currentThread().interrupt();
+                    }
+                    u.setName(String.valueOf(v));
+                }
+                Thread.yield();
+            }
+        }
+    }
+
+    public static class ReadObjectThread extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (u) {
+                    if (u.getId() != Integer.parseInt(u.getName())) {
+                        System.out.println(u.toString());
+                    }
+                }
+                Thread.yield();
+            }
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        new ReadObjectThread().start();
+        while (true) {
+            ChangeObjectThread t = new ChangeObjectThread();
+            t.start();
+            Thread.sleep(150);
+            t.interrupt();
+        }
+    }
+}
