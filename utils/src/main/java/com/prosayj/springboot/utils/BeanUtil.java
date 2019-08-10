@@ -106,26 +106,8 @@ public class BeanUtil {
      * @Date 10:55 2018/9/19
      * @since 1.0.0
      */
-    public static Map<String, String> objectConvertToMap(Object object) {
-        Map<String, String> result = new HashMap<>();
-        for (Class<?> clazz = object.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
-            for (Field field : clazz.getDeclaredFields()) {
-                field.setAccessible(true);
-                Object eleContent;
-                try {
-                    eleContent = field.get(object);
-                } catch (Exception e) {
-                    throw new RuntimeException(e.getMessage(), e);
-                }
-                if (eleContent == null) {
-                    result.put(field.getName(), null);
-                    continue;
-                }
-                result.put(field.getName(), eleContent.toString());
-            }
-        }
-        return result;
-    }
+
+
 
     /**
      * @description 拷贝对象属性

@@ -4,7 +4,7 @@ import java.beans.PropertyVetoException;
 
 import javax.sql.DataSource;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+//import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
@@ -64,12 +64,13 @@ public class TxConfig {
     //数据源
     @Bean
     public DataSource dataSource() throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+       /* ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser("root");
         dataSource.setPassword("root");
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
         dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/test");
-        return dataSource;
+        return dataSource;*/
+       return null;
     }
 
     //

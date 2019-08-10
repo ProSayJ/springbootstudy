@@ -64,7 +64,10 @@
         <stax-api.version>1.0.1</stax-api.version>
         <wstx-asl.version>3.2.9</wstx-asl.version>
         <jibx-bind.version>1.2.5</jibx-bind.version>
-        <mybatis.version>3.5.1</mybatis.version>
+
+
+        <!--mybatis3-->
+        <mybatis.version>3.5.2</mybatis.version>
 
         <!-- spring4 模块依赖-->
         <junit-version>4.12</junit-version>
@@ -78,6 +81,7 @@
         <spring5-aspects-version>5.1.2.RELEASE</spring5-aspects-version>
         <spring5-tx-version>5.1.2.RELEASE</spring5-tx-version>
         <spring5-jdbc-version>5.1.5.RELEASE</spring5-jdbc-version>
+        <spring5-test-version>5.1.5.RELEASE</spring5-test-version>
 
 
         <!--utils 模块依赖 -->
