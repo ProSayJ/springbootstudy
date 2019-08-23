@@ -1,4 +1,4 @@
-package com.prosayj.springboot.myblog.api_freemark;
+package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.myblog.models.tags.domain.TagsDomain;
 import com.prosayj.springboot.myblog.models.tags.mapper.TagsDomainMapper;

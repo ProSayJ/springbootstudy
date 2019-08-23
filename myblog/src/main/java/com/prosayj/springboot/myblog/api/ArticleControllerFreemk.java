@@ -1,4 +1,4 @@
-package com.prosayj.springboot.myblog.api_freemark;
+package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
@@ -29,7 +29,7 @@ import java.util.Map;
  */
 @Api(value = "articlefee-controller", tags = "articlefee-controller", description = "文章操作类")
 @Controller
-@RequestMapping("/articlefee")
+@RequestMapping("/article")
 public class ArticleControllerFreemk {
     @Autowired
     private ArticleService articleService;

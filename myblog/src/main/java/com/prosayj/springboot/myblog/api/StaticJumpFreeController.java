@@ -1,11 +1,10 @@
-package com.prosayj.springboot.myblog.api_freemark;
+package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Api(value = "static-jump-controller", tags = "static-jump-controller", description = "静态资源跳转类")
 @Controller
-@RequestMapping("/fee")
 public class StaticJumpFreeController {
 
 
@@ -46,7 +44,7 @@ public class StaticJumpFreeController {
     @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
     @GetMapping("/create")
     public String create() {
-        return "redirect:/articlefee/create";
+        return "redirect:/article/create";
     }
 
 
@@ -84,6 +82,6 @@ public class StaticJumpFreeController {
     @GetMapping("/articlelistbytagid")
     public String registerIframe(IdVO idVO, RedirectAttributes model) {
         model.addFlashAttribute("id", idVO.getId());
-        return "redirect:/articlefee/list/articlelistbytagid";
+        return "redirect:/article/list/articlelistbytagid";
     }
 }

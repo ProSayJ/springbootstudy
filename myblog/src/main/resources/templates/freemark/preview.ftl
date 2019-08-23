@@ -109,7 +109,7 @@
 <script type="text/javascript">
     $(function () {
         var testEditormdView, testEditormdView2;
-        $.post("/articlefee/detail?id=" + $(" #articleId ").val(), function (markdown) {
+        $.post("/article/detail?id=" + $(" #articleId ").val(), function (markdown) {
             // console.log(markdown.toString());
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                 markdown: markdown,//+ "\r\n" + $("#append-test").text(),

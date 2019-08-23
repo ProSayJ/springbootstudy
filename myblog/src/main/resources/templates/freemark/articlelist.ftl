@@ -90,16 +90,16 @@
 
 <script type="text/javascript">
     function create() {
-        window.open("/fee/create");
+        window.open("/create");
     }
 
     function preview(id) {
-        alert(id);
-        window.open("/fee/preview?id=" + id);
+        //alert(id);
+        window.open("/preview?id=" + id);
     }
 
     function edit(id) {
-        window.open("/fee/editor?id=" + id);
+        window.open("/editor?id=" + id);
     }
 
     $(function () {
@@ -107,8 +107,8 @@
             var tagId = $("#optionChange option:selected").attr("value");
             /*  var url = "/report/city/cityid/" + cityid;
               window.location.href = url;*/
-             alert(tagId);
-            window.open("/fee/articlelistbytagid?id=" + tagId);
+            // alert(tagId);
+            window.open("/articlelistbytagid?id=" + tagId);
         });
     });
 

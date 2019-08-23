@@ -67,4 +67,9 @@ public class ReadMeController {
         return "example/image-upload.html";
     }
 
+    @GetMapping("change-mode.html")
+    public String changeMode() {
+        return "example/change-mode.html";
+    }
+
 }

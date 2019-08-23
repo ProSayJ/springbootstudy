@@ -16,7 +16,7 @@
         <div class="page__content page__tags fn__clear">
             <#list tags as tag>
                 <a rel="tag" data-count="${tag.id}" class="tag tag--${tag_index % 10}"
-                   href="/fee/articlelistbytagid?id=${tag.id}" target="_blank">
+                   href="/articlelistbytagid?id=${tag.id}" target="_blank">
                     <span class="name">${tag.tagName}</span>
                     (<b>${tag.tagName}</b>)
                 </a>

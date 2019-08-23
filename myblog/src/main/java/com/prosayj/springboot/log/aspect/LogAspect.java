@@ -48,7 +48,7 @@ public class LogAspect {
      * 定义日志切入点
      */
     @Pointcut("execution(* com.prosayj.springboot.myblog.api..*.*(..))" +
-            "|| execution(* com.prosayj.springboot.myblog.api_freemark.*.*(..))" +
+            "|| execution(* com.prosayj.springboot.myblog.api.*.*(..))" +
             "&& @within(org.springframework.web.bind.annotation.RequestMapping)")
     public void serviceAspect() {
     }

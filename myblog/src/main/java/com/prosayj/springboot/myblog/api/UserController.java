@@ -1,8 +1,7 @@
-package com.prosayj.springboot.myblog.api_freemark;
+package com.prosayj.springboot.myblog.api;
 
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -24,7 +23,7 @@ public class UserController {
      * @param session session
      * @return 模板路径admin/admin_login
      */
-    @GetMapping(value = "/login")
+    //@GetMapping(value = "/login")
     public ModelAndView login(HttpSession session, ModelAndView mv) {
        /* final User user = (User) session.getAttribute(USER_SESSION_KEY);
         //如果session存在，跳转到后台首页
