@@ -62,7 +62,7 @@
                     <td>#{article.id}</td>
                     <td>
                         <div style="margin-bottom:5px">
-                            <a class="btn btn-inverse" onclick=preview(#{article.id})>${article.articleTitle}</a>
+                            <a class="btn btn-inverse" onclick="preview(${article.id})">${article.articleTitle}</a>
                         </div>
                     </td>
                     <td>${article.originalAuthor}</td>
@@ -94,6 +94,7 @@
     }
 
     function preview(id) {
+        alert(id);
         window.open("/fee/preview?id=" + id);
     }
 
@@ -106,7 +107,7 @@
             var tagId = $("#optionChange option:selected").attr("value");
             /*  var url = "/report/city/cityid/" + cityid;
               window.location.href = url;*/
-            // alert(tagId);
+             alert(tagId);
             window.open("/fee/articlelistbytagid?id=" + tagId);
         });
     });

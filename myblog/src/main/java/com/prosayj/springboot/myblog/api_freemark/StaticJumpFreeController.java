@@ -26,7 +26,7 @@ public class StaticJumpFreeController {
     @GetMapping("/")
     public String root() {
 //        return "redirect:/login";
-        return "redirect:article/list";
+        return "redirect:/taglist";
     }
 
 
@@ -54,7 +54,7 @@ public class StaticJumpFreeController {
     @GetMapping("/preview")
     public ModelAndView preview(IdVO idVO) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("html/preview");
+        modelAndView.setViewName("freemark/preview");
         modelAndView.addObject("previewId", idVO.getId());
         return modelAndView;
     }
