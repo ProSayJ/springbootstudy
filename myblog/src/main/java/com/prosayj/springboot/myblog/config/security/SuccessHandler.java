@@ -1,4 +1,4 @@
-package com.prosayj.springboot.myblogconfig.security;
+package com.prosayj.springboot.myblog.config.security;
 
 /**
  * @author yangjian

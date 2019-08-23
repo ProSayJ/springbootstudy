@@ -1,4 +1,4 @@
-package com.prosayj.springboot.myblogconfig;
+package com.prosayj.springboot.myblog.config.swagger2;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

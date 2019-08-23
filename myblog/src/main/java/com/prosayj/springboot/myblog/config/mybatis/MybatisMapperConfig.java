@@ -1,8 +1,7 @@
-package com.prosayj.springboot.myblogconfig;
+package com.prosayj.springboot.myblog.config.mybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Repository;
 
 /**
  * @author yangjian
