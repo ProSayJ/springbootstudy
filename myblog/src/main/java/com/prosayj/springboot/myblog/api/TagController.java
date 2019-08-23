@@ -1,7 +1,7 @@
 package com.prosayj.springboot.myblog.api;
 
-import com.prosayj.springboot.myblog.models.tags.domain.TagsDomain;
-import com.prosayj.springboot.myblog.models.tags.mapper.TagsDomainMapper;
+import com.prosayj.springboot.myblog.repository.domain.TagsDomain;
+import com.prosayj.springboot.myblog.repository.mapper.TagsDomainMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

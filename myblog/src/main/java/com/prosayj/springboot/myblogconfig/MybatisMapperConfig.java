@@ -2,6 +2,7 @@ package com.prosayj.springboot.myblogconfig;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author yangjian
@@ -12,10 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan({
-        "com.prosayj.springboot.myblog.models.article.mapper",
-        "com.prosayj.springboot.myblog.models.articletags.mapper",
-        "com.prosayj.springboot.myblog.models.image.mapper",
-        "com.prosayj.springboot.myblog.models.tags.mapper",
+        "com.prosayj.springboot.myblog.repository.mapper"
 })
 public class MybatisMapperConfig {
 }

@@ -1,6 +1,6 @@
 package com.prosayj.springboot.myblog.api;
 
-import com.prosayj.springboot.myblog.models.service.FileService;
+import com.prosayj.springboot.myblog.service.FileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
