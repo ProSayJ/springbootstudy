@@ -17,13 +17,15 @@
                type="com.prosayj.springboot.myblog.models.image.domain.ImageDomain">
         <result column="img_source" jdbcType="LONGVARBINARY" property="imgSource"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-    id, user_id, article_id, img_name, img_suffix, img_db_url, img_static_url, create_date, 
+    id, user_id, article_id, img_name, img_suffix, img_db_url, img_static_url, create_date,
     update_date, is_delete
-  </sql>
+    </sql>
+
     <sql id="Blob_Column_List">
     img_source
-  </sql>
+   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
         select
         <include refid="Base_Column_List"/>
@@ -188,7 +190,9 @@
     <select id="getAllImage" resultMap="ResultMapWithBLOBs">
         select
         <include refid="Base_Column_List"/>
-        from image
+        ,
+        <include refid="Blob_Column_List"/>
+        from image where is_delete = 2 order by create_date desc
     </select>
 
     <select id="getByArticleId" resultMap="ResultMapWithBLOBs">
