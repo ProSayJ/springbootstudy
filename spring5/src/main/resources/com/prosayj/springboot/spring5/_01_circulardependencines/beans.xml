@@ -24,4 +24,15 @@
     </bean>
     -->
 
+
+    <!--合并bean定义，抽象类不能被实例化-->
+    <bean name="abstractPersion" class="com.prosayj.springboot.spring5._01_circulardependencines.AbstractPersion"
+          abstract="true">
+        <property name="name" value="我是抽象类初始化定义的名称"></property>
+    </bean>
+    <bean name="instancePersion" class="com.prosayj.springboot.spring5._01_circulardependencines.InstancePersion"
+          parent="abstractPersion">
+        <!--<property name="name" value="我是子类复写的名称"></property>-->
+    </bean>
+
 </beans>

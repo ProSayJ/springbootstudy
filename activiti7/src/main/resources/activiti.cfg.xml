@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--数据源配置-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <!--<property name="url" value="jdbc:mysql://127.0.0.1:3306/activiti?serverTimezone=UTC&characterEncoding=UTF-8&serverTimezone=Hongkong"/>-->
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/activiti7?serverTimezone=Hongkong"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="maxActive" value="3"/>
+        <!--空闲时最大连接数-->
+        <property name="maxIdle" value="1"/>
+    </bean>
+
+    <!--activiti ProcessEngine配置对象，使用单独启动方式来运行
+        1:默认情况下bean的id为：processEngineConfiguration
+        2:如果是自定义bean的名称，则需要显示的获取bean名称。
+    -->
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--是否生成表结构：true:表结构存在，则不再生成数据库的表结构；false则不创建数据库表结构-->
+        <property name="databaseSchemaUpdate" value="true"/>
+        <!--
+        <property name="mailServerHost" value="mail.my-corp.com"/>
+        <property name="mailServerPort" value="5025"/>
+        -->
+    </bean>
+
+</beans>
