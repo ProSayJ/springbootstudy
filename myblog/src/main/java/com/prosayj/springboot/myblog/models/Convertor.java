@@ -1,5 +1,8 @@
 package com.prosayj.springboot.myblog.models;
 
+import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
+import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
+import com.prosayj.springboot.myblog.models.dto.ArticleDTO;
 import com.prosayj.springboot.myblog.repository.domain.TagsDomain;
 import com.prosayj.springboot.myblog.models.dto.TagsDTO;
 import com.prosayj.springboot.utils.BeanUtil;
@@ -27,4 +30,21 @@ public class Convertor {
         return tagsDTOS;
     }
 
+    public static ArticleDTO toArticleDTO(BlogCreateVO blogs) {
+        ArticleDTO articleDTO = new ArticleDTO();
+        articleDTO.setArticleMdContent(blogs.getArticleContent());
+        articleDTO.setArticleHtmlContent(blogs.getArticleHtmlContent());
+        articleDTO.setArticleTitle(blogs.getArticleTitle());
+        articleDTO.setArticleTags(blogs.getArticleTags());
+        articleDTO.setOriginalAuthor(blogs.getAuthor());
+        return articleDTO;
+    }
+
+    public static ArticleDTO toArticleDTO(BlogUpdateVO updateVO) {
+        ArticleDTO articleDTO = new ArticleDTO();
+        articleDTO.setArticleMdContent(updateVO.getArticleContent());
+        articleDTO.setArticleHtmlContent(updateVO.getArticleHtmlContent());
+        articleDTO.setId(updateVO.getId());
+        return articleDTO;
+    }
 }

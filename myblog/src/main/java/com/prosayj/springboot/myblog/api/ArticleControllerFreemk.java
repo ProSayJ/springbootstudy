@@ -4,6 +4,7 @@ import com.prosayj.springboot.myblog.api.vo.input.BlogCreateVO;
 import com.prosayj.springboot.myblog.api.vo.input.BlogUpdateVO;
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
 import com.prosayj.springboot.myblog.api.vo.output.ArticleVO;
+import com.prosayj.springboot.myblog.models.Convertor;
 import com.prosayj.springboot.myblog.models.dto.ArticleDTO;
 import com.prosayj.springboot.myblog.models.dto.TagsDTO;
 import com.prosayj.springboot.myblog.service.ArticleService;
@@ -36,10 +37,21 @@ public class ArticleControllerFreemk {
     @Autowired
     private TagService tagService;
 
-    @ApiOperation(value = "文章列表", nickname = "article-controller-list")
+    /*@ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list")
     public ModelAndView articlelist(ModelAndView mv) {
         List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
+        List<TagsDTO> allTags = tagService.getAllTags();
+        mv.addObject("articleList", articleVOS);
+        mv.addObject("allTags", allTags);
+        mv.setViewName("freemark/articlelist");
+        return mv;
+    }*/
+
+    @ApiOperation(value = "文章列表", nickname = "article-controller-list")
+    @GetMapping("/list/articlelistbytagid")
+    public ModelAndView articleListByTagid(@ModelAttribute("id") Long id, ModelAndView mv) {
+        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
         List<TagsDTO> allTags = tagService.getAllTags();
         mv.addObject("articleList", articleVOS);
         mv.addObject("allTags", allTags);
@@ -61,21 +73,7 @@ public class ArticleControllerFreemk {
     @PostMapping("/publish")
     @ResponseBody
     public Map<String, String> publishArticle(BlogCreateVO blogs) {
-        String mdArticleContent = blogs.getArticleContent();
-        System.out.println(mdArticleContent);
-        //获得文章html代码并生成摘要
-        String articleHtmlContent = blogs.getArticleHtmlContent();
-        System.out.println(articleHtmlContent);
-
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setArticleMdContent(blogs.getArticleContent());
-        articleDTO.setArticleHtmlContent(blogs.getArticleHtmlContent());
-
-        articleDTO.setArticleTitle(blogs.getArticleTitle());
-        articleDTO.setArticleTags(blogs.getArticleTags());
-        articleDTO.setOriginalAuthor(blogs.getAuthor());
-        articleService.insert(articleDTO);
-
+        articleService.insert(Convertor.toArticleDTO(blogs));
         Map<String, String> result = new HashMap<>();
         result.put("status", "200");
         return result;
@@ -86,7 +84,8 @@ public class ArticleControllerFreemk {
     @PostMapping("/detail")
     @ResponseBody
     public String articleEcho(IdVO idVO) {
-        String articleMdContent = articleService.getArticelByPrimaryKey(idVO.getId()).getArticleMdContent();
+        String articleMdContent = articleService.getArticelByPrimaryKey(
+                idVO.getId()).getArticleMdContent();
         return articleMdContent;
     }
 
@@ -94,11 +93,7 @@ public class ArticleControllerFreemk {
     @PostMapping("/update")
     @ResponseBody
     public Map<String, String> update(BlogUpdateVO updateVO) {
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setArticleMdContent(updateVO.getArticleContent());
-        articleDTO.setArticleHtmlContent(updateVO.getArticleHtmlContent());
-        articleDTO.setId(updateVO.getId());
-        articleService.updateByCondition(articleDTO);
+        articleService.updateByCondition(Convertor.toArticleDTO(updateVO));
         Map<String, String> result = new HashMap<>();
         result.put("status", "200");
         return result;
@@ -110,17 +105,5 @@ public class ArticleControllerFreemk {
     public List<TagsDTO> getAllTags() {
         List<TagsDTO> allTags = tagService.getAllTags();
         return allTags;
-    }
-
-    @ApiOperation(value = "文章列表", nickname = "article-controller-list")
-    @GetMapping("/list/articlelistbytagid")
-    public ModelAndView articlelistbytagid(@ModelAttribute("id") Long id, ModelAndView mv) {
-        System.out.println("11111111>" + id);
-        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.queryByTags(id), ArticleVO.class);
-        List<TagsDTO> allTags = tagService.getAllTags();
-        mv.addObject("articleList", articleVOS);
-        mv.addObject("allTags", allTags);
-        mv.setViewName("freemark/articlelist");
-        return mv;
     }
 }

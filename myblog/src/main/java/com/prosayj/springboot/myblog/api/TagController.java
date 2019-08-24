@@ -30,7 +30,8 @@ public class TagController {
     public ModelAndView taglist(ModelAndView mv) {
         List<TagsDomain> all = tagsDomainMapper.getAll();
         mv.addObject("tags",all);
-        mv.setViewName("/skins/Pinghsu/tags");
+        //mv.setViewName("/skins/Pinghsu/tags");
+        mv.setViewName("freemark/tags");
         return mv;
     }
 

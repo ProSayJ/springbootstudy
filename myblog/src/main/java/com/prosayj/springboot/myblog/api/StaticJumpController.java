@@ -17,11 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Api(value = "static-jump-controller", tags = "static-jump-controller", description = "静态资源跳转类")
 @Controller
-public class StaticJumpFreeController {
+public class StaticJumpController {
 
 
     @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
-    @GetMapping("/")
+    //@GetMapping("/")
     public String root() {
 //        return "redirect:/login";
         return "redirect:/taglist";
