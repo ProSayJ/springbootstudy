@@ -37,17 +37,6 @@ public class ArticleControllerFreemk {
     @Autowired
     private TagService tagService;
 
-    /*@ApiOperation(value = "文章列表", nickname = "article-controller-list")
-    @GetMapping("/list")
-    public ModelAndView articlelist(ModelAndView mv) {
-        List<ArticleVO> articleVOS = BeanUtil.toBeanList(articleService.query(), ArticleVO.class);
-        List<TagsDTO> allTags = tagService.getAllTags();
-        mv.addObject("articleList", articleVOS);
-        mv.addObject("allTags", allTags);
-        mv.setViewName("freemark/articlelist");
-        return mv;
-    }*/
-
     @ApiOperation(value = "文章列表", nickname = "article-controller-list")
     @GetMapping("/list/articlelistbytagid")
     public ModelAndView articleListByTagid(@ModelAttribute("id") Long id, ModelAndView mv) {

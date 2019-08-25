@@ -26,101 +26,59 @@
             width: auto;
         }
 
-        #sidebar {
-            width: 18%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            right: 0;
-            overflow: hidden;
-            background: #fffffc;
-            z-index: 100;
-            padding: 18px;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-bottom: none;
-        }
-
-        #sidebar:hover {
-            overflow: auto;
-        }
-
         #sidebar h1 {
             font-size: 14px;
         }
 
         #custom-toc-container {
-            padding-left: 0;
+            width: 28%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+
+            padding: 18px;
+            border: 1px solid #ddd;/*边框*/
+            border-top: none;
+            border-bottom: none;
+
+            position: fixed;
+            overflow: auto;
         }
 
-        #test-editormd-view, #test-editormd-view2 {
+        #custom-toc-container > .markdown-toc {
+            padding: 10px;
+        }
+        #test-editormd-view {
             padding-left: 0;
             padding-right: 400px;
             margin: 0;
         }
 
-        #external-frame {
-            width: 300px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            background: #fff;
-            z-index: 100;
-            padding: 18px;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-bottom: none;
-        }
     </style>
 </head>
 <body>
 <div id="layout">
     <header>
-        <h1>Markdown转HTML的显示处理之自定义 ToC 容器</h1>
-        <p>即：非编辑情况下的HTML预览</p>
-        <p>HTML Preview (markdown to html and custom ToC container)</p>
-    </header>
-    <select id="preview-area-theme-select">
-        <option selected="selected" value="">select preview area themes</option>
-    </select>
-    <div id="sidebar">
-        <h1>Table of Contents</h1>
         <div class="markdown-body editormd-preview-container" id="custom-toc-container">#custom-toc-container</div>
-    </div>
+    </header>
+
     <div id="test-editormd-view">
         <textarea style="display:none;" name="test-editormd-markdown-doc">###Hello world!</textarea>
     </div>
-    <div id="test-editormd-view2">
-        <textarea id="append-test" style="display:none;"></textarea>
-    </div>
 </div>
-
-<!--
-<script src="js/zepto.min.js"></script>
-<script>
-    var jQuery = Zepto;  // 为了避免修改flowChart.js和sequence-diagram.js的源码，所以使用Zepto.js时想支持flowChart/sequenceDiagram就得加上这一句
-</script>
--->
 
 
 <input type="hidden" id="articleId" name="name" value="${previewId}">
 <script type="text/javascript">
     $(function () {
-        var testEditormdView, testEditormdView2;
+        var testEditormdView;
         $.post("/article/detail?id=" + $(" #articleId ").val(), function (markdown) {
-            // console.log(markdown.toString());
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                 markdown: markdown,//+ "\r\n" + $("#append-test").text(),
-                //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
                 htmlDecode: "style,script,iframe",  // you can filter tags decode
-                //toc             : false,
-                tocm: true,    // Using [TOCM]
+                //tocm: true,    // Using [TOCM]
                 tocContainer: "#custom-toc-container", // 自定义 ToC 容器层
-                //gfm             : false,
-                //tocDropdown     : true,
-                // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
                 emoji: true,
                 taskList: true,
                 tex: true,  // 默认不解析
@@ -131,32 +89,16 @@
                 editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
                 path: '/static/editormd/lib/',
             });
-            themeSelect("preview-area-theme-select", editormd.previewThemes, "previewTheme", function ($this, theme) {
-                alert(theme);
-                testEditormdView.getEditor().setTheme(theme);
-
-            });
-            //console.log("返回一个 jQuery 实例 =>", testEditormdView);
-
-            // 获取Markdown源码
-            //console.log(testEditormdView.getMarkdown());
-
-            //alert(testEditormdView.getMarkdown());
         });
 
-        /*
-                testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-                    htmlDecode: "style,script,iframe",  // you can filter tags decode
-                    emoji: true,
-                    taskList: true,
-                    tex: true,  // 默认不解析
-                    flowChart: true,  // 默认不解析
-                    sequenceDiagram: true,  // 默认不解析
-                });
-          */
+        themeSelect("preview-area-theme-select", editormd.previewThemes, "previewTheme", function ($this, theme) {
+            alert(theme);
+            testEditormdView.getEditor().setTheme(theme);
+
+        });
+
         function themeSelect(id, themes, lsKey, callback) {
             var select = $("#" + id);
-
             for (var i = 0, len = themes.length; i < len; i++) {
                 var theme = themes[i];
                 var selected = (localStorage[lsKey] == theme) ? " selected=\"selected\"" : "";
@@ -180,6 +122,51 @@
 
             return select;
         }
+
+        $("#insert-btn").click(function() {
+            testEditormdView.config({
+                tocContainer : "#custom-toc-container",
+                tocDropdown   : false
+            });
+        });
+
+        $("#menu-btn").click(function(){
+            testEditormdView.config({
+                tocContainer  : "",
+                tocDropdown   : true,
+                tocTitle      : "目录 Table of Contents dsfsadfsfdsdf",
+            });
+        });
+
+        $("#menu2-btn").click(function(){
+            alert("ToC Dropdown menu insert to custom container");
+            testEditormdView.config({
+                tocContainer  : "#custom-toc-container",
+                tocDropdown   : true,
+                tocTitle      : "目录 Table of Contents dsfsadfsfdsdf",
+            });
+        });
+
+        $("#default-btn").click(function() {
+            alert("default-btn");
+            $("#custom-toc-container").html("#custom-toc-container");
+            testEditormdView.config({
+                tocContainer : "",
+                tocm : false,
+                tocDropdown  : false
+            });
+        });
+
+        $("#tocm-btn").click(function() {
+            alert("tocm-btn");
+            $("#custom-toc-container").html("#custom-toc-container");
+            testEditormdView.config({
+                tocm : true,
+                tocContainer : "",
+                tocDropdown   : false
+            });
+        });
+
     });
 </script>
 </body>

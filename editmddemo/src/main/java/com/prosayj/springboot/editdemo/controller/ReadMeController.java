@@ -63,7 +63,8 @@ public class ReadMeController {
 
 
     @GetMapping("image-upload.html")
-    public String imageUpload() {
+    public String imageUpload()
+    {
         return "example/image-upload.html";
     }
 
@@ -71,5 +72,13 @@ public class ReadMeController {
     public String changeMode() {
         return "example/change-mode.html";
     }
+
+    @GetMapping("toc.html")
+    public String toc() {
+        return "example/toc.html";
+    }
+
+
+
 
 }
