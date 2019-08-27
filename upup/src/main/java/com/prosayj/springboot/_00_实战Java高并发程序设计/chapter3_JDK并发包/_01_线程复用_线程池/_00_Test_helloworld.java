@@ -10,7 +10,11 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK�
 public class _00_Test_helloworld {
     public static void main(String[] args) {
         new Thread(() -> {
-            System.out.println(Thread.currentThread().getName() + "开始~~~");
+            // do sth
         }).start();
+
+        System.out.println(Thread.currentThread().getName() + "开始~~~");
+
+
     }
 }

@@ -27,7 +27,6 @@ public class _07_ReadWriteLockDemo {
     private int value;
 
     public Object handleRead(Lock lock) throws InterruptedException {
-
         try {
             lock.lock();
             Thread.sleep(1000);//模拟读操作，耗时越多，优势越明显
@@ -51,34 +50,28 @@ public class _07_ReadWriteLockDemo {
 
     public static void main(String args[]) {
         final _07_ReadWriteLockDemo demo = new _07_ReadWriteLockDemo();
-
-        Runnable readRunnable = new Runnable() {
-            @Override
-            public void run() {
-                //分别使用两种锁来运行,性能差别很直观的就体现出来,使用读写锁后读操作可以并行,节省了大量时间
-                try {
-//                    demo.handleRead(readLock);
-                    demo.handleRead(lock);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+        Runnable readRunnable = () -> {
+            //分别使用两种锁来运行,性能差别很直观的就体现出来,使用读写锁后读操作可以并行,节省了大量时间
+            try {
+                //demo.handleRead(readLock);
+                demo.handleRead(lock);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
         };
 
-        Runnable writeRunnable = new Runnable() {
-            @Override
-            public void run() {
-                //分别使用两种锁来运行,性能差别很直观的就体现出来
-                try {
-//                    demo.handleWrite(writeLock, new Random().nextInt(100));
-                    demo.handleWrite(lock, new Random().nextInt(100));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+        Runnable writeRunnable = () -> {
+            //分别使用两种锁来运行,性能差别很直观的就体现出来
+            try {
+                //demo.handleWrite(writeLock, new Random().nextInt(100));
+                demo.handleWrite(lock, new Random().nextInt(100));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
         };
+
         for (int i = 0; i < 18; i++) {
             new Thread(readRunnable).start();
         }

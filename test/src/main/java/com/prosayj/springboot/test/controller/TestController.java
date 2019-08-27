@@ -7,9 +7,7 @@ import com.prosayj.springboot.test.model.ChartType;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +32,27 @@ public class TestController {
 
     }
 
-    public static void main(String[] args) {
+    @ApiOperation(value = "测试Thread获得的到底是谁的锁？是当前实例对象的锁？")
+    @GetMapping("/mul")
+    @ResponseBody
+    public Object mul() {
+        System.out.println("哈哈哈");
+        try {
+            Thread.sleep(5000L);
+            System.out.println(Thread.currentThread().getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         List<AllData> allDatats = getAllDatats();
         String toJSONString = JSONObject.toJSONString(allDatats);
         System.out.println(toJSONString);
         List<AllData> jsonObjects = JSONArray.parseArray(toJSONString).toJavaList(AllData.class);
-        System.out.println(jsonObjects);
+        System.out.println(jsonObjects.toString());
+        return jsonObjects;
     }
+
 
     private static List<AllData> getAllDatats() {
         List<AllData> allDatas = new ArrayList<>();

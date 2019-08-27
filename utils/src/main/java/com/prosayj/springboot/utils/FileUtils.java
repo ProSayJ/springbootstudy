@@ -2,12 +2,15 @@ package com.prosayj.springboot.utils;
 
 import com.prosayj.springboot.constants.Constants;
 import org.apache.commons.lang3.text.StrBuilder;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.FileImageOutputStream;
 import java.io.*;
+import java.net.URL;
 import java.nio.channels.FileChannel;
 
 /**
@@ -310,10 +313,24 @@ public class FileUtils {
         }
     }
 
+    public static String getText(String fileName) {
+        //URL resource = this.getClass().getClassLoader().getResource(fileName);
+        //String file = this.getClass().getResource(fileName).getFile();
+        URL resource = Thread.currentThread().getContextClassLoader().getResource(fileName);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(resource.getPath()))));
+            return br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
+
 //        updateFileName("E:\\netty\\123");
         //updateFileName01("E:\\netty\\我的解析任务1908141149");
-        updateFileName02("E:\\netty\\我的解析任务1908141148\\05");
+        // updateFileName02("E:\\netty\\我的解析任务1908141148\\05");
     }
 
 

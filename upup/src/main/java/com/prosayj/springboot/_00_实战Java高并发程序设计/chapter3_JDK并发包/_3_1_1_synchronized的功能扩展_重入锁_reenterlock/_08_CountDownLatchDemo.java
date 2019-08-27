@@ -17,7 +17,6 @@ public class _08_CountDownLatchDemo {
      * 表示需要有10个线程完成了任务，主线程才能继续执行。
      */
     static final CountDownLatch end = new CountDownLatch(10);
-    static final _08_CountDownLatchDemo demo = new _08_CountDownLatchDemo();
 
     public static void main(String args[]) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
@@ -25,8 +24,9 @@ public class _08_CountDownLatchDemo {
             executorService.submit(() -> {
                 try {
                     //模拟检查任务
-                    Thread.sleep(new Random().nextInt(3) * 1000);
-                    System.out.println("check complete");
+                    int times = new Random().nextInt(10) * 1000;
+                    Thread.sleep(times);
+                    System.out.println(Thread.currentThread().getName() + "===>check complete，cost time :" + times);
                     end.countDown();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -36,9 +36,8 @@ public class _08_CountDownLatchDemo {
         //等待检查:主线程再CountDownLatch上等待，当所有检查任务全部完成后，主线程才能继续执行。
         end.await();
         //发射火箭
-        System.out.println("Fire!");
+        System.out.println("All Complete Fire!");
         executorService.shutdown();
     }
 
 }
-
