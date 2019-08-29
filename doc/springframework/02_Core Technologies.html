@@ -15,7 +15,7 @@
     }
 
     .translate {
-        color: blue;
+        color: green;
     }
 
     audio, canvas, video {
@@ -2261,7 +2261,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
         </h1>
     </div>
 </div>
-<div id="header">
+<div id="header" style="margin: 0">
     <h1>Core Technologies</h1>
     <div class="details">
         <span id="revnumber">version 5.2.0.BUILD-SNAPSHOT</span>
@@ -5087,7 +5087,7 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
         </div>
     </div>
 </div>
-<div id="content">
+<div id="content" style="margin: 0">
     <div id="preamble">
         <div class="sectionbody">
             <div class="paragraph">
@@ -5124,8 +5124,8 @@ l-3.6,8.7c-0.4,1-1.2,1.5-2.1,1.5c-0.2,0-0.6,0-0.8-0.1L175.9,34.7z"></path>
     </div>
     <div class="sect1">
         <h2 id="beans"><a class="anchor"
-                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans"></a>1.
-            The IoC Container(IoC容器)</h2>
+                          href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans"></a>
+            1.  The IoC Container(IoC容器)</h2>
         <div class="sectionbody">
             <div class="paragraph">
                 <p>This chapter covers Spring’s Inversion of Control (IoC) container.</p>
@@ -6175,7 +6175,7 @@ context.refresh();</code></pre>
                                 collaborators</a>.</p>
                         <p class="translate">
                             译：您不需要为bean提供名称或id。如果没有显式地提供名称或id，容器将为该bean生成唯一的名称。
-                            但是，如果想按名称引用该bean，则通过使用ref元素或 Service Locator样式查找，必须提供名称。
+                            但是，如果想按名称引用该bean，则通过使用ref元素或<a href="02_Core Technologies.html#beans-servicelocator">Service Locator</a>样式查找，前提是必须提供名称。
                             不提供名称的动机与使用内部bean和自动装配协作者有关。
                         </p>
                     </div>
@@ -6193,7 +6193,6 @@ context.refresh();</code></pre>
                                     译：约定是在命名bean时使用标准Java约定作为实例字段名。
                                     也就是说，bean名称以小写字母开头，并从那里开始驼峰。
                                     这样的名字的例子包括 <code>accountService</code>, <code>userDao</code>, <code>loginController</code>，等等。
-                                
                                 </p>
                             </div>
                             <hr>
@@ -6614,6 +6613,12 @@ context.refresh();</code></pre>
                                 factory method itself with the <code>factory-method</code> attribute. The following
                                 example shows
                                 how to configure such a bean:</p>
+                            <p class="translate">
+                                译：与通过<a href="https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/core.html#beans-factory-class-static-factory-method">
+                                静态工厂方法</a>实例化类似，使用实例工厂方法实例化将从容器中调用现有bean的非静态方法来创建新bean。
+                                要使用此机制，请保留class属性为空，并在factory-bean属性中，在当前(或父或父)容器中指定bean的名称，该容器包含要调用来创建对象的实例方法。
+                                使用factory-method属性设置factory方法本身的名称。下面的例子展示了如何配置这样一个bean:
+                            </p>
                         </div>
                         <div class="listingblock">
                             <div class="content">
