@@ -3,6 +3,9 @@
     "author": "ProSayJ",
     "description": "文档描述",
     "language": "en",
+    "theme-default": {
+        "showLevel": true
+    },
     "links":{
         "sidebar" : {
             "Home" : "http://www.baidu.com"
@@ -22,6 +25,7 @@
         }
     },
     "plugins":[
+        "favicon",
         "-highlight",
         "prism@^2.1.0",
         "-search",
@@ -35,10 +39,20 @@
         "alerts",
         "anchor-navigation-ex@0.1.8",
         "copy-code-button",
+        "toggle-chapters",
         "tbfed-pagefooter"
     ],
 
     "pluginsConfig": {
+        "favicon": {
+            "shortcut": "assets/images/favicon.ico",
+            "bookmark": "assets/images/favicon.ico",
+            "appleTouch": "assets/images/apple-touch-icon.png",
+            "appleTouchMore": {
+                "120x120": "assets/images/apple-touch-icon-120x120.png",
+                "180x180": "assets/images/apple-touch-icon-180x180.png"
+            }
+        },
         "fontSettings": {
             "theme": "white",
             "family": "sans",

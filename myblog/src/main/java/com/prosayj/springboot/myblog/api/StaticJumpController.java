@@ -1,12 +1,20 @@
 package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
+import com.prosayj.springboot.myblog.api.vo.output.ArticleVO;
+import com.prosayj.springboot.myblog.models.dto.TagsDTO;
+import com.prosayj.springboot.myblog.service.ArticleService;
+import com.prosayj.springboot.myblog.service.TagService;
+import com.prosayj.springboot.utils.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 /**
  * @author yangjian
@@ -18,6 +26,37 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Api(value = "static-jump-controller", tags = "static-jump-controller", description = "静态资源跳转类")
 @Controller
 public class StaticJumpController {
+
+
+
+    @ApiOperation(value = "首页")
+    @GetMapping("/index")
+    public String index() {
+        return "freemark/index";
+    }
+
+
+    @ApiOperation(value = "文章详情")
+    @GetMapping("/articedetail")
+    public String articedetail() {
+        return "freemark/articedetail";
+    }
+
+    @ApiOperation(value = "归档")
+    @GetMapping("/archives")
+    public String archives() {
+        return "freemark/archives";
+    }
+
+    @ApiOperation(value = "分类")
+    @GetMapping("/categories")
+    public String categories() {
+        return "freemark/categories";
+    }
+
+
+
+
 
 
     @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")

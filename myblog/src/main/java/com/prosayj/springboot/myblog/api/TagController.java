@@ -36,4 +36,16 @@ public class TagController {
     }
 
 
+    @ApiOperation(value = "标签")
+    @GetMapping("/alltags")
+    public ModelAndView allTags(ModelAndView mv) {
+        List<TagsDomain> all = tagsDomainMapper.getAll();
+        mv.addObject("tags", all);
+        //mv.setViewName("/skins/Pinghsu/tags");
+        mv.setViewName("freemark/alltags");
+        return mv;
+    }
+
+
+
 }

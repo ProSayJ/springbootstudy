@@ -280,7 +280,7 @@
         <include refid="Base_Column_List"/>
         from article
         <where>
-            <if test="articleTags != null">
+            <if test="articleTags != null and articleTags != ''">
                 and article_tags = #{articleTags,jdbcType=VARCHAR}
             </if>
         </where>

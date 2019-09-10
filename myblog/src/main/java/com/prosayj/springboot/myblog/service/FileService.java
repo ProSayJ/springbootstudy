@@ -1,9 +1,11 @@
 package com.prosayj.springboot.myblog.service;
 
+import com.prosayj.springboot.myblog.models.dto.ImageDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public interface FileService {
     /**
@@ -20,6 +22,14 @@ public interface FileService {
      * 批量导出所有的图片文件
      */
     void exoprtAllImgs();
+
+
+    /**
+     * 获取所有文件相关信息
+     *
+     * @return
+     */
+    List<ImageDTO> getAllImgsDetails();
 
 
     /**

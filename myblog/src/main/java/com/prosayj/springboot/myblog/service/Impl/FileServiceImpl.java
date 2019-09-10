@@ -8,6 +8,7 @@ import com.prosayj.springboot.myblog.repository.domain.ImageDomain;
 import com.prosayj.springboot.myblog.repository.mapper.ImageDomainMapper;
 import com.prosayj.springboot.myblog.service.ImageService;
 import com.prosayj.springboot.myblog.service.FileService;
+import com.prosayj.springboot.utils.BeanUtil;
 import com.prosayj.springboot.utils.FileUtils;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,13 @@ public class FileServiceImpl implements FileService {
         allImage.forEach(data -> {
             FileUtils.byte2image(data.getImgSource(), "D:\\" + data.getImgStaticUrl(), data.getImgName());
         });
+    }
+
+    @Override
+    public List<ImageDTO> getAllImgsDetails() {
+        List<ImageDomain> allImage = imageDomainMapper.getAllImage();
+        List<ImageDTO> imageDTOS = BeanUtil.toBeanList(allImage, ImageDTO.class);
+        return imageDTOS;
     }
 
     @Override
