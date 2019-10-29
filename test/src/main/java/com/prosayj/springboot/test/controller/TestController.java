@@ -23,6 +23,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+
+    @PostMapping("/idlist")
+    public void getIdsist(@RequestBody List<Long> ids) {
+        System.out.println(ids);
+    }
+
+
     @ApiOperation(value = "测试")
     @PostMapping("/getall")
     public void articlelist(@RequestParam("dataString") String dataString) {

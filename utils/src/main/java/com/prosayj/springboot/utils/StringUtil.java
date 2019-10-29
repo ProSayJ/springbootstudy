@@ -1,6 +1,8 @@
 package com.prosayj.springboot.utils;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.Feature;
 import com.google.gson.GsonBuilder;
 import com.prosayj.springboot.constants.Constants;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -8,9 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.security.*;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author yangjian
@@ -107,6 +107,20 @@ public class StringUtil {
     public static String geInviteCode() {
         return String.format(Constants.STRING_FORMART_00, Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) +
                 RandomStringUtils.randomAlphanumeric(Constants.STRING_FORMART_04);
+    }
+
+    /**
+     * jsonString 转map集合
+     * @param jsonString
+     * @param needOrder 是否有序
+     * @return
+     */
+    public Map jsonStringToMap(String jsonString,boolean needOrder){
+        if (needOrder){
+            return   (Map<String, Object>) JSON.parseObject(jsonString, LinkedHashMap.class, Feature.OrderedField);
+        }else {
+            return  (Map<String, Object>) JSON.parse(jsonString);
+        }
     }
 
     public static void main(String[] args) {

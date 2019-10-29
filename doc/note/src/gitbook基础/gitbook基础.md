@@ -13,15 +13,19 @@
 npm install -g gitbook-cli 
 
 ```
+# 查看Gitbook版本
+```
+gitbook -V
+```
 
 # 初始化gitbook项目
 ``` js
-gitbook init
+gitbook init mybook
 ```
 
 # 预览
 ``` js
-gitbook serve
+gitbook serve --8080
 
 ```
 

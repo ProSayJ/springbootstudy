@@ -9,9 +9,14 @@ package com.prosayj.springboot.dbbackup;
  */
 public class WorkDBBackUp {
     public static void main(String[] args) throws Exception {
-
+        /**
+         * 查看GTID:
+         * show variables like '%ENFORCE_GTID_CONSISTENCY%';
+         *
+         * 远程和本地的GTID设置需要一致
+         *
+         */
         System.out.println(BackUp.getMysqlVersion());
-
 
         BackUp.backupDB("192.168.6.79",
                 "root",
@@ -27,7 +32,6 @@ public class WorkDBBackUp {
                 "yinuojr_ops",
                 "yinuojr_metadata"
         );
-
         BackUp.restore("localhost", "root", "root");
     }
 }

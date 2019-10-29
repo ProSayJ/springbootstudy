@@ -3,6 +3,9 @@ package com.prosayj.springboot.spring源码深度剖析._02_容器的基本实�
 import org.junit.Test;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,6 +18,7 @@ import static org.junit.Assert.assertEquals;
  */
 @SuppressWarnings("deprecation")
 public class _01_BeanFactoryTest {
+
     @Test
     public void testSimpleLoad() {
         XmlBeanFactory beanFactory = new XmlBeanFactory(
@@ -22,4 +26,6 @@ public class _01_BeanFactoryTest {
         MyTestBean bean = (MyTestBean) beanFactory.getBean("myTestBean");
         assertEquals("testStr", bean.getTestStr());
     }
+
+
 }

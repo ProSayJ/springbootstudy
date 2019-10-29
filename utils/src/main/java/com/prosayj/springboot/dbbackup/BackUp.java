@@ -60,6 +60,7 @@ public class BackUp {
      * @param databasesNames 需要备份的数据库名称
      */
     public static void backupDB(String remoteIp, String userName, String pwd, String... databasesNames) throws Exception {
+        String s = "mysqldump yinuojr_user -h 192.168.6.79  -uroot -pdb79 --default-character-set=utf8 --tables function_tree menu module page permission_item permission_item_resource resource role_resource > D:/V3.4.0-yinuojr-user-permission-new.sql";
         StringBuffer dataBasesNamesStr = new StringBuffer();
         String inStr;
         StringBuffer sb = new StringBuffer();
@@ -74,10 +75,13 @@ public class BackUp {
         fout = new FileOutputStream("D:\\all.sql");
         writer = new OutputStreamWriter(fout, "utf-8");
 
+
+        // mysqldump -u$user -p$passwd -S $sock --single-transaction --default-character-set=UTF8 --master-data=2 --set-gtid-purged=OFF --add-drop-database --triggers --routines --events -B $line  2>/dev/null > ${line}.$date.sql
+
         //mysql5.7
-        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
+        //String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --set-gtid-purged=OFF -B " + dataBasesNamesStr.toString();
         //mysql8.0
-//        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
+        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --set-gtid-purged=OFF -B --databases " + dataBasesNamesStr.toString();
 
         long startTime = System.currentTimeMillis();
         System.out.println("开始执行备份数据库sql语句：" + command);
@@ -94,7 +98,7 @@ public class BackUp {
         writer.write(outStr);
         writer.flush();
         long endTime = System.currentTimeMillis();
-        System.out.println("备份结束，总耗时:===>" + (endTime - startTime) + "<===ms");
+        System.out.println("备份结束，总耗时:===>" + (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒<===");
 
         try {
 
@@ -122,7 +126,7 @@ public class BackUp {
     public static void restore(String localhostIp, String userName, String pwd) {
         try {
             Runtime runtime = Runtime.getRuntime();
-            String command = "mysql -h " + localhostIp + " -u" + userName + " -p" + pwd + " --default-character-set=utf8 ";
+            String command = "mysql -h " + localhostIp + " -u" + userName + " -p" + pwd + " --default-character-set=utf8";
 
             System.out.println("开始执行还原数据库sql文件：" + command);
             long startTime = System.currentTimeMillis();
@@ -143,7 +147,8 @@ public class BackUp {
 
 
             long endTime = System.currentTimeMillis();
-            System.out.println("还原数据库结束，总耗时:===>" + (endTime - startTime) + "<===ms");
+            //System.out.println("还原数据库结束，总耗时:===>" + (endTime - startTime) + "<===ms");
+            System.out.println("还原数据库结束，总耗时:===>" + (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒<===ms");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
