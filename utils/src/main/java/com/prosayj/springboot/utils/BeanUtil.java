@@ -27,7 +27,6 @@ import java.util.Map;
 public class BeanUtil {
     public static ObjectMapper objectMapper = new ObjectMapper();
 
-
     /**
      * json字符串转list对象数组
      *
@@ -59,9 +58,21 @@ public class BeanUtil {
         return null;
     }
 
+    /**
+     * json格式的字符串转map
+     * @param string
+     * @return
+     */
+    public static Map<String, String> jsonString2Map(String string) {
+        return JSONObject.toJavaObject((JSON) JSONObject.parse(string), Map.class);
+    }
+
     public static void main(String[] args) {
         String jsonString = "{\"age\":\"23\",\"name\":\"张三\"}";
-        Student student = jsonString2Obj(jsonString, Student.class);
+        System.out.println(jsonString2Obj(jsonString, Student.class));
+        System.out.println(jsonString2Map(jsonString));
+
+
     }
 
     /**
@@ -126,6 +137,7 @@ public class BeanUtil {
         }
         return result;
     }
+
 
     /**
      * @description 拷贝对象属性

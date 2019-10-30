@@ -31,5 +31,16 @@ public class Student {
         this.name = name;
         this.age = age;
     }
+
+    public Student() {
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age='" + age + '\'' +
+                '}';
+    }
 }
 
