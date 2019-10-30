@@ -1,12 +1,20 @@
 package com.prosayj.springboot.myblog.api;
 
 import com.prosayj.springboot.myblog.api.vo.input.IdVO;
+import com.prosayj.springboot.myblog.api.vo.output.ArticleVO;
+import com.prosayj.springboot.myblog.models.dto.TagsDTO;
+import com.prosayj.springboot.myblog.service.ArticleService;
+import com.prosayj.springboot.myblog.service.TagService;
+import com.prosayj.springboot.utils.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 /**
  * @author yangjian
@@ -20,16 +28,45 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class StaticJumpController {
 
 
-    @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
-    @GetMapping("/")
-    public String root() {
-//        return "redirect:/login";
-//        return "redirect:articlefee/list";
-        return "redirect:taglist";
+
+    @ApiOperation(value = "首页")
+    @GetMapping("/index")
+    public String index() {
+        return "freemark/index";
     }
 
 
-/*
+    @ApiOperation(value = "文章详情")
+    @GetMapping("/articedetail")
+    public String articedetail() {
+        return "freemark/articedetail";
+    }
+
+    @ApiOperation(value = "归档")
+    @GetMapping("/archives")
+    public String archives() {
+        return "freemark/archives";
+    }
+
+    @ApiOperation(value = "分类")
+    @GetMapping("/categories")
+    public String categories() {
+        return "freemark/categories";
+    }
+
+
+
+
+
+
+    @ApiOperation(value = "登陆跳转", nickname = "static-jump-controller")
+    //@GetMapping("/")
+    public String root() {
+//        return "redirect:/login";
+        return "redirect:/taglist";
+    }
+
+
     @ApiOperation(value = "登陆", nickname = "static-jump-controller-login")
     @GetMapping("/login")
     public String login() {
@@ -41,13 +78,12 @@ public class StaticJumpController {
     public String register() {
         return "register";
     }
-*/
 
 
     @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
     @GetMapping("/create")
     public String create() {
-        return "redirect:article/create";
+        return "redirect:/article/create";
     }
 
 
@@ -55,7 +91,7 @@ public class StaticJumpController {
     @GetMapping("/preview")
     public ModelAndView preview(IdVO idVO) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("html/preview");
+        modelAndView.setViewName("freemark/preview");
         modelAndView.addObject("previewId", idVO.getId());
         return modelAndView;
     }
@@ -64,7 +100,7 @@ public class StaticJumpController {
     @GetMapping("/editor")
     public ModelAndView editor(IdVO idVO) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("html/editor");
+        modelAndView.setViewName("freemark/editor");
         modelAndView.addObject("editorId", idVO.getId());
         return modelAndView;
     }
@@ -72,19 +108,19 @@ public class StaticJumpController {
     @ApiOperation(value = "example", nickname = "static-jump-controller-example")
     @GetMapping("/example")
     public String example() {
-        return "html/example";
+        return "freemark/example";
     }
 
     @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
     @GetMapping("/article/register.html")
     public String registerIframe() {
-        return "html/register";
+        return "freemark/register";
     }
 
     @ApiOperation(value = "articlelistbytagid", nickname = "static-jump-controller-articlelistbytagid")
     @GetMapping("/articlelistbytagid")
     public String registerIframe(IdVO idVO, RedirectAttributes model) {
         model.addFlashAttribute("id", idVO.getId());
-        return "redirect:article/list/articlelistbytagid";
+        return "redirect:/article/list/articlelistbytagid";
     }
 }

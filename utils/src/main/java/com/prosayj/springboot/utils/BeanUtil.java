@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prosayj.springboot.utils.test.Student;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class BeanUtil {
     public static ObjectMapper objectMapper = new ObjectMapper();
 
+
     /**
      * json字符串转list对象数组
      *
@@ -43,7 +45,7 @@ public class BeanUtil {
      * Json字符串转化成对象
      *
      * @param jsonString json格式的字符串
-     * @param clazz 需要被转换的对象
+     * @param clazz      需要被转换的对象
      * @param <T>
      * @return
      * @throws Exception

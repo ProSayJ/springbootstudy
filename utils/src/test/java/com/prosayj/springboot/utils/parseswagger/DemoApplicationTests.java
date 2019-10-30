@@ -21,11 +21,11 @@ import java.nio.file.Paths;
  * @creatTime 2019/4/12 16:40
  * @since 1.0.0
  */
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class DemoApplicationTests {
 
-    @Test
+//    @Test
     public void generateAsciiDocsToFile() throws Exception {
         String swaggerJosn = getSwaggerJosn("api-docs_user.json");
 //        String swaggerJosn = getSwaggerJosn("api-docs_api.json");
@@ -41,7 +41,7 @@ public class DemoApplicationTests {
                 .toFile(Paths.get("src/docs/asciidoc/generated/all"));
     }
 
-    @Test
+//    @Test
     public void generateAsciiDocs() throws Exception {
         //	输出Ascii格式
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
@@ -54,7 +54,7 @@ public class DemoApplicationTests {
                 .toFolder(Paths.get("src/docs/asciidoc/generated"));
     }
 
-    @Test
+//    @Test
     public void generateMarkdownDocs() throws Exception {
         //	输出Markdown格式
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
@@ -69,7 +69,7 @@ public class DemoApplicationTests {
                 .toFolder(Paths.get("src/docs/markdown/generated/all"));
     }
 
-    @Test
+//    @Test
     public void generateConfluenceDocs() throws Exception {
         //	输出Confluence使用的格式
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
@@ -82,7 +82,7 @@ public class DemoApplicationTests {
                 .toFolder(Paths.get("src/docs/confluence/generated"));
     }
 
-    @Test
+//    @Test
     public void generateMarkdownDocsToFile() throws Exception {
         //	输出Markdown到单文件
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()

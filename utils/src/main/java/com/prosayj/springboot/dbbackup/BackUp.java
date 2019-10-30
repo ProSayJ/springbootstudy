@@ -77,8 +77,9 @@ public class BackUp {
 
 
         // mysqldump -u$user -p$passwd -S $sock --single-transaction --default-character-set=UTF8 --master-data=2 --set-gtid-purged=OFF --add-drop-database --triggers --routines --events -B $line  2>/dev/null > ${line}.$date.sql
+
         //mysql5.7
-        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --set-gtid-purged=OFF -B " + dataBasesNamesStr.toString();
+        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
         //mysql8.0
 //        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
 

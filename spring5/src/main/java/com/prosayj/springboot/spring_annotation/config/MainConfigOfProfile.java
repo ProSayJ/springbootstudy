@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.StringValueResolver;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+//import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * Profile：
@@ -45,36 +45,39 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware {
     @Profile("test")
     @Bean("testDataSource")
     public DataSource dataSourceTest(@Value("${db.password}") String pwd) throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        /*ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
         dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test");
         dataSource.setDriverClass(driverClass);
-        return dataSource;
+        return dataSource;*/
+        return null;
     }
 
 
     @Profile("dev")
     @Bean("devDataSource")
     public DataSource dataSourceDev(@Value("${db.password}") String pwd) throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+       /* ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
         dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/ssm_crud");
         dataSource.setDriverClass(driverClass);
-        return dataSource;
+        return dataSource;*/
+       return null;
     }
 
     @Profile("prod")
     @Bean("prodDataSource")
     public DataSource dataSourceProd(@Value("${db.password}") String pwd) throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+       /* ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
         dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/scw_0515");
 
         dataSource.setDriverClass(driverClass);
-        return dataSource;
+        return dataSource;*/
+       return null;
     }
 
     @Override

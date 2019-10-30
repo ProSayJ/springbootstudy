@@ -35,7 +35,7 @@
     //初始化md编辑器
     var testEditor;
     $(function () {
-        $.post("/articlefee/detail?id= "+${editorId}, function (md) {
+        $.post("/article/detail?id= "+${editorId}, function (md) {
             // console.log(md.toString());
             testEditor = editormd("my-editormd", {
                 width: "100%",

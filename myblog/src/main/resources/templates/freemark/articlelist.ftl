@@ -62,7 +62,7 @@
                     <td>#{article.id}</td>
                     <td>
                         <div style="margin-bottom:5px">
-                            <a class="btn btn-inverse" onclick=preview(#{article.id})>${article.articleTitle}</a>
+                            <a class="btn btn-inverse" onclick="preview(${article.id})">${article.articleTitle}</a>
                         </div>
                     </td>
                     <td>${article.originalAuthor}</td>
@@ -90,15 +90,16 @@
 
 <script type="text/javascript">
     function create() {
-        window.open("/fee/create");
+        window.open("/create");
     }
 
     function preview(id) {
-        window.open("/fee/preview?id=" + id);
+        //alert(id);
+        window.open("/preview?id=" + id);
     }
 
     function edit(id) {
-        window.open("/fee/editor?id=" + id);
+        window.open("/editor?id=" + id);
     }
 
     $(function () {
@@ -107,7 +108,7 @@
             /*  var url = "/report/city/cityid/" + cityid;
               window.location.href = url;*/
             // alert(tagId);
-            window.open("/fee/articlelistbytagid?id=" + tagId);
+            window.open("/articlelistbytagid?id=" + tagId);
         });
     });
 

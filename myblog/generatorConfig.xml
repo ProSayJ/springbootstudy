@@ -52,13 +52,13 @@
 
             </jdbcConnection>
 
-            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.domain"
+            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.articletags.domain"
                                 targetProject="src/main/java"/>
 
-            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.mapper"
+            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.articletags.mapper"
                              targetProject="src/main/resources"/>
 
-            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.models.articletags.mapper"
+            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.articletags.mapper"
                                  targetProject="src/main/java"
                                  type="XMLMAPPER"/>
             <!--schema="article_tags"-->
@@ -84,13 +84,13 @@
 
             </jdbcConnection>
 
-            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.domain"
+            <javaModelGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.tags.domain"
                                 targetProject="src/main/java"/>
 
-            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.mapper"
+            <sqlMapGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.tags.mapper"
                              targetProject="src/main/resources"/>
 
-            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.models.tags.mapper"
+            <javaClientGenerator targetPackage="com.prosayj.springboot.myblog.repository.domain.tags.mapper"
                                  targetProject="src/main/java"
                                  type="XMLMAPPER"/>
             <!--schema="tags"-->

@@ -37,20 +37,36 @@ import java.util.*;
 @Aspect
 @Service
 public class LogAspect {
-    /**
-     * api调用日志
-     */
     private static final Logger logger = LoggerFactory.getLogger(LoggerModelEnum.PROSAYJ_MYBLOG.getModuleNickName());
-
-    private static Set<MediaType> ignoreMediaType = new HashSet<>();
+    private static Set<MediaType> ignoreMediaType = new HashSet<MediaType>() {{
+        add(MediaType.APPLICATION_OCTET_STREAM);
+        add(MediaType.APPLICATION_PDF);
+        add(MediaType.IMAGE_JPEG);
+        add(MediaType.IMAGE_GIF);
+        add(MediaType.IMAGE_PNG);
+    }};
 
     /**
      * 定义日志切入点
      */
     @Pointcut("execution(* com.prosayj.springboot.myblog.api..*.*(..))" +
-            "|| execution(* com.prosayj.springboot.myblog.api_freemark.*.*(..))" +
+            "|| execution(* com.prosayj.springboot.myblog.api.*.*(..))" +
             "&& @within(org.springframework.web.bind.annotation.RequestMapping)")
     public void serviceAspect() {
+    }
+
+    /**
+     * 前置通知 用于拦截service层记录用户的操作
+     *
+     * @param joinPoint 切点
+     */
+    @Before("serviceAspect()")
+    public void doAfter(JoinPoint joinPoint) throws Throwable {
+        LogInfo loginInfo = getLoginInfo(joinPoint, false);
+        logger.info("log before:" + JSONObject.toJSONString(loginInfo));
+        // 交易密码
+        checkTxSecurityToken(joinPoint);
+
     }
 
     /**
@@ -58,8 +74,35 @@ public class LogAspect {
      *
      * @param joinPoint 切点
      */
-    @Before("serviceAspect()")
-    public void doAfter(JoinPoint joinPoint) throws Throwable {
+    @AfterReturning(pointcut = "serviceAspect() ", returning = "returnValue")
+    public void doAfter(JoinPoint joinPoint, Object returnValue) {
+        LogInfo loginInfo = getLoginInfo(joinPoint, false);
+        if (returnValue != null) {
+            if (returnValue instanceof ResponseEntity) {
+                ResponseEntity responseEntity = (ResponseEntity) returnValue;
+                MediaType mediaType = responseEntity.getHeaders().getContentType();
+
+                if (ignoreMediaType.contains(mediaType)) {
+                    loginInfo.setReturnStr("log print filter file");
+                } else {
+                    loginInfo.setReturnStr(JSONObject.toJSONString(returnValue));
+                }
+            } else {
+                loginInfo.setReturnStr(returnValue.toString());
+            }
+        }
+        logger.info("log return:" + JSONObject.toJSONString(loginInfo));
+    }
+
+
+    /**
+     * 获取上下文信息
+     *
+     * @param joinPoint
+     * @param needUser
+     * @return
+     */
+    private LogInfo getLoginInfo(JoinPoint joinPoint, boolean needUser) {
         // 记录请求日志
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         // 获取被拦截的方法
@@ -69,42 +112,15 @@ public class LogAspect {
         logInfo.setCreateTime(new Date());
         logInfo.setFunction(method.getDeclaringClass() + "." + methodName);
         logInfo.setParamStr(getParamString(joinPoint));
-        logInfo.setUser(null);
-        logger.info("log before:" + JSONObject.toJSONString(logInfo));
-        // 交易密码
-        checkTxSecurityToken(joinPoint);
+        if (!needUser) {
+            logInfo.setUser(null);
 
-    }
-
-    @AfterReturning(pointcut = "serviceAspect() ", returning = "returnValue")
-    public void doAfter(JoinPoint joinPoint, Object returnValue) {
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        // 获取被拦截的方法
-        Method method = signature.getMethod();
-        String methodName = method.getName();
-        LogInfo logInfo = new LogInfo();
-        logInfo.setCreateTime(new Date());
-        logInfo.setFunction(method.getDeclaringClass() + "." + methodName);
-        logInfo.setParamStr(getParamString(joinPoint));
-
-        logInfo.setUser(null);
-
-        if (returnValue != null) {
-            if (returnValue instanceof ResponseEntity) {
-                ResponseEntity responseEntity = (ResponseEntity) returnValue;
-                MediaType mediaType = responseEntity.getHeaders().getContentType();
-
-                if (ignoreMediaType.contains(mediaType)) {
-                    logInfo.setReturnStr("log print filter file");
-                } else {
-                    logInfo.setReturnStr(JSONObject.toJSONString(returnValue));
-                }
-            } else {
-                logInfo.setReturnStr(returnValue.toString());
-            }
+        } else {
+            //TODO
         }
-        logger.info("log return:" + JSONObject.toJSONString(logInfo));
+        return logInfo;
     }
+
 
     /**
      * 检验交易密码
@@ -153,7 +169,7 @@ public class LogAspect {
     }
 
 
-    private static Method getMethod(JoinPoint joinPoint) {
+    private Method getMethod(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
         return methodSignature.getMethod();
@@ -174,11 +190,4 @@ public class LogAspect {
         return jsonArray.toJSONString();
     }
 
-    static {
-        ignoreMediaType.add(MediaType.APPLICATION_OCTET_STREAM);
-        ignoreMediaType.add(MediaType.APPLICATION_PDF);
-        ignoreMediaType.add(MediaType.IMAGE_JPEG);
-        ignoreMediaType.add(MediaType.IMAGE_GIF);
-        ignoreMediaType.add(MediaType.IMAGE_PNG);
-    }
 }

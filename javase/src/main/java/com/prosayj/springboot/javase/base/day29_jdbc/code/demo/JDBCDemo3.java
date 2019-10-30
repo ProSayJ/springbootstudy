@@ -29,7 +29,8 @@ public class JDBCDemo3 {
 		String pass = sc.nextLine();
 
 		//执行SQL语句,数据表,查询用户名和密码,如果存在,登录成功,不存在登录失败
-		String sql = "SELECT * FROM users WHERE username=? AND PASSWORD=?";
+		//String sql = "SELECT * FROM users WHERE username=? AND PASSWORD=?";
+		String sql = "SELECT id,artice_title,? FROM artice WHERE id=? AND article_tags=?";
 		//调用Connection接口的方法prepareStatement,获取PrepareStatement接口的实现类
 		//方法中参数,SQL语句中的参数全部采用问号占位符
 		PreparedStatement pst =  con.prepareStatement(sql);

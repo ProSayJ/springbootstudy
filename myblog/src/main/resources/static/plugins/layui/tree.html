@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>非模块化方式使用layui</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+
+
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+    </div>
+</div>
+
+<div class="layui-bg-red">1111</div>
+
+<i class="layui-icon layui-icon-face-smile " style="font-size: 30px; color: #1E9FFF;"></i>
+
+<button class="layui-btn" lay-submit lay-filter="login">登入</button>
+<button id="msg">弹框</button>
+
+
+
+<script src="../layui/layui.all.js"></script>
+<script src="../../js/jquery1.8.js"></script>
+<script>
+    //由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+    $('#msg').click(function () {
+        var layer = layui.layer, form = layui.form;
+
+
+        layer.msg('Hello World');
+        layer.open({
+            type: 1,
+            area: ['1200px', '360px'],
+            shadeClose: true, //点击遮罩关闭
+            /*content: '\<\div style="padding:20px;">自定义内容\<\/div>'*/
+            content: '<img class="img-thumbnail" src="http://localhost\\file\\img-download?id=1" id="test1">'
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

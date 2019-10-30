@@ -21,7 +21,7 @@ public class Swagger2html2word {
 
     public static void main(String[] args) throws Exception {
 
-        String swaggerJosn = PaserSwaggerJson2Objects.getSwaggerJosn("api-docs_api.json");
+        String swaggerJosn = PaserSwaggerJson2Objects.getSwaggerJosn("api-docs.json");
         Swagger swagger = new SwaggerParser().parse(swaggerJosn);
 
         HashMap<String, String> swaggerInfo = PaserSwaggerJson2Objects.getSwaggerInfo(swagger);

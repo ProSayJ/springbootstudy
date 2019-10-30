@@ -1,0 +1,48 @@
+package com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.demo.mvc.action;
+
+import java.io.IOException;
+
+import com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.demo.service.IDemoService;
+import com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.mvcframework.annotation.GPAutowired;
+import com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.mvcframework.annotation.GPController;
+import com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.mvcframework.annotation.GPRequestMapping;
+import com.prosayj.springboot.Spring_5核心原理与30个类手写实战.spirng1.mvcframework.annotation.GPRequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@GPController
+@GPRequestMapping("/demo")
+public class DemoAction {
+
+    @GPAutowired
+    private IDemoService demoService;
+
+    @GPRequestMapping("/query")
+    public void query(HttpServletRequest req, HttpServletResponse resp,
+                      @GPRequestParam("name") String name) {
+        String result = demoService.get(name);
+//		String result = "My name is " + name;
+        try {
+            resp.getWriter().write(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GPRequestMapping("/add")
+    public void add(HttpServletRequest req, HttpServletResponse resp,
+                    @GPRequestParam("a") Integer a, @GPRequestParam("b") Integer b) {
+        try {
+            resp.getWriter().write(a + "+" + b + "=" + (a + b));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GPRequestMapping("/remove")
+    public void remove(HttpServletRequest req, HttpServletResponse resp,
+                       @GPRequestParam("id") Integer id) {
+    }
+
+}

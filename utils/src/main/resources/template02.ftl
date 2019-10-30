@@ -2646,9 +2646,9 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th class="tableblock halign-left valign-middle">Name</th>
-                                    <th class="tableblock halign-left valign-middle">Description</th>
-                                    <th class="tableblock halign-left valign-middle">Schema</th>
+                                    <th class="tableblock halign-left valign-middle">名称</th>
+                                    <th class="tableblock halign-left valign-middle">描述</th>
+                                    <th class="tableblock halign-left valign-middle">类型</th>
                                 </tr>
                                 </thead>
                                 <tbody>

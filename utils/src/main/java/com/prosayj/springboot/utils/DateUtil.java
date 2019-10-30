@@ -220,6 +220,7 @@ public class DateUtil {
      */
     public static long getFirstSeconds(Date date) {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -234,6 +235,7 @@ public class DateUtil {
      */
     public static Long getLastSeconds(Date date) {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 23);
         calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 59);
@@ -250,6 +252,7 @@ public class DateUtil {
         return (getLastSeconds(date) - System.currentTimeMillis()) / 1000 / 60;
     }
 
+
     /**
      * @description 获取指定毫秒值指定时间前的毫秒值
      * @author yangjian
@@ -260,38 +263,42 @@ public class DateUtil {
         return startTime - minute * 60 * 1000;
     }
 
-    public static void main(String[] args) throws ParseException {
-        Date date = new Date();
 
-        System.out.println(DateUtil.getAddDate(DateUtil.getLastSecond(new Date()), 1));
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat sdfm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar cDay = Calendar.getInstance();
-        cDay.setTime(sdfm.parse(sdf.format(date) + " 23:59:59"));
-        cDay.set(Calendar.DAY_OF_MONTH, cDay.getActualMaximum(Calendar.DAY_OF_MONTH));
-
-
-        Calendar end = Calendar.getInstance();
-        Date formatStringToDate = DateUtil.formatStringToDate("2017-07-05 10:52:07", DatePattern.Y_M_D_H_M_S);
-        System.out.println("===" + DateUtil.formatDateToString(formatStringToDate, DatePattern.Y_M_D_H_M_S));
-        end.setTime(formatStringToDate);
-
-        System.out.println("===between==" + DateUtil.daysBetween(new Date(), formatStringToDate));
-
-        System.out.println("yyyy-MM-dd HH:mm:ss==" + DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
-        System.out.println("YYYYMMDDHHmmss==" + DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
-
-        System.out.println(DateUtil.formatCurrentDateToString(DatePattern.Y_M_D_H_M_S));
-
-        String time = "20170720121211";
-        Date formatStringToDate2 = DateUtil.formatStringToDate(time, DatePattern.Y_M_D_H_M_S);
-        String formatDateToString = DateUtil.formatDateToString(formatStringToDate2, DatePattern.Y_M_D_H_M_S);
-        System.out.println("formatStringToDate2==" + formatStringToDate2);
-        System.out.println("formatDateToString==" + formatDateToString);
+    public static void main(String[] args) {
+        getSecond2SM("2017-09-01,2017-09-30," +
+                "2017-10-01,2017-10-31," +
+                "2017-11-01,2017-11-30," +
+                "2017-12-01,2017-12-31," +
+                "2018-01-01,2018-01-31," +
+                "2018-02-01,2018-02-28," +
+                "2018-03-01,2018-03-31," +
+                "2018-04-01,2018-04-30," +
+                "2018-05-01,2018-05-30," +
+                "2018-06-01,2018-06-30," +
+                "2018-07-01,2018-07-31," +
+                "2018-08-01,2018-08-31," +
+                "2018-09-01,2018-09-30," +
+                "2018-10-01,2018-10-31," +
+                "2018-11-01,2018-11-30," +
+                "2018-12-01,2018-12-31," +
+                "2019-01-01,2019-01-31," +
+                "2019-02-01,2019-02-28," +
+                "2019-03-01,2019-03-31," +
+                "2019-04-01,2019-04-30," +
+                "2019-05-01,2019-05-31," );
 
 
     }
 
+    public static void getSecond2SM(String str) {
+        String[] split = str.split(",");
+        for (int i = 0; i < split.length; i++) {
+            if ((i + 1) / 2 == 0) {
+                System.out.println(split[i] + "：开始毫秒值==>" + getFirstSeconds(formatStringToDate(split[i], DatePattern.Y_M_D)));
+            } else {
+                System.out.println(split[i] + "：结束毫秒值==>" + getLastSeconds(formatStringToDate(split[i], DatePattern.Y_M_D)));
+            }
+        }
+    }
 
 }
