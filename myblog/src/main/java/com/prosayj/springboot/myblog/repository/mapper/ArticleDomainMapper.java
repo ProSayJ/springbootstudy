@@ -2,9 +2,11 @@ package com.prosayj.springboot.myblog.repository.mapper;
 
 
 import com.prosayj.springboot.myblog.repository.domain.ArticleDomain;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ArticleDomainMapper {
     int deleteByPrimaryKey(Long id);
 

@@ -4,12 +4,17 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 /**
  * @author yangjian
@@ -22,6 +27,9 @@ public class RSAUtils {
     public static final String ALG_RSA = "RSA";
     public static final String KEYPAIR_PUBKEY = "pubKey";
     public static final String KEYPAIR_PRIKEY = "priKey";
+
+    public static final int size = 1024;
+    public static final String code_type = "UTF-8";
 
     /**
      * 生成公私钥对
@@ -118,5 +126,47 @@ public class RSAUtils {
         KeyFactory keyFactory = KeyFactory.getInstance(ALG_RSA);
         return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
     }
+
+
+    /**
+     * 公钥加密 私钥解密
+     *
+     * @param src
+     * @param charsetName
+     * @throws UnsupportedEncodingException
+     */
+    public static void publickeyEncryptionAndPrivateKeyDecryption(String src, String charsetName) throws UnsupportedEncodingException {
+        System.out.println("src = " + src);
+        //生成公私钥对
+        RSAKeyPair rsaKeyPair = generateKey(size);
+        byte[] privateKey = rsaKeyPair.getPrivateKey();
+        byte[] publicKey = rsaKeyPair.getPublicKey();
+
+        System.out.println("publicKey = " + Base64.getEncoder().encodeToString(publicKey));
+        System.out.println("privateKey = " + Base64.getEncoder().encodeToString(privateKey));
+
+        //公钥加密:
+        byte[] msgSecurity = RSAUtils.encryptByPublicKey(new String(src.getBytes(), charsetName == null ? code_type : charsetName).getBytes(), publicKey);
+        System.out.println("公钥加密 = " + Base64.getEncoder().encodeToString(msgSecurity));
+
+        //私钥解密
+        byte[] msgDecode = RSAUtils.decryptByPrivateKey(msgSecurity, privateKey);
+
+        System.out.println("私钥解密 = " + new String(msgDecode, Charset.forName(charsetName == null ? code_type : charsetName)));
+
+
+        //公钥网络传输
+        String pubKeyBase64Str = Base64.getEncoder().encodeToString(publicKey);
+        System.out.println("pubKeyBase64Str = " + pubKeyBase64Str);
+        //公钥网络传输
+        String pubKeyencode = URLEncoder.encode(pubKeyBase64Str, code_type);
+        System.out.println("pubKeyencode = " + pubKeyencode);
+
+        //公钥网络还原
+        String pubkeySrc = URLDecoder.decode(pubKeyencode, code_type);
+        System.out.println("pubkeySrc = " + pubkeySrc);
+
+    }
+
 }
 

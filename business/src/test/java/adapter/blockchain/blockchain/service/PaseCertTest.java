@@ -4,8 +4,6 @@ import adapter.blockchain.blockchain.config.RedisConfig;
 import cn.bubi.access.adaptation.blockchain.bc.OperationTypeV3;
 import cn.bubi.access.adaptation.blockchain.bc.RpcService;
 import cn.bubi.access.adaptation.blockchain.bc.response.TransactionHistory;
-import cn.bubi.access.starter.BCAutoConfiguration;
-import cn.bubi.access.starter.BCAutoConfigurationSpi;
 import cn.bubi.access.utils.blockchain.BlockchainKeyPair;
 import cn.bubi.access.utils.blockchain.SecureKeyGenerator;
 import cn.bubi.sdk.core.exception.SdkException;
@@ -28,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfig.class})
+//@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfig.class})
 public class PaseCertTest {
     @Autowired
     private BcOperationService operationService;

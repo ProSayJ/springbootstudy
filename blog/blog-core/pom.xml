@@ -103,12 +103,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>cn.cfca.third</groupId>
             <artifactId>sadk</artifactId>
             <version>3.2.3.0.RELEASE</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 </project>

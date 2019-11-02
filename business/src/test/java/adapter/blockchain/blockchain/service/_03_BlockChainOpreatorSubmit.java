@@ -2,8 +2,6 @@ package adapter.blockchain.blockchain.service;
 
 import adapter.blockchain.blockchain.AdapterBlockSDKUtil;
 import adapter.blockchain.blockchain.config.RedisConfigMy;
-import cn.bubi.access.starter.BCAutoConfiguration;
-import cn.bubi.access.starter.BCAutoConfigurationSpi;
 import cn.bubi.access.utils.blockchain.BlockchainKeyPair;
 import cn.bubi.sdk.core.spi.BcOperationService;
 import cn.bubi.sdk.core.transaction.Transaction;
@@ -26,7 +24,7 @@ import java.nio.charset.Charset;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfigMy.class})
+//@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfigMy.class})
 public class _03_BlockChainOpreatorSubmit {
     @Autowired
     private BcOperationService bcOperationService;

@@ -17,8 +17,8 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
  * @creatTime 2019/4/24 13:19
  * @since 1.0.0
  */
-@Configuration
-@PropertySource("classpath:application.properties")
+//@Configuration
+//@PropertySource("classpath:application.properties")
 public class RedisConfigMy extends JCacheConfigurerSupport {
     @Autowired
     private Environment environment;

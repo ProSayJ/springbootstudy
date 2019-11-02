@@ -20,13 +20,14 @@ import org.springframework.test.context.junit4.SpringRunner;
         RedisProperties.class,
         RedisService.class})
 public class TestRedis {
-    //    @Autowired
-//    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Autowired
     private RedisService redisService;
 
     @Test
     public void testRedis() {
+        redisTemplate.opsForValue().set("21","12");
         redisService.set("name", "张三");
         System.out.println(redisService.get("name"));
         redisService.remove("name");

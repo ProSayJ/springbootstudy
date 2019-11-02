@@ -21,10 +21,7 @@ public class AdapterBlockSDKUtil {
      * @return
      */
     public static BlockchainKeyPair paseCertSignStr(String signStr) {
-        byte[] signBytes = signStr.getBytes(Charset.forName("UTF-8"));
-        String base64SignStr = Base64Utils.encodeToString(signBytes);
-        BlockchainKeyPair blockchainKeyPair = SecureKeyGenerator.generateCfcaAddress(base64SignStr);
-        return blockchainKeyPair;
+        return SecureKeyGenerator.generateCfcaAddress(Base64Utils.encodeToString(signStr.getBytes(Charset.forName("UTF-8"))));
     }
 
     public static void main(String[] args) {

@@ -15,6 +15,29 @@
         <!-- 布比平台依赖 -->
         <dependency>
             <groupId>cn.bubi.access.sdk</groupId>
+            <artifactId>utils-encryption</artifactId>
+            <version>2.2.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.bubi.access.sdk</groupId>
+            <artifactId>sdk-core</artifactId>
+            <version>2.0.1.beta2</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.bubi.access.sdk</groupId>
+            <artifactId>sdk-starter</artifactId>
+            <version>2.0.1.beta2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate.validator</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>cn.bubi.access.sdk</groupId>
             <artifactId>sdk-starter</artifactId>
             <version>2.0.1.beta2</version>
             <exclusions>
@@ -43,29 +66,34 @@
             <groupId>cn.bubi.access.sdk</groupId>
             <artifactId>sdk-bc</artifactId>
             <version>2.0.1.beta2</version>
-        </dependency>
-        
-        <!--CFCA-sdk-->
-<!--        <dependency>
-            <groupId>cn.cfca.third</groupId>
-            <artifactId>sealclient</artifactId>
-            <version>3.2.4.7.RELEASE</version>
         </dependency>-->
-        <dependency>
-            <groupId>cn.cfca.third</groupId>
-            <artifactId>sadk</artifactId>
-            <version>3.2.3.0.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.52</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.cfca.third</groupId>
-            <artifactId>sealclient</artifactId>
-            <version>3.2.4.7.RELEASE</version>
-        </dependency>
+
+        <!--CFCA-sdk-->
+        <!--        <dependency>
+                    <groupId>cn.cfca.third</groupId>
+                    <artifactId>sealclient</artifactId>
+                    <version>3.2.4.7.RELEASE</version>
+                </dependency>-->
+
+
+        <!--
+
+                <dependency>
+                    <groupId>cn.cfca.third</groupId>
+                    <artifactId>sadk</artifactId>
+                    <version>3.2.3.0.RELEASE</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk15on</artifactId>
+                    <version>1.52</version>
+                </dependency>
+                <dependency>
+                    <groupId>cn.cfca.third</groupId>
+                    <artifactId>sealclient</artifactId>
+                    <version>3.2.4.7.RELEASE</version>
+                </dependency>
+        -->
 
         <!--框架依赖-->
         <dependency>
@@ -115,8 +143,6 @@
             <artifactId>commons-pool2</artifactId>
             <version>${commons-pool2.version}</version>
         </dependency>
-
-
 
 
     </dependencies>

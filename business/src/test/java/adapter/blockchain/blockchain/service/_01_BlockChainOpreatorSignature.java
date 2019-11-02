@@ -32,7 +32,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class, RedisConfigMy.class})
+@SpringBootTest(classes = {BCAutoConfiguration.class, BCAutoConfigurationSpi.class})
 public class _01_BlockChainOpreatorSignature {
     @Autowired
     private BcOperationService operationService;

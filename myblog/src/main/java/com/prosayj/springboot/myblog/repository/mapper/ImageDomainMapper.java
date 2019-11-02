@@ -2,9 +2,10 @@ package com.prosayj.springboot.myblog.repository.mapper;
 
 
 import com.prosayj.springboot.myblog.repository.domain.ImageDomain;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface ImageDomainMapper {
     int deleteByPrimaryKey(Long id);
 

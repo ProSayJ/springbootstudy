@@ -191,4 +191,27 @@ public class ArticleVO {
     }
 
 
+    @Override
+    public String toString() {
+        return "ArticleVO{" +
+                "id=" + id +
+                ", articleId=" + articleId +
+                ", authorId=" + authorId +
+                ", originalAuthor='" + originalAuthor + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleTags='" + articleTags + '\'' +
+                ", articleType=" + articleType +
+                ", articleCategories='" + articleCategories + '\'' +
+                ", articleUrl='" + articleUrl + '\'' +
+                ", likes='" + likes + '\'' +
+                ", lastArticleId='" + lastArticleId + '\'' +
+                ", nextArticleId=" + nextArticleId +
+                ", publishDate=" + publishDate +
+                ", updateDate=" + updateDate +
+                ", isDelete=" + isDelete +
+                ", articleSummary='" + articleSummary + '\'' +
+                ", articleHtmlContent='" + articleHtmlContent + '\'' +
+                ", articleMdContent='" + articleMdContent + '\'' +
+                '}';
+    }
 }
