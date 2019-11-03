@@ -1,14 +1,13 @@
-package com.prosayj.springboot.javacollections.sourcecode;
+package com.prosayj.springboot.javacollections.sourcecode.list.test;
 
 import com.prosayj.springboot.javacollections.sourcecode.list.arraylist.ArrayListSrc;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * @author yangjian
- * @description
+ * @description ArrayList源码分析_基于jdk1.8_201
  * @email ProSayJ@gmail.cn
  * @creatTime 2019/10/30 上午 10:28
  * @since 1.0.0
@@ -16,12 +15,60 @@ import java.util.ListIterator;
 public class ArrayListDemo {
     public static void main(String[] args) {
 
-        System.out.println(163 >> 1);
+        /**
+         *
+         * ArrayList源码简介总结：{@link ArrayListSrc}
+         * 1：是List接口的实现。他实现了所有的List接口的操作。
+         * 2：内部实现是可变大小的(Resizable)数组。
+         * 3：内部元素允许null值。
+         * 4：除了实现List接口之外，Arraylist这个类还提供了操作(manipulate)数组大小的方法，用于自己内部(internally)存储的列表。
+         * 5：这个类粗略的(roughly)和Vector相似。但是他是线程不同步的。也就是说是线程不安全的。
+         *
+         *
+         *
+         *
+         * 实现了List接口是一个数组队列拥有了List基本的增删改查功能
+         * 实现了RandomAccess接口拥有随机读写的功能
+         * 实现了Cloneable接口可以被克隆
+         * 实现了Serializable接口并重写了序列化和反序列化方法，使得ArrayList可以拥有更好的序列化的性能
+         *
+         *
+         */
 
         /**
-         * ArrayList源码分析：成员变量：
-         * 1：DEFAULT_CAPACITY：默认初始化容量为10： {@link ArrayListSrc#DEFAULT_CAPACITY}
-         * 2：EMPTY_ELEMENTDATA：
+         * 成员变量：
+         * 1：{@link ArrayListSrc#serialVersionUID}：序列化版本ID。ps目的是为了表示不同版本的兼容性。
+         * 1：{@link ArrayListSrc#DEFAULT_CAPACITY}：默认内置数组容量为10。ps:ArrayList底层结构是数组。
+         * 2：{@link ArrayListSrc#EMPTY_ELEMENTDATA}：当指定数组初始化容量是0的时候，使用这个常量赋值。
+         * 3：{@link ArrayListSrc#DEFAULTCAPACITY_EMPTY_ELEMENTDATA}：默认无参构造函数是使用这个常量赋值。
+         * 4：{@link ArrayListSrc#elementData}：真正存放对象数据的数组。ps：transient表示不被序列化。
+         * 5：{@link ArrayListSrc#size}：内置数组中真正存放元素的个数。ps：size <=elementData.length。
+         * 6：{@link ArrayListSrc#modCount}：修改次数。ps：继承父类AbstractList。
+         */
+        /**
+         * 构造方法：
+         * 1：{@link ArrayListSrc#AbstractListSrc()}：无参构造方法。
+         * 2：{@link ArrayListSrc#ArrayListSrc(int)}：指定初始化容量的有参构造方法。
+         * 3：{@link ArrayListSrc#ArrayListSrc(Collection)}：集合参数的构造方法。
+         */
+        /**
+         * 常用方法：
+         * 1：{@link ArrayListSrc#add(Object)}：添加元素。ps:ensureCapacityInternal(size + 1);
+         *  1.1：{@link ArrayListSrc#ensureCapacityInternal(int)}：确认内部容量(内部计数器+1并且扩容如果需要的话)。
+         *      1.1.1：{@link ArrayListSrc#calculateCapacity(Object[], int)}：则返回默认的初始化容量(DEFAULT_CAPACITY)与方法入参（size + 1）中较大的一个。
+         *          (1):如果当前内置数组(elementData)是 DEFAULTCAPACITY_EMPTY_ELEMENTDATA(this使用无参构造方法初始的时候,内置数组被赋值成DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
+         *          (2):否则(elementData !=DEFAULTCAPACITY_EMPTY_ELEMENTDATA),则返回方法的入参（size + 1）。
+         *      1.1.2:{@link ArrayListSrc#ensureExplicitCapacity(int)}：确认明确的内部容量。
+         *              (1)内部计数器modCount++；(继承自AbstractList)
+         *              (2)如果入参(int)大于内置数组的容量(elementData.length),则扩容。
+         *                  {@link ArrayListSrc#grow(int)} ：
+         *
+         *
+         *
+         *  1.2：elementData[size++] = e;把待添加的元素添加到内部数组的末尾。并且内置数组元素计数个数 + 1。
+         *  1.3：return true 返回成功。添加方法结束
+         *
+         *
          *
          */
 

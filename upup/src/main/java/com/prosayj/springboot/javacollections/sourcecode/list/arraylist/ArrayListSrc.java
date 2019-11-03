@@ -2,7 +2,7 @@ package com.prosayj.springboot.javacollections.sourcecode.list.arraylist;
 
 /**
  * @author yangjian
- * @description ArrayList源码分析
+ * @description ArrayList源码
  * @email ProSayJ@gmail.cn
  * @creatTime 2019/11/2 下午 12:20
  * @since 1.0.0
@@ -192,6 +192,11 @@ public class ArrayListSrc<E> extends AbstractListSrc<E>
      * @param minCapacity the desired minimum capacity
      */
     public void ensureCapacity(int minCapacity) {
+        /**
+         *如果内置数组不是是空(this是使用无参构造方法初始的时候)，最小的内置数组大小赋值为0，
+         * 如果内置数组
+         */
+
         int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
                 // any size if not default element table
                 ? 0
@@ -482,6 +487,7 @@ public class ArrayListSrc<E> extends AbstractListSrc<E>
         modCount++;
         E oldValue = elementData(index);
 
+        //获取要移动元素的个数
         int numMoved = size - index - 1;
         if (numMoved > 0)
             System.arraycopy(elementData, index + 1, elementData, index,
