@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <property name="LOG_DIR" value="./logs"/>
+
+
+    <!--all.log -->
+    <appender name="ROLLFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/all.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_ROLLFILE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="ROLLFILE"/>
+        <queueSize>1024</queueSize>
+        <maxFlushTime>3000</maxFlushTime>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="ASYNC_ROLLFILE"/>
+    </root>
+
+
+    <!--blockchain模块日志-->
+    <appender name="PROSAYJ_BLOCKCHAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/prosayj-blockchain.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/prosayj-blockchain.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- 生产环境  additivity = false, 减少日志输出两遍 -->
+    <logger name="prosayj.blockchain" level="INFO" additivity="true">
+        <appender-ref ref="PROSAYJ_BLOCKCHAIN"/>
+    </logger>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</configuration>
