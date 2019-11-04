@@ -1,6 +1,7 @@
 package com.prosayj.springboot.javacollections.sourcecode.list.test;
 
 import com.prosayj.springboot.javacollections.sourcecode.list.linkedlist.LinkedListSrc;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -57,12 +58,22 @@ public class LinkedListDemo {
          * 2：{@link LinkedListSrc#LinkedListSrc(Collection)}：集合参数的构造器。
          */
 
+    }
+
+    @Test
+    public void testLinkedListAdd() {
         /**
          * 常用方法：
          * 1：{@link LinkedListSrc#add(Object)}：添加一个元素。
          * 2：{@link LinkedListSrc#add(int, Object)} ：添加元素到指定的位置。
          */
-
-
+        List<String> addByIndex = new LinkedListSrc<>();
+        addByIndex.add("1");
+        addByIndex.add("2");
+        addByIndex.add("3");
+        System.out.println(addByIndex.toString());
+        //将元素添加到索引之前。
+        addByIndex.add(2, "4");
+        System.out.println(addByIndex.toString());
     }
 }
