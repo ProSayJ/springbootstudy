@@ -62,7 +62,7 @@ public class Test {
 
         File file = new File("D:" + "/a/1.gif");
         if (!file.exists()) {
-            file.mkdirs();
+            new File("D:" + "/a").mkdirs();
             boolean newFile = file.createNewFile();
 
         }

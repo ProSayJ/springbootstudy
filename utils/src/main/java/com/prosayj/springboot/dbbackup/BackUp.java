@@ -2,6 +2,8 @@ package com.prosayj.springboot.dbbackup;
 
 import com.prosayj.springboot.constants.Constants;
 import com.prosayj.springboot.utils.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
@@ -14,6 +16,7 @@ import java.io.*;
  */
 public class BackUp {
 
+    private static final Logger logger = LoggerFactory.getLogger(BackUp.class);
 
     /**
      * 获取mysql版本信息
@@ -21,7 +24,7 @@ public class BackUp {
      * @return
      * @throws Exception
      */
-    public static String getMysqlVersion() throws Exception {
+    public static String getMysqlVersion() {
         Process child = null;
         try {
             child = Runtime.getRuntime().exec("mysql --version");
@@ -29,7 +32,13 @@ public class BackUp {
             e.printStackTrace();
         }
         //return  inputStream2String(child.getErrorStream());
-        return inputStream2String(child.getInputStream());
+        String result = null;
+        try {
+            result = inputStream2String(child.getInputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /***
@@ -60,7 +69,7 @@ public class BackUp {
      * @param databasesNames 需要备份的数据库名称
      */
     public static void backupDB(String remoteIp, String userName, String pwd, String... databasesNames) throws Exception {
-        String s = "mysqldump yinuojr_user -h 192.168.6.79  -uroot -pdb79 --default-character-set=utf8 --tables function_tree menu module page permission_item permission_item_resource resource role_resource > D:/V3.4.0-yinuojr-user-permission-new.sql";
+        //String s = "mysqldump yinuojr_user -h 192.168.6.79  -uroot -pdb79 --default-character-set=utf8 --tables function_tree menu module page permission_item permission_item_resource resource role_resource > D:/V3.4.0-yinuojr-user-permission-new.sql";
         StringBuffer dataBasesNamesStr = new StringBuffer();
         String inStr;
         StringBuffer sb = new StringBuffer();
@@ -77,19 +86,24 @@ public class BackUp {
 
 
         // mysqldump -u$user -p$passwd -S $sock --single-transaction --default-character-set=UTF8 --master-data=2 --set-gtid-purged=OFF --add-drop-database --triggers --routines --events -B $line  2>/dev/null > ${line}.$date.sql
+        String command = "";
+        String mysqlVersion = BackUp.getMysqlVersion();
+        if (mysqlVersion.contains("5.")) {
+            //mysql5.7
+            command = "mysqldump  -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --set-gtid-purged=OFF -B --databases " + dataBasesNamesStr.toString();
+        } else if (mysqlVersion.contains("8.")) {
+            //mysql8.0
+            command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --set-gtid-purged=OFF -B --databases " + dataBasesNamesStr.toString();
+        } else {
+            logger.error("数据库版本错误：版本是：{}", mysqlVersion);
+        }
 
-        //mysql5.7
-        String command = "mysqldump -h " + remoteIp + "  -u" + userName + " -p" + pwd + " -B  " + dataBasesNamesStr.toString();
-        //mysql8.0
-//        String command = "mysqldump --column-statistics=0 -h " + remoteIp + "  -u" + userName + " -p" + pwd + " --default-character-set=utf8 --databases " + dataBasesNamesStr.toString();
 
         long startTime = System.currentTimeMillis();
-        System.out.println("开始执行备份数据库sql语句：" + command);
+        logger.info("备份数据库开始，客户端版本：{}，备份sql脚本:{}", mysqlVersion, command);
 
 
-        Process child = Runtime.getRuntime().exec(command);
-
-        br = new BufferedReader(new InputStreamReader(child.getInputStream(), "utf-8"));
+        br = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(command).getInputStream(), "utf-8"));
         while ((inStr = br.readLine()) != null) {
             sb.append(inStr + "\r\n");
         }
@@ -98,10 +112,9 @@ public class BackUp {
         writer.write(outStr);
         writer.flush();
         long endTime = System.currentTimeMillis();
-        System.out.println("备份结束，总耗时:===>" + (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒<===");
+        logger.info("备份数据库结束，客户端版本：{}，备份sql脚本:{}，耗时：{}", mysqlVersion, command, (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒");
 
         try {
-
         } finally {
             try {
                 if (br != null) {
@@ -113,7 +126,6 @@ public class BackUp {
                 if (fout != null) {
                     fout.close();
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -128,7 +140,8 @@ public class BackUp {
             Runtime runtime = Runtime.getRuntime();
             String command = "mysql -h " + localhostIp + " -u" + userName + " -p" + pwd + " --default-character-set=utf8";
 
-            System.out.println("开始执行还原数据库sql文件：" + command);
+
+            logger.info("还原数据库开始，客户端版本：{}，还原sql脚本:{}", BackUp.getMysqlVersion(), command);
             long startTime = System.currentTimeMillis();
 
             Process process = runtime.exec(command);
@@ -148,7 +161,7 @@ public class BackUp {
 
             long endTime = System.currentTimeMillis();
             //System.out.println("还原数据库结束，总耗时:===>" + (endTime - startTime) + "<===ms");
-            System.out.println("还原数据库结束，总耗时:===>" + (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒<===ms");
+            logger.info("还原数据库结束，客户端版本：{}，还原sql脚本:{}，总耗时{}", BackUp.getMysqlVersion(), command, (endTime - startTime) / 1000 / 60 + "分钟  " + (endTime - startTime) / 1000 % 60 + "秒");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {

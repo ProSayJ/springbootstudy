@@ -10,7 +10,7 @@ package com.prosayj.springboot.dbbackup;
 public class MyBlogDBBackUp {
     public static void main(String[] args) throws Exception {
 
-        System.out.println(BackUp.getMysqlVersion());
+        System.out.println();
 
 
         BackUp.backupDB("localhost", "root", "root", "blog");
