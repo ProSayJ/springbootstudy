@@ -17,9 +17,9 @@ public class WorkDBBackUp {
          *
          */
 
-        BackUp.backupDB("192.168.6.79",
-                "root",
-                "db79","bunuo","yinuojr_user"
+//        BackUp.backupDB("192.168.6.79",
+//                "root",
+//                "db79","bunuo","yinuojr_user"
  //               "bunuo",
 //                "yinuojr_user",
 //                "yinuojr_certification",
@@ -30,7 +30,7 @@ public class WorkDBBackUp {
 //                "yinuojr_auth",
 //                "yinuojr_ops",
 //                "yinuojr_metadata"
-        );
+//        );
 
         BackUp.restore("localhost", "root", "root");
     }

@@ -7,15 +7,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+//我的自定义注解
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MyConstraintValidator.class)
 public @interface MyConstraint {
-	
-	String message();
 
-	Class<?>[] groups() default { };
+    //这三个属性必须要有
+    String message();
 
-	Class<? extends Payload>[] payload() default { };
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 
 }
