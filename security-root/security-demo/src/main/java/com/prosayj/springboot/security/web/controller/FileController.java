@@ -16,36 +16,29 @@ import java.util.Date;
 @RestController
 @RequestMapping("/file")
 public class FileController {
+    private String folder = "D:\\workspace\\git\\springbootstudy\\security-root\\security-demo\\src\\main\\java\\com\\prosayj\\springboot\\security\\web\\controller";
 
-	private String folder = "/Users/zhailiang/Documents/my/muke/inaction/java/workspace/github/imooc-security-demo/src/main/java/com/imooc/web/controller";
+    @PostMapping
+    public FileInfo upload(MultipartFile file) throws Exception {
+        System.out.println(file.getName());
+        System.out.println(file.getOriginalFilename());
+        System.out.println(file.getSize());
+        File localFile = new File(folder, new Date().getTime() + ".txt");
+        file.transferTo(localFile);
+        return new FileInfo(localFile.getAbsolutePath());
+    }
 
-	@PostMapping
-	public FileInfo upload(MultipartFile file) throws Exception {
+    @GetMapping("/{id}")
+    public void download(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //try中的流可以自动关闭
+        try (InputStream inputStream = new FileInputStream(new File(folder, id + ".txt"));
+             OutputStream outputStream = response.getOutputStream();) {
 
-		System.out.println(file.getName());
-		System.out.println(file.getOriginalFilename());
-		System.out.println(file.getSize());
+            response.setContentType("application/x-download");
+            response.addHeader("Content-Disposition", "attachment;filename=test.txt");
 
-		File localFile = new File(folder, new Date().getTime() + ".txt");
-
-		file.transferTo(localFile);
-
-		return new FileInfo(localFile.getAbsolutePath());
-	}
-
-	@GetMapping("/{id}")
-	public void download(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		try (InputStream inputStream = new FileInputStream(new File(folder, id + ".txt"));
-				OutputStream outputStream = response.getOutputStream();) {
-			
-			response.setContentType("application/x-download");
-			response.addHeader("Content-Disposition", "attachment;filename=test.txt");
-			
-			IOUtils.copy(inputStream, outputStream);
-			outputStream.flush();
-		} 
-
-	}
-
+            IOUtils.copy(inputStream, outputStream);
+            outputStream.flush();
+        }
+    }
 }
