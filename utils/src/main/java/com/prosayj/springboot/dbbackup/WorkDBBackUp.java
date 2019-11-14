@@ -17,20 +17,21 @@ public class WorkDBBackUp {
          *
          */
 
-//        BackUp.backupDB("192.168.6.79",
-//                "root",
-//                "db79","bunuo","yinuojr_user"
+        BackUp.backupDB("192.168.6.79",
+                "root",
+                "db79","bunuo","yinuojr_user",
  //               "bunuo",
 //                "yinuojr_user",
-//                "yinuojr_certification",
-//                "yinuojr_settlement",
-//                "yinuojr_pay",
-//                "yinuojr_tbank",
-//                "yinuojr_oss",
-//                "yinuojr_auth",
-//                "yinuojr_ops",
-//                "yinuojr_metadata"
-//        );
+                "yinuojr_certification",
+                "yinuojr_settlement",
+                "yinuojr_pay",
+                "yinuojr_tbank",
+                "yinuojr_oss",
+                "yinuojr_auth",
+                "yinuojr_ops",
+                "yinuojr_metadata",
+                "yinuojr_csf"
+        );
 
         BackUp.restore("localhost", "root", "root");
     }
