@@ -1,3 +1,0 @@
-src/main/resources/static中存放的是图片或js、css、html之类的静态资源
-src/main/resources/templates’中存放的是项目的模板文件（我用的模板是freemarker）
-src/main/resources/static/webjars这是一个空目录，通过这个空目录可以访问bootstrap的资源（建空目录命名为webjars的原因可能是因为bootstrap的jar包名称为webjars吧）
