@@ -10,6 +10,12 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+/**
+ * @author yangjian
+ * @description
+ * @Date 下午 08:35 2019/11/12
+ * @since 1.0.0
+ */
 @ServerEndpoint(value = "/websocket")
 @Controller
 public class WebSocketServer {
@@ -17,7 +23,7 @@ public class WebSocketServer {
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
-    private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<WebSocketServer>();
+    private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
@@ -37,12 +43,13 @@ public class WebSocketServer {
             log.error("websocket IO异常");
         }
     }
-    //	//连接打开时执行
-    //	@OnOpen
-    //	public void onOpen(@PathParam("user") String user, Session session) {
-    //		currentUser = user;
-    //		System.out.println("Connected ... " + session.getId());
-    //	}
+
+    //连接打开时执行
+//    @OnOpen
+//    public void onOpen(@PathParam("user") String user, Session session) {
+//        currentUser = user;
+//        System.out.println("Connected ... " + session.getId());
+//    }
 
     /**
      * 连接关闭调用的方法

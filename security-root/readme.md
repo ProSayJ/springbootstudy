@@ -1,2 +1,7 @@
+# 第四章
 
-[01_SpringSecurity前传--与springboot2.0初步集成](https://www.jianshu.com/p/c1e2e0f2b0be)
+## Spring Security的核心内容
+- 认证（你是谁）
+- 授权(你能干什么)
+- 攻击防护 (防止伪造身份)
+

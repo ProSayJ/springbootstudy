@@ -6,24 +6,6 @@
     <groupId>com.prosayj.springboot</groupId>
     <artifactId>prosayj</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>apollo</module>
-        <module>blockchain</module>
-        <module>javase</module>
-        <module>utils</module>
-        <module>spring5</module>
-        <module>upup</module>
-        <module>event</module>
-        <module>nodejs</module>
-        <module>gui</module>
-        <module>javafx</module>
-        <module>apollo</module>
-        <module>myblog</module>
-        <module>business</module>
-        <module>mybatis3</module>
-        <module>poi</module>
-        <module>activiti7</module>
-    </modules>
     <packaging>pom</packaging>
     <!--<packaging>war</packaging>-->
 
@@ -54,7 +36,6 @@
 
 
         <!--upup 模块依赖,没有写的则已存在springboot的起步依赖中-->
-
         <netty-all.version>5.0.0.Alpha1</netty-all.version>
         <netty-example.version>4.1.29.Final</netty-example.version>
         <protobuf-java.version>2.5.0</protobuf-java.version>
@@ -92,8 +73,6 @@
         <swagger-parser.version>1.0.40</swagger-parser.version>
 
 
-
-
         <!--main模块-->
 
 
@@ -114,21 +93,34 @@
 
 
         <commons-dbcp.version>1.4</commons-dbcp.version>
-
-
         <junit.version>4.12</junit.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <log4j-version>1.2.12</log4j-version>
-
-
-
-
-
         <ooxml.version>1.1</ooxml.version>
-
-
         <mysql.connector.java.version>8.0.11</mysql.connector.java.version>
 
-
     </properties>
+
+    <modules>
+        <module>activiti7</module>
+        <module>apollo</module>
+        <module>blockchain</module>
+        <module>business</module>
+        <module>event</module>
+        <module>gui</module>
+        <module>javafx</module>
+
+
+
+        <module>javase</module>
+        <module>utils</module>
+        <module>spring5</module>
+        <module>upup</module>
+        <module>nodejs</module>
+        <module>apollo</module>
+        <module>myblog</module>
+        <module>mybatis3</module>
+        <module>poi</module>
+        <module>message</module>
+    </modules>
 </project>
