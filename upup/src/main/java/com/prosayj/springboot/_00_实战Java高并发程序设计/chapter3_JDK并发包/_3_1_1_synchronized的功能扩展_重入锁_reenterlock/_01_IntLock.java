@@ -16,7 +16,7 @@ public class _01_IntLock implements Runnable {
     private int lock;
 
     /**
-     * 控制加锁顺序，方便够着锁死
+     * 控制加锁顺序，构造死锁，方便够着锁死
      *
      * @param lock
      */
@@ -28,8 +28,8 @@ public class _01_IntLock implements Runnable {
     public void run() {
         try {
             if (lock == 1) {
-                //lockInterruptibly可中断的请求锁的方法
-                lock1.lockInterruptibly();
+                lock1.lock();
+                lock1.lockInterruptibly();//lockInterruptibly可中断的请求锁的方法
                 Thread.sleep(500);
                 lock2.lockInterruptibly();
             } else {
@@ -46,20 +46,20 @@ public class _01_IntLock implements Runnable {
             if (lock2.isHeldByCurrentThread()) {
                 lock2.unlock();
             }
-            System.out.println(Thread.currentThread().getId() + ":线程退出");
+            System.out.println(Thread.currentThread().getName() + ":线程退出");
         }
     }
 
     public static void main(String args[]) throws InterruptedException {
-        Thread t1 = new Thread(new _01_IntLock(1));
-        Thread t2 = new Thread(new _01_IntLock(2));
+        Thread t1 = new Thread(new _01_IntLock(1),"t1");
+        Thread t2 = new Thread(new _01_IntLock(2),"t2");
 
         t1.start();
         t2.start();
 
         //主线程休眠，其他两个用户线程处于死锁状态。
-        Thread.sleep(3000);
-        //中断其中一个线程
+        Thread.sleep(5000);
+        //中断其中一个线程，该线程退出锁竞争，另外一个线程正常结束
         t2.interrupt();
 
     }

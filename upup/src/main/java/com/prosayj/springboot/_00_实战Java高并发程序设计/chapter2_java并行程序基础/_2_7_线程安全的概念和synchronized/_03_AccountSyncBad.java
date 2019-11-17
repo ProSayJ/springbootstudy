@@ -10,7 +10,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
 public class _03_AccountSyncBad implements Runnable {
     static int i = 0;
 
-    public /*static*/ synchronized void increase() {
+    public  synchronized void increase() {
         i++;
     }
 
@@ -22,8 +22,9 @@ public class _03_AccountSyncBad implements Runnable {
     }
 
     public static void main(String args[]) throws InterruptedException {
-        Thread thread1 = new Thread(new _03_AccountSyncBad());
-        Thread thread2 = new Thread(new _03_AccountSyncBad());
+        _03_AccountSyncBad target = new _03_AccountSyncBad();
+        Thread thread1 = new Thread(target);
+        Thread thread2 = new Thread(target);
         thread1.start();
         thread2.start();
         thread1.join();

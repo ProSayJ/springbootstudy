@@ -2,7 +2,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
 
 /**
  * @author yangjian
- * @description TODO
+ * @description 锁实例方法
  * @email ProSayJ@gmail.cn
  * @creatTime 2019/8/25 下午 11:44
  * @since 1.0.0

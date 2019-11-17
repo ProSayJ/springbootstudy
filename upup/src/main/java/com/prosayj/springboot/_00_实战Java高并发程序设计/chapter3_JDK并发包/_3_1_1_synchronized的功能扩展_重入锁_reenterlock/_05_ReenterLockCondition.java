@@ -1,6 +1,5 @@
 package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._3_1_1_synchronized的功能扩展_重入锁_reenterlock;
 
-import org.jibx.binding.Run;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.locks.Condition;

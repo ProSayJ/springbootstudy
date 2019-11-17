@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author yangjian
- * @description TODO
+ * @description
  * @email ProSayj@gmail.com
  * @creatTime 2018/7/8 19:51
  * @since 1.0.0
@@ -35,7 +35,7 @@ public class _03_TryLock implements Runnable {
                         }
                         if (lock2.tryLock()) {
                             try {
-                                System.out.println(Thread.currentThread().getId() + "===>My Job done;");
+                                System.out.println(Thread.currentThread().getName() + "===>My Job done;");
                                 return;
                             } finally {
                                 lock2.unlock();
@@ -53,14 +53,17 @@ public class _03_TryLock implements Runnable {
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
                         }
                         if (lock1.tryLock()) {
-                            System.out.println(Thread.currentThread().getId() + "===>My Job done;");
+                            try {
+                                System.out.println(Thread.currentThread().getName() + "===>My Job done;");
+                            } finally {
+                                lock1.unlock();
+                            }
                             return;
                         }
                     } finally {
-                        lock1.unlock();
+                        lock2.unlock();
                     }
                 }
             }
@@ -75,7 +78,7 @@ public class _03_TryLock implements Runnable {
      * @param args
      */
     public static void main(String args[]) {
-        new Thread(new _03_TryLock(1),"线程1").start();
-        new Thread(new _03_TryLock(2),"线程2").start();
+        new Thread(new _03_TryLock(1), "线程1").start();
+        new Thread(new _03_TryLock(2), "线程2").start();
     }
 }

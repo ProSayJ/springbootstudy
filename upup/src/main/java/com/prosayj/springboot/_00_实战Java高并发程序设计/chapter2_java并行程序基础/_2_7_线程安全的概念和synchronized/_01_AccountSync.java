@@ -11,6 +11,7 @@ package com.prosayj.springboot._00_实战Java高并发程序设计.chapter2_java
  * @since 1.0.0
  */
 public class _01_AccountSync implements Runnable {
+    //锁实例对象
     static _01_AccountSync instance = new _01_AccountSync();
     static int i = 0;
 

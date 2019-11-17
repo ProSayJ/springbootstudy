@@ -1,5 +1,7 @@
 package com.prosayj.springboot._00_实战Java高并发程序设计.chapter3_JDK并发包._3_1_1_synchronized的功能扩展_重入锁_reenterlock;
 
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -11,22 +13,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class _04_FairLock implements Runnable {
     //设置true指定锁是公平的,也可以不设置,分别运行观察公平锁与非公平锁间的区别
-    public static ReentrantLock fairLock = new ReentrantLock();
-    //public static ReentrantLock unfairLock = new ReentrantLock();
+    public static ReentrantLock lock = new ReentrantLock(false);
 
     @Override
     public void run() {
         while (true) {
             try {
-                fairLock.lock();
-                // unfairLock.lock();
+                lock.lock();
                 System.out.println(Thread.currentThread().getName() + "获得锁");
 //                Thread.sleep(500L);
             } catch (Exception e) {
-                e.printStackTrace();
             } finally {
-                fairLock.unlock();
-                // unfairLock.unlock();
+                lock.unlock();
             }
         }
     }
