@@ -1,19 +1,19 @@
 package com.prosayj.springboot.message.eventmemory.core.event.impl;
 
+import com.prosayj.springboot.message.eventmemory.core.event.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * @description
  * @author yangjian
+ * @description
  * @Date 16:22 2018/9/20
  * @since 1.0.0
  */
-@Service
+//@Service
 public class EventServiceImpl implements IEventService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

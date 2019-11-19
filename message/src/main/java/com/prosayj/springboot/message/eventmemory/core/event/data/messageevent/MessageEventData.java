@@ -2,7 +2,8 @@ package com.prosayj.springboot.message.eventmemory.core.event.data.messageevent;
 
 
 
-import com.prosayj.springboot.event.eventcore.event.constant.MessageTypeEnum;
+
+import com.prosayj.springboot.message.eventmemory.core.event.constant.MessageTypeEnum;
 
 import java.io.Serializable;
 import java.util.Map;

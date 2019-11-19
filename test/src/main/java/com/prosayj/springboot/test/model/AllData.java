@@ -2,7 +2,7 @@ package com.prosayj.springboot.test.model;
 
 import java.util.List;
 
-public class AllData {
+public class AllData extends BaseVO{
 
     //hana数据库sql
     private String id;

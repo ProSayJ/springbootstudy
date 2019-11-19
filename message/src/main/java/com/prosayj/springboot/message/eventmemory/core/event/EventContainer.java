@@ -9,7 +9,6 @@ import java.util.*;
  * @description 事件容器
  * @author yangjian
  * @Date 16:23 2018/9/20
- * @param null
  * @since 1.0.0
  */
 

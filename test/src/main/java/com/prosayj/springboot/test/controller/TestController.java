@@ -3,7 +3,9 @@ package com.prosayj.springboot.test.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.prosayj.springboot.test.model.AllData;
+import com.prosayj.springboot.test.model.BaseVO;
 import com.prosayj.springboot.test.model.ChartType;
+import com.prosayj.springboot.test.model.PersionInput;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -23,10 +25,36 @@ import java.util.List;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+    public static void main(String[] args) {
+
+
+        //子类
+        AllData allData = new AllData();
+        allData.setId("113");
+        allData.setPageNo(1);
+        allData.setPptName("国际市场情况");
+        allData.setPptType("chart");
+        allData.setPersionAddress("个人地址");
+
+
+        PersionInput persion = new PersionInput();
+        persion.setAge("23");
+        persion.setName("张三");
+        //父类
+        BaseVO baseVO = persion.getBaseVO();
+        System.out.println(baseVO.getPersionAddress());
+        System.out.println(baseVO);
+
+
+    }
 
     @PostMapping("/idlist")
     public void getIdsist(@RequestBody List<Long> ids) {
         System.out.println(ids);
+    }
+
+    @PostMapping("/test-extends")
+    public void testExtends(@RequestBody PersionInput persionInput) {
     }
 
 

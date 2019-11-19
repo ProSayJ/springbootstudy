@@ -1,10 +1,12 @@
 package com.prosayj.springboot.utils.parseswagger;
 
+import com.prosayj.springboot.constants.Constants;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
+import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,8 +18,12 @@ public class SwaggerJson2Word {
     public static void main(String[] args) throws IOException {
         // 读文件:api
 //        File fileSrc = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
-        File fileSrc = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
+//        File fileSrc = new File("C:\\workspace\\idea_workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_user.json");
 //        File fileSrc = new File("D:\\workspace\\git\\springbootstudy\\utils\\src\\main\\java\\com\\prosayj\\springboot\\utils\\in" + "\\api-docs_api.json");
+
+
+        File fileSrc = new File(ResourceUtils.getURL(Constants.CLASSPATH).getPath() + "\\export\\in\\api-docs_user2.json");
+
 
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileSrc), "utf-8"));
         String jsonString = br.readLine().toString();

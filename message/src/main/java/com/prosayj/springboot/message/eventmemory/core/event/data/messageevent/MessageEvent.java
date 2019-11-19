@@ -2,8 +2,8 @@
 package com.prosayj.springboot.message.eventmemory.core.event.data.messageevent;
 
 
-import com.prosayj.springboot.event.eventcore.event.EventType;
-import com.prosayj.springboot.event.eventcore.event.IEvent;
+import com.prosayj.springboot.message.eventmemory.core.event.EventType;
+import com.prosayj.springboot.message.eventmemory.core.event.IEvent;
 
 /**
  * @author yangjian
