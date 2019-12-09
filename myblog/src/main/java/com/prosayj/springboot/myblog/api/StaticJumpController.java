@@ -29,32 +29,6 @@ public class StaticJumpController {
 
 
 
-    @ApiOperation(value = "首页")
-    @GetMapping("/index")
-    public String index() {
-        return "freemark/index";
-    }
-
-
-    @ApiOperation(value = "文章详情")
-    @GetMapping("/articedetail")
-    public String articedetail() {
-        return "freemark/articedetail";
-    }
-
-    @ApiOperation(value = "归档")
-    @GetMapping("/archives")
-    public String archives() {
-        return "freemark/archives";
-    }
-
-    @ApiOperation(value = "分类")
-    @GetMapping("/categories")
-    public String categories() {
-        return "freemark/categories";
-    }
-
-
 
 
 
@@ -67,24 +41,7 @@ public class StaticJumpController {
     }
 
 
-    @ApiOperation(value = "登陆", nickname = "static-jump-controller-login")
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
 
-    @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-
-    @ApiOperation(value = "新建文章", nickname = "static-jump-controller-create")
-    @GetMapping("/create")
-    public String create() {
-        return "redirect:/article/create";
-    }
 
 
     @ApiOperation(value = "文章预览", nickname = "static-jump-controller-preview")
@@ -105,17 +62,6 @@ public class StaticJumpController {
         return modelAndView;
     }
 
-    @ApiOperation(value = "example", nickname = "static-jump-controller-example")
-    @GetMapping("/example")
-    public String example() {
-        return "freemark/example";
-    }
-
-    @ApiOperation(value = "注册", nickname = "static-jump-controller-register")
-    @GetMapping("/article/register.html")
-    public String registerIframe() {
-        return "freemark/register";
-    }
 
     @ApiOperation(value = "articlelistbytagid", nickname = "static-jump-controller-articlelistbytagid")
     @GetMapping("/articlelistbytagid")
