@@ -37,7 +37,7 @@
         <springboot.version>2.1.2.RELEASE</springboot.version>
         <lombok.version>1.18.4</lombok.version>
         <!--<mysql.version>5.1.39</mysql.version>-->
-        <mysql.version>8.0.11</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
     </properties>
     <!--
     1:如果dependencies里的dependency自己没有声明version元素，那么maven就
